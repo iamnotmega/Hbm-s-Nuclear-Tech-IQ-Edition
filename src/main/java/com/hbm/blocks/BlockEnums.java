@@ -11,6 +11,7 @@ public class BlockEnums {
 		BAUXITE,
 		CONGLOMERATE,
 		CALCIUM,
+		RUTILE
 	}
 
 	public static enum EnumMeteorType {
@@ -52,15 +53,15 @@ public class BlockEnums {
 		GOLD,
 		SCHRABIDIUM
 	}
-	
+
 	/** DECO / STRUCTURE ENUMS */
 	//i apologize in advance
-	
+
 	public static enum TileType {
 		LARGE,
 		SMALL
 	}
-	
+
 	public static enum LightstoneType {
 		UNREFINED,
 		TILE,
@@ -68,11 +69,11 @@ public class BlockEnums {
 		BRICKS_CHISELED,
 		CHISELED
 	}
-	
+
 	public static enum DecoComputerEnum {
 		IBM_300PL
 	}
-	
+
 	public static enum DecoCabinetEnum {
 		GREEN,
 		STEEL

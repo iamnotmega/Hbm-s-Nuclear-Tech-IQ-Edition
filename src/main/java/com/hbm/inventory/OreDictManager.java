@@ -280,6 +280,7 @@ public class OreDictManager {
 	public static final DictFrame LIMESTONE = new DictFrame("Limestone");
 	public static final DictFrame SLAG = new DictFrame("Slag");
 	public static final DictFrame BAUXITE = new DictFrame("Bauxite");
+	public static final DictFrame RUTILE = new DictFrame("Rutile");
 	public static final DictFrame CRYOLITE = new DictFrame("Cryolite");
 	public static final DictFrame RICHMAGMA = new DictFrame("RichMagma");
 	public static final DictFrame FLOUR = new DictFrame("foodFlour");
@@ -517,6 +518,7 @@ public class OreDictManager {
 		MALACHITE						.ingot(DictFrame.fromOne(chunk_ore, EnumChunkType.MALACHITE))									.ore(fromOne(stone_resource, EnumStoneType.MALACHITE));
 		LIMESTONE																		.dust(powder_limestone)							.ore(fromOne(stone_resource, EnumStoneType.LIMESTONE));
 		BAUXITE																															.gem(fromOne(stone_resource, EnumStoneType.BAUXITE));
+		RUTILE																															.gem(fromOne(stone_resource, EnumStoneType.RUTILE));
 		CRYOLITE	.crystal(fromOne(chunk_ore, EnumChunkType.CRYOLITE));
 		SLAG																									.block(block_slag);
 		CONGLOMERATE																													.ore(fromOne(stone_resource, EnumStoneType.CONGLOMERATE));
