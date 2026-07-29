@@ -1,18 +1,24 @@
-# NTM: Space for Minecraft 1.7.10
+# NTM: IQ Edition for Minecraft 1.7.10
 
-Hi, i am memeing things into existence, dont mind me! im just the bent fork at the end of the table -JamesH_2
+NTM IQ Edition is a Fork of NTM Space for MC 1.7.10. It is mainly maintained by irislgtm, and contrary to regular ntm it focuses on adding its own features while keeping in sync with upstream.
+It is based off of tam69 iq, which is immense, thus the fork will have immense amounts of custom content that would normally take much longer/never be accepted into base NTM.
+As there are very few contributors, with probably more time than bobcat himself, we can add our own features to base NTM which normally would not receive credence in the main mod/most players wouldnt like.
+The fork is also a mix of serious and nonserious content with joke items scattered across the new features, the closest parallel to this is probably leafia's cursed addon for NTMCE
+Some quotes from our beloved members:
 
-And I turn the memes into reality, see you in orbit! -Mellow
+"I am deeply in love with xenon."
+- freddy69
+"Fuck english in the ass"
+- tam69
+"Yo"
+- english
 
-[NTM: Space on Modrinth](https://modrinth.com/mod/ntmspace)
+Join to see progress at https://discord.gg/dwpsq9q989 
+You can also see iris-lgtm's other projects/games there.
 
-[NTM: Space on CurseForge](https://www.curseforge.com/minecraft/mc-mods/ntm-space)
 
-[Official NTM Wiki](https://nucleartech.wiki/wiki/Main_Page)
 
-[NTM: Space Discord](https://discord.gg/u6bKmGNYCq)
 
-[Bobcat's Blog (the blag)](https://hbmmods.github.io/), you can find lengthy yapping, upcoming features and some secrets here.
 
 **This is for 1.7.10!** For 1.12, check out these projects:
 
