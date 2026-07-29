@@ -7,11 +7,13 @@ The fork is also a mix of serious and nonserious content with joke items scatter
 Some quotes from our beloved members:
 
 "I am deeply in love with xenon."
-- freddy69
+freddy69
 "Fuck english in the ass"
-- tam69
+tam69
 "Yo"
-- english
+english
+"I have the memory of a fish"
+Notmega iq
 
 Join to see progress at https://discord.gg/dwpsq9q989 
 You can also see iris-lgtm's other projects/games there.
