@@ -44,6 +44,7 @@ public class MixerRecipes extends SerializableRecipe {
 				new MixerRecipe(1_000, 20).setStack1(new FluidStack(Fluids.WATER, 1000)).setStack2(new FluidStack(Fluids.PETROLEUM, 100)).setSolid(new OreDictStack(S.dust())));
 		register(Fluids.ENDERJUICE, new MixerRecipe(100, 100).setStack1(new FluidStack(Fluids.XPJUICE, 500)).setSolid(new OreDictStack(DIAMOND.dust())));
 		register(Fluids.SALIENT, new MixerRecipe(1000, 20).setStack1(new FluidStack(Fluids.SEEDSLURRY, 500)).setStack2(new FluidStack(Fluids.BLOOD, 500)));
+		register(Fluids.TAMSLOP, new MixerRecipe(500, 100).setStack1(new FluidStack(Fluids.NUTRIENT_SLOP, 500)).setStack2(new FluidStack(Fluids.SALIENT, 200)).setSolid(new ComparableStack(ModItems.nugget_uranium)));
 		register(Fluids.COLLOID, new MixerRecipe(500, 20).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(ModItems.dust)));
 		register(Fluids.PHOSGENE, new MixerRecipe(1000, 20).setStack1(new FluidStack(Fluids.UNSATURATEDS, 500)).setStack2(new FluidStack(Fluids.CHLORINE, 500)));
 		register(Fluids.MUSTARDGAS, new MixerRecipe(1000, 20).setStack1(new FluidStack(Fluids.REFORMGAS, 750)).setStack2(new FluidStack(Fluids.CHLORINE, 250)).setSolid(new OreDictStack(S.dust())));
@@ -129,6 +130,15 @@ public class MixerRecipes extends SerializableRecipe {
 		register(Fluids.LITHYDRO, new MixerRecipe(1000, 100).setStack1(new FluidStack(Fluids.BRINE, 125)).setSolid(new ComparableStack(ModItems.powder_lithium, 3)));
 
 		register(Fluids.BITUMEN, new MixerRecipe(50, 20).setSolid(new OreDictStack(ANY_TAR.any())));
+
+		register(Fluids.STIMPAK, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(Items.nether_wart, 4)));
+		register(Fluids.SUPER_STIMPAK, new MixerRecipe(500, 40).setStack1(new FluidStack(Fluids.STIMPAK, 400)).setSolid(new ComparableStack(ModItems.bottle_nuka)),
+				new MixerRecipe(500, 40).setStack1(new FluidStack(Fluids.STIMPAK, 400)).setSolid(new ComparableStack(ModItems.bottle_cherry)));
+		register(Fluids.MEDX, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setStack2(new FluidStack(Fluids.UNSATURATEDS, 100)).setSolid(new OreDictStack(QUARTZ.dust(), 4)));
+		register(Fluids.PSYCHO, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setStack2(new FluidStack(Fluids.REFORMGAS, 200)).setSolid(new ComparableStack(ModItems.powder_fire, 4)));
+		register(Fluids.AWESOME, new MixerRecipe(1000, 100).setStack1(new FluidStack(Fluids.STIMPAK, 500)).setStack2(new FluidStack(Fluids.MEDX, 500)).setSolid(new ComparableStack(ModItems.pellet_charged)));
+		register(Fluids.ANTIDOTE, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.MILK, 400)).setSolid(new ComparableStack(Items.nether_wart, 4)));
+		register(Fluids.POISON, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 400)).setSolid(new ComparableStack(Items.spider_eye, 4)));
 	}
 
 	public static void register(FluidType type, MixerRecipe... rec) {

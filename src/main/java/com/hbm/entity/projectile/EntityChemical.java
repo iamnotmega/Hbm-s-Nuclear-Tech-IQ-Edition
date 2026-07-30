@@ -14,6 +14,9 @@ import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.trait.*;
+import com.hbm.inventory.fluid.trait.FT_Consumable;
+import com.hbm.inventory.fluid.trait.FT_Drug;
+import com.hbm.inventory.fluid.trait.Injectables;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.main.MainRegistry;
 import com.hbm.particle.helper.FlameCreator;
@@ -185,10 +188,12 @@ public class EntityChemical extends EntityThrowableNT {
 				}
 			}
 
-			if(type.hasTrait(Fluids.DELICIOUS.getClass())) {
-				if(living != null && living.isEntityAlive()) {
-					living.heal(2F * (float) intensity);
-				}
+			FT_Consumable consumable = type.getTrait(FT_Consumable.class);
+			if(consumable != null) {
+				consumable.applyEffects(living);
+			}
+			if(type.hasTrait(FT_Drug.class)) {
+				Injectables.process(living, type, 0, 1.0F, false);
 			}
 		}
 
@@ -197,11 +202,6 @@ public class EntityChemical extends EntityThrowableNT {
 			if(type.hasTrait(FT_Flammable.class)) {
 				if(living != null) {
 					HbmLivingProps.setOil(living, 300); //doused in oil for 15 seconds
-				}
-			}
-			if(type.hasTrait(Fluids.DELICIOUS.getClass())) {
-				if(living != null && living.isEntityAlive()) {
-					living.heal(2F * (float) intensity);
 				}
 			}
 

@@ -68,7 +68,7 @@ public class BlockAmmoCrate extends Block {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 			
 		ret.add(new ItemStack(ModItems.cap_nuka, 12 + rand.nextInt(21)));
-		ret.add(new ItemStack(ModItems.syringe_metal_stimpak, 1 + rand.nextInt(3)));
+		ret.add(new ItemStack(ModItems.combat_syringe, 1 + rand.nextInt(3)));
 
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 16 + rand.nextInt(17), EnumAmmo.P9_SP.ordinal()));
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 16 + rand.nextInt(17), EnumAmmo.P9_FMJ.ordinal()));
@@ -85,7 +85,7 @@ public class BlockAmmoCrate extends Block {
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 2 + rand.nextInt(3), EnumAmmo.G40_HE.ordinal()));
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 2 + rand.nextInt(3), EnumAmmo.ROCKET_HE.ordinal()));
 		
-		if(rand.nextInt(10) == 0) ret.add(new ItemStack(ModItems.syringe_metal_super, 2));
+		if(rand.nextInt(10) == 0) ret.add(new ItemStack(ModItems.combat_syringe, 2));
 		
 		return ret;
 	}

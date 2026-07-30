@@ -58,8 +58,8 @@ public class BlockCrate extends BlockFalling {
 		redList = new ArrayList();
 
 		// Supply Crate
-		BlockCrate.addToListWithWeight(crateList, ModItems.syringe_metal_stimpak, 10);
-		BlockCrate.addToListWithWeight(crateList, ModItems.syringe_antidote, 5);
+	    BlockCrate.addToListWithWeight(crateList, ModItems.combat_syringe, 10);
+	    BlockCrate.addToListWithWeight(crateList, ModItems.syringe, 5);
 		BlockCrate.addToListWithWeight(crateList, ItemGrenadeUniversal.make(EnumGrenadeShell.FRAG, EnumGrenadeFilling.HE, EnumGrenadeFuze.S3, EnumGrenadeExtra.FRAG_SLEEVE), 8);
 		BlockCrate.addToListWithWeight(crateList, ItemGrenadeUniversal.make(EnumGrenadeShell.STICK, EnumGrenadeFilling.HE, EnumGrenadeFuze.IMPACT), 6);
 		BlockCrate.addToListWithWeight(crateList, ItemGrenadeUniversal.make(EnumGrenadeShell.FRAG, EnumGrenadeFilling.INC, EnumGrenadeFuze.S7), 4);

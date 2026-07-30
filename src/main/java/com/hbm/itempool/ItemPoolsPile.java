@@ -62,7 +62,7 @@ public class ItemPoolsPile {
 					weighted(ModItems.bottle_quantum, 0, 1, 2, 1),
 					weighted(ModItems.definitelyfood, 0, 5, 12, 20),
 					weighted(ModItems.egg_glyphid, 0, 1, 3, 30),
-					weighted(ModItems.syringe_metal_stimpak, 0, 1, 1, 5),
+					weighted(ModItems.combat_syringe, 0, 1, 1, 5),
 					weighted(ModItems.iv_blood, 0, 1, 1, 10),
 					weighted(Items.experience_bottle, 0, 1, 3, 5),
 			};
@@ -89,9 +89,9 @@ public class ItemPoolsPile {
 		//medicine stashes
 		new ItemPool(POOL_PILE_MED_SYRINGE) {{
 			this.pool = new WeightedRandomChestContent[] {
-					weighted(ModItems.syringe_metal_stimpak, 0, 1, 1, 10),
-					weighted(ModItems.syringe_metal_medx, 0, 1, 1, 5),
-					weighted(ModItems.syringe_metal_psycho, 0, 1, 1, 5),
+					weighted(ModItems.combat_syringe, 0, 1, 1, 10),
+					weighted(ModItems.combat_syringe, 0, 1, 1, 5),
+					weighted(ModItems.combat_syringe, 0, 1, 1, 5),
 			};
 		}};
 		new ItemPool(POOL_PILE_MED_PILLS) {{
@@ -138,8 +138,8 @@ public class ItemPoolsPile {
 				weighted(ModItems.coil_tungsten, 0, 0, 2, 15),
 				weighted(ModItems.can_empty, 0, 0, 1, 15),
 				weighted(ModItems.ingot_asbestos, 0, 0, 1, 15),
-				weighted(ModItems.syringe_metal_empty, 0, 0, 1, 15),
-				weighted(ModItems.syringe_empty, 0, 0, 1, 15),
+				weighted(ModItems.combat_syringe, 0, 0, 1, 15),
+				weighted(ModItems.syringe, 0, 0, 1, 15),
 				weighted(ModItems.pipe_lead, 0, 0, 1, 5),
 				weighted(ModItems.motor, 0, 0, 1, 5),
 				weighted(ModItems.canned_conserve, 2, 0, 1, 5),

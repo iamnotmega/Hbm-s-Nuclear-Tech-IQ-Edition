@@ -88,6 +88,10 @@ import com.hbm.packet.toclient.PlayerInformPacket;
 import com.hbm.packet.toclient.SerializableRecipePacket;
 import com.hbm.particle.helper.BlackPowderCreator;
 import com.hbm.potion.HbmPotion;
+import com.hbm.inventory.fluid.FluidType;
+import com.hbm.inventory.fluid.Fluids;
+import com.hbm.inventory.fluid.trait.Injectables;
+import com.hbm.items.tool.ItemFluidSyringe;
 import com.hbm.tileentity.machine.TileEntityMachineRadarNT;
 import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.network.RTTYSystem;
@@ -418,7 +422,7 @@ public class ModEventHandler {
 					 && !(((EntityDamageSource)event.source).getEntity() instanceof FakePlayer)) {
 
 				Random rng = event.entityLiving.getRNG();
-				
+
 				if(event.entityLiving instanceof EntitySpider && rng.nextInt(500) == 0) {
 					event.entityLiving.dropItem(ModItems.spider_milk, 1);
 				}
@@ -444,7 +448,7 @@ public class ModEventHandler {
 				if(event.entityLiving instanceof EntityVillager && event.entityLiving.getRNG().nextInt(1) == 0) {
 					event.entityLiving.dropItem(ModItems.flesh, 5);
 				}
-				
+
 				if(event.entityLiving instanceof EntityZombie) {
 					if(rng.nextInt(200) == 0) event.entityLiving.dropItem(ModItems.ingot_copper, 1);
 					if(rng.nextInt(200) == 0) event.entityLiving.dropItem(ModItems.ingot_aluminium, 1);
@@ -551,7 +555,7 @@ public class ModEventHandler {
 
 	private static ItemStack getSkelegun(float soot, Random rand) {
 		if(!MobConfig.enableMobWeapons) return null;
-		
+
 		soot -= MobConfig.mobWeaponSootReduction;
 		if(rand.nextDouble() > Math.log(soot) * 0.25) return null;
 
@@ -839,7 +843,7 @@ public class ModEventHandler {
 
 	@SubscribeEvent
 	public void worldTick(WorldTickEvent event) {
-		
+
 		World world = event.world;
 		long time = world.getTotalWorldTime();
 
@@ -911,7 +915,7 @@ public class ModEventHandler {
 					CelestialBody.updateChemistry(event.world);
 				}
 			}
-			
+
 			if(time % 20 == 0) {
 				BlockPedestal.checkPedestalEntries(world.provider.dimensionId, time);
 			}
@@ -998,6 +1002,22 @@ public class ModEventHandler {
 	}
 
 	@SubscribeEvent
+	public void onEntityInteract(AttackEntityEvent event) {
+		if(event.entityPlayer.worldObj.isRemote) return;
+		ItemStack stack = event.entityPlayer.getHeldItem();
+		if(stack == null || !(stack.getItem() instanceof ItemFluidSyringe)) return;
+		if(!(event.target instanceof EntityLivingBase)) return;
+
+		ItemFluidSyringe syringe = (ItemFluidSyringe) stack.getItem();
+		int fill = syringe.getFill(stack);
+		int dose = Math.min(10, fill);
+		if(dose > 0) {
+			Injectables.injectEntity(stack, (EntityLivingBase) event.target, event.entityPlayer, dose, 1.0F);
+			event.setCanceled(true);
+		}
+	}
+
+	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
 
 		EntityLivingBase e = event.entityLiving;
@@ -1018,6 +1038,44 @@ public class ModEventHandler {
 
 		if(HbmLivingProps.getContagion(e) > 0 && event.ammount < 100)
 			event.ammount *= 2F;
+
+		// taking damage cancels the effect
+		if(e.isPotionActive(HbmPotion.roidRage)) {
+			e.removePotionEffect(HbmPotion.roidRage.id);
+		}
+
+		// roid rage logick
+		if(event.source.getEntity() instanceof EntityLivingBase) {
+			EntityLivingBase attacker = (EntityLivingBase) event.source.getEntity();
+			if(attacker.isPotionActive(HbmPotion.roidRage)) {
+				PotionEffect roidRage = attacker.getActivePotionEffect(HbmPotion.roidRage);
+				int amp = roidRage.getAmplifier();
+				int nextAmp = Math.min(amp + 1, 9);
+				event.ammount *= Math.pow(1.25, nextAmp);
+				attacker.addPotionEffect(new PotionEffect(HbmPotion.roidRage.id, roidRage.getDuration(), nextAmp));
+			}
+		}
+
+		// med ex logick
+		if(e.isPotionActive(HbmPotion.medx)) {
+			PotionEffect medxEffect = e.getActivePotionEffect(HbmPotion.medx);
+			int startTime = e.getEntityData().getInteger("medxStartTime");
+			if(startTime == 0) {
+				startTime = e.ticksExisted;
+				e.getEntityData().setInteger("medxStartTime", startTime);
+			}
+			int elapsed = e.ticksExisted - startTime;
+			float reduction;
+			if(elapsed < 200) {
+				reduction = 0.95F - 0.70F * (elapsed / 200.0F);
+			} else {
+				reduction = 0.25F;
+			}
+			reduction = Math.max(0.25F, Math.min(0.95F, reduction));
+			event.ammount *= (1.0F - reduction);
+		} else {
+			e.getEntityData().removeTag("medxStartTime");
+		}
 
 		/// V1 ///
 		if(EntityDamageUtil.wasAttackedByV1(event.source)) {
@@ -1139,7 +1197,7 @@ public class ModEventHandler {
 		EntityLivingBase e = event.entityLiving;
 
 		float gravity = CelestialBody.getGravity(e);
-		
+
 
 		// Reduce fall damage on low gravity bodies
 		if(gravity < 0.3F) {
@@ -2005,5 +2063,5 @@ public class ModEventHandler {
 		}
 	}
 
-	
+
 }

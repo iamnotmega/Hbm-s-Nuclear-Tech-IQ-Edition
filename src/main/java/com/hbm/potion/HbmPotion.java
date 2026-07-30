@@ -53,7 +53,10 @@ public class HbmPotion extends Potion {
 	public static HbmPotion flashbang;
 
 	public static HbmPotion slippery; //t
-
+	//these are for the new consumable fx
+	public static HbmPotion stimulated;
+	public static HbmPotion medx;
+	public static HbmPotion roidRage;
 
 	public HbmPotion(int id, boolean isBad, int color) {
 		super(id, isBad, color);
@@ -76,6 +79,9 @@ public class HbmPotion extends Potion {
 		nitan = registerPotion(PotionConfig.nitanID, false, 8388736, "potion.hbm_nitan", 3, 1);
 		flashbang = registerPotion(PotionConfig.flashbangID, false, 0xD0D0D0, "potion.hbm_flashbang", 15, 1);
 		slippery = registerPotion(PotionConfig.slipperyID, false, 0xD0D0D0, "potion.hbm_slippery", 15, 0);
+		stimulated = registerPotion(PotionConfig.stimulatedID, false, 0x44FF44, "potion.hbm_stimulated", 2, 2);
+		roidRage = registerPotion(PotionConfig.roidRageID, false, 0xFF4444, "potion.hbm_roid_rage", 0, 2);
+		medx = registerPotion(PotionConfig.medxID, false, 0x8888FF, "potion.hbm_medx", 1, 2);
 
 	}
 
@@ -199,6 +205,9 @@ public class HbmPotion extends Potion {
 				}
 			entity.addPotionEffect(new PotionEffect(moveSlowdown.id,5,10));
 		}
+		if(this == stimulated) {
+			entity.heal((level + 1) * 2);
+		}
 	}
 
 	public boolean isReady(int par1, int par2) {
@@ -223,6 +232,10 @@ public class HbmPotion extends Potion {
 		if(this == lead) {
 			int k = 60;
 			return k > 0 ? par1 % k == 0 : true;
+		}
+
+		if(this == stimulated || this == roidRage || this == medx) {
+			return par1 % 20 == 0;
 		}
 
 		return false;

@@ -141,6 +141,7 @@ public class WorldConfig {
 	public static boolean enableMalachite = true;
 	public static boolean enableBauxite = true;
 	public static boolean enableRutile = true;
+	public static boolean enableAnthracite = true;
 
 	public static boolean enableSulfurCave = true;
 	public static boolean enableAsbestosCave = true;
@@ -318,6 +319,7 @@ public class WorldConfig {
 		enableMalachite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.L01_enableMalachite", "Toggles malachite deposits", true);
 		enableBauxite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.L02_enableBauxite", "Toggles bauxite deposits", true);
 		enableRutile = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL03_enableRutile", "Toggles rutile deposits", true);
+		enableAnthracite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL04_enableAnthracite", "Toggles anthracite deposits", true);
 
 		enableSulfurCave = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.C00_enableSulfurCave", "Toggles sulfur caves", true);
 		enableAsbestosCave = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.C01_enableAsbestosCave", "Toggles asbestos caves", true);

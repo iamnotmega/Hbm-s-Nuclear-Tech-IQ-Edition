@@ -38,6 +38,8 @@ import com.hbm.inventory.gui.GUIScreenWikiRender;
 import com.hbm.inventory.gui.LoadingScreenRendererNT;
 import com.hbm.items.ItemCustomLore;
 import com.hbm.items.ModItems;
+import com.hbm.inventory.fluid.FluidType;
+import api.hbm.fluidmk2.IFillableItem;
 import com.hbm.items.armor.*;
 import com.hbm.items.machine.ItemDepletedFuel;
 import com.hbm.items.machine.ItemFluidDuct;
@@ -442,6 +444,13 @@ public class ModEventHandlerClient {
 			float fuel = (float) JetpackFueledBase.getFuel(stack) / jetpack.maxFuel;
 
 			bars.add(new Tuple.Pair<Float, Integer>(fuel, jetpack.fuel.getColor()));
+		}
+
+		if(stack.getItem() instanceof ItemModAutoFeed) {
+			if(IFillableItem.getFluidFill(stack) > 0) {
+				FluidType fluid = IFillableItem.getFluidType(stack);
+				bars.add(new Tuple.Pair<Float, Integer>(IFillableItem.getFluidFill(stack) / (float) ItemModAutoFeed.MAX_FLUID, fluid.getColor()));
+			}
 		}
 
 		return bars;

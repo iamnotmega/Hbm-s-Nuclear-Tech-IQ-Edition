@@ -241,6 +241,8 @@ public class Fluids {
 	public static FluidType STELLAR_FLUX;
 	public static FluidType VITRIOL;
 	public static FluidType SLOP;
+	public static FluidType NUTRIENT_SLOP;
+	public static FluidType TAMSLOP;
 	public static FluidType LYE;
 	public static FluidType SODIUM_ALUMINATE;
 	public static FluidType BAUXITE_SOLUTION;
@@ -255,6 +257,17 @@ public class Fluids {
 	public static FluidType DHC;
 	public static FluidType LITHYDRO;
 	public static FluidType LITHCARBONATE;
+
+	public static FluidType STIMPAK;
+	public static FluidType SUPER_STIMPAK;
+	public static FluidType MEDX;
+	public static FluidType PSYCHO;
+	public static FluidType AWESOME;
+	public static FluidType ANTIDOTE;
+	public static FluidType POISON;
+	public static FluidType TICL4;
+	public static FluidType HEAVY_SAND_SLOP;
+	public static FluidType MONAZITE_SLOP;
 
 	/* Lagacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
@@ -280,7 +293,6 @@ public class Fluids {
 	public static final FT_LeadContainer LEADCON = new FT_LeadContainer();
 	public static final FT_NoContainer NOCON = new FT_NoContainer();
 	public static final FT_NoID NOID = new FT_NoID();
-	public static final FT_Delicious DELICIOUS = new FT_Delicious();
 	public static final FT_ULTRAKILL ULTRAKILL = new FT_ULTRAKILL();
 	public static final FT_EXPLOSIVE EXPLOSIVE = new FT_EXPLOSIVE();
 	public static final FT_Leaded LEADED = new FT_Leaded();
@@ -391,27 +403,27 @@ public class Fluids {
 		DIESEL_CRACK =			new FluidType("DIESEL_CRACK",		0xf2eed5, 1, 2, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xFF2C2C)).addTraits(new FT_Flammable(200_000), new FT_Combustible(FuelGrade.HIGH, 450_000), LIQUID, P_FUEL);
 		AROMATICS =				new FluidType("AROMATICS",			0x68A09A, 1, 4, 1, EnumSymbol.NONE).addContainers(new CD_Gastank(0x68A09A, 0xEDCF27)).addTraits(new FT_Flammable(25_000), LIQUID, VISCOUS, P_GAS);
 		UNSATURATEDS =			new FluidType("UNSATURATEDS",		0x628FAE, 1, 4, 1, EnumSymbol.NONE).addContainers(new CD_Gastank(0x628FAE, 0xEDCF27)).addTraits(new FT_Flammable(1_000_000), GASEOUS, P_GAS); //acetylene burns as hot as satan's asshole
-		SALIENT =				new FluidType("SALIENT",			0x457F2D, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID, VISCOUS);
-		XPJUICE =				new FluidType("XPJUICE",			0xBBFF09, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
-		ENDERJUICE =			new FluidType("ENDERJUICE",			0x127766, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
+		SALIENT =				new FluidType("SALIENT",			0x457F2D, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable().setFood(0.15F, 0.1F), LIQUID, VISCOUS);
+		XPJUICE =				new FluidType("XPJUICE",			0xBBFF09, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Drug().setConsumption(10).addSpecialEffect("hbmfluid.trait.drip_xp"));
+		ENDERJUICE =			new FluidType("ENDERJUICE",			0x127766, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, new FT_Drug().setConsumption(10).addSpecialEffect("hbmfluid.trait.teleporting"));
 		PETROIL_LEADED =		new FluidType("PETROIL_LEADED",		0x44413d, 1, 3, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x2331F6)).addTraits(new FT_Flammable(125_000), new FT_Combustible(FuelGrade.MEDIUM, 450_000), LIQUID, P_FUEL_LEADED);
 		GASOLINE_LEADED =		new FluidType("GASOLINE_LEADED",	0x445772, 1, 2, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x2F775A)).addTraits(new FT_Flammable(400_000), new FT_Combustible(FuelGrade.HIGH, 1_500_000), LIQUID, P_FUEL_LEADED);
 		COALGAS_LEADED =		new FluidType("COALGAS_LEADED",		0x445772, 1, 2, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x1E155F)).addTraits(new FT_Flammable(75_000), new FT_Combustible(FuelGrade.MEDIUM, 250_000), LIQUID, P_FUEL_LEADED);
 		SULFURIC_ACID =			new FluidType("SULFURIC_ACID",		0xB0AA64, 3, 0, 2, EnumSymbol.ACID).addTraits(new FT_Corrosive(50), LIQUID);
 		COOLANT_HOT =			new FluidType("COOLANT_HOT",		0x99525E, 1, 0, 0, EnumSymbol.NONE).setTemp(600).addTraits(LIQUID);
-		MUG =					new FluidType("MUG",				0x4B2D28, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);
-		MUG_HOT =				new FluidType("MUG_HOT",			0x6B2A20, 0, 0, 0, EnumSymbol.NONE).setTemp(500).addTraits(DELICIOUS, LIQUID);
+		MUG =					new FluidType("MUG",				0x4B2D28, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable().setFood(0.2F, 0.1F), LIQUID);
+		MUG_HOT =				new FluidType("MUG_HOT",			0x6B2A20, 0, 0, 0, EnumSymbol.NONE).setTemp(500).addTraits(new FT_Consumable().setFood(0.2F, 0.1F), LIQUID);
 		WOODOIL =				new FluidType("WOODOIL",			0x847D54, 2, 2, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xBF7E4F)).addTraits(LIQUID, VISCOUS, P_OIL);
 		COALCREOSOTE =			new FluidType("COALCREOSOTE",		0x51694F, 3, 2, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x285A3F)).addTraits(LIQUID, VISCOUS, P_OIL);
 		SEEDSLURRY =			new FluidType("SEEDSLURRY",			0x7CC35E, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x7CC35E)).addTraits(LIQUID, VISCOUS);
 		NITROGEN =				new FluidType("NITROGEN",			0xB3C6D2, 1, 0, 0, EnumSymbol.CROYGENIC).setTemp(-90).addTraits(LIQUID, EVAP);
-		BLOOD =					new FluidType("BLOOD",				0xB22424, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, DELICIOUS);
+		BLOOD =					new FluidType("BLOOD",				0xB22424, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(0.3F, 0.1F).addEffect(Potion.damageBoost.id, 0));
 		NITRIC_ACID =			new FluidType("NITRIC_ACID",		0xBB7A1E, 3, 0, 2, EnumSymbol.OXIDIZER).addTraits(LIQUID, new FT_Corrosive(60));
 		AMMONIA =				new FluidType("AMMONIA",			0x00A0F7, 2, 0, 1, EnumSymbol.ASPHYXIANT).addTraits(new FT_Poison(true, 4), GASEOUS);
 		HYDRAZINE =				new FluidType("HYDRAZINE",			0x31517D, 2, 3, 2, EnumSymbol.NONE).addContainers(new CD_Canister(0x31517D)).addTraits((new FT_Flammable(500_000)), new FT_Combustible(FuelGrade.HIGH, 1_250_000), new FT_Corrosive(30), LIQUID, new FT_Rocket(210, 600_000));
 		BLOODGAS =				new FluidType("BLOODGAS",			0x591000, 3, 1, 1, EnumSymbol.NONE).addContainers(new CD_Canister(0x591000)).addTraits(new FT_Flammable(1_000_000), new FT_Combustible(FuelGrade.AERO, 2_500_000)).addTraits(LIQUID);
 		EARTHAIR =				new FluidType("EARTHAIR",			0xD1CEEE, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0xC3BEE8, 0xFFFFFF)).addTraits(GASEOUS);
-		BLOOD_HOT =				new FluidType("BLOOD_HOT",			0xF22419, 3, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS).setTemp(666); //it's funny because it's the satan number
+		BLOOD_HOT =				new FluidType("BLOOD_HOT",			0xF22419, 3, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(0.3F, 0.1F).addEffect(Potion.damageBoost.id, 0)).setTemp(666); //it's funny because it's the satan number
 		SOLVENT =				new FluidType("SOLVENT",			0xE4E3EF, 2, 3, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xE4E3EF)).addTraits(LIQUID, new FT_Corrosive(30));
 		HCL =					new FluidType("HCL",				0x00D452, 3, 0, 3, EnumSymbol.ACID).addTraits(new FT_Corrosive(30), LIQUID);
 		MINSOL =				new FluidType("MINSOL",				0xFADF6A, 3, 0, 3, EnumSymbol.ACID).addTraits(new FT_Corrosive(10), LIQUID);
@@ -427,16 +439,16 @@ public class Fluids {
 		NEON =  				new FluidType("NEON",				0xF1F600, 0, 0, 0, EnumSymbol.CROYGENIC).addContainers(new CD_Gastank(0xF1F600, 0x303030)).addTraits(GASEOUS);
 		ARGON = 				new FluidType("ARGON",				0xFD70D0, 0, 0, 0, EnumSymbol.CROYGENIC).addContainers(new CD_Gastank(0xFD70D0, 0x303030)).addTraits(GASEOUS);
 		KRYPTON = 				new FluidType("KRYPTON",			0x9AC6E6, 0, 0, 0, EnumSymbol.CROYGENIC).addContainers(new CD_Gastank(0x9AC6E6, 0x303030)).addTraits(GASEOUS);
-		COFFEE =				new FluidType("COFFEE",				0x57493D, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);
-		TEA =					new FluidType("TEA",				0x76523C, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);
-		HONEY =					new FluidType("HONEY",				0xD99A02, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);
+		COFFEE =				new FluidType("COFFEE",				0x57493D, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable().addEffect(Potion.moveSpeed.id, 1), LIQUID);
+		TEA =					new FluidType("TEA",				0x76523C, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable(), LIQUID);
+		HONEY =					new FluidType("HONEY",				0xD99A02, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable(), LIQUID);
 		HEATINGOIL_VACUUM =		new FluidType("HEATINGOIL_VACUUM",	0x211D06, 2, 2, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, P_OIL).addContainers(new CD_Canister(0x694235));
 		DIESEL_REFORM =			new FluidType("DIESEL_REFORM",		0xCDC3C6, 1, 2, 0, EnumSymbol.NONE).addTraits(LIQUID, P_FUEL).addContainers(new CD_Canister(0xFFC500));
 		DIESEL_CRACK_REFORM =	new FluidType("DIESEL_CRACK_REFORM",0xCDC3CC, 1, 2, 0, EnumSymbol.NONE).addTraits(LIQUID, P_FUEL).addContainers(new CD_Canister(0xFFC500));
 		KEROSENE_REFORM =		new FluidType("KEROSENE_REFORM",	0xFFA5F3, 1, 2, 0, EnumSymbol.NONE).addTraits(LIQUID, P_FUEL, new FT_Rocket(321, 1_564_000)).addContainers(new CD_Canister(0xFF377D));
 		REFORMGAS =				new FluidType("REFORMGAS",			0x6362AE, 1, 4, 1, EnumSymbol.NONE).addContainers(new CD_Gastank(0x9392FF, 0xFFB992)).addTraits(GASEOUS, P_GAS);
-		MILK =					new FluidType("MILK",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);//F5DEE4
-		SMILK =					new FluidType("SMILK",				0xF5DEE4, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);
+		MILK =					new FluidType("MILK",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable().setClearsEffects(true), LIQUID);//F5DEE4
+		SMILK =					new FluidType("SMILK",				0xF5DEE4, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable().setClearsEffects(true).setFood(0.1F, 0.02F), LIQUID);
 		CCL =					new FluidType("CCL",				0x0C3B2F, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, new FT_Corrosive(10));
 		COLLOID =				new FluidType("COLLOID",			0x787878, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		EVEAIR =				new FluidType("EVEAIR",				0xDCABF8, 4, 0, 0, EnumSymbol.OXIDIZER).addContainers(new CD_Gastank(0x8C21FF, 0xFFFFFF)).addTraits(GASEOUS, new FT_Corrosive(25), new FT_Poison(true, 1));
@@ -454,14 +466,14 @@ public class Fluids {
 		ELBOWGREASE =			new FluidType("ELBOWGREASE",		0xCBC433, 1, 3, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xCBC433)).addTraits(new FT_Flammable(600_000), LIQUID);
 		NMASSTETRANOL =			new FluidType("NMASSTETRANOL",		0xF1DB0F, 1, 3, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xF1DB0F)).addTraits(new FT_Flammable(1_000_000), LIQUID, new FT_Corrosive(70), new FT_Poison(true, 0), new FT_VentRadiation(0.01F));
 		NMASS =					new FluidType("NMASS",				0x53A9F4, 1, 2, 0, EnumSymbol.NONE).addTraits(LIQUID, new FT_Corrosive(10), new FT_Poison(true, 0), new FT_VentRadiation(0.04F));
-		SCUTTERBLOOD =			new FluidType("SCUTTERBLOOD",		0x6C166C, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, DELICIOUS);
+		SCUTTERBLOOD =			new FluidType("SCUTTERBLOOD",		0x6C166C, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(0.3F, 0.1F).addEffect(Potion.damageBoost.id, 0));
 		HTCO4 =					new FluidType("HTCO4",				0x675454, 1, 3, 0, EnumSymbol.RADIATION).addTraits(LIQUID, new FT_Corrosive(10), new FT_VentRadiation(0.5F));
 		OIL_COKER =				new FluidType("OIL_COKER",			0x001802, 2, 1, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, P_OIL);
 		NAPHTHA_COKER =			new FluidType("NAPHTHA_COKER",		0x495944, 2, 1, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, P_OIL);
 		GAS_COKER =				new FluidType("GAS_COKER",			0xDEF4CA, 1, 4, 0, EnumSymbol.NONE).addTraits(GASEOUS, P_GAS);
 		EGG =					new FluidType("EGG",				0xD2C273, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
 		CHOLESTEROL =			new FluidType("CHOLESTEROL",		0xD6D2BD, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
-		ESTRADIOL =				new FluidType("ESTRADIOL",			0xCDD5D8, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
+		ESTRADIOL =				new FluidType("ESTRADIOL",			0xCDD5D8, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, new FT_Drug().setDuration(3600).addEffect(HbmPotion.death.id, 0));
 		FISHOIL =				new FluidType("FISHOIL",			0x4B4A45, 0, 1, 0, EnumSymbol.NONE).addTraits(LIQUID, P_FUEL);
 		SUNFLOWEROIL =			new FluidType("SUNFLOWEROIL",		0xCBAD45, 0, 1, 0, EnumSymbol.NONE).addTraits(LIQUID, P_FUEL);
 		NITROGLYCERIN =			new FluidType("NITROGLYCERIN",		0x92ACA6, 0, 4, 0, EnumSymbol.NONE).addTraits(LIQUID);
@@ -479,9 +491,9 @@ public class Fluids {
 		SARNUSGAS =				new FluidType("SARNUSGAS",			0xE47D5C, 0, 0, 0, EnumSymbol.ASPHYXIANT).addContainers(new CD_Gastank(0xB56847, 0xFF8400)).addTraits(GASEOUS);
 		UGAS =					new FluidType("UGAS",				0x718C9A, 0, 0, 0, EnumSymbol.ASPHYXIANT).addContainers(new CD_Gastank(0x5099BF, 0xFF8400)).addTraits(GASEOUS);
 		NGAS =					new FluidType("NGAS",				0xA37BA3, 0, 0, 0, EnumSymbol.ASPHYXIANT).addContainers(new CD_Gastank(0xBE92E0, 0xFF8400)).addTraits(GASEOUS);
-		EMILK =					new FluidType("EMILK",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);//F5DEE4
-		CMILK =					new FluidType("CMILK",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);//F5DEE4
-		CREAM =					new FluidType("CREAM",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(DELICIOUS, LIQUID);//F5DEE4
+		EMILK =					new FluidType("EMILK",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable().setClearsEffects(true), LIQUID);//F5DEE4
+		CMILK =					new FluidType("CMILK",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable().setClearsEffects(true), LIQUID);//F5DEE4
+		CREAM =					new FluidType("CREAM",				0xCFCFCF, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Consumable(), LIQUID);//F5DEE4
 		MAGMA =					new FluidType("MAGMA",				0xFF3300, 3, 3, 3, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		DICYANOACETYLENE =		new FluidType("DICYANOACETYLENE",	0x675A9F, 1, 2, 1, EnumSymbol.NONE).addTraits(new FT_Flammable(4_000_000), GASEOUS);
 		BRINE =					new FluidType("BRINE",				0xD1A73E, 3, 3, 3, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
@@ -539,6 +551,21 @@ public class Fluids {
 		AIRBLAST =				new FluidType("AIRBLAST",			0xFFDADA, 0, 3, 0, EnumSymbol.NONE).setTemp(1_200).addTraits(GASEOUS);
 		FLUE =					new FluidType("FLUE",				0x131313, 1, 4, 1, EnumSymbol.NONE).addContainers(new CD_Gastank(0xFF4545, 0xFFE97F)).addTraits(new FT_Flammable(25_000), GASEOUS, new FT_Polluting().burn(PollutionType.SOOT, SOOT_GAS).release(PollutionType.SOOT, SOOT_GAS * 25));
 
+		STIMPAK =			new FluidType("STIMPAK",			0xFF4444, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(60).addEffect(HbmPotion.stimulated.id, 0), LIQUID);
+		SUPER_STIMPAK =		new FluidType("SUPER_STIMPAK",		0xFF6666, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(140).addEffect(HbmPotion.stimulated.id, 1).addEffect(Potion.harm.id, 0), LIQUID);
+		MEDX =				new FluidType("MEDX",				0xAAAAFF, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(240).addEffect(HbmPotion.medx.id, 0), LIQUID);
+		PSYCHO =			new FluidType("PSYCHO",				0xFFAA00, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(120).addEffect(HbmPotion.roidRage.id, 0).addEffect(Potion.confusion.id, 0), LIQUID);
+		AWESOME =			new FluidType("AWESOME",			0xFF7FED, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(50)
+				.addEffect(Potion.moveSpeed.id, 3).addEffect(Potion.digSpeed.id, 3).addEffect(Potion.damageBoost.id, 3)
+				.addEffect(Potion.jump.id, 3).addEffect(Potion.resistance.id, 3).addEffect(Potion.fireResistance.id, 3)
+				.addEffect(Potion.waterBreathing.id, 3).addEffect(Potion.regeneration.id, 3).addEffect(Potion.invisibility.id, 3), LIQUID);
+		ANTIDOTE =			new FluidType("ANTIDOTE",			0x00FF7F, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(0).addSpecialEffect("clear_bad_effects"), LIQUID);
+		POISON =			new FluidType("POISON",				0x9B2F2F, 1, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(5).addEffect(Potion.harm.id, 0), LIQUID, new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 3F, 20, HazardClass.PARTICLE_FINE, false)));
+		NUTRIENT_SLOP =			new FluidType("NUTRIENT_SLOP",		0x7CC35E, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(0.1F, 0.02F));
+		TAMSLOP =				new FluidType("TAMSLOP",			0x5B9E3F, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(1.0F, 0.1F).addEffect(Potion.regeneration.id, 2));
+		TICL4 =				new FluidType("TICL4",				0xFF69B4, 1, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
+		HEAVY_SAND_SLOP =		new FluidType("HEAVY_SAND_SLOP",	0x8B7D6B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
+		MONAZITE_SLOP =			new FluidType("MONAZITE_SLOP",		0xC4A84B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
 
@@ -686,6 +713,8 @@ public class Fluids {
 		metaOrder.add(COLLOID);
 		metaOrder.add(VITRIOL);
 		metaOrder.add(SLOP);
+		metaOrder.add(NUTRIENT_SLOP);
+		metaOrder.add(TAMSLOP);
 		metaOrder.add(IONGEL);
 		metaOrder.add(PEROXIDE);
 		metaOrder.add(SULFURIC_ACID);
@@ -775,6 +804,17 @@ public class Fluids {
 		metaOrder.add(XENON);
 		metaOrder.add(ARGON);
 		metaOrder.add(NEON);
+		//injectable drugs
+		metaOrder.add(STIMPAK);
+		metaOrder.add(SUPER_STIMPAK);
+		metaOrder.add(MEDX);
+		metaOrder.add(PSYCHO);
+		metaOrder.add(AWESOME);
+		metaOrder.add(ANTIDOTE);
+		metaOrder.add(POISON);
+		metaOrder.add(TICL4);
+		metaOrder.add(HEAVY_SAND_SLOP);
+		metaOrder.add(MONAZITE_SLOP);
 		//misc for cute dates
 		metaOrder.add(TEA);
 		metaOrder.add(HONEY);
@@ -811,7 +851,7 @@ public class Fluids {
 				.addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, true).add(new PotionEffect(Potion.wither.id, 100, 1), new PotionEffect(Potion.confusion.id, 100, 0))));
 		ESTRADIOL.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.PARTICLE_FINE, false).add(new PotionEffect(HbmPotion.death.id, 60 * 60 * 20, 0))));
 		REDMUD.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, false).add(new PotionEffect(Potion.wither.id, 30 * 20, 2))));
-		
+
 		AIR.addTraits(new FT_Heatable().setEff(HeatingType.BOILER, 1.0D).addStep(5, 1, AIRBLAST, 1));
 
 		double eff_steam_boil = 1.0D;
@@ -1104,7 +1144,7 @@ public class Fluids {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	public static HashMap<String, FluidType> fluidMigration = new HashMap(); // since reloading would create new fluid instances, and those break existing machines
 
 	public static void reloadFluids(){

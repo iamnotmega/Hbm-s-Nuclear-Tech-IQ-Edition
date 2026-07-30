@@ -58,7 +58,7 @@ public class MKUCraftingHandler implements IRecipe {
 				new ItemStack(ModItems.dust),
 				new ItemStack(ModItems.ingot_mercury),
 				new ItemStack(ModItems.morning_glory),
-				new ItemStack(ModItems.syringe_metal_empty),
+				new ItemStack(ModItems.combat_syringe),
 				null,
 				null,
 				null
@@ -76,7 +76,7 @@ public class MKUCraftingHandler implements IRecipe {
 		case 2: return ModItems.dust;
 		case 3: return ModItems.ingot_mercury;
 		case 4: return ModItems.morning_glory;
-		case 5: return ModItems.syringe_metal_empty;
+		case 5: return ModItems.combat_syringe;
 		default: return ModItems.flame_pony;
 		}
 	}
@@ -94,7 +94,7 @@ public class MKUCraftingHandler implements IRecipe {
 		if(mkuItem == ModItems.dust) { key = "book_dust"; pages = 3; }
 		if(mkuItem == ModItems.ingot_mercury) { key = "book_mercury"; pages = 2; }
 		if(mkuItem == ModItems.morning_glory) { key = "book_flower"; pages = 2; }
-		if(mkuItem == ModItems.syringe_metal_empty) { key = "book_syringe"; pages = 2; }
+		if(mkuItem == ModItems.combat_syringe) { key = "book_syringe"; pages = 2; }
 
 		if(key == null) return new ItemStack(ModItems.flame_pony);
 

@@ -21,23 +21,34 @@ public class BlockResourceStone extends BlockEnumMulti {
 
 	@Override
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance, int fortune) {
-		
+
 		if(meta == BlockEnums.EnumStoneType.ASBESTOS.ordinal()) {
 			world.setBlock(x, y, z, ModBlocks.gas_asbestos);
 		}
-		
+
+		if(meta == BlockEnums.EnumStoneType.ANTHRACITE.ordinal()) {
+			world.setBlock(x, y, z, ModBlocks.gas_coal);
+		}
+
+
 		super.dropBlockAsItemWithChance(world, x, y, z, meta, chance, fortune);
 	}
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune) {
-		
+
 		if(meta == BlockEnums.EnumStoneType.MALACHITE.ordinal()) {
 			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 			ret.add(DictFrame.fromOne(ModItems.chunk_ore, EnumChunkType.MALACHITE, 3 + fortune + world.rand.nextInt(fortune + 2)));
 			return ret;
 		}
-		
+
+		if(meta == BlockEnums.EnumStoneType.ANTHRACITE.ordinal()) {
+			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+			ret.add(DictFrame.fromOne(ModItems.chunk_ore, EnumChunkType.ANTHRACITE, 1 + world.rand.nextInt(2 + fortune)));
+			return ret;
+		}
+
 		return super.getDrops(world, x, y, z, meta, fortune);
 	}
 }

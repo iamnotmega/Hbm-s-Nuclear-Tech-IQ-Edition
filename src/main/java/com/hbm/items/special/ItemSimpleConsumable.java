@@ -95,19 +95,6 @@ public class ItemSimpleConsumable extends ItemCustomLore {
 	
 	public static void init() {
 		
-		/// SYRINGES ///
-		ModItems.syringe_antidote = new ItemSimpleConsumable()
-				.setUseActionServer((stack, user) -> { effectAntidote(stack, user, user); }).setHitActionServer((stack, pair) -> { effectAntidote(stack, pair.key, pair.value); })
-				.setUnlocalizedName("syringe_antidote").setFull3D().setTextureName(RefStrings.MODID + ":syringe_antidote");
-
-		ModItems.syringe_poison = new ItemSimpleConsumable()
-				.setUseActionServer((stack, user) -> { effectPoison(stack, user, user); }).setHitActionServer((stack, pair) -> { effectPoison(stack, pair.key, pair.value); })
-				.setUnlocalizedName("syringe_poison").setFull3D().setTextureName(RefStrings.MODID + ":syringe_poison");
-		
-		ModItems.syringe_awesome = new ItemSimpleConsumable()
-				.setUseActionServer((stack, user) -> { effectAwesome(stack, user, user); }).setHitActionServer((stack, pair) -> { effectAwesome(stack, pair.key, pair.value); })
-				.setRarity(EnumRarity.uncommon).setEffect().setUnlocalizedName("syringe_awesome").setFull3D().setTextureName(RefStrings.MODID + ":syringe_awesome");
-
 		/// BLOOD BAGS ///
 		ModItems.iv_empty = new ItemSimpleConsumable().setUseActionServer((stack, user) -> {
 			giveSoundAndDecrement(stack, user, "hbm:item.syringe", new ItemStack(ModItems.iv_blood));
@@ -144,35 +131,5 @@ public class ItemSimpleConsumable extends ItemCustomLore {
 		ModItems.radaway_flush = new ItemSimpleConsumable().setUseActionServer((stack, user) -> {
 			doRadaway(stack, user, 500);
 		}).setUnlocalizedName("radaway_flush").setTextureName(RefStrings.MODID + ":radaway_flush");
-	}
-	
-	public static void effectAntidote(ItemStack stack, EntityLivingBase affected, EntityLivingBase source) {
-		if(VersatileConfig.hasPotionSickness(affected)) return;
-		affected.clearActivePotions();
-		giveSoundAndDecrement(stack, source, "hbm:item.syringe", new ItemStack(ModItems.syringe_empty));
-		VersatileConfig.applyPotionSickness(affected, 5);
-	}
-	
-	public static void effectPoison(ItemStack stack, EntityLivingBase affected, EntityLivingBase source) {
-		if(affected == source) affected.attackEntityFrom(affected.getRNG().nextBoolean() ? ModDamageSource.euthanizedSelf : ModDamageSource.euthanizedSelf2, 30);
-		else affected.attackEntityFrom(ModDamageSource.euthanized(source, source), 30);
-		giveSoundAndDecrement(stack, source, "hbm:item.syringe", new ItemStack(ModItems.syringe_empty));
-	}
-	
-	public static void effectAwesome(ItemStack stack, EntityLivingBase affected, EntityLivingBase source) {
-		if(VersatileConfig.hasPotionSickness(affected)) return;
-		giveSoundAndDecrement(stack, source, "hbm:item.syringe", new ItemStack(ModItems.syringe_empty));
-		affected.addPotionEffect(new PotionEffect(Potion.regeneration.id, 50 * 20, 9));
-		affected.addPotionEffect(new PotionEffect(Potion.resistance.id, 50 * 20, 9));
-		affected.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 50 * 20, 0));
-		affected.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 50 * 20, 24));
-		affected.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 50 * 20, 9));
-		affected.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50 * 20, 6));
-		affected.addPotionEffect(new PotionEffect(Potion.jump.id, 50 * 20, 9));
-		affected.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 50 * 20, 9));
-		affected.addPotionEffect(new PotionEffect(Potion.field_76444_x.id, 50 * 20, 4));
-		affected.addPotionEffect(new PotionEffect(Potion.confusion.id, 5 * 20, 4));
-		affected.addPotionEffect(new PotionEffect(HbmPotion.radx.id, 50 * 20, 9));
-		VersatileConfig.applyPotionSickness(affected, 5);
 	}
 }

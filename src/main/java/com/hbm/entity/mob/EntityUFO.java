@@ -306,9 +306,10 @@ public class EntityUFO extends EntityFlying implements IMob, IBossDisplayData, I
 			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(200, 200, 200));
 
 			for(EntityPlayer player : players) {
-				player.triggerAchievement(MainRegistry.bossUFO);
-				player.inventory.addItemStackToInventory(new ItemStack(ModItems.coin_ufo));
-			}
+					player.triggerAchievement(MainRegistry.bossUFO);
+					player.inventory.addItemStackToInventory(new ItemStack(ModItems.coin_ufo));
+					player.inventory.addItemStackToInventory(new ItemStack(ModItems.claude));
+				}
 		}
 
 		super.onDeathUpdate();

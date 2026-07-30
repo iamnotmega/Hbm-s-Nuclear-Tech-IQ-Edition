@@ -21,7 +21,7 @@ public class ItemPoolsC130 {
 		new ItemPool(POOL_SUPPLIES) {{
 			this.pool = new WeightedRandomChestContent[] {
 					weighted(ModItems.definitelyfood, 0, 3, 10, 25),
-					weighted(ModItems.syringe_metal_stimpak, 0, 1, 3, 10),
+					weighted(ModItems.combat_syringe, 0, 1, 3, 10),
 					weighted(ModItems.pill_iodine, 0, 1, 2, 2),
 					weighted(ModItems.canister_full, Fluids.DIESEL.getID(), 1, 4, 5),
 					weighted(ModBlocks.machine_diesel, 0, 1, 1, 1),

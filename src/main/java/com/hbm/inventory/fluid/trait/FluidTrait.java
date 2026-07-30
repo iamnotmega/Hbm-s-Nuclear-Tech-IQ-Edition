@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.fluid.trait.FluidTraitSimple.*;
+import com.hbm.inventory.fluid.trait.FT_Consumable;
 
 import net.minecraft.world.World;
 
@@ -41,7 +42,8 @@ public abstract class FluidTrait {
 		registerTrait("plasma", FT_Plasma.class);
 		registerTrait("amat", FT_Amat.class);
 		registerTrait("leadcontainer", FT_LeadContainer.class);
-		registerTrait("delicious", FT_Delicious.class);
+			registerTrait("consumable", FT_Consumable.class);
+			registerTrait("drug", FT_Drug.class);
 		registerTrait("noid", FT_NoID.class);
 		registerTrait("nocontainer", FT_NoContainer.class);
 		registerTrait("unsiphonable", FT_Unsiphonable.class);

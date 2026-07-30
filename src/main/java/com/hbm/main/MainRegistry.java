@@ -625,6 +625,7 @@ public class MainRegistry {
 		if(WorldConfig.enableBauxite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.BAUXITE.ordinal()).setGlobal(true).setScaleH(0.03D).setScaleV(0.15D).setThreshold(300);
 		if(WorldConfig.enableMalachite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.MALACHITE.ordinal()).setGlobal(true).setScaleH(0.1D).setScaleV(0.15D).setThreshold(275);
 		if(WorldConfig.enableRutile) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.RUTILE.ordinal()).setGlobal(true).setScaleH(0.03D).setScaleV(0.15D).setThreshold(300);
+		if(WorldConfig.enableAnthracite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.ANTHRACITE.ordinal()).setGlobal(true).setScaleH(0.04D).setScaleV(0.25D).setThreshold(240);
 
 		// Earth caves + layers
 		if(WorldConfig.enableSulfurCave) new OreCave(ModBlocks.stone_resource, EnumStoneType.SULFUR.ordinal()).setThreshold(1.5D).setRangeMult(20).setYLevel(30).setMaxRange(20).withFluid(ModBlocks.sulfuric_acid_block);

@@ -122,7 +122,7 @@ public class ItemPoolsLegacy {
 					weighted(ModItems.grenade_extra, EnumGrenadeExtra.TRIPLEX.ordinal(), 1, 1, 1),
 					weighted(ModItems.stealth_boy, 0, 1, 1, 2),
 					weighted(ModItems.battery_pack, EnumBatteryPack.BATTERY_LITHIUM.ordinal(), 1, 1, 1),
-					weighted(ModItems.syringe_awesome, 0, 1, 1, 1),
+					weighted(ModItems.syringe, 0, 1, 1, 1),
 					weighted(ModItems.fusion_core, 0, 1, 1, 4),
 					weighted(ModItems.bottle_nuka, 0, 1, 3, 6),
 					weighted(ModItems.bottle_quantum, 0, 1, 1, 3),

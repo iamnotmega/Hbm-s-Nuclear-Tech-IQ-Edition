@@ -26,6 +26,9 @@ public class PotionConfig {
 	
 	public static int potionSickness = 0;
 	public static int slipperyID = 77;
+	public static int stimulatedID = 78;
+	public static int medxID = 79;
+	public static int roidRageID = 80;
 	
 	public static void loadFromConfig(Configuration config) {
 
@@ -46,6 +49,9 @@ public class PotionConfig {
 		flashbangID = CommonConfig.createConfigInt(config, CATEGORY_POTION, "8.12_flashbangID", "What potion ID the flashbang effect will have", 75);
 		runID = CommonConfig.createConfigInt(config, CATEGORY_POTION, "8.13_runID", "What potion ID the run effect will have", 76);
 		slipperyID = CommonConfig.createConfigInt(config, CATEGORY_POTION, "8.14_slipperyID", "What potion ID the slippery effect will have", 77);
+		stimulatedID = CommonConfig.createConfigInt(config, CATEGORY_POTION, "8.15_stimulatedID", "What potion ID the Stimulated effect will have", 78);
+		medxID = CommonConfig.createConfigInt(config, CATEGORY_POTION, "8.16_medxID", "What potion ID the Med-X Resistance effect will have", 79);
+		roidRageID = CommonConfig.createConfigInt(config, CATEGORY_POTION, "8.17_roidRageID", "What potion ID the Roid Rage effect will have", 80);
 
 
 		

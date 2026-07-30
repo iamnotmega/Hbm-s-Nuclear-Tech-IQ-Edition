@@ -82,6 +82,11 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputFluids(new FluidStack(Fluids.CHLOROCALCITE_CLEANED, 500), new FluidStack(Fluids.SULFURIC_ACID, 8_000))
 				.outputFluids(new FluidStack(Fluids.POTASSIUM_CHLORIDE, 250), new FluidStack(Fluids.CALCIUM_CHLORIDE, 250)));
 
+		this.register(new GenericRecipe("chem.ticl4").setup(100, 100)
+				.inputItems(new OreDictStack(RUTILE.gem()))
+				.inputFluids(new FluidStack(Fluids.CHLORINE, 1000))
+				.outputFluids(new FluidStack(Fluids.TICL4, 1000), new FluidStack(Fluids.HEAVY_SAND_SLOP, 500)));
+
 		/// OILS ///
 		this.register(new GenericRecipe("chem.ethanol").setupNamed(50, 100).setIcon(ModItems.canister_full, Fluids.ETHANOL.getID())
 				.inputItems(new ComparableStack(Items.sugar, 10))
@@ -211,7 +216,7 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputItems(new OreDictStack(COAL.dust(), 2), new OreDictStack(F.dust()))
 				.inputFluids(new FluidStack(Fluids.PETROLEUM, 1_000, GeneralConfig.enable528PressurizedRecipes ? 1 : 0))
 				.outputItems(new ItemStack(ModItems.ingot_polymer, 4)));
-		
+
 		this.register(new GenericRecipe("chem.bakelite").setup(100, 100)
 				.inputFluids(new FluidStack(Fluids.AROMATICS, 500, GeneralConfig.enable528PressurizedRecipes ? 1 : 0), new FluidStack(Fluids.PETROLEUM, 500, GeneralConfig.enable528PressurizedRecipes ? 1 : 0))
 				.outputItems(new ItemStack(ModItems.ingot_bakelite)));
@@ -358,7 +363,7 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputItems(new ComparableStack(ModItems.canister_empty))
 				.inputFluids(new FluidStack(Fluids.GASOLINE, 100), new FluidStack(Fluids.AROMATICS, 50)) // aromatics to emulate polystyrene
 				.outputItems(new ItemStack(ModItems.canister_napalm, 1)));
-		
+
 		/// GLASS ///
 		this.register(new GenericRecipe("chem.laminate").setup(20, 100)
 				.inputFluids(new FluidStack(Fluids.XYLENE, 50), new FluidStack(Fluids.PHOSGENE, 50))
@@ -519,6 +524,15 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputItems(new OreDictStack(ANY_PLASTIC.ingot()), new ComparableStack(Items.string, 4))
 				.outputItems(new ItemStack(Items.leather)));
 
+		this.register(new GenericRecipe("chem.nutrientslop").setupNamed(40, 100).setIcon(ModItems.canister_full, Fluids.NUTRIENT_SLOP.getID())
+				.inputItems(new ComparableStack(Items.bread, 1))
+				.inputFluids(new FluidStack(Fluids.WATER, 100))
+				.outputItems(new ItemStack(ModItems.biomass, 4))
+				.outputFluids(new FluidStack(Fluids.NUTRIENT_SLOP, 10)));
+
+		this.register(new GenericRecipe("chem.uncleslop").setupNamed(120, 200).setIcon(ModItems.canister_full, Fluids.TAMSLOP.getID())
+				.inputFluids(new FluidStack(Fluids.NUTRIENT_SLOP, 1_000), new FluidStack(Fluids.SALIENT, 500), new FluidStack(Fluids.BLOOD, 500))
+				.outputFluids(new FluidStack(Fluids.TAMSLOP, 1_000)));
 	}
 
 	public static HashMap getRecipes() {

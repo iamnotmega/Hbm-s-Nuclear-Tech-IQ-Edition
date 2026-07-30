@@ -43,6 +43,7 @@ public class ModDamageSource extends DamageSource {
 	public static DamageSource vacuum = (new DamageSource("vacuum")).setDamageIsAbsolute().setDamageBypassesArmor();
 	public static DamageSource overdose = (new DamageSource("overdose")).setDamageIsAbsolute().setDamageBypassesArmor();
 	public static DamageSource microwave = (new DamageSource("microwave")).setDamageIsAbsolute().setDamageBypassesArmor();
+	public static DamageSource boiled = (new ModDamageSource("boiled")).setDamageBypassesArmor();
 	public static DamageSource eve = (new DamageSource("eve")).setDamageIsAbsolute().setDamageBypassesArmor();
 	public static DamageSource oxyprime = (new DamageSource("oxyprime")).setDamageIsAbsolute().setDamageBypassesArmor();
 

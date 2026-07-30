@@ -8,6 +8,9 @@ import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.trait.*;
+import com.hbm.inventory.fluid.trait.FT_Consumable;
+import com.hbm.inventory.fluid.trait.FT_Drug;
+import com.hbm.inventory.fluid.trait.Injectables;
 import com.hbm.inventory.fluid.trait.FT_Gaseous;
 import com.hbm.inventory.fluid.trait.FluidTraitSimple.FT_Gaseous_ART;
 import com.hbm.inventory.fluid.trait.FluidTraitSimple.FT_Liquid;
@@ -57,58 +60,58 @@ public class EntityMist extends Entity {
 		this.dataWatcher.addObject(11, new Float(0));
 		this.dataWatcher.addObject(12, new Float(0));
 	}
-	
+
 	public EntityMist setType(FluidType fluid) {
 		this.dataWatcher.updateObject(10, fluid.getID());
 		return this;
 	}
-	
+
 	public FluidType getType() {
 		return Fluids.fromID(this.dataWatcher.getWatchableObjectInt(10));
 	}
 
 	@Override
 	public void onEntityUpdate() {
-		
+
 		float height = this.dataWatcher.getWatchableObjectFloat(12);
 		this.yOffset = 0;
 		this.setSize(this.dataWatcher.getWatchableObjectFloat(11), height);
 		this.setPosition(this.posX, this.posY, this.posZ);
-		
+
 		if(!worldObj.isRemote) {
-			
+
 			if(this.ticksExisted >= this.getMaxAge()) {
 				this.setDead();
 			}
 
 			FluidType type = this.getType();
-			
+
 			if(type.hasTrait(FT_VentRadiation.class)) {
 				FT_VentRadiation trait = type.getTrait(FT_VentRadiation.class);
 				ChunkRadiationManager.proxy.incrementRad(worldObj, (int) Math.floor(posX), (int) Math.floor(posY), (int) Math.floor(posZ), trait.getRadPerMB() * 2);
 			}
-			
+
 			double intensity = 1D - (double) this.ticksExisted / (double) this.getMaxAge();
-			
+
 			if(type.hasTrait(FT_Flammable.class) && this.isBurning()) {
 				worldObj.createExplosion(this, posX, posY + height / 2, posZ, (float) intensity * 15F, true);
 				this.setDead();
 				return;
 			}
-			
+
 			AxisAlignedBB aabb = this.boundingBox.copy();
 			List<Entity> affected = worldObj.getEntitiesWithinAABBExcludingEntity(this, aabb.offset(-this.width / 2, 0, -this.width / 2));
-			
+
 			for(Entity e : affected) {
 				this.affect(e, intensity);
 			}
 		} else {
-			
+
 			for(int i = 0; i < 2; i++) {
 				double x = this.boundingBox.minX + (rand.nextDouble() - 0.5) * (this.boundingBox.maxX - this.boundingBox.minX);
 				double y = this.boundingBox.minY + rand.nextDouble() * (this.boundingBox.maxY - this.boundingBox.minY);
 				double z = this.boundingBox.minZ + (rand.nextDouble() - 0.5) * (this.boundingBox.maxZ - this.boundingBox.minZ);
-				
+
 				NBTTagCompound fx = new NBTTagCompound();
 				fx.setString("type", "tower");
 				fx.setFloat("lift", 0.5F);
@@ -123,16 +126,16 @@ public class EntityMist extends Entity {
 			}
 		}
 	}
-	
+
 	/* can't reuse EntityChemical here, while similar or identical in some places, the actual effects are often different */
 	protected void affect(Entity e, double intensity) {
 
 		FluidType type = this.getType();
 		EntityLivingBase living = e instanceof EntityLivingBase ? (EntityLivingBase) e : null;
-		
+
 		if(type.temperature >= 100) {
 			EntityDamageUtil.attackEntityFromIgnoreIFrame(e, new DamageSource(ModDamageSource.s_boil), 0.2F + (type.temperature - 100) * 0.02F);
-			
+
 			if(type.temperature >= 500) {
 				e.setFire(10); //afterburn for 10 seconds
 			}
@@ -144,26 +147,28 @@ public class EntityMist extends Entity {
 				living.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 100, 4));
 			}
 		}
-		
-		if(type.hasTrait(Fluids.DELICIOUS.getClass())) {
-			if(living != null && living.isEntityAlive()) {
-				living.heal(2F * (float) intensity);
-			}
+
+		FT_Consumable consumable = type.getTrait(FT_Consumable.class);
+		if(consumable != null) {
+			consumable.applyEffects(living);
 		}
-		
+		if(type.hasTrait(FT_Drug.class)) {
+			Injectables.process(living, type, 0, 1.0F, false);
+		}
+
 		if(type.hasTrait(FT_Flammable.class) && type.hasTrait(FT_Liquid.class)) {
 			if(living != null) {
 				HbmLivingProps.setOil(living, 200); //doused in oil for 10 seconds
 			}
 		}
-		
+
 		if(this.isExtinguishing(type)) {
 			e.extinguish();
 		}
-		
+
 		if(type.hasTrait(FT_Corrosive.class)) {
 			FT_Corrosive trait = type.getTrait(FT_Corrosive.class);
-			
+
 			if(living != null) {
 				EntityDamageUtil.attackEntityFromIgnoreIFrame(living, ModDamageSource.acid, trait.getRating() / 60F);
 				for(int i = 0; i < 4; i++) {
@@ -171,32 +176,32 @@ public class EntityMist extends Entity {
 				}
 			}
 		}
-		
+
 		if(type.hasTrait(FT_VentRadiation.class)) {
 			FT_VentRadiation trait = type.getTrait(FT_VentRadiation.class);
 			if(living != null) {
 				ContaminationUtil.contaminate(living, HazardType.RADIATION, ContaminationType.CREATIVE, trait.getRadPerMB() * 5);
 			}
 		}
-		
+
 		if(type.hasTrait(FT_Poison.class)) {
 			FT_Poison trait = type.getTrait(FT_Poison.class);
-			
+
 			if(living != null) {
 				living.addPotionEffect(new PotionEffect(trait.isWithering() ? Potion.wither.id : Potion.poison.id, (int) (5 * 20 * intensity)));
 			}
 		}
-		
+
 		if(type.hasTrait(FT_Toxin.class)) {
 			FT_Toxin trait = type.getTrait(FT_Toxin.class);
-			
+
 			if(living != null) {
 				trait.affect(living, intensity);
 			}
 		}
 
 		if(type == Fluids.ENDERJUICE && living != null){
-			teleportRandomly(living);
+			teleportRandomly(living, this.posX, this.posY, this.posZ);
 		}
 
 		if(type.hasTrait(FT_Pheromone.class)){
@@ -218,7 +223,7 @@ public class EntityMist extends Entity {
 			}
 		}
 	}
-	
+
 	protected boolean isExtinguishing(FluidType type) {
 		return this.getType().temperature < 50 && !type.hasTrait(FT_Flammable.class);
 	}
@@ -251,21 +256,21 @@ public class EntityMist extends Entity {
 	@Override public void setPosition(double x, double y, double z) {
 		if(this.ticksExisted == 0) super.setPosition(x, y, z); //honest to fucking god mojang suck my fucking nuts
 	}
-	
+
 	public static SprayStyle getStyleFromType(FluidType type) {
-		
+
 		if(type.hasTrait(FT_Viscous.class)) {
 			return SprayStyle.NULL;
 		}
-		
+
 		if(type.hasTrait(FT_Gaseous.class) || type.hasTrait(FT_Gaseous_ART.class)) {
 			return SprayStyle.GAS;
 		}
-		
+
 		if(type.hasTrait(FT_Liquid.class)) {
 			return SprayStyle.MIST;
 		}
-		
+
 		return SprayStyle.NULL;
 	}
 
@@ -277,14 +282,14 @@ public class EntityMist extends Entity {
 
 	//terribly copy-pasted from EntityChemical.class, whose method was terribly copy-pasted from EntityEnderman.class
 	//the fun never ends
-	public void teleportRandomly(Entity e) {
-		double x = this.posX + (this.rand.nextDouble() - 0.5D) * 64.0D;
-		double y = this.posY + (double) (this.rand.nextInt(64) - 32);
-		double z = this.posZ + (this.rand.nextDouble() - 0.5D) * 64.0D;
-		this.teleportTo(e, x, y, z);
+	public static void teleportRandomly(Entity e, double posX, double posY, double posZ) {
+		double x = posX + (e.worldObj.rand.nextDouble() - 0.5D) * 64.0D;
+		double y = posY + (double) (e.worldObj.rand.nextInt(64) - 32);
+		double z = posZ + (e.worldObj.rand.nextDouble() - 0.5D) * 64.0D;
+		teleportTo(e, x, y, z);
 	}
 
-	public void teleportTo(Entity e, double x, double y, double z) {
+	public static void teleportTo(Entity e, double x, double y, double z) {
 
 		double targetX = e.posX;
 		double targetY = e.posY;
@@ -327,12 +332,12 @@ public class EntityMist extends Entity {
 
 			for(int l = 0; l < short1; ++l) {
 				double d6 = (double) l / ((double) short1 - 1.0D);
-				float f = (this.rand.nextFloat() - 0.5F) * 0.2F;
-				float f1 = (this.rand.nextFloat() - 0.5F) * 0.2F;
-				float f2 = (this.rand.nextFloat() - 0.5F) * 0.2F;
-				double d7 = targetX + (e.posX - targetX) * d6 + (this.rand.nextDouble() - 0.5D) * (double) e.width * 2.0D;
-				double d8 = targetY + (e.posY - targetY) * d6 + this.rand.nextDouble() * (double) e.height;
-				double d9 = targetZ + (e.posZ - targetZ) * d6 + (this.rand.nextDouble() - 0.5D) * (double) e.width * 2.0D;
+				float f = (e.worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f1 = (e.worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f2 = (e.worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				double d7 = targetX + (e.posX - targetX) * d6 + (e.worldObj.rand.nextDouble() - 0.5D) * (double) e.width * 2.0D;
+				double d8 = targetY + (e.posY - targetY) * d6 + e.worldObj.rand.nextDouble() * (double) e.height;
+				double d9 = targetZ + (e.posZ - targetZ) * d6 + (e.worldObj.rand.nextDouble() - 0.5D) * (double) e.width * 2.0D;
 				e.worldObj.spawnParticle("portal", d7, d8, d9, (double) f, (double) f1, (double) f2);
 			}
 

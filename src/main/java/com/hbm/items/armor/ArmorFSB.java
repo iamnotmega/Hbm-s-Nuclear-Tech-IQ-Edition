@@ -68,6 +68,7 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 	public String jump;
 	public String fall;
 	public boolean canSeal;
+	public boolean brokenNeedles;
 	public double radResist = 0;
 
 	public ArmorFSB(ArmorMaterial material, int slot, String texture) {
@@ -142,9 +143,14 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 	}
 
 	public ArmorFSB setSealed(boolean canSeal) {
-		this.canSeal = canSeal;
-		return this;
-	}
+			this.canSeal = canSeal;
+			return this;
+		}
+
+		public ArmorFSB setBrokenNeedles(boolean brokenNeedles) {
+			this.brokenNeedles = brokenNeedles;
+			return this;
+		}
 
 	public ArmorFSB setHazardClass(HazardClass... classes) {
 		ArmorUtil.external.add(new Pair(this, classes));
@@ -162,26 +168,27 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 		return this;
 	}
 
-	public ArmorFSB cloneStats(ArmorFSB original) {
-
-		//lists aren't being modified after instantiation, so there's no need to dereference
-		this.effects = original.effects;
-		this.noHelmet = original.noHelmet;
-		this.vats = original.vats;
-		this.thermal = original.thermal;
-		this.geigerSound = original.geigerSound;
-		this.customGeiger = original.customGeiger;
-		this.hardLanding = original.hardLanding;
-		this.dashCount = original.dashCount;
-		this.stepSize = original.stepSize;
-		this.step = original.step;
-		this.jump = original.jump;
-		this.fall = original.fall;
-		this.canSeal = original.canSeal;
-		this.setRadResist(original.radResist);
-		//overlay doesn't need to be copied because it's helmet exclusive
-		return this;
-	}
+		public ArmorFSB cloneStats(ArmorFSB original) {
+	
+			//lists aren't being modified after instantiation, so there's no need to dereference
+			this.effects = original.effects;
+			this.noHelmet = original.noHelmet;
+			this.vats = original.vats;
+			this.thermal = original.thermal;
+			this.geigerSound = original.geigerSound;
+			this.customGeiger = original.customGeiger;
+			this.hardLanding = original.hardLanding;
+			this.dashCount = original.dashCount;
+			this.stepSize = original.stepSize;
+			this.step = original.step;
+			this.jump = original.jump;
+			this.fall = original.fall;
+			this.canSeal = original.canSeal;
+			this.brokenNeedles = original.brokenNeedles;
+			this.setRadResist(original.radResist);
+			//overlay doesn't need to be copied because it's helmet exclusive
+			return this;
+		}
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer) {
@@ -194,8 +201,8 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 		List toAdd = new ArrayList();
 
 		if(canSeal) {
-			list.add(EnumChatFormatting.BLUE + "" + I18nUtil.format("armor.canSeal"));
-		}
+				list.add(EnumChatFormatting.BLUE + "" + I18nUtil.format("armor.canSeal"));
+			}
 
 		if(!effects.isEmpty()) {
 			List potionList = new ArrayList();
@@ -211,6 +218,7 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 		if(vats) toAdd.add(EnumChatFormatting.RED + "  " + I18nUtil.resolveKey("armor.vats"));
 		if(thermal) toAdd.add(EnumChatFormatting.RED + "  " + I18nUtil.resolveKey("armor.thermal"));
 		if(hardLanding) toAdd.add(EnumChatFormatting.RED + "  " + I18nUtil.resolveKey("armor.hardLanding"));
+		if(brokenNeedles) toAdd.add(EnumChatFormatting.RED + "  " + I18nUtil.resolveKey("armor.brokenNeedles"));
 		if(stepSize != 0) toAdd.add(EnumChatFormatting.BLUE + "  " + I18nUtil.resolveKey("armor.stepSize", stepSize));
 		if(dashCount > 0) toAdd.add(EnumChatFormatting.AQUA + "  " + I18nUtil.resolveKey("armor.dash", dashCount));
 

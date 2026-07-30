@@ -248,7 +248,7 @@ public class ModItems {
 	@Deprecated public static Item ore_deepcleaned;
 	@Deprecated public static Item ore_seared;
 	@Deprecated public static Item ore_enriched; //final stage
-	
+
 	public static Item bedrock_ore_base;
 	public static Item bedrock_ore;
 	public static Item bedrock_ore_fragment;
@@ -976,15 +976,8 @@ public class ModItems {
 	public static Item glyphid_gland;
 	public static Item glyphid_gland_empty;
 
-	public static Item syringe_empty;
-	public static Item syringe_antidote;
-	public static Item syringe_poison;
-	public static Item syringe_awesome;
-	public static Item syringe_metal_empty;
-	public static Item syringe_metal_stimpak;
-	public static Item syringe_metal_medx;
-	public static Item syringe_metal_psycho;
-	public static Item syringe_metal_super;
+	public static Item syringe;
+	public static Item combat_syringe;
 	public static Item syringe_taint;
 	public static Item syringe_mkunicorn;
 	public static Item iv_empty;
@@ -1086,6 +1079,9 @@ public class ModItems {
 	public static Item coin_token;
 	//public static Item coin_siege;
 	//public static Item source;
+
+	public static Item claude;
+	public static Item failed_steel;
 
 	public static Item rod_empty;
 	public static Item rod;
@@ -1648,7 +1644,7 @@ public class ModItems {
 	public static Item grenade_fuze;
 	public static Item grenade_extra;
 	public static Item grenade_universal;
-	
+
 	public static Item ullapool_caber;
 
 	public static Item weaponized_starblaster_cell;
@@ -1732,7 +1728,7 @@ public class ModItems {
 	public static Item custom_dirty;
 	public static Item custom_schrab;
 	public static Item custom_fall;
-	
+
 	public static Item battery_pack;
 	public static Item battery_creative;
 	public static Item cube_power;
@@ -2075,6 +2071,7 @@ public class ModItems {
 	public static Item armor_polish;
 	public static Item bandaid;
 	public static Item serum;
+	public static Item auto_drip;
 	public static Item quartz_plutonium;
 	public static Item morning_glory;
 	public static Item lodestone;
@@ -3153,15 +3150,11 @@ public class ModItems {
 
 		ItemSimpleConsumable.init();
 
-		//TODO: move all this crap to ItemSimpleConsumable
-		syringe_empty = new Item().setUnlocalizedName("syringe_empty").setFull3D().setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_empty");
-		syringe_metal_empty = new Item().setUnlocalizedName("syringe_metal_empty").setFull3D().setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_metal_empty");
-		syringe_metal_stimpak = new ItemSyringe().setUnlocalizedName("syringe_metal_stimpak").setFull3D().setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_metal_stimpak");
-		syringe_metal_medx = new ItemSyringe().setUnlocalizedName("syringe_metal_medx").setFull3D().setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_metal_medx");
-		syringe_metal_psycho = new ItemSyringe().setUnlocalizedName("syringe_metal_psycho").setFull3D().setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_metal_psycho");
-		syringe_metal_super = new ItemSyringe().setUnlocalizedName("syringe_metal_super").setFull3D().setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_metal_super");
+		//TODO: we got rid of the old syringes except taint, mku.. those need sm other impl
 		syringe_taint = new ItemSyringe().setUnlocalizedName("syringe_taint").setFull3D().setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_taint");
 		syringe_mkunicorn = new ItemSyringe().setUnlocalizedName("syringe_mkunicorn").setFull3D().setCreativeTab(null).setTextureName(RefStrings.MODID + ":syringe_mkunicorn");
+		syringe = new ItemFluidSyringe(10, "syringe_overlay", "syringe_empty").setUnlocalizedName("syringe").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":syringe_empty");
+		combat_syringe = new ItemFluidSyringe(100, "combat_syringe_overlay", "combat_syringe_empty").setUnlocalizedName("combat_syringe").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":combat_syringe_empty");
 
 		med_bag = new ItemSyringe().setUnlocalizedName("med_bag").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":med_bag");
 		radx = new ItemPill(0).setUnlocalizedName("radx").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":radx");
@@ -3222,6 +3215,7 @@ public class ModItems {
 		armor_polish = new ItemModPolish().setUnlocalizedName("armor_polish").setTextureName(RefStrings.MODID + ":armor_polish");
 		bandaid = new ItemModBandaid().setUnlocalizedName("bandaid").setTextureName(RefStrings.MODID + ":bandaid");
 		serum = new ItemModSerum().setUnlocalizedName("serum").setTextureName(RefStrings.MODID + ":serum");
+		auto_drip = new ItemModAutoFeed().setUnlocalizedName("auto_drip").setTextureName(RefStrings.MODID + ":auto_drip");
 		quartz_plutonium = new ItemModQuartz().setUnlocalizedName("quartz_plutonium").setTextureName(RefStrings.MODID + ":quartz_plutonium");
 		morning_glory = new ItemModMorningGlory().setUnlocalizedName("morning_glory").setTextureName(RefStrings.MODID + ":morning_glory");
 		lodestone = new ItemModLodestone(5).setUnlocalizedName("lodestone").setTextureName(RefStrings.MODID + ":lodestone");
@@ -3323,6 +3317,9 @@ public class ModItems {
 		coin_ufo = new ItemCustomLore().setRarity(EnumRarity.uncommon).setUnlocalizedName("coin_ufo").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":coin_ufo");
 		coin_airliner = new ItemCustomLore().setRarity(EnumRarity.uncommon).setUnlocalizedName("coin_airliner").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":coin_airliner");
 		coin_token = new Item().setUnlocalizedName("coin_token").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":coin_token");
+
+		claude = new ItemClaude().setUnlocalizedName("claude").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":claude");
+		failed_steel = new ItemCustomLore().setUnlocalizedName("failed_steel").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":failed_steel");
 
 		rod_empty = new Item().setUnlocalizedName("rod_empty").setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":rod_empty");
 		rod = (ItemEnumMulti) new ItemBreedingRod().setUnlocalizedName("rod").setContainerItem(ModItems.rod_empty).setCreativeTab(MainRegistry.controlTab);
@@ -3443,7 +3440,7 @@ public class ModItems {
 		int tintFlashlead = 0x7B7B87;
 		int tintBalefire = 0xB2FF1B;
 		int tintDRX = 0xD77276;
-		
+
 		rbmk_fuel_empty = new Item().setUnlocalizedName("rbmk_fuel_empty").setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":rbmk_fuel_empty");
 		rbmk_fuel_ueu = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_ueu)
 				.setYield(100_000_000D)
@@ -3549,7 +3546,7 @@ public class ModItems {
 				.setFunction(EnumBurnFunc.LINEAR)
 				.setHeat(2D)
 				.setMeltingPoint(2386)
-				.setTint(tintAmericium).setUnlocalizedName("rbmk_fuel_hea242").setTextureName(RefStrings.MODID + ":rbmk_fuel_hea242");				
+				.setTint(tintAmericium).setUnlocalizedName("rbmk_fuel_hea242").setTextureName(RefStrings.MODID + ":rbmk_fuel_hea242");
 		rbmk_fuel_bk247 = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_bk247)
 				.setYield(100000000D)
 				.setStats(50)
@@ -4128,7 +4125,7 @@ public class ModItems {
 
 		battery_spark = new Item().setUnlocalizedName("battery_spark").setMaxStackSize(1).setCreativeTab(MainRegistry.nukeTab).setTextureName(RefStrings.MODID + ":battery_spark");
 		battery_trixite = new Item().setUnlocalizedName("battery_trixite").setMaxStackSize(1).setCreativeTab(MainRegistry.nukeTab).setTextureName(RefStrings.MODID + ":battery_trixite");
-		
+
 		battery_pack = new ItemBatteryPack().setUnlocalizedName("battery_pack").setTextureName(RefStrings.MODID + ":battery_creative_new");
 		battery_creative = new ItemBatteryCreative().setUnlocalizedName("battery_creative").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":battery_creative_new");
 		cube_power = new ItemBattery(1000000000000000000L, 1000000000000000L, 1000000000000000L).setUnlocalizedName("cube_power").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":cube_power");
@@ -4338,7 +4335,7 @@ public class ModItems {
 	}
 
 	public static void initializeItem2() {
-		
+
 		ModItemsArmor.init();
 
 		chainsaw = new ItemChainsaw(25, -0.05, MainRegistry.tMatChainsaw, EnumToolType.AXE, 5000, 1, 250,
@@ -4395,7 +4392,7 @@ public class ModItems {
 				.addAbility(IWeaponAbility.BEHEADER, 0).setUnlocalizedName("titanium_axe").setTextureName(RefStrings.MODID + ":titanium_axe");
 		titanium_shovel = new ItemToolAbility(3.5F, 0, MainRegistry.tMatTitan, EnumToolType.SHOVEL).setUnlocalizedName("titanium_shovel").setTextureName(RefStrings.MODID + ":titanium_shovel");
 		titanium_hoe = new ModHoe(MainRegistry.tMatTitan).setUnlocalizedName("titanium_hoe").setTextureName(RefStrings.MODID + ":titanium_hoe");
-		
+
 		steel_sword = new ItemSwordAbility(6F, 0, MainRegistry.tMatSteel)
 				.addAbility(IWeaponAbility.STUN, 0).setUnlocalizedName("steel_sword").setTextureName(RefStrings.MODID + ":steel_sword");
 		steel_pickaxe = new ItemToolAbility(4F, 0, MainRegistry.tMatSteel, EnumToolType.PICKAXE)
@@ -5714,7 +5711,7 @@ public class ModItems {
 		//Batteries
 		GameRegistry.registerItem(battery_spark, battery_spark.getUnlocalizedName());
 		GameRegistry.registerItem(battery_trixite, battery_trixite.getUnlocalizedName());
-		
+
 		GameRegistry.registerItem(battery_pack, battery_pack.getUnlocalizedName());
 		GameRegistry.registerItem(battery_sc, battery_sc.getUnlocalizedName());
 		GameRegistry.registerItem(battery_creative, battery_creative.getUnlocalizedName());
@@ -6549,17 +6546,10 @@ public class ModItems {
 		GameRegistry.registerItem(meteorite_sword_baleful, meteorite_sword_baleful.getUnlocalizedName());
 
 		//Syringes & Pills
-		GameRegistry.registerItem(syringe_empty, syringe_empty.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_antidote, syringe_antidote.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_poison, syringe_poison.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_awesome, syringe_awesome.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_metal_empty, syringe_metal_empty.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_metal_stimpak, syringe_metal_stimpak.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_metal_medx, syringe_metal_medx.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_metal_psycho, syringe_metal_psycho.getUnlocalizedName());
-		GameRegistry.registerItem(syringe_metal_super, syringe_metal_super.getUnlocalizedName());
 		GameRegistry.registerItem(syringe_taint, syringe_taint.getUnlocalizedName());
 		GameRegistry.registerItem(syringe_mkunicorn, syringe_mkunicorn.getUnlocalizedName());
+		GameRegistry.registerItem(syringe, syringe.getUnlocalizedName());
+		GameRegistry.registerItem(combat_syringe, combat_syringe.getUnlocalizedName());
 		GameRegistry.registerItem(med_bag, med_bag.getUnlocalizedName());
 		GameRegistry.registerItem(iv_empty, iv_empty.getUnlocalizedName());
 		GameRegistry.registerItem(iv_blood, iv_blood.getUnlocalizedName());
@@ -6677,6 +6667,8 @@ public class ModItems {
 		GameRegistry.registerItem(coin_worm, coin_worm.getUnlocalizedName());
 		GameRegistry.registerItem(coin_ufo, coin_ufo.getUnlocalizedName());
 		GameRegistry.registerItem(coin_airliner, coin_airliner.getUnlocalizedName());
+		GameRegistry.registerItem(claude, claude.getUnlocalizedName());
+		GameRegistry.registerItem(failed_steel, failed_steel.getUnlocalizedName());
 		GameRegistry.registerItem(coin_token, coin_token.getUnlocalizedName());
 		GameRegistry.registerItem(medal_liquidator, medal_liquidator.getUnlocalizedName());
 		GameRegistry.registerItem(v1, v1.getUnlocalizedName());
@@ -6751,6 +6743,7 @@ public class ModItems {
 		GameRegistry.registerItem(armor_polish, armor_polish.getUnlocalizedName());
 		GameRegistry.registerItem(bandaid, bandaid.getUnlocalizedName());
 		GameRegistry.registerItem(serum, serum.getUnlocalizedName());
+		GameRegistry.registerItem(auto_drip, auto_drip.getUnlocalizedName());
 		GameRegistry.registerItem(quartz_plutonium, quartz_plutonium.getUnlocalizedName());
 		GameRegistry.registerItem(morning_glory, morning_glory.getUnlocalizedName());
 		GameRegistry.registerItem(lodestone, lodestone.getUnlocalizedName());
