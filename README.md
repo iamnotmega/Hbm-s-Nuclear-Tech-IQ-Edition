@@ -4,28 +4,26 @@ NTM IQ Edition is a Fork of NTM Space for MC 1.7.10. It is mainly maintained by 
 It is based off of tam69 iq, which is immense, thus the fork will have immense amounts of custom content that would normally take much longer/never be accepted into base NTM.
 As there are very few contributors, with probably more time than bobcat himself, we can add our own features to base NTM which normally would not receive credence in the main mod/most players wouldnt like.
 The fork is also a mix of serious and nonserious content with joke items scattered across the new features, the closest parallel to this is probably leafia's cursed addon for NTMCE
-Some quotes from our beloved members:
+
+## Some quotes from our beloved members
 
 "I am deeply in love with xenon."
-freddy69
+- freddy69
 
 
 "Fuck english in the ass"
-tam69
+- tam69
 
 
 "Yo"
-english
+- english
 
 
-"I have the memory of a fish"
-Notmega iq
+"i have the memory of a goldfish"
+- NotMega iq
 
 Join to see progress at https://discord.gg/dwpsq9q989 
 You can also see iris-lgtm's other projects/games there.
-
-
-
 
 
 **This is for 1.7.10!** For 1.12, check out these projects:
