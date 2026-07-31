@@ -131,7 +131,6 @@ public class WorldConfig {
 	public static int netherTungstenSpawn = 10;
 	public static int netherSulfurSpawn = 26;
 	public static int netherPhosphorusSpawn = 24;
-	public static int netherCoalSpawn = 8;
 	public static int netherPlutoniumSpawn = 8;
 	public static int netherCobaltSpawn = 2;
 
@@ -142,6 +141,7 @@ public class WorldConfig {
 	public static boolean enableBauxite = true;
 	public static boolean enableRutile = true;
 	public static boolean enableAnthracite = true;
+	public static boolean enableFlamingAnthracite = true;
 
 	public static boolean enableSulfurCave = true;
 	public static boolean enableAsbestosCave = true;
@@ -309,7 +309,6 @@ public class WorldConfig {
 		netherTungstenSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N01_tungstenSpawnrate", "Amount of nether tungsten per chunk", 10);
 		netherSulfurSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N02_sulfurSpawnrate", "Amount of nether sulfur per chunk", 26);
 		netherPhosphorusSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N03_phosphorusSpawnrate", "Amount of nether phosphorus per chunk", 24);
-		netherCoalSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N04_coalSpawnrate", "Amount of nether coal per chunk", 8);
 		netherPlutoniumSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N05_plutoniumSpawnrate", "Amount of nether plutonium per chunk, if enabled", 8);
 		netherCobaltSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N06_cobaltSpawnrate", "Amount of nether cobalt per chunk", 2);
 
@@ -320,6 +319,7 @@ public class WorldConfig {
 		enableBauxite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.L02_enableBauxite", "Toggles bauxite deposits", true);
 		enableRutile = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL03_enableRutile", "Toggles rutile deposits", true);
 		enableAnthracite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL04_enableAnthracite", "Toggles anthracite deposits", true);
+		enableFlamingAnthracite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL05_enableFlamingAnthracite", "Toggles nether flaming anthracite deposits", true);
 
 		enableSulfurCave = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.C00_enableSulfurCave", "Toggles sulfur caves", true);
 		enableAsbestosCave = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.C01_enableAsbestosCave", "Toggles asbestos caves", true);

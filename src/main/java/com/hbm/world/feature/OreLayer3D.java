@@ -93,6 +93,9 @@ public class OreLayer3D {
 		if(world.provider instanceof WorldProviderCelestial) {
 			replace = ((WorldProviderCelestial)world.provider).getStone();
 		}
+		if(world.provider.dimensionId == -1) {
+			replace = Blocks.netherrack;
+		}
 
 		if(allCelestials) {
 			if(!(world.provider instanceof WorldProviderCelestial) && world.provider.dimensionId != 0) return;

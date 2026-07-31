@@ -19,6 +19,7 @@ import com.hbm.inventory.material.NTMMaterial;
 import com.hbm.inventory.recipes.loader.SerializableRecipe;
 import com.hbm.items.ItemEnums.EnumBriquetteType;
 import com.hbm.items.ItemEnums.EnumCasingType;
+import com.hbm.items.ItemEnums.EnumChunkType;
 import com.hbm.items.ItemEnums.EnumPages;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemStamp;
@@ -70,6 +71,9 @@ public class PressRecipes extends SerializableRecipe {
 		makeRecipe(StampType.FLAT, new OreDictStack(COAL.dust()),							DictFrame.fromOne(ModItems.briquette, EnumBriquetteType.COAL));
 		makeRecipe(StampType.FLAT, new OreDictStack(LIGNITE.dust()),						DictFrame.fromOne(ModItems.briquette, EnumBriquetteType.LIGNITE));
 		makeRecipe(StampType.FLAT, new ComparableStack(ModItems.powder_sawdust),			DictFrame.fromOne(ModItems.briquette, EnumBriquetteType.WOOD));
+
+		makeRecipe(StampType.FLAT, new ComparableStack(DictFrame.fromOne(ModItems.chunk_ore, EnumChunkType.ANTHRACITE)), new ItemStack(Items.coal, 2));
+		makeRecipe(StampType.FLAT, new ComparableStack(DictFrame.fromOne(ModItems.chunk_ore, EnumChunkType.FLAMING_ANTHRACITE)), new ItemStack(ModItems.coal_infernal, 2));
 
 		makeRecipe(StampType.PLATE, new OreDictStack(IRON.ingot()),			ModItems.plate_iron);
 		makeRecipe(StampType.PLATE, new OreDictStack(GOLD.ingot()),			ModItems.plate_gold);

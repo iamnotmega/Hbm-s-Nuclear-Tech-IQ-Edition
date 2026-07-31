@@ -12,7 +12,8 @@ public class BlockEnums {
 		CONGLOMERATE,
 		CALCIUM,
 		RUTILE,
-		ANTHRACITE
+		ANTHRACITE,
+		FLAMING_ANTHRACITE
 	}
 
 	public static enum EnumMeteorType {
