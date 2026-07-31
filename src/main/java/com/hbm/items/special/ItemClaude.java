@@ -16,6 +16,7 @@ public class ItemClaude extends ItemMachineUpgrade {
 
 	public ItemClaude() {
 		super(UpgradeType.CLAUDE);
+		this.tier = 1;
 	}
 
 	@Override
@@ -49,6 +50,7 @@ public class ItemClaude extends ItemMachineUpgrade {
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+		super.addInformation(stack, player, list, bool);
 		String unloc = this.getUnlocalizedName() + ".desc";
 		String loc = I18nUtil.resolveKey(unloc);
 
