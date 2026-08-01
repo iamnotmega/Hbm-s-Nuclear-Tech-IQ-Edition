@@ -2,6 +2,7 @@ package com.hbm.util;
 
 import api.hbm.item.IGasMask;
 import com.hbm.handler.ArmorModHandler;
+import com.hbm.handler.SymbolBehaviors;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,6 +22,8 @@ public class ArmorRegistry {
 
 	public static boolean hasAllProtection(EntityLivingBase entity, int slot, HazardClass... clazz) {
 
+		if(SymbolBehaviors.bypassesHazards(entity)) return true;
+
 		if(ArmorUtil.checkArmorNull(entity, slot))
 			return false;
 
@@ -29,6 +32,8 @@ public class ArmorRegistry {
 	}
 
 	public static boolean hasAnyProtection(EntityLivingBase entity, int slot, HazardClass... clazz) {
+
+		if(SymbolBehaviors.bypassesHazards(entity)) return true;
 
 		if(ArmorUtil.checkArmorNull(entity, slot))
 			return false;
@@ -46,6 +51,8 @@ public class ArmorRegistry {
 	}
 
 	public static boolean hasProtection(EntityLivingBase entity, int slot, HazardClass clazz) {
+
+		if(SymbolBehaviors.bypassesHazards(entity)) return true;
 
 		if(ArmorUtil.checkArmorNull(entity, slot))
 			return false;

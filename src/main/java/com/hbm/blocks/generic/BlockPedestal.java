@@ -6,10 +6,12 @@ import java.util.List;
 
 import com.hbm.dim.WorldProviderCelestial;
 import com.hbm.extprop.HbmPlayerProps;
+import com.hbm.handler.SymbolHandler;
 import com.hbm.inventory.recipes.PedestalRecipes;
 import com.hbm.inventory.recipes.PedestalRecipes.PedestalRecipe;
 import com.hbm.items.ModItems;
 import com.hbm.items.armor.ItemModDefuser;
+import com.hbm.items.armor.ItemSymbol;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
 import com.hbm.particle.helper.ExplosionSmallCreator;
@@ -137,6 +139,7 @@ public class BlockPedestal extends BlockContainer {
 					}
 
 					// Changed requirement to eclipse in spork
+					// Looks at larp
 					if(recipe.extra == recipe.extra.NEW_MOON) {
 						if(world.provider instanceof WorldProviderCelestial) {
 							if(world.getCelestialAngle(0) > 0.15 && world.getCelestialAngle(0) < 0.85) continue;
@@ -183,7 +186,25 @@ public class BlockPedestal extends BlockContainer {
 						world.markBlockForUpdate(tileArray[i].xCoord, tileArray[i].yCoord, tileArray[i].zCoord);
 					}
 
-					/// PRODUCE RESULT ///
+				/// PRODUCE RESULT ///
+				if(recipe.ritual) {
+					ItemSymbol.SymbolType type = ((ItemSymbol) center.item.getItem()).getSymbolType(center.item);
+					center.item = null;
+					center.markDirty();
+					world.markBlockForUpdate(x, y, z);
+
+				EntityPlayer target = nearbyPlayers.isEmpty() ? null : nearbyPlayers.get(0);
+
+				if(target != null) {
+					SymbolHandler.setActiveSymbol(target, type.ordinal());
+				}
+
+					ExplosionSmallCreator.composeEffect(world, x + 0.5, y + 1.5, z + 0.5, 10, 2.5F, 1F);
+					world.playSoundEffect(x + 0.5, y + 1.5, z + 0.5, "hbm:block.pedestal.legendary", 1.0F, 1.0F);
+
+					List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(x + 0.5, y, z + 0.5, x + 0.5, y, z + 0.5).expand(50, 50, 50));
+					for(EntityPlayer player : players) player.addStat(MainRegistry.statLegendary, 1);
+				} else {
 					center.item = recipe.output.copy();
 					center.markDirty();
 					world.markBlockForUpdate(x, y, z);
@@ -191,8 +212,9 @@ public class BlockPedestal extends BlockContainer {
 
 					List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(x + 0.5, y, z + 0.5, x + 0.5, y, z + 0.5).expand(50, 50, 50));
 					for(EntityPlayer player : players) player.addStat(MainRegistry.statLegendary, 1);
+				}
 
-					return;
+				return;
 				}
 			}
 		}
@@ -209,9 +231,9 @@ public class BlockPedestal extends BlockContainer {
 
 		@Override
 		public void updateEntity() {
-			
+
 			if(!worldObj.isRemote && worldObj.getTotalWorldTime() % 20 == 0) {
-				
+
 				if(this.item != null) {
 					if(item.getItem() == ModItems.protection_charm) pushPedestalEntry(worldObj, PedestalEntryType.CHARM_OF_PROTECTION, xCoord, yCoord, zCoord);
 					if(item.getItem() == ModItems.meteor_charm) pushPedestalEntry(worldObj, PedestalEntryType.METEORITE_CHARM, xCoord, yCoord, zCoord);
@@ -219,12 +241,12 @@ public class BlockPedestal extends BlockContainer {
 				}
 			}
 		}
-		
+
 		public void castrateCreepers() {
 			List<EntityCreeper> creepers = worldObj.getEntitiesWithinAABB(EntityCreeper.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1).expand(25, 25, 25));
 			for(EntityCreeper creeper : creepers) ItemModDefuser.castrateCreeper(creeper, null, false);
 		}
-		
+
 		@Override
 		public Packet getDescriptionPacket() {
 			NBTTagCompound nbt = new NBTTagCompound();
@@ -253,46 +275,46 @@ public class BlockPedestal extends BlockContainer {
 			}
 		}
 	}
-	
+
 	public static HashMap<Integer, List<PedestalEntry>> pedestalEntries = new HashMap();
-	
+
 	public static void pushPedestalEntry(World world, PedestalEntryType type, int x, int y, int z) {
 		PedestalEntry entry = new PedestalEntry(type, x, y, z, world.getTotalWorldTime());
-		
+
 		int dim = world.provider.dimensionId;
 		List<PedestalEntry> entries = pedestalEntries.get(dim);
-		
+
 		if(entries == null) {
 			entries = new ArrayList();
 			pedestalEntries.put(dim, entries);
 		}
 		entries.add(entry);
 	}
-	
+
 	public static final int timeout = 60; //3 seconds
-	
+
 	public static void checkPedestalEntries(int dim, long currentTime) {
 		List<PedestalEntry> entries = getEntriesForDimension(dim);
 		if(entries == null) return;
 		entries.removeIf(x -> { return x.timestamp  < currentTime - timeout; });
 	}
-	
+
 	public static List<PedestalEntry> getEntriesForDimension(int dim) {
 		return pedestalEntries.get(dim);
 	}
-	
+
 	public static class PedestalEntry {
 		public PedestalEntryType type;
 		public BlockPos pos;
 		public long timestamp;
-		
+
 		public PedestalEntry(PedestalEntryType type, int x, int y, int z, long timestamp) {
 			this.type = type;
 			this.pos = new BlockPos(x, y, z);
 			this.timestamp = timestamp;
 		}
 	}
-	
+
 	public static enum PedestalEntryType {
 		CHARM_OF_PROTECTION,
 		METEORITE_CHARM

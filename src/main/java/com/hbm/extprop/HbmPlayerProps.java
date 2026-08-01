@@ -33,7 +33,7 @@ public class HbmPlayerProps implements IExtendedEntityProperties {
 	/** Keybind tracking */
 	private boolean[] keysPressed = new boolean[EnumKeybind.values().length];
 
-	
+
 	/* Dashes for bismuth armor/cloud in a bottle */
 	public boolean dashActivated = true;
 	public int dashCooldown = 0;
@@ -56,16 +56,18 @@ public class HbmPlayerProps implements IExtendedEntityProperties {
 	/** Latnern repair/destroy count */
 	public int reputation;
 
+	public int symbol = -1; // item meta of the active symbol, so if it is -1 its none
+
 	/** Hack for allowing ladders on multiblocks */
 	public boolean isOnLadder = false;
-	
+
 	/** Pulling the pin on a grenade - it's a player prop instead of an NBT trait */
 	public int grenadeDeployment;
 
 	public boolean hasWarped = false;
 
 	public int lastDimension = 0;
-	
+
 	/** Maskman timer */
 	public int maskManTimer = 0;
 
@@ -208,6 +210,7 @@ public class HbmPlayerProps implements IExtendedEntityProperties {
 		buf.writeInt(this.reputation);
 		buf.writeBoolean(this.isOnLadder);
 		buf.writeBoolean(this.enableMagnet);
+		buf.writeInt(this.symbol);
 	}
 
 	public void deserialize(ByteBuf buf) {
@@ -219,6 +222,7 @@ public class HbmPlayerProps implements IExtendedEntityProperties {
 			this.reputation = buf.readInt();
 			this.isOnLadder = buf.readBoolean();
 			this.enableMagnet = buf.readBoolean();
+			if(buf.readableBytes() >= 4) this.symbol = buf.readInt();
 		}
 	}
 
@@ -239,6 +243,7 @@ public class HbmPlayerProps implements IExtendedEntityProperties {
 		props.setBoolean("hasWarped", hasWarped);
 		props.setInteger("lastDimension", lastDimension);
 		props.setInteger("maskManTimer", maskManTimer);
+		props.setInteger("symbol", symbol);
 
 		nbt.setTag("HbmPlayerProps", props);
 	}
@@ -261,6 +266,7 @@ public class HbmPlayerProps implements IExtendedEntityProperties {
 			this.hasWarped = props.getBoolean("hasWarped");
 			this.lastDimension = props.getInteger("lastDimension");
 			this.maskManTimer = props.getInteger("maskManTimer");
+			this.symbol = props.hasKey("symbol") ? props.getInteger("symbol") : -1;
 		}
 	}
 }

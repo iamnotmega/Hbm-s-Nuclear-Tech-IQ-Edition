@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import com.hbm.handler.ArmorModHandler;
+import com.hbm.handler.SymbolBehaviors;
 import com.hbm.items.ModItems;
 
 import com.hbm.config.ServerConfig;
@@ -132,7 +133,7 @@ public class EntityDamageUtil {
 
 		living.entityAge = 0;
 		if(living.getHealth() <= 0.0F) return false;
-		if(source.isFireDamage() && living.isPotionActive(Potion.fireResistance)) return false;
+		if(source.isFireDamage() && living.isPotionActive(Potion.fireResistance) && !SymbolBehaviors.ignoresFireRes(living)) return false;
 
 		living.limbSwingAmount = 1.5F;
 		boolean didAttackRegister = true;

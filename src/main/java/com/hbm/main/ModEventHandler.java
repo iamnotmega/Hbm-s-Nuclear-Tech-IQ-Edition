@@ -60,6 +60,7 @@ import com.hbm.handler.atmosphere.ChunkAtmosphereManager;
 import com.hbm.handler.neutron.NeutronNodeWorld;
 import com.hbm.handler.pollution.PollutionHandler;
 import com.hbm.handler.pollution.PollutionHandler.PollutionType;
+import com.hbm.handler.SymbolBehaviors;
 import com.hbm.handler.threading.PacketThreading;
 import com.hbm.hazard.HazardRegistry;
 import com.hbm.hazard.HazardSystem;
@@ -984,6 +985,15 @@ public class ModEventHandler {
 		if(e instanceof EntityPlayer) {
 
 			EntityPlayer player = (EntityPlayer) e;
+
+		if(SymbolBehaviors.cancelsDamage(event.source, player)) {
+			event.setCanceled(true);
+		}
+
+			if(SymbolBehaviors.tryHandleFireAttack(event.source, player, event.ammount)) {
+				event.setCanceled(true);
+				return;
+			}
 
 			if(ArmorUtil.checkArmor(player, ModItems.euphemium_helmet, ModItems.euphemium_plate, ModItems.euphemium_legs, ModItems.euphemium_boots)) {
 				HbmPlayerProps.plink(player, "random.break", 0.5F, 1.0F + e.getRNG().nextFloat() * 0.5F);

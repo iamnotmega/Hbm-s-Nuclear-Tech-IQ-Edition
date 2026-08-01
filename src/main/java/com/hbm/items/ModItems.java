@@ -437,6 +437,7 @@ public class ModItems {
 	public static Item chemical_dye;
 	public static Item crayon;
 	public static Item divine_shard;
+	public static Item symbol_guilt;
 
 	public static Item scuttertail;
 	public static Item saltleaf;
@@ -2435,6 +2436,7 @@ public class ModItems {
 		chemical_dye = new ItemChemicalDye().setUnlocalizedName("chemical_dye").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":chemical_dye");
 		crayon = new ItemCrayon().setUnlocalizedName("crayon").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":crayon");
 		divine_shard = new Item().setUnlocalizedName("divine_shard").setCreativeTab(null).setTextureName(RefStrings.MODID + ":divine_shard");
+		symbol_guilt = new ItemSymbol();
 
 		undefined = new ItemCustomLore().setUnlocalizedName("undefined").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":undefined");
 
@@ -5511,6 +5513,7 @@ public class ModItems {
 		GameRegistry.registerItem(hard_drive, hard_drive.getUnlocalizedName());
 		GameRegistry.registerItem(full_drive, full_drive.getUnlocalizedName());
 		GameRegistry.registerItem(divine_shard, divine_shard.getUnlocalizedName());
+		GameRegistry.registerItem(symbol_guilt, symbol_guilt.getUnlocalizedName());
 
 		//Plant Products
 		GameRegistry.registerItem(plant_item, plant_item.getUnlocalizedName());

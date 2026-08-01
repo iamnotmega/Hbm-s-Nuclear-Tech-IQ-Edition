@@ -17,6 +17,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.entity.mob.EntityCreeperNuclear;
+import com.hbm.handler.SymbolBehaviors;
 import com.hbm.items.ModItems;
 import com.hbm.items.armor.ArmorFSBPowered;
 import com.hbm.lib.ModDamageSource;
@@ -439,6 +440,7 @@ public class DamageResistanceHandler {
 	@SubscribeEvent
 	public void onEntityAttacked(LivingAttackEvent event) {
 		if(event.source.isDamageAbsolute()) return;
+		if(SymbolBehaviors.bypassesFireArmor(event.entityLiving) && event.source.isFireDamage()) return;
 
 		EntityLivingBase e = event.entityLiving;
 		float amount = event.ammount;
@@ -457,6 +459,10 @@ public class DamageResistanceHandler {
 	public void onEntityDamaged(LivingHurtEvent event) {
 		
 		DamageSource source = event.source;
+		if(SymbolBehaviors.bypassesFireArmor(event.entityLiving) && event.source.isFireDamage()) {
+			event.ammount = SymbolBehaviors.getFireDamage(event.entityLiving, event.ammount);
+			return;
+		}
 		if(source.damageType.toLowerCase(Locale.US).equals(DamageClass.ELECTRIC.name().toLowerCase(Locale.US))) {
 			ItemStack chest = event.entityLiving.getEquipmentInSlot(3);
 			if(chest != null && chest.getItem() instanceof ArmorFSBPowered) {

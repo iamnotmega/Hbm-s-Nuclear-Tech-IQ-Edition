@@ -15,6 +15,7 @@ import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.RecipesCommon.OreDictStack;
 import com.hbm.inventory.recipes.loader.SerializableRecipe;
+import com.hbm.items.ItemEnums;
 import com.hbm.items.ItemEnums.EnumChunkType;
 import com.hbm.items.ItemEnums.EnumSecretType;
 import com.hbm.items.food.ItemConserve.EnumFoodType;
@@ -123,6 +124,12 @@ public class PedestalRecipes extends SerializableRecipe {
 				null,	null,																	null,
 				null,	new ComparableStack(ModItems.item_secret, 3, EnumSecretType.ABERRATOR),	null,
 				null,	null,																	null).set(1));
+
+		register(new PedestalRecipe(new ItemStack(ModItems.symbol_guilt),
+				null, new ComparableStack(ModItems.plant_item, 1, ItemEnums.EnumPlantType.ROPE), null,
+				new ComparableStack(ModItems.plant_item, 1, ItemEnums.EnumPlantType.ROPE), new ComparableStack(ModItems.symbol_guilt), new ComparableStack(ModItems.plant_item, 1, ItemEnums.EnumPlantType.ROPE),
+				null, new ComparableStack(ModItems.plant_item, 1, ItemEnums.EnumPlantType.ROPE), null)
+					.ritual());
 	}
 
 	public static void register(PedestalRecipe recipe) {
@@ -173,6 +180,8 @@ public class PedestalRecipes extends SerializableRecipe {
 			rec.recipeSet = obj.get("set").getAsInt();
 		}
 
+		if(obj.has("ritual")) rec.ritual = obj.get("ritual").getAsBoolean();
+
 		this.register(rec);
 	}
 
@@ -195,6 +204,7 @@ public class PedestalRecipes extends SerializableRecipe {
 
 		writer.name("extra").value(rec.extra.name());
 		if(rec.recipeSet != 0) writer.name("set").value(rec.recipeSet);
+		if(rec.ritual) writer.name("ritual").value(true);
 	}
 
 	public static enum PedestalExtraCondition {
@@ -206,6 +216,7 @@ public class PedestalRecipes extends SerializableRecipe {
 		public AStack[] input;
 		public int recipeSet = 0;
 		public PedestalExtraCondition extra = PedestalExtraCondition.NONE;
+		public boolean ritual = false;
 
 		public PedestalRecipe(ItemStack output, AStack... input) {
 			this.output = output;
@@ -214,6 +225,11 @@ public class PedestalRecipes extends SerializableRecipe {
 
 		public PedestalRecipe extra(PedestalExtraCondition extra) {
 			this.extra = extra;
+			return this;
+		}
+
+		public PedestalRecipe ritual() {
+			this.ritual = true;
 			return this;
 		}
 

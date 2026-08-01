@@ -11,6 +11,7 @@ import java.util.Random;
 import com.hbm.dim.trait.CBT_Atmosphere;
 import com.hbm.handler.ArmorModHandler;
 import com.hbm.handler.HazmatRegistry;
+import com.hbm.handler.SymbolBehaviors;
 import com.hbm.handler.atmosphere.ChunkAtmosphereManager;
 import com.hbm.items.ModItems;
 import com.hbm.items.armor.ArmorDNT;
@@ -172,6 +173,8 @@ public class ArmorUtil {
 		if(!(entity instanceof EntityPlayer)) return ChunkAtmosphereManager.proxy.canBreathe(atmosphere);
 		EntityPlayer player = (EntityPlayer) entity;
 
+		if(SymbolBehaviors.bypassesSuffocation(entity)) return true;
+
 		if(checkSpecialBreathing(player)) return true;
 		if(checkModBreathing(player)) return true;
 
@@ -274,6 +277,7 @@ public class ArmorUtil {
 
 
 	public static boolean checkForCorrosion(EntityLivingBase entity, CBT_Atmosphere atmosphere) {
+		if(SymbolBehaviors.bypassesCorrosion(entity)) return false;
 		if(!ChunkAtmosphereManager.proxy.willCorrode(atmosphere)) return false;
 
 		if(!(entity instanceof EntityPlayer)) return true;
