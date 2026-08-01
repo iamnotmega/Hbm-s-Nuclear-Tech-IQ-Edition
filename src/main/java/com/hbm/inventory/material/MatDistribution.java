@@ -41,6 +41,7 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre("stone", MAT_STONE, BLOCK.q(1));
 		registerOre("cobblestone", MAT_STONE, BLOCK.q(1));
 		registerEntry(Blocks.obsidian, MAT_OBSIDIAN, BLOCK.q(1));
+		registerOre("sand", MAT_HOT_SAND, BLOCK.q(1));
 		registerEntry(Blocks.rail, MAT_IRON, INGOT.q(6, 16));
 		registerEntry(Blocks.golden_rail, MAT_GOLD, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
 		registerEntry(Blocks.detector_rail, MAT_IRON, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
@@ -86,6 +87,7 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre(OreDictManager.ZI.ore(), MAT_ZINC, INGOT.q(2), MAT_STONE, QUART.q(1));
 
 		registerOre(OreDictManager.HEMATITE.ore(), MAT_HEMATITE, INGOT.q(1));
+		registerOre(OreDictManager.COBALTITE.ore(), MAT_COBALTITE, INGOT.q(6));
 		registerOre(OreDictManager.MALACHITE.ore(), MAT_MALACHITE, INGOT.q(6));
 		registerOre(OreDictManager.CONGLOMERATE.ore(), MAT_CONGLOMERATE, INGOT.q(4));
 

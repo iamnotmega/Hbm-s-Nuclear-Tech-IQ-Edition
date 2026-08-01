@@ -25,6 +25,7 @@ import com.hbm.dim.orbit.WorldProviderOrbit;
 import com.hbm.dim.tekto.WorldGeneratorTekto;
 import com.hbm.dim.tekto.WorldProviderTekto;
 import com.hbm.dim.thatmo.WorldProviderThatmo;
+import com.hbm.dim.hell.WorldProviderHbmHell;
 import com.hbm.util.BobMathUtil;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -76,6 +77,11 @@ public class PlanetGen {
 	public static void overrideOverworldProvider() {
 		DimensionManager.unregisterProviderType(0);
 		DimensionManager.registerProviderType(0, WorldProviderEarth.class, true);
+	}
+
+	public static void overrideNetherProvider() {
+		DimensionManager.unregisterProviderType(-1);
+		DimensionManager.registerProviderType(-1, WorldProviderHbmHell.class, true);
 	}
 
 }

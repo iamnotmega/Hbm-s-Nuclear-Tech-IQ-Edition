@@ -260,7 +260,7 @@ public class PlasmaForgeRecipes extends GenericRecipes<PlasmaForgeRecipe> {
 				.inputItems(
 						new OreDictStack(OSMIRIDIUM.plateWelded(), 16),
 						new OreDictStack(CMB.plateWelded(), 16),
-						new ComparableStack(ModItems.crystal_xen),
+						new OreDictStack("crystalXen"),
 						new OreDictStack(BSCCO.wireDense(), 64),
 						new OreDictStack(BSCCO.wireDense(), 64),
 						new ComparableStack(ModItems.circuit, 16, EnumCircuitType.CONTROLLER_QUANTUM)));

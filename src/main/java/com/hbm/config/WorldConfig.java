@@ -35,7 +35,6 @@ public class WorldConfig {
 	public static int gassshaleSpawn = 5;
 	public static int gasbubbleSpawn = 12;
 	public static int explosivebubbleSpawn = 0;
-	public static int cobaltSpawn = 2;
 	public static int oilSpawn = 100;
 	public static int bedrockOilSpawn = 200;
 	public static int meteoriteSpawn = 500;
@@ -132,7 +131,6 @@ public class WorldConfig {
 	public static int netherSulfurSpawn = 26;
 	public static int netherPhosphorusSpawn = 24;
 	public static int netherPlutoniumSpawn = 8;
-	public static int netherCobaltSpawn = 2;
 
 	public static int endTikiteSpawn = 8;
 
@@ -142,6 +140,7 @@ public class WorldConfig {
 	public static boolean enableRutile = true;
 	public static boolean enableAnthracite = true;
 	public static boolean enableFlamingAnthracite = true;
+	public static boolean enableCobaltite = true;
 
 	public static boolean enableSulfurCave = true;
 	public static boolean enableAsbestosCave = true;
@@ -208,7 +207,6 @@ public class WorldConfig {
 		gassshaleSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.16_gasShaleSpawnRate", "Amount of oil shale veins per chunk", 5);
 		gasbubbleSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.17_gasBubbleSpawnRate", "Spawns a gas bubble every nTH chunk", 12);
 		cinnebarSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.18_cinnebarSpawnRate", "Amount of cinnebar ore veins per chunk", 1);
-		cobaltSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.18_cobaltSpawnRate", "Amount of cobalt ore veins per chunk", 2);
 		explosivebubbleSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.19_explosiveBubbleSpawnRate", "Spawns an explosive gas bubble every nTH chunk", 0);
 		alexandriteSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.20_alexandriteSpawnRate", "Spawns an alexandrite vein every nTH chunk", 100);
 		oilSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.21_oilSpawnRate", "Spawns an oil bubble every nTH chunk", 100);
@@ -310,7 +308,6 @@ public class WorldConfig {
 		netherSulfurSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N02_sulfurSpawnrate", "Amount of nether sulfur per chunk", 26);
 		netherPhosphorusSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N03_phosphorusSpawnrate", "Amount of nether phosphorus per chunk", 24);
 		netherPlutoniumSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N05_plutoniumSpawnrate", "Amount of nether plutonium per chunk, if enabled", 8);
-		netherCobaltSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.N06_cobaltSpawnrate", "Amount of nether cobalt per chunk", 2);
 
 		endTikiteSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.E00_tikiteSpawnrate", "Amount of end trixite per chunk", 8);
 
@@ -320,6 +317,7 @@ public class WorldConfig {
 		enableRutile = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL03_enableRutile", "Toggles rutile deposits", true);
 		enableAnthracite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL04_enableAnthracite", "Toggles anthracite deposits", true);
 		enableFlamingAnthracite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL05_enableFlamingAnthracite", "Toggles nether flaming anthracite deposits", true);
+		enableCobaltite = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.EL06_enableCobaltite", "Toggles nether cobaltite deposits", true);
 
 		enableSulfurCave = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.C00_enableSulfurCave", "Toggles sulfur caves", true);
 		enableAsbestosCave = CommonConfig.createConfigBool(config, CATEGORY_OREGEN, "2.C01_enableAsbestosCave", "Toggles asbestos caves", true);

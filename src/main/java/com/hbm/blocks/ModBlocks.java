@@ -148,6 +148,8 @@ public class ModBlocks {
 
 	public static Block stone_porous;
 	public static Block stone_resource;
+	public static Block block_crystal;
+	public static Block block_crystal_2;
 	public static Block stalagmite;
 	public static Block stalactite;
 	public static Block stone_biome;
@@ -537,9 +539,13 @@ public class ModBlocks {
 
 	public static Block glyphid_base;
 	public static Block glyphid_spawner;
+	public static Block cyst;
 
 	public static Block plant_flower;
 	public static Block plant_tall;
+	public static Block plant_flesh;
+	public static Block nether_glyphid;
+	public static Block bloatfire;
 	public static Block plant_dead;
 	public static Block reeds;
 	public static Block plant_tall_laythe;
@@ -1509,6 +1515,8 @@ public class ModBlocks {
 
 		stone_porous = new BlockPorous().setBlockName("stone_porous").setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":stone_porous");
 		stone_resource = new BlockResourceStone().setBlockName("stone_resource").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F);
+		block_crystal = new BlockCrystalBlock(0, 16).setBlockName("block_crystal").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setStepSound(ModSoundTypes.crystalBlock).setBlockTextureName(RefStrings.MODID + ":crystal_block");
+		block_crystal_2 = new BlockCrystalBlock(16, 16).setBlockName("block_crystal_2").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setStepSound(ModSoundTypes.crystalBlock).setBlockTextureName(RefStrings.MODID + ":crystal_block");
 		stalagmite = new BlockStalagmite().setBlockName("stalagmite").setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.0F);
 		stalactite = new BlockStalagmite().setBlockName("stalactite").setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.0F);
 		stone_biome = new BlockBiomeStone().setBlockName("stone_biome").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F);
@@ -1896,6 +1904,9 @@ public class ModBlocks {
 		rubber_farmland = new BlockRubberFarm(Material.sand).setBlockName("rubber_farmland").setStepSound(Block.soundTypeGravel).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":rubber_silt");
 
 		plant_flower = new BlockNTMFlower().setBlockName("plant_flower").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
+		plant_flesh = new BlockFleshPlant().setBlockName("plant_flesh").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
+		nether_glyphid = new BlockNetherGlyphid(Material.coral).setBlockName("nether_glyphid").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeCloth).setHardness(0.5F);
+		bloatfire = new BlockBloatfire().setBlockName("bloatfire").setHardness(0.0F).setLightLevel(1.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":bloatfire");
 		plant_tall = new BlockTallPlant().setBlockName("plant_tall").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
 		plant_dead = new BlockDeadPlant().setBlockName("plant_dead").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
 		reeds = new BlockReeds().setBlockName("plant_reeds").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
@@ -1955,6 +1966,8 @@ public class ModBlocks {
 		geysir_volcanic = new BlockGeysir(Material.rock).setBlockName("geysir_volcanic").setLightLevel(1.0F).setStepSound(Block.soundTypeStone).setHardness(2.0F);
 		geysir_electric = new BlockVolcanoV2(Material.rock).setBlockName("geysir_electric").setLightLevel(1.0F).setStepSound(Block.soundTypeStone).setHardness(2.0F).setBlockTextureName(RefStrings.MODID + ":basalt");
 		geysir_chloric = new BlockGeysierDCM(Material.rock).setBlockName("geysir_chloric").setLightLevel(1.0F).setStepSound(Block.soundTypeStone).setHardness(2.0F).setBlockTextureName(RefStrings.MODID + ":basalt");;
+
+		cyst = new BlockCyst(Material.coral).setBlockName("cyst").setStepSound(Block.soundTypeCloth).setHardness(0.5F);
 
 		nuke_gadget = new NukeGadget(Material.iron).setBlockName("nuke_gadget").setCreativeTab(MainRegistry.nukeTab).setHardness(5.0F).setResistance(200.0F).setBlockTextureName(RefStrings.MODID + ":theGadget");
 		nuke_boy = new NukeBoy(Material.iron).setBlockName("nuke_boy").setCreativeTab(MainRegistry.nukeTab).setHardness(5.0F).setResistance(200.0F).setBlockTextureName(RefStrings.MODID + ":lilBoy");
@@ -2855,6 +2868,8 @@ public class ModBlocks {
 
 		//Resource-bearing Stones
 		register(stone_resource);
+		register(block_crystal);
+		register(block_crystal_2);
 		register(stalagmite);
 		register(stalactite);
 		register(stone_biome);
@@ -3200,6 +3215,9 @@ public class ModBlocks {
 		GameRegistry.registerBlock(deco_pipe_quad_red, ItemBlockBase.class, deco_pipe_quad_red.getUnlocalizedName());
 		GameRegistry.registerBlock(deco_pipe_quad_marked, ItemBlockBase.class, deco_pipe_quad_marked.getUnlocalizedName());
 		register(plant_flower);
+		register(plant_flesh);
+		register(nether_glyphid);
+		register(bloatfire);
 		register(plant_tall);
 		register(plant_tall_laythe);
 		register(laythe_kelp);
@@ -3221,6 +3239,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(mush_block_stem, mush_block_stem.getUnlocalizedName());
 		register(glyphid_base);
 		register(glyphid_spawner);
+		register(cyst);
 		GameRegistry.registerBlock(moon_turf, moon_turf.getUnlocalizedName());
 
 		GameRegistry.registerBlock(moon_rock, moon_rock.getUnlocalizedName());

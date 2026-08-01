@@ -14,4 +14,5 @@ public class ModSoundTypes {
 		if(type == ModSoundType.SubType.BREAK) in -= 0.15F;
 		return in + rand.nextFloat() * 0.2F;
 	});
+	public static final ModSoundType crystalBlock = ModSoundType.placeBreakStep("hbm:block.crystalBlockPlace", "hbm:block.crystalBlockBreak", "hbm:step.crystalBlock", 1.0F, 1.0F);
 }

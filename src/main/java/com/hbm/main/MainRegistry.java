@@ -624,9 +624,10 @@ public class MainRegistry {
 		if(WorldConfig.enableHematite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.HEMATITE.ordinal()).setGlobal(true).setScaleH(0.04D).setScaleV(0.25D).setThreshold(230);
 		if(WorldConfig.enableBauxite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.BAUXITE.ordinal()).setGlobal(true).setScaleH(0.03D).setScaleV(0.15D).setThreshold(300);
 		if(WorldConfig.enableMalachite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.MALACHITE.ordinal()).setGlobal(true).setScaleH(0.1D).setScaleV(0.15D).setThreshold(275);
-		if(WorldConfig.enableRutile) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.RUTILE.ordinal()).setGlobal(true).setScaleH(0.03D).setScaleV(0.15D).setThreshold(300);
+		if(WorldConfig.enableRutile) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.RUTILE.ordinal()).setDimension(-1).setScaleH(0.03D).setScaleV(0.15D).setThreshold(300);
 		if(WorldConfig.enableAnthracite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.ANTHRACITE.ordinal()).setGlobal(true).setScaleH(0.04D).setScaleV(0.25D).setThreshold(240);
 		if(WorldConfig.enableFlamingAnthracite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.FLAMING_ANTHRACITE.ordinal()).setDimension(-1).setScaleH(0.04D).setScaleV(0.25D).setThreshold(240);
+		if(WorldConfig.enableCobaltite) new OreLayer3D(ModBlocks.stone_resource, EnumStoneType.COBALTITE.ordinal()).setDimension(-1).setScaleH(0.04D).setScaleV(0.25D).setThreshold(285);
 
 		// Earth caves + layers
 		if(WorldConfig.enableSulfurCave) new OreCave(ModBlocks.stone_resource, EnumStoneType.SULFUR.ordinal()).setThreshold(1.5D).setRangeMult(20).setYLevel(30).setMaxRange(20).withFluid(ModBlocks.sulfuric_acid_block);
@@ -665,6 +666,7 @@ public class MainRegistry {
 
 		BedrockOre.init();
 		PlanetGen.overrideOverworldProvider(); // Doing it as late as possible
+		PlanetGen.overrideNetherProvider();
 
 		Compat.handleRailcraftNonsense();
 		SuicideThreadDump.register();

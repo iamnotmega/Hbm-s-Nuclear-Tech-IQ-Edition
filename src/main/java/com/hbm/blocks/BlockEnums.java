@@ -13,7 +13,8 @@ public class BlockEnums {
 		CALCIUM,
 		RUTILE,
 		ANTHRACITE,
-		FLAMING_ANTHRACITE
+		FLAMING_ANTHRACITE,
+		COBALTITE
 	}
 
 	public static enum EnumMeteorType {
@@ -22,6 +23,41 @@ public class BlockEnums {
 		ALUMINIUM,
 		RAREEARTH,
 		COBALT
+	}
+
+	public static enum EnumCrystalBlockType {
+		COAL,
+		IRON,
+		GOLD,
+		REDSTONE,
+		LAPIS,
+		DIAMOND,
+		URANIUM,
+		THORIUM,
+		PLUTONIUM,
+		TITANIUM,
+		SULFUR,
+		NITER,
+		COPPER,
+		TUNGSTEN,
+		ALUMINIUM,
+		FLUORITE,
+		BERYLLIUM,
+		LEAD,
+		SCHRARANIUM,
+		SCHRABIDIUM,
+		RARE,
+		PHOSPHORUS,
+		TRIXITE,
+		LITHIUM,
+		COBALT,
+		MINERAL,
+		NICKEL,
+		NIOBIUM,
+		ZINC,
+		OSMIRIDIUM,
+		CINNEBAR,
+		STARMETAL
 	}
 
 	public static enum EnumBiomeType {

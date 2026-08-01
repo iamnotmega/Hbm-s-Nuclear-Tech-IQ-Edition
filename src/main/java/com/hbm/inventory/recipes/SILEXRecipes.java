@@ -78,7 +78,7 @@ public class SILEXRecipes {
 				.addOut(new ItemStack(ModItems.nugget_australium_greater), 1)
 				);
 
-		recipes.put(new ComparableStack(ModItems.crystal_schraranium), new SILEXRecipe(900, 100, 3)
+		recipes.put(SRN.crystal(), new SILEXRecipe(900, 100, 3)
 				.addOut(new ItemStack(ModItems.nugget_schrabidium), 5)
 				.addOut(new ItemStack(ModItems.nugget_uranium), 2)
 				.addOut(new ItemStack(ModItems.nugget_neptunium), 2)
@@ -91,7 +91,7 @@ public class SILEXRecipes {
 				.addOut(new ItemStack(ModItems.powder_nitan_mix), 2)
 				);
 
-		recipes.put(new ComparableStack(ModItems.crystal_trixite), new SILEXRecipe(1200, 100, EnumWavelengths.UV)
+		recipes.put("crystalTrixite", new SILEXRecipe(1200, 100, EnumWavelengths.UV)
 				.addOut(new ItemStack(ModItems.powder_plutonium), 2)
 				.addOut(new ItemStack(ModItems.powder_cobalt), 3)
 				.addOut(new ItemStack(ModItems.powder_niobium), 3)

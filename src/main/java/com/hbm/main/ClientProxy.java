@@ -2120,6 +2120,14 @@ public class ClientProxy extends ServerProxy {
 			Minecraft.getMinecraft().effectRenderer.addEffect(text);
 		}
 
+		if("blood".equals(type)) {
+			double mX = data.getDouble("mX");
+			double mY = data.getDouble("mY");
+			double mZ = data.getDouble("mZ");
+			ParticleBlood blood = new ParticleBlood(world, x, y, z, mX, mY, mZ);
+			Minecraft.getMinecraft().effectRenderer.addEffect(blood);
+		}
+
 		if("marker".equals(type)) {
 			int color = data.getInteger("color");
 			String label = data.getString("label");

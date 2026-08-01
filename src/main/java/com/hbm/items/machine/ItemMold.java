@@ -40,6 +40,7 @@ public class ItemMold extends Item {
 
 		blockOverrides.put(Mats.MAT_STONE,		new ItemStack(Blocks.stone));
 		blockOverrides.put(Mats.MAT_OBSIDIAN,	new ItemStack(Blocks.obsidian));
+		blockOverrides.put(Mats.MAT_LIQUID_GLASS, new ItemStack(Blocks.glass));
 
 		int S = 0;
 		int L = 1;

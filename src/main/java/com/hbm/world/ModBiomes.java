@@ -1,13 +1,20 @@
 package com.hbm.world;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hbm.dim.duna.biome.BiomeGenBaseDuna;
 import com.hbm.dim.minmus.biome.BiomeGenBaseMinmus;
 
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.common.BiomeManager.BiomeEntry;
 
 public class ModBiomes
 {
+    /// NETHER BIOMES ///
+    public static final List<BiomeEntry> netherBiomes = new ArrayList<>();
+
     public static void init()
     {
         BiomeDictionary.registerBiomeType(BiomeGenBaseDuna.dunaPlains, Type.COLD, Type.DRY, Type.DEAD);

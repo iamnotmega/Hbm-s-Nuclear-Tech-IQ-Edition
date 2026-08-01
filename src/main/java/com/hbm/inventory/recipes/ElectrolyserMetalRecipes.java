@@ -11,6 +11,7 @@ import com.google.gson.stream.JsonWriter;
 import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.RecipesCommon.OreDictStack;
+import static com.hbm.inventory.OreDictManager.*;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.material.MaterialShapes;
 import com.hbm.inventory.material.Mats;
@@ -37,100 +38,100 @@ public class ElectrolyserMetalRecipes extends SerializableRecipe {
 	@Override
 	public void registerDefaults() {
 
-		recipes.put(new ComparableStack(ModItems.crystal_iron), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(IRON.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_IRON, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_TITANIUM, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_gold), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(GOLD.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_GOLD, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_LEAD, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3),
 				new ItemStack(ModItems.ingot_mercury, 2)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_uranium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(U.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_URANIUM, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_RADIUM, MaterialShapes.NUGGET.q(4)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_thorium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(TH232.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_THORIUM, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_URANIUM, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_plutonium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(PU.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_PLUTONIUM, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_POLONIUM, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_titanium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(TI.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_TITANIUM, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_IRON, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_copper), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(CU.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_COPPER, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_LEAD, MaterialShapes.NUGGET.q(4)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3),
 				new ItemStack(ModItems.sulfur, 2)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_tungsten), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(W.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_TUNGSTEN, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_IRON, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_aluminium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(AL.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_ALUMINIUM, MaterialShapes.INGOT.q(2)),
 				new MaterialStack(Mats.MAT_IRON, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.chunk_ore, 4, ItemEnums.EnumChunkType.CRYOLITE.ordinal()),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
 
-		recipes.put(new ComparableStack(ModItems.crystal_beryllium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(BE.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_BERYLLIUM, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_LEAD, MaterialShapes.NUGGET.q(4)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3),
 				new ItemStack(ModItems.powder_quartz, 2)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_lead), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(PB.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_LEAD, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_GOLD, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_schraranium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(SRN.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_SCHRABIDIUM, MaterialShapes.NUGGET.q(5)),
 				new MaterialStack(Mats.MAT_URANIUM, MaterialShapes.NUGGET.q(2)),
 				new ItemStack(ModItems.nugget_neptunium, 2)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_schrabidium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(SA326.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_SCHRABIDIUM, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_PLUTONIUM, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_lithium_tiny, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_rare), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(RAREEARTH.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_ZIRCONIUM, MaterialShapes.NUGGET.q(6)),
 				new MaterialStack(Mats.MAT_BORON, MaterialShapes.NUGGET.q(2)),
 				new ItemStack(ModItems.powder_desh_mix, 3)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_trixite), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack("crystalTrixite"), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_PLUTONIUM, MaterialShapes.INGOT.q(3)),
 				new MaterialStack(Mats.MAT_COBALT, MaterialShapes.INGOT.q(4)),
 				new ItemStack(ModItems.powder_niobium, 4),
 				new ItemStack(ModItems.powder_nitan_mix, 2)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_lithium), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(LI.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_LITHIUM, MaterialShapes.INGOT.q(6)),
 				new MaterialStack(Mats.MAT_BORON, MaterialShapes.INGOT.q(2)),
 				new ItemStack(ModItems.powder_quartz, 2),
 				new ItemStack(ModItems.fluorite, 2)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_starmetal), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(STAR.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_DURA, MaterialShapes.INGOT.q(4)),
 				new MaterialStack(Mats.MAT_COBALT, MaterialShapes.INGOT.q(4)),
 				new ItemStack(ModItems.powder_astatine, 3),
 				new ItemStack(ModItems.ingot_mercury, 8)));
 
-		recipes.put(new ComparableStack(ModItems.crystal_cobalt), new ElectrolysisMetalRecipe(
+		recipes.put(new OreDictStack(CO.crystal()), new ElectrolysisMetalRecipe(
 				new MaterialStack(Mats.MAT_COBALT, MaterialShapes.INGOT.q(3)),
 				new MaterialStack(Mats.MAT_IRON, MaterialShapes.INGOT.q(4)),
 				new ItemStack(ModItems.powder_copper, 4),

@@ -80,6 +80,10 @@ public class CrucibleRecipes extends GenericRecipes<CrucibleRecipe> {
 				.inputs(new MaterialStack(Mats.MAT_HEMATITE, i * 2), new MaterialStack(Mats.MAT_FLUX, n * 2))
 				.outputs(new MaterialStack(Mats.MAT_IRON, i), new MaterialStack(Mats.MAT_SLAG, n * 3)));
 		
+		this.register(new CrucibleRecipe("crucible.cobaltite").setup(6, DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.COBALTITE))
+				.inputs(new MaterialStack(Mats.MAT_COBALTITE, i * 6), new MaterialStack(Mats.MAT_CARBON, n * 2), new MaterialStack(Mats.MAT_FLUX, n))
+				.outputs(new MaterialStack(Mats.MAT_COBALT, i)));
+		
 		this.register(new CrucibleRecipe("crucible.malachite").setup(6, DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.MALACHITE))
 				.inputs(new MaterialStack(Mats.MAT_MALACHITE, i * 2), new MaterialStack(Mats.MAT_FLUX, n * 2))
 				.outputs(new MaterialStack(Mats.MAT_COPPER, i), new MaterialStack(Mats.MAT_SLAG, n * 3)));
@@ -135,6 +139,14 @@ public class CrucibleRecipes extends GenericRecipes<CrucibleRecipe> {
 		this.register(new CrucibleRecipe("crucible.stainless").setup(2, new ItemStack(ModItems.ingot_stainless))
 				.inputs(new MaterialStack(Mats.MAT_STEEL, n), new MaterialStack(Mats.MAT_NICKEL, n))
 				.outputs(new MaterialStack(Mats.MAT_STAINLESS, n * 2)));
+		
+		this.register(new CrucibleRecipe("crucible.hotSand").setup(6, new ItemStack(Blocks.glass))
+				.inputs(new MaterialStack(Mats.MAT_SODIUM, n), new MaterialStack(Mats.MAT_HOT_SAND, i))
+				.outputs(new MaterialStack(Mats.MAT_LIQUID_GLASS, i * 9)));
+		
+		this.register(new CrucibleRecipe("crucible.hotSandFlux").setup(6, new ItemStack(Blocks.glass))
+				.inputs(new MaterialStack(Mats.MAT_SODIUM, n), new MaterialStack(Mats.MAT_HOT_SAND, i), new MaterialStack(Mats.MAT_FLUX, n))
+				.outputs(new MaterialStack(Mats.MAT_LIQUID_GLASS, i * 18)));
 
 		registerMoldsForNEI();
 	}

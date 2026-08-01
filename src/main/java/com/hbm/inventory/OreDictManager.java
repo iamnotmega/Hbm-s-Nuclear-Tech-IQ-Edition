@@ -282,10 +282,12 @@ public class OreDictManager {
 	public static final DictFrame BAUXITE = new DictFrame("Bauxite");
 	public static final DictFrame RUTILE = new DictFrame("Rutile");
 	public static final DictFrame ANTHRACITE = new DictFrame("Anthracite");
-	public static final DictFrame CRYOLITE = new DictFrame("Cryolite");
-	public static final DictFrame RICHMAGMA = new DictFrame("RichMagma");
+	public static final DictFrame COBALTITE = new DictFrame("Cobaltite");
+	public static final DictFrame CRYOLITE = new DictFrame("Cryolite");	public static final DictFrame RICHMAGMA = new DictFrame("RichMagma");
 	public static final DictFrame FLOUR = new DictFrame("foodFlour");
 	public static final DictFrame PENTLANDITE = new DictFrame("Pentlandite");
+	public static final DictFrame HOT_SAND = new DictFrame("HotSand");
+	public static final DictFrame LIQUID_GLASS = new DictFrame("LiquidGlass");
 
 	/*
 	 * HAZARDS, MISC
@@ -521,6 +523,7 @@ public class OreDictManager {
 		BAUXITE																															.gem(fromOne(stone_resource, EnumStoneType.BAUXITE));
 		RUTILE																															.gem(fromOne(stone_resource, EnumStoneType.RUTILE));
 		ANTHRACITE																														.gem(fromOne(stone_resource, EnumStoneType.ANTHRACITE));
+		COBALTITE																														.ore(fromOne(stone_resource, EnumStoneType.COBALTITE));
 		CRYOLITE	.crystal(fromOne(chunk_ore, EnumChunkType.CRYOLITE));
 		SLAG																									.block(block_slag);
 		CONGLOMERATE																													.ore(fromOne(stone_resource, EnumStoneType.CONGLOMERATE));
@@ -782,6 +785,89 @@ public class OreDictManager {
 
 		MaterialShapes.registerCompatShapes();
 		compensateMojangSpaghettiBullshit();
+
+		/*
+		 * CRYSTALS
+		 */
+		OreDictionary.registerOre("crystalCoal", crystal_coal);
+		OreDictionary.registerOre("crystalIron", crystal_iron);
+		OreDictionary.registerOre("crystalGold", crystal_gold);
+		OreDictionary.registerOre("crystalRedstone", crystal_redstone);
+		OreDictionary.registerOre("crystalLapis", crystal_lapis);
+		OreDictionary.registerOre("crystalDiamond", crystal_diamond);
+		OreDictionary.registerOre("crystalUranium", crystal_uranium);
+		OreDictionary.registerOre("crystalThorium", crystal_thorium);
+		OreDictionary.registerOre("crystalPlutonium", crystal_plutonium);
+		OreDictionary.registerOre("crystalTitanium", crystal_titanium);
+		OreDictionary.registerOre("crystalSulfur", crystal_sulfur);
+		OreDictionary.registerOre("crystalNiter", crystal_niter);
+		OreDictionary.registerOre("crystalCopper", crystal_copper);
+		OreDictionary.registerOre("crystalTungsten", crystal_tungsten);
+		OreDictionary.registerOre("crystalAluminium", crystal_aluminium);
+		OreDictionary.registerOre("crystalFluorite", crystal_fluorite);
+		OreDictionary.registerOre("crystalBeryllium", crystal_beryllium);
+		OreDictionary.registerOre("crystalLead", crystal_lead);
+		OreDictionary.registerOre("crystalSchraranium", crystal_schraranium);
+		OreDictionary.registerOre("crystalSchrabidium", crystal_schrabidium);
+		OreDictionary.registerOre("crystalRare", crystal_rare);
+		OreDictionary.registerOre("crystalPhosphorus", crystal_phosphorus);
+		OreDictionary.registerOre("crystalTrixite", crystal_trixite);
+		OreDictionary.registerOre("crystalLithium", crystal_lithium);
+		OreDictionary.registerOre("crystalCobalt", crystal_cobalt);
+		OreDictionary.registerOre("crystalMineral", crystal_mineral);
+		OreDictionary.registerOre("crystalNickel", crystal_nickel);
+		OreDictionary.registerOre("crystalNiobium", crystal_niobium);
+		OreDictionary.registerOre("crystalZinc", crystal_zinc);
+		OreDictionary.registerOre("crystalStarmetal", crystal_starmetal);
+		OreDictionary.registerOre("crystalOsmiridium", crystal_osmiridium);
+		OreDictionary.registerOre("crystalCinnebar", crystal_cinnebar);
+
+		OreDictionary.registerOre("CoalCrystal", crystal_coal);
+		OreDictionary.registerOre("IronCrystal", crystal_iron);
+		OreDictionary.registerOre("GoldCrystal", crystal_gold);
+		OreDictionary.registerOre("RedstoneCrystal", crystal_redstone);
+		OreDictionary.registerOre("LapisCrystal", crystal_lapis);
+		OreDictionary.registerOre("DiamondCrystal", crystal_diamond);
+		OreDictionary.registerOre("UraniumCrystal", crystal_uranium);
+		OreDictionary.registerOre("ThoriumCrystal", crystal_thorium);
+		OreDictionary.registerOre("PlutoniumCrystal", crystal_plutonium);
+		OreDictionary.registerOre("TitaniumCrystal", crystal_titanium);
+		OreDictionary.registerOre("SulfurCrystal", crystal_sulfur);
+		OreDictionary.registerOre("NiterCrystal", crystal_niter);
+		OreDictionary.registerOre("CopperCrystal", crystal_copper);
+		OreDictionary.registerOre("TungstenCrystal", crystal_tungsten);
+		OreDictionary.registerOre("AluminiumCrystal", crystal_aluminium);
+		OreDictionary.registerOre("FluoriteCrystal", crystal_fluorite);
+		OreDictionary.registerOre("BerylliumCrystal", crystal_beryllium);
+		OreDictionary.registerOre("LeadCrystal", crystal_lead);
+		OreDictionary.registerOre("SchraraniumCrystal", crystal_schraranium);
+		OreDictionary.registerOre("SchrabidiumCrystal", crystal_schrabidium);
+		OreDictionary.registerOre("RareCrystal", crystal_rare);
+		OreDictionary.registerOre("PhosphorusCrystal", crystal_phosphorus);
+		OreDictionary.registerOre("TrixiteCrystal", crystal_trixite);
+		OreDictionary.registerOre("LithiumCrystal", crystal_lithium);
+		OreDictionary.registerOre("CobaltCrystal", crystal_cobalt);
+		OreDictionary.registerOre("MineralCrystal", crystal_mineral);
+		OreDictionary.registerOre("NickelCrystal", crystal_nickel);
+		OreDictionary.registerOre("NiobiumCrystal", crystal_niobium);
+		OreDictionary.registerOre("ZincCrystal", crystal_zinc);
+		OreDictionary.registerOre("StarmetalCrystal", crystal_starmetal);
+		OreDictionary.registerOre("OsmiridiumCrystal", crystal_osmiridium);
+		OreDictionary.registerOre("CinnebarCrystal", crystal_cinnebar);
+
+		OreDictionary.registerOre("crystalCleaned", crystal_cleaned);
+		OreDictionary.registerOre("CleanedCrystal", crystal_cleaned);
+		OreDictionary.registerOre("crystalXen", crystal_xen);
+		OreDictionary.registerOre("XenCrystal", crystal_xen);
+		OreDictionary.registerOre("crystalHorn", crystal_horn);
+		OreDictionary.registerOre("HornCrystal", crystal_horn);
+		OreDictionary.registerOre("crystalCharred", crystal_charred);
+		OreDictionary.registerOre("CharredCrystal", crystal_charred);
+
+		String[] crystalBlockNames = { "Coal", "Iron", "Gold", "Redstone", "Lapis", "Diamond", "Uranium", "Thorium", "Plutonium", "Titanium", "Sulfur", "Niter", "Copper", "Tungsten", "Aluminium", "Fluorite", "Beryllium", "Lead", "Schraranium", "Schrabidium", "Rare", "Phosphorus", "Trixite", "Lithium", "Cobalt", "Mineral", "Nickel", "Niobium", "Zinc", "Osmiridium", "Cinnebar", "Starmetal" };
+		for(int i = 0; i < crystalBlockNames.length; i++) {
+			OreDictionary.registerOre("crystalBlock" + crystalBlockNames[i], i < 16 ? new ItemStack(block_crystal, 1, i) : new ItemStack(block_crystal_2, 1, i - 16));
+		}
 	}
 
 	public static void registerGroups() {
@@ -972,7 +1058,25 @@ public class OreDictManager {
 		}
 		public DictFrame crystal(Object... crystal) {
 			hazMult = HazardRegistry.gem;
-			return makeObject(CRYSTAL, crystal);
+			makeObject(CRYSTAL, crystal);
+
+			for(Object o : crystal) {
+				if(o instanceof Item) {
+					registerStackReverse(CRYSTAL.name(), new ItemStack((Item) o, 1, 0));
+				} else if(o instanceof Block) {
+					registerStackReverse(CRYSTAL.name(), new ItemStack((Block) o, 1, 0));
+				} else if(o instanceof ItemStack) {
+					registerStackReverse(CRYSTAL.name(), (ItemStack) o);
+				}
+			}
+
+			return this;
+		}
+
+		public void registerStackReverse(String tag, ItemStack stack) {
+			for(String mat : mats) {
+				OreDictionary.registerOre(mat + "Crystal", stack);
+			}
 		}
 		public DictFrame plate(Object... plate) {
 			hazMult = HazardRegistry.plate;

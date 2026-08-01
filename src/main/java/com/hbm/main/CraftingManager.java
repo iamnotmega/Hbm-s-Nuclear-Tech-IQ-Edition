@@ -76,6 +76,19 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new ScrapsCraftingHandler());
 		GameRegistry.addRecipe(new GrenadeCraftingHandler());
 
+		String[] crystalMats = { "Coal", "Iron", "Gold", "Redstone", "Lapis", "Diamond", "Uranium", "Thorium", "Plutonium", "Titanium", "Sulfur", "Niter", "Copper", "Tungsten", "Aluminium", "Fluorite", "Beryllium", "Lead", "Schraranium", "Schrabidium", "Rare", "Phosphorus", "Trixite", "Lithium", "Cobalt", "Mineral", "Nickel", "Niobium", "Zinc", "Osmiridium", "Cinnebar", "Starmetal" };
+		Item[] crystalItems = { ModItems.crystal_coal, ModItems.crystal_iron, ModItems.crystal_gold, ModItems.crystal_redstone, ModItems.crystal_lapis, ModItems.crystal_diamond, ModItems.crystal_uranium, ModItems.crystal_thorium, ModItems.crystal_plutonium, ModItems.crystal_titanium, ModItems.crystal_sulfur, ModItems.crystal_niter, ModItems.crystal_copper, ModItems.crystal_tungsten, ModItems.crystal_aluminium, ModItems.crystal_fluorite, ModItems.crystal_beryllium, ModItems.crystal_lead, ModItems.crystal_schraranium, ModItems.crystal_schrabidium, ModItems.crystal_rare, ModItems.crystal_phosphorus, ModItems.crystal_trixite, ModItems.crystal_lithium, ModItems.crystal_cobalt, ModItems.crystal_mineral, ModItems.crystal_nickel, ModItems.crystal_niobium, ModItems.crystal_zinc, ModItems.crystal_osmiridium, ModItems.crystal_cinnebar, ModItems.crystal_starmetal };
+
+		for(int i = 0; i < crystalMats.length; i++) {
+			Block crystalBlock = i < 16 ? ModBlocks.block_crystal : ModBlocks.block_crystal_2;
+			int meta = i < 16 ? i : i - 16;
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(crystalBlock, 1, meta),
+					"crystal" + crystalMats[i], "crystal" + crystalMats[i], "crystal" + crystalMats[i], "crystal" + crystalMats[i]));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(crystalItems[i], 4), "crystalBlock" + crystalMats[i]));
+		}
+
 		RecipeSorter.register("hbm:rbmk", RBMKFuelCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
 		RecipeSorter.register("hbm:cargo", CargoShellCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
 		RecipeSorter.register("hbm:scraps", ScrapsCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
@@ -350,9 +363,9 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(ModItems.blades_titanium, 1), new Object[] { "PIP", 'P', TI.plate(), 'I', new ItemStack(ModItems.blades_titanium, 1, OreDictionary.WILDCARD_VALUE) });
 
 		addRecipeAuto(new ItemStack(ModItems.laser_crystal_co2, 1), new Object[] { "QDQ", "NCN", "QDQ", 'Q', ModBlocks.glass_quartz, 'D', DESH.ingot(), 'N', NB.ingot(), 'C', new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CARBONDIOXIDE.getID()) });
-		addRecipeAuto(new ItemStack(ModItems.laser_crystal_bismuth, 1), new Object[] {"QUQ", "BCB", "QTQ", 'Q', ModBlocks.glass_quartz, 'U', U.ingot(), 'T', TH232.ingot(), 'B', ModItems.nugget_bismuth, 'C', ModItems.crystal_rare });
+ 	addRecipeAuto(new ItemStack(ModItems.laser_crystal_bismuth, 1), new Object[] {"QUQ", "BCB", "QTQ", 'Q', ModBlocks.glass_quartz, 'U', U.ingot(), 'T', TH232.ingot(), 'B', ModItems.nugget_bismuth, 'C', "crystalRare" });
 		addRecipeAuto(new ItemStack(ModItems.laser_crystal_cmb, 1), new Object[] {"QBQ", "CSC", "QBQ", 'Q', ModBlocks.glass_quartz, 'B', CMB.ingot(), 'C', SBD.ingot(), 'S', ModItems.cell_anti_schrabidium });
-		addRecipeAuto(new ItemStack(ModItems.laser_crystal_iron, 1), new Object[] {"QGQ", "CSC", "QGQ", 'Q', ModBlocks.glass_quartz, 'G', GAAS.ingot(), 'C', ModItems.crystal_iron, 'S', ModItems.egg_balefire_shard});
+ 	addRecipeAuto(new ItemStack(ModItems.laser_crystal_iron, 1), new Object[] {"QGQ", "CSC", "QGQ", 'Q', ModBlocks.glass_quartz, 'G', GAAS.ingot(), 'C', "crystalIron", 'S', ModItems.egg_balefire_shard});
 		addRecipeAuto(new ItemStack(ModItems.laser_crystal_dnt, 1), new Object[] {"QDQ", "SBZ", "QDQ", 'Q', ModBlocks.glass_quartz, 'D', DNT.ingot(), 'B', ModItems.egg_balefire, 'S', ModItems.powder_spark_mix, 'Z', ModItems.powder_zinc });
 		addRecipeAuto(new ItemStack(ModItems.laser_crystal_digamma, 1), new Object[] {"QUQ", "UEU", "QUQ", 'Q', ModBlocks.glass_quartz, 'U', ModItems.undefined, 'E', ModItems.ingot_electronium } );
 

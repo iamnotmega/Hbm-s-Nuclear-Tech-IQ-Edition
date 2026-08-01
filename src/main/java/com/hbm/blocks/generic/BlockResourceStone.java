@@ -60,6 +60,12 @@ public class BlockResourceStone extends BlockEnumMulti {
 			return ret;
 		}
 
+		if(meta == BlockEnums.EnumStoneType.COBALTITE.ordinal()) {
+			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+			ret.add(new ItemStack(ModItems.fragment_cobalt, 2 + world.rand.nextInt(2 + fortune)));
+			return ret;
+		}
+
 		return super.getDrops(world, x, y, z, meta, fortune);
 	}
 

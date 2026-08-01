@@ -373,6 +373,11 @@
 	"step.iron_land": {"category": "player", "sounds": [{"name": "footsteps/iron_land", "stream": false}]},
 	"step.iron": {"category": "player", "sounds": ["footsteps/iron1", "footsteps/iron2", "footsteps/iron3", "footsteps/iron4"]},
 	"step.metalBlock": {"category": "block", "sounds": ["footsteps/metalStep1", "footsteps/metalStep2", "footsteps/metalStep3", "footsteps/metalStep4"]},
+	"block.crystalBlockBreak": {"category": "block", "sounds": ["block/crystalBlockBreak1", "block/crystalBlockBreak2", "block/crystalBlockBreak3", "block/crystalBlockBreak4"]},
+	"block.crystalBlockPlace": {"category": "block", "sounds": ["block/crystalBlockPlace1", "block/crystalBlockPlace2", "block/crystalBlockPlace3", "block/crystalBlockPlace4"]},
+	"step.crystalBlock": {"category": "block", "sounds": ["block/crystalBlockStep1", "block/crystalBlockStep2", "block/crystalBlockStep3", "block/crystalBlockStep4", "block/crystalBlockStep5", "block/crystalBlockStep6", "block/crystalBlockStep7", "block/crystalBlockStep8", "block/crystalBlockStep9", "block/crystalBlockStep10", "block/crystalBlockStep11", "block/crystalBlockStep12", "block/crystalBlockStep13", "block/crystalBlockStep14"]},
+	"block.crystalBlockResonate": {"category": "block", "sounds": ["block/crystalBlockResonate1", "block/crystalBlockResonate2", "block/crystalBlockResonate3", "block/crystalBlockResonate4"]},
+	"block.crystalBlockShimmer": {"category": "block", "sounds": [{"name": "block/crystalBlockShimmer", "stream": false}]},
 	"step.powered": {"category": "player", "sounds": ["footsteps/powered1", "footsteps/powered2", "footsteps/powered3"]},
 	"step.morkite": {"category": "player", "sounds": ["mining/MorkiteMiningB_3", "mining/MorkiteMiningB_2", "mining/MorkiteMiningB_1"]},
 

@@ -83,7 +83,7 @@ public class TileEntityGeysir extends TileEntity {
 		}
 	}
 
-	private int getDelay() {
+	protected int getDelay() {
 
 		Block b = worldObj.getBlock(xCoord, yCoord, zCoord);
 		int meta = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
@@ -98,7 +98,7 @@ public class TileEntityGeysir extends TileEntity {
 		return 0;
 	}
 
-	private void perform() {
+	protected void perform() {
 
 		Block b = worldObj.getBlock(xCoord, yCoord, zCoord);
 

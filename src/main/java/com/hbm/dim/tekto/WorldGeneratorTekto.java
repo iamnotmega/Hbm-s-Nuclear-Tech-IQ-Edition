@@ -39,8 +39,6 @@ public class WorldGeneratorTekto implements IWorldGenerator {
 		int meta = CelestialBody.getMeta(world);
 		Block stone = ((WorldProviderCelestial) world.provider).getStone();
 
-		DungeonToolbox.generateOre(world, rand, i, j, WorldConfig.cobaltSpawn * 2,  6, 4, 8, ModBlocks.ore_cobalt, meta, stone);
-
 		BiomeGenBase biome = world.getBiomeGenForCoords(i + 16, j + 16);
 
 		for(int x = 0; x < 16; x++) {
