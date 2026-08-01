@@ -1,4 +1,38 @@
 Includes all changes and bugfixes from the latest upstream NTMain update - [X5758 - slime time, time for slime](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5758)
 
 ## Changes
-* Mun/Minmus sulfuric non-metal bedrock is now lapis
+# Added
+Cobaltite, which is now the main method of getting cobalt replacing ow cobalt and nether cobalt
+Mining it with silk touch gives the block, without gives 4-6 fragments
+Processed in crucible it yields 1 ingot of cobalt
+Flaming Anthracite, replaces flaming coal ore and acts as a more efficient version of base anthracite coal
+Can be crushed into chunks, processing further will yield coal  or coal dust
+Recipes for Mass glass production in crucible
+New netherglyphid blocks for future nether glyphid biome
+New cyst block that vomits blood with new TE class under .deco pkg
+Oredicts for all crystal items
+Crystal blocks which are to be used in a future geode structure or meteorite/spires of red phosphorus crystals to replace the old red phosphorus ore
+Also act as storage blocks
+Big WorldManager, ChunkManager files for new nether biome work
+Added new FleshPlant class extending blockenummulti for future glyphid biome
+Infrastructure for the new symbol system
+Symbols are permanent buffs/debuffs with unique effects for each symbol, behaviors in the shared SymbolBehavior class, with a typed system such that you can have specific effects for specific symbols n shit
+Also a new interface to provide getters and setters for symbols
+Each symbol has a set of hardcoded behaviors in it in SymbolBehavior
+Future, you'll be able to find them in nether loot
+They are themed around religion
+1 new Symbol, Guilt
+New [Drug] and [Consumable] Fluid Traits
+[Drug] Is used for new syringes, which replace the old consumables
+New Effects: Roid Rage, Med-X, and Stimulated
+[Consumable] Is for new Auto-Drip armor mod, which slowly dripfeeds you a fluid.
+
+
+
+# Changed
+Removed cobalt ore (kept block)
+Removed flaming coal ore (kept block)
+Moved rutile to nether
+Changes to the ritual class and ritual output type, so it detects
+    ItemSymbol.SymbolType type = ((ItemSymbol) center.item.getItem()).getSymbolType(center.item);
+And if symbol, assigns that symbol's metadata as a player prop enum that corresponds to the metadata from that symbol.
