@@ -536,9 +536,9 @@ public class HazardRegistry {
 		//crystal blocks
 		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal), 1, 6), makeData(RADIATION, u * crystal * 4));
 		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal), 1, 7), makeData(RADIATION, th232 * crystal * 4));
-		HazardSystem.register(newster(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal_2), 1, 2), makeData(RADIATION, sr * crystal * 4));
-		HazardSystem.register(new I ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal), 1, 8), makeData(RADIATION, pu * crystal * 4));
-		HazardSystem.regitemStack(Item.getItemFromBlock(ModBlocks.block_crystal_2), 1, 3), makeData(RADIATION, sa326 * crystal * 4));
+		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal_2), 1, 2), makeData(RADIATION, sr * crystal * 4));
+		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal), 1, 8), makeData(RADIATION, pu * crystal * 4));
+		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal_2), 1, 3), makeData(RADIATION, sa326 * crystal * 4));
 		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal_2), 1, 5), makeData(HOT, 2F * crystal * 4));
 		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal_2), 1, 7), makeData(HYDROACTIVE, 1F * crystal * 4));
 		HazardSystem.register(new ItemStack(Item.getItemFromBlock(ModBlocks.block_crystal_2), 1, 6), makeData(RADIATION, trx * crystal * 4));
