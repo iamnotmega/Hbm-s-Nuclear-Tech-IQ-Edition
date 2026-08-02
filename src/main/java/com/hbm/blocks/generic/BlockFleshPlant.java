@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.hbm.blocks.BlockEnumMulti;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModSoundType;
 import com.hbm.lib.RefStrings;
 
 import net.minecraft.block.Block;
@@ -18,11 +19,21 @@ public class BlockFleshPlant extends BlockEnumMulti {
 
 	public BlockFleshPlant() {
 		super(Material.plants, EnumFleshPlantType.class, true, true);
+		this.setStepSound(ModSoundType.mod("plantsquish", 1.0F, 1.0F));
 	}
 
 	public static enum EnumFleshPlantType {
 		TENDON,
-		PEEPING;
+		PEEPING,
+		BULB_BIG,
+		BULB_SMALL,
+		FEVER,
+		FEVER_SMALL,
+		GLYPHID_VENT,
+		HAIR_SHORT,
+		HAIR_TALL,
+		LUNG,
+		SPINE_FERN;
 	}
 
 	@Override
@@ -87,6 +98,15 @@ public class BlockFleshPlant extends BlockEnumMulti {
 		switch((EnumFleshPlantType) num) {
 		case TENDON:  return RefStrings.MODID + ":tendonweed";
 		case PEEPING: return RefStrings.MODID + ":tendonweed_eye";
+		case BULB_BIG: return RefStrings.MODID + ":bulbplantbig";
+		case BULB_SMALL: return RefStrings.MODID + ":bulbplantsmall";
+		case FEVER: return RefStrings.MODID + ":fevershroom";
+		case FEVER_SMALL: return RefStrings.MODID + ":fevershroomsmall";
+		case GLYPHID_VENT: return RefStrings.MODID + ":glyphidvent";
+		case HAIR_SHORT: return RefStrings.MODID + ":hairplantshort";
+		case HAIR_TALL: return RefStrings.MODID + ":hairplanttall";
+		case LUNG: return RefStrings.MODID + ":lungplant";
+		case SPINE_FERN: return RefStrings.MODID + ":spinefern";
 		}
 		return super.getTextureMultiName(num);
 	}

@@ -492,13 +492,17 @@ public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IB
 			if(b.getMaterial() == Material.wood && isWithinWorkingArea(bx, bz) && canSupportSapling(worldObj, bx, by - 1, bz)) {
 				int bmeta = worldObj.getBlockMetadata(bx, by, bz);
 				int sapMeta = 0;
-				if(b == Blocks.log) {
-					sapMeta = bmeta & 3;
-				} else if(b == Blocks.log2) {
-					sapMeta = (bmeta & 3) + 4;
-				}
-				worldObj.func_147480_a(bx, by, bz, true);
-				worldObj.setBlock(bx, by, bz, Blocks.sapling, sapMeta, 3);
+		if(b == Blocks.log) {
+			sapMeta = bmeta & 3;
+		} else if(b == Blocks.log2) {
+			sapMeta = (bmeta & 3) + 4;
+		} else if(b == ModBlocks.bloatsprout_log) {
+			worldObj.func_147480_a(bx, by, bz, true);
+			worldObj.setBlock(bx, by, bz, ModBlocks.bloatsprout_sapling, 0, 3);
+			continue;
+		}
+		worldObj.func_147480_a(bx, by, bz, true);
+		worldObj.setBlock(bx, by, bz, Blocks.sapling, sapMeta, 3);
 			} else {
 				worldObj.func_147480_a(bx, by, bz, true);
 			}

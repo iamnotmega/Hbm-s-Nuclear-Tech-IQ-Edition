@@ -62,6 +62,7 @@ import com.hbm.render.util.RenderAccessoryUtility;
 import com.hbm.render.util.RenderOverhead;
 import com.hbm.render.util.RenderScreenOverlay;
 import com.hbm.render.util.SoyuzPronter;
+import com.hbm.render.util.SuperSecretShader;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.sound.MovingSoundChopper;
 import com.hbm.sound.MovingSoundChopperMine;
@@ -987,6 +988,7 @@ public class ModEventHandlerClient {
 	public static int lastBrightness = 0;
 
 	static boolean isRenderingItems = false;
+	private static boolean roidRagePhosphorActive = false;
 
 	@SubscribeEvent
 	public void clientTick(ClientTickEvent event) {
@@ -1011,6 +1013,16 @@ public class ModEventHandlerClient {
 			return;
 
 		if(event.phase == Phase.START && event.side == Side.CLIENT) {
+
+			boolean hasRoidRage = mc.thePlayer.isPotionActive(HbmPotion.roidRage);
+			if(hasRoidRage != roidRagePhosphorActive) {
+				roidRagePhosphorActive = hasRoidRage;
+				if(hasRoidRage) {
+					SuperSecretShader.apply("shaders/post/phosphor.json");
+				} else {
+					SuperSecretShader.remove("shaders/post/phosphor.json");
+				}
+			}
 
 			if(BlockAshes.ashes > 256) BlockAshes.ashes = 256;
 			if(BlockAshes.ashes > 0) BlockAshes.ashes -= 2;

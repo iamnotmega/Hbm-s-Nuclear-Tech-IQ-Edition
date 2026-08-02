@@ -424,5 +424,8 @@
 	"alarm.singer": {"category": "player", "sounds": ["alarm/singer1", "alarm/singer2", "alarm/singer3", "alarm/singer4"]},
 	"alarm.ducc": {"category": "record", "sounds": [{"name": "alarm/ducc", "stream": false}]},
 	"alarm.mama": {"category": "record", "sounds": [{"name": "alarm/mama", "stream": false}]},
-	"alarm.ping": {"category": "player", "sounds": [{"name": "alarm/alarmping", "stream": false}]}
+	"alarm.ping": {"category": "player", "sounds": [{"name": "alarm/alarmping", "stream": false}]},
+
+	"dig.plantsquish": {"category": "block", "sounds": ["plantsquish0", "plantsquish1", "plantsquish2", "plantsquish3", "plantsquish4"]},
+	"step.plantsquish": {"category": "block", "sounds": ["plantsquish0", "plantsquish1", "plantsquish2", "plantsquish3", "plantsquish4"]}
 }

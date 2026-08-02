@@ -25,9 +25,11 @@ import net.minecraft.world.gen.feature.WorldGenHellLava;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.structure.MapGenNetherBridge;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import cpw.mods.fml.common.eventhandler.Event;
 
 public class ChunkProviderHbmHell implements IChunkProvider {
 
@@ -113,7 +115,12 @@ public class ChunkProviderHbmHell implements IChunkProvider {
 	}
 
 	private void replaceBlocksForBiome(int cx, int cz, Block[] blocks, BiomeGenBase[] biomes) {
-		byte seaLevel = 32;
+		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, cx, cz, blocks, biomes);
+		MinecraftForge.EVENT_BUS.post(event);
+		if(event.getResult() == Event.Result.DENY) return;
+
+		byte b0 = 32;
+		byte a0 = 64;
 		double freq = 0.03125D;
 		sandNoise = noiseGen4.generateNoiseOctaves(sandNoise, cx * 16, cz * 16, 0, 16, 16, 1, freq, freq, 1.0D);
 		gravelNoise = noiseGen4.generateNoiseOctaves(gravelNoise, cx * 16, 109, cz * 16, 16, 1, 16, freq, 1.0D, freq);
@@ -124,9 +131,19 @@ public class ChunkProviderHbmHell implements IChunkProvider {
 				BiomeGenBase biome = biomes[x + z * 16];
 				Block topBlock = biome.topBlock;
 				Block fillerBlock = biome.fillerBlock;
+				byte topMeta = (byte) biome.field_150604_aj;
+				byte fillerMeta = (byte) biome.field_76754_C;
 
-				boolean putSoulSand = sandNoise[x + z * 16] + hellRNG.nextDouble() * 0.2D > 0.0D;
-				boolean putGravel   = gravelNoise[x + z * 16] + hellRNG.nextDouble() * 0.2D > 0.0D;
+				// i had to do this because for some fucking reason that is beyond my comprehension the top layer of Hell kept on reverting to grass
+				// so here we fuckning are
+
+				if(biome == BiomeGenBase.hell) {
+					if(topBlock != Blocks.netherrack) topBlock = Blocks.netherrack;
+					if(fillerBlock != Blocks.netherrack) fillerBlock = Blocks.netherrack;
+				}
+
+				boolean putSoulSand = biome == BiomeGenBase.hell && sandNoise[x + z * 16] + hellRNG.nextDouble() * 0.2D > 0.0D;
+				boolean putGravel   = biome == BiomeGenBase.hell && gravelNoise[x + z * 16] + hellRNG.nextDouble() * 0.2D > 0.0D;
 				int surfaceDepth = (int)(exclusionNoise[x + z * 16] / 3.0D + 3.0D + hellRNG.nextDouble() * 0.25D);
 
 				int depth = -1;
@@ -144,7 +161,7 @@ public class ChunkProviderHbmHell implements IChunkProvider {
 								if(surfaceDepth <= 0) {
 									topBlock = Blocks.air;
 									fillerBlock = Blocks.netherrack;
-								} else if(y >= seaLevel - 4 && y <= seaLevel + 1) {
+								} else if(y >= a0 - 4 && y <= a0 + 1) {
 									topBlock = Blocks.netherrack;
 									fillerBlock = Blocks.netherrack;
 									if(putGravel) { topBlock = Blocks.gravel; }
@@ -152,11 +169,11 @@ public class ChunkProviderHbmHell implements IChunkProvider {
 									if(putSoulSand) { topBlock = Blocks.soul_sand; }
 									if(putSoulSand) { fillerBlock = Blocks.soul_sand; }
 								}
-								if(y < seaLevel && topBlock == Blocks.air) {
+								if(y < b0 && topBlock == Blocks.air) {
 									topBlock = Blocks.lava;
 								}
 								depth = surfaceDepth;
-								blocks[index] = (y >= seaLevel - 1) ? topBlock : fillerBlock;
+								blocks[index] = (y >= a0 - 1) ? topBlock : fillerBlock;
 							} else if(depth > 0) {
 								depth--;
 								blocks[index] = fillerBlock;

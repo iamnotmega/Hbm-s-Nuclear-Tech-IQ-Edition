@@ -268,6 +268,7 @@ public class Fluids {
 	public static FluidType TICL4;
 	public static FluidType HEAVY_SAND_SLOP;
 	public static FluidType MONAZITE_SLOP;
+	public static FluidType NETHERAIR;
 
 	/* Lagacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
@@ -568,6 +569,7 @@ public class Fluids {
 		MONAZITE_SLOP =			new FluidType("MONAZITE_SLOP",		0xC4A84B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
+		NETHERAIR =				new FluidType("NETHERAIR",			0xB34B4B, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x8C21FF, 0xFFFFFF)).addTraits(GASEOUS);
 
 		File folder = MainRegistry.configHbmDir;
 		File customTypes = new File(folder.getAbsolutePath() + File.separatorChar + "hbmFluidTypes.json");
@@ -733,6 +735,7 @@ public class Fluids {
 		metaOrder.add(CHLOROETHANE); //oh yeah this is meant to be that inbetween step for making the cast fluid
 		//airs
 		metaOrder.add(EARTHAIR); //do it for love, do it for life, for mankiiiiiind!!
+		metaOrder.add(NETHERAIR);
 		metaOrder.add(DUNAAIR);
 		metaOrder.add(EVEAIR); //iodine, mercury, potassium permenganate
 		metaOrder.add(JOOLGAS);
@@ -851,6 +854,7 @@ public class Fluids {
 				.addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, true).add(new PotionEffect(Potion.wither.id, 100, 1), new PotionEffect(Potion.confusion.id, 100, 0))));
 		ESTRADIOL.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.PARTICLE_FINE, false).add(new PotionEffect(HbmPotion.death.id, 60 * 60 * 20, 0))));
 		REDMUD.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, false).add(new PotionEffect(Potion.wither.id, 30 * 20, 2))));
+		NETHERAIR.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 1.5F, 20, HazardClass.GAS_MONOXIDE, false)).addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 1.5F, 20, HazardClass.GAS_LUNG, false)));
 
 		AIR.addTraits(new FT_Heatable().setEff(HeatingType.BOILER, 1.0D).addStep(5, 1, AIRBLAST, 1));
 

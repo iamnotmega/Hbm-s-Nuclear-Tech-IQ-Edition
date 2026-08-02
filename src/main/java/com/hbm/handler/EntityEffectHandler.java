@@ -1,8 +1,10 @@
 package com.hbm.handler;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import com.hbm.config.GeneralConfig;
 import com.hbm.config.RadiationConfig;
@@ -11,7 +13,9 @@ import com.hbm.config.WorldConfig;
 import com.hbm.dim.CelestialBody;
 import com.hbm.dim.WorldProviderCelestial;
 import com.hbm.dim.orbit.WorldProviderOrbit;
+import com.hbm.dim.hell.WorldProviderHbmHell;
 import com.hbm.dim.trait.CBT_Atmosphere;
+import com.hbm.dim.trait.CBT_Atmosphere.FluidEntry;
 import com.hbm.entity.missile.EntityRideableRocket;
 import com.hbm.entity.mob.EntityCyberCrab;
 import com.hbm.entity.mob.glyphid.EntityGlyphid;
@@ -31,6 +35,7 @@ import com.hbm.handler.threading.PacketThreading;
 import com.hbm.interfaces.IArmorModDash;
 import com.hbm.items.ItemVOTVdrive.Target;
 import com.hbm.items.armor.ArmorFSB;
+import com.hbm.inventory.fluid.trait.FT_Toxin;
 import com.hbm.items.weapon.sedna.factory.ConfettiUtil;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.main.MainRegistry;
@@ -73,6 +78,10 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
+import net.minecraft.world.gen.structure.MapGenNetherBridge;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
 
 public class EntityEffectHandler {
 
@@ -137,9 +146,10 @@ public class EntityEffectHandler {
 
 			CBT_Atmosphere atmosphere = getAtmosphereCached(entity);
 
-			handleOxy(entity, atmosphere);
-			handleCorrosion(entity, atmosphere);
-		}
+		handleOxy(entity, atmosphere);
+		handleCorrosion(entity, atmosphere);
+		handleToxicity(entity, atmosphere);
+	}
 
 		handleContamination(entity);
 		handleContagion(entity);
@@ -424,6 +434,43 @@ public class EntityEffectHandler {
 		if(ArmorUtil.checkForCorrosion(entity, atmosphere)) {
 			entity.attackEntityFrom(ModDamageSource.acid, 1);
 		}
+	}
+    // nether stuff
+	private static void handleToxicity(EntityLivingBase entity, CBT_Atmosphere atmosphere) {
+		if(entity.worldObj.isRemote) return;
+		if(atmosphere == null) return;
+		if(entity.ridingEntity instanceof EntityRideableRocket) return;
+		if(isNetherNativeMob(entity)) return;
+
+		for(FluidEntry entry : atmosphere.fluids) {
+			if(entry.fluid.hasTrait(FT_Toxin.class)) {
+				FT_Toxin trait = entry.fluid.getTrait(FT_Toxin.class);
+				trait.affect(entity, entry.pressure);
+			}
+		}
+	}
+
+	private static Set<Class<?>> netherSpawnClasses;
+
+	private static boolean isNetherNativeMob(EntityLivingBase entity) {
+		if(!(entity.worldObj.provider instanceof WorldProviderHbmHell)) return false;
+
+		if(netherSpawnClasses == null) {
+			netherSpawnClasses = new HashSet<Class<?>>();
+
+			for(BiomeGenBase biome : BiomeGenBase.getBiomeGenArray()) {
+				if(biome == null) continue;
+				if(!BiomeDictionary.isBiomeOfType(biome, Type.NETHER)) continue;
+				List<SpawnListEntry> spawns = biome.getSpawnableList(EnumCreatureType.monster);
+				if(spawns == null) continue;
+				for(SpawnListEntry entry : spawns) netherSpawnClasses.add(entry.entityClass);
+			}
+
+			List<SpawnListEntry> fortressSpawns = new MapGenNetherBridge().getSpawnList();
+			for(SpawnListEntry entry : fortressSpawns) netherSpawnClasses.add(entry.entityClass);
+		}
+
+		return netherSpawnClasses.contains(entity.getClass());
 	}
 
 	private static void handleDigamma(EntityLivingBase entity) {

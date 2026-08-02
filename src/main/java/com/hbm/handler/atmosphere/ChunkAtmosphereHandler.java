@@ -11,6 +11,7 @@ import java.util.Queue;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.GeneralConfig;
 import com.hbm.dim.CelestialBody;
+import com.hbm.dim.hell.WorldProviderHbmHell;
 import com.hbm.dim.orbit.WorldProviderOrbit;
 import com.hbm.dim.trait.CBT_Atmosphere;
 import com.hbm.dim.trait.CBT_Atmosphere.FluidEntry;
@@ -95,8 +96,9 @@ public class ChunkAtmosphereHandler {
 
 	// returns a atmosphere that is safe for modification
 	private CBT_Atmosphere getCelestialAtmosphere(World world) {
-		if(world.provider instanceof WorldProviderOrbit) return new CBT_Atmosphere();
-		CBT_Atmosphere atmosphere = CelestialBody.getTrait(world, CBT_Atmosphere.class);
+	if(world.provider instanceof WorldProviderOrbit) return new CBT_Atmosphere();
+	if(world.provider instanceof WorldProviderHbmHell) return new CBT_Atmosphere(Fluids.EARTHAIR, 0.21D).and(Fluids.NETHERAIR, 0.79D);
+	CBT_Atmosphere atmosphere = CelestialBody.getTrait(world, CBT_Atmosphere.class);
 		if(atmosphere == null)
 			return new CBT_Atmosphere();
 

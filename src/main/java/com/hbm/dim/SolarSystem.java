@@ -884,7 +884,7 @@ public class SolarSystem {
 
 	// Provides the deltaV required to transfer from the orbit of one body to the orbit of another
 	// Does not currently support travelling to the main body (Sol)
-	// Our structure doesn't currently require this, but if it does, go annoy Mellow to add it lmao
+	// Our structure doesn't currently require this, but if it does, go annoy Mellow to add it zibidibizap
 	public static double getDeltaVBetween(CelestialBody start, CelestialBody end) {
 		return calculateHohmannTransfer(start, end);
 	}

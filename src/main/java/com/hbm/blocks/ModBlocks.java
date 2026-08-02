@@ -568,6 +568,9 @@ public class ModBlocks {
 
 	public static Block crop_paraffin;
 	public static Block sapling_pvc;
+	public static Block bloatsprout_log;
+	public static Block bloatsprout_sapling;
+	public static Block bloatsprout_leaves;
 
 	public static Block waste_earth;
 	public static Block waste_mycelium;
@@ -1904,7 +1907,7 @@ public class ModBlocks {
 		rubber_farmland = new BlockRubberFarm(Material.sand).setBlockName("rubber_farmland").setStepSound(Block.soundTypeGravel).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":rubber_silt");
 
 		plant_flower = new BlockNTMFlower().setBlockName("plant_flower").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
-		plant_flesh = new BlockFleshPlant().setBlockName("plant_flesh").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
+		plant_flesh = new BlockFleshPlant().setBlockName("plant_flesh").setCreativeTab(MainRegistry.blockTab).setHardness(0.0F);
 		nether_glyphid = new BlockNetherGlyphid(Material.coral).setBlockName("nether_glyphid").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeCloth).setHardness(0.5F);
 		bloatfire = new BlockBloatfire().setBlockName("bloatfire").setHardness(0.0F).setLightLevel(1.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":bloatfire");
 		plant_tall = new BlockTallPlant().setBlockName("plant_tall").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
@@ -1923,6 +1926,7 @@ public class ModBlocks {
 		vine_phosphor = new BlockHangingVine(thick_foliage).setBlockName("vine_phosphor").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.5F);
 		crop_paraffin = new BlockCrop(ModBlocks.rubber_farmland, (atmosphere) -> atmosphere.hasFluid(Fluids.TEKTOAIR, 0.1) || atmosphere.hasFluid(Fluids.CHLORINE, 0.1), false).setBlockName("crop_paraffin").setStepSound(Block.soundTypeGrass).setHardness(0.0F).setBlockTextureName(RefStrings.MODID + ":paraffin");
 		sapling_pvc = new BlockNTSapling().setBlockName("sapling").setCreativeTab(MainRegistry.blockTab);
+		bloatsprout_sapling = new BlockBloatsproutSapling().setBlockName("bloatsprout_sapling").setCreativeTab(MainRegistry.blockTab);
 
 		waste_earth = new WasteEarth(Material.ground, true).setBlockName("waste_earth").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.6F).setBlockTextureName(RefStrings.MODID + ":waste_earth");
 		waste_mycelium = new WasteEarth(Material.ground, true).setBlockName("waste_mycelium").setStepSound(Block.soundTypeGrass).setLightLevel(1F).setCreativeTab(MainRegistry.blockTab).setHardness(0.6F).setBlockTextureName(RefStrings.MODID + ":waste_mycelium_side");
@@ -2690,6 +2694,8 @@ public class ModBlocks {
 		vinyl_log = new BlockLogNT(RefStrings.MODID + ":vinyl_log_side", RefStrings.MODID + ":vinyl_log_top").setBlockName("vinyl_log").setStepSound(Block.soundTypeWood).setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F);
 		pvc_log = new BlockLogNT(RefStrings.MODID + ":pvc_log_side", RefStrings.MODID + ":pvc_log_top").setBlockName("pvc_log").setStepSound(Block.soundTypeWood).setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F);
 		rubber_leaves = new BlockRubberLeaves().setBlockName("rubber_leaves").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F).setBlockTextureName(RefStrings.MODID + ":rubber_leaves");
+		bloatsprout_log = new BlockBloatsproutLog().setBlockName("bloatsprout_log").setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F);
+		bloatsprout_leaves = new BlockBloatsproutLeaves().setBlockName("bloatsprout_leaves").setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F).setBlockTextureName(RefStrings.MODID + ":bloatsprout_leaves");
 		rubber_grass = new RubberGrass(Material.grass, false).setBlockName("rubber_grass").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F);
 		rubber_silt = new BlockGeneric(Material.sand).setBlockName("rubber_silt").setStepSound(Block.soundTypeGravel).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":rubber_silt");
 		rubber_plant = new BlockRubberPlant().setBlockName("rubber_plant").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
@@ -3244,6 +3250,7 @@ public class ModBlocks {
 
 		GameRegistry.registerBlock(moon_rock, moon_rock.getUnlocalizedName());
 		register(sapling_pvc);
+		register(bloatsprout_sapling);
 
 		GameRegistry.registerBlock(duna_sands, duna_sands.getUnlocalizedName());
 		GameRegistry.registerBlock(duna_cobble, duna_cobble.getUnlocalizedName());
@@ -3306,6 +3313,8 @@ public class ModBlocks {
 
 		GameRegistry.registerBlock(pvc_log, pvc_log.getUnlocalizedName());
 		GameRegistry.registerBlock(rubber_leaves, rubber_leaves.getUnlocalizedName());
+		GameRegistry.registerBlock(bloatsprout_log, bloatsprout_log.getUnlocalizedName());
+		GameRegistry.registerBlock(bloatsprout_leaves, bloatsprout_leaves.getUnlocalizedName());
 		GameRegistry.registerBlock(rubber_grass, rubber_grass.getUnlocalizedName());
 		GameRegistry.registerBlock(rubber_silt, rubber_silt.getUnlocalizedName());
 		GameRegistry.registerBlock(spike_cacti, spike_cacti.getUnlocalizedName());
