@@ -26,7 +26,13 @@ New [Drug] and [Consumable] Fluid Traits
 [Drug] Is used for new syringes, which replace the old consumables
 New Effects: Roid Rage, Med-X, and Stimulated
 [Consumable] Is for new Auto-Drip armor mod, which slowly dripfeeds you a fluid.
-
+Bloatsprout tree
+Automatable in buzzsaw
+Nether air being harmful, you now need a mask to travel in it.
+New supersecreteffects class allowing you to apply supersecreteffect shaders DIRECTLY from main mc resource location
+This is used in a new renderer for psycho/roid rage which uses the new phosphor renderer now
+All new flesh plants, their sounds, and textures
+New base for future nether biomes (NetherBiomeBase) to be extended and filled out when making a new nether biome
 
 
 # Changed
@@ -36,3 +42,5 @@ Moved rutile to nether
 Changes to the ritual class and ritual output type, so it detects
     ItemSymbol.SymbolType type = ((ItemSymbol) center.item.getItem()).getSymbolType(center.item);
 And if symbol, assigns that symbol's metadata as a player prop enum that corresponds to the metadata from that symbol.
+Major changes to ChunkProviderHbmHell, which results in the chunk provider actually working and having like 10 times better generation, I copied from EFR most of it
+Also for some reason the toplayer of the hell biome kept on corrupting to grass so i had to add like a hard guard for that, might be removed in future
