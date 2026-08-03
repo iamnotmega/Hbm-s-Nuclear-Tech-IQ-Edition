@@ -1,7 +1,9 @@
 package com.hbm.itempool;
 
+import static com.hbm.lib.HbmChestContents.filledSyringe;
 import static com.hbm.lib.HbmChestContents.weighted;
 
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.material.Mats;
 import com.hbm.items.ItemEnums;
 import com.hbm.items.ModItems;
@@ -62,7 +64,10 @@ public class ItemPoolsPile {
 					weighted(ModItems.bottle_quantum, 0, 1, 2, 1),
 					weighted(ModItems.definitelyfood, 0, 5, 12, 20),
 					weighted(ModItems.egg_glyphid, 0, 1, 3, 30),
-					weighted(ModItems.combat_syringe, 0, 1, 1, 5),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.STIMPAK), 1, 1, 2),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.MEDX), 1, 1, 1),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.PSYCHO), 1, 1, 1),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.SUPER_STIMPAK), 1, 1, 1),
 					weighted(ModItems.iv_blood, 0, 1, 1, 10),
 					weighted(Items.experience_bottle, 0, 1, 3, 5),
 			};
@@ -89,9 +94,14 @@ public class ItemPoolsPile {
 		//medicine stashes
 		new ItemPool(POOL_PILE_MED_SYRINGE) {{
 			this.pool = new WeightedRandomChestContent[] {
-					weighted(ModItems.combat_syringe, 0, 1, 1, 10),
-					weighted(ModItems.combat_syringe, 0, 1, 1, 5),
-					weighted(ModItems.combat_syringe, 0, 1, 1, 5),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.STIMPAK), 1, 1, 4),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.MEDX), 1, 1, 3),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.PSYCHO), 1, 1, 2),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.SUPER_STIMPAK), 1, 1, 1),
+					weighted(filledSyringe(ModItems.syringe, Fluids.STIMPAK), 1, 1, 2),
+					weighted(filledSyringe(ModItems.syringe, Fluids.MEDX), 1, 1, 1),
+					weighted(filledSyringe(ModItems.syringe, Fluids.PSYCHO), 1, 1, 1),
+					weighted(filledSyringe(ModItems.syringe, Fluids.SUPER_STIMPAK), 1, 1, 1),
 			};
 		}};
 		new ItemPool(POOL_PILE_MED_PILLS) {{
@@ -138,8 +148,14 @@ public class ItemPoolsPile {
 				weighted(ModItems.coil_tungsten, 0, 0, 2, 15),
 				weighted(ModItems.can_empty, 0, 0, 1, 15),
 				weighted(ModItems.ingot_asbestos, 0, 0, 1, 15),
-				weighted(ModItems.combat_syringe, 0, 0, 1, 15),
-				weighted(ModItems.syringe, 0, 0, 1, 15),
+				weighted(filledSyringe(ModItems.combat_syringe, Fluids.STIMPAK), 0, 1, 6),
+				weighted(filledSyringe(ModItems.combat_syringe, Fluids.MEDX), 0, 1, 4),
+				weighted(filledSyringe(ModItems.combat_syringe, Fluids.PSYCHO), 0, 1, 3),
+				weighted(filledSyringe(ModItems.combat_syringe, Fluids.SUPER_STIMPAK), 0, 1, 2),
+				weighted(filledSyringe(ModItems.syringe, Fluids.STIMPAK), 0, 1, 6),
+				weighted(filledSyringe(ModItems.syringe, Fluids.MEDX), 0, 1, 4),
+				weighted(filledSyringe(ModItems.syringe, Fluids.PSYCHO), 0, 1, 3),
+				weighted(filledSyringe(ModItems.syringe, Fluids.SUPER_STIMPAK), 0, 1, 2),
 				weighted(ModItems.pipe_lead, 0, 0, 1, 5),
 				weighted(ModItems.motor, 0, 0, 1, 5),
 				weighted(ModItems.canned_conserve, 2, 0, 1, 5),

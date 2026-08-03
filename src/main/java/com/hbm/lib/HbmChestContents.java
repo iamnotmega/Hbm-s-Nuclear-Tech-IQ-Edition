@@ -1,6 +1,8 @@
 package com.hbm.lib;
 
+import com.hbm.inventory.fluid.FluidType;
 import com.hbm.items.special.ItemBookLore;
+import com.hbm.items.tool.ItemFluidSyringe;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +15,13 @@ public class HbmChestContents {
 	public static WeightedRandomChestContent weighted(Item item, int meta, int min, int max, int weight) { return new WeightedRandomChestContent(item, meta, Math.min(min, max), Math.max(min, max), weight); }
 	public static WeightedRandomChestContent weighted(Block block, int meta, int min, int max, int weight) { return new WeightedRandomChestContent(Item.getItemFromBlock(block), meta, Math.min(min, max), Math.max(min, max), weight); }
 	public static WeightedRandomChestContent weighted(ItemStack item, int min, int max, int weight) { return new WeightedRandomChestContent(item, Math.min(min, max), Math.max(min, max), weight); }
+
+	public static ItemStack filledSyringe(Item item, FluidType type) {
+		ItemStack stack = new ItemStack(item);
+		ItemFluidSyringe syringe = (ItemFluidSyringe) item;
+		syringe.setFill(stack, type, syringe.getCapacity(stack));
+		return stack;
+	}
 
 	/** ITEMBOOKLORE SHIT */
 	//one downside of all this huge flexibility, make a wrapper if it's too annoying

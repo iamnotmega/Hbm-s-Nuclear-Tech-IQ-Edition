@@ -218,7 +218,9 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTBlo
 		MICROWAVE(		"Microwave",						"Microwave",		"OC Compatibility and massive RBMK/packet optimizations",		"they call me the food heater$john optimization",                                                                    true, ScrapType.BRIDGE_BIOS),
 		MELLOW(			"MELLOWARPEGGIATION",				"Mellow",			"Celestial mechanics, rocketry,$atmospheric chemistry, orbital stations,$Dyson swarms",						"Make something cool now, ask for permission later.",												true,	ScrapType.CARD_PROCESSOR),
 		MRKIMKIMORA(	"MrKimkimora",						"MrKimkimora",		"Part of NTM:Space models,$textures and russian localization",						"I know your IP. Your IP is 127.0.0.1.",												false,	ScrapType.BOARD_BLANK),
-		ABEL(			"Abel1502", 						"Abel1502", 		"Abilities GUI, optimizations and many QoL improvements", 	"NANTO SUBARASHII",																				true,	ScrapType.CPU_REGISTER);
+		ABEL(			"Abel1502", 						"Abel1502", 		"Abilities GUI, optimizations and many QoL improvements", 	"NANTO SUBARASHII",																				true,	ScrapType.CPU_REGISTER),
+		IRIS(			"iris-lgtm",						"iris-lgtm",		"Main developer of IQ Edition",								"Tam69 iq",																						true,	ScrapType.CPU_SOCKET),
+		TAM69(			"tam69420",							"tam69420",			"Piss",														"Major Big Fixes Improvement",																	true,	ScrapType.BOARD_BLANK);
 
 		public String name;			//the title of the tooltip
 		public String label;		//the name engraved in the socket

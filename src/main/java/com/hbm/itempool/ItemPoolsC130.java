@@ -1,5 +1,6 @@
 package com.hbm.itempool;
 
+import static com.hbm.lib.HbmChestContents.filledSyringe;
 import static com.hbm.lib.HbmChestContents.weighted;
 
 import com.hbm.blocks.ModBlocks;
@@ -21,7 +22,10 @@ public class ItemPoolsC130 {
 		new ItemPool(POOL_SUPPLIES) {{
 			this.pool = new WeightedRandomChestContent[] {
 					weighted(ModItems.definitelyfood, 0, 3, 10, 25),
-					weighted(ModItems.combat_syringe, 0, 1, 3, 10),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.STIMPAK), 1, 3, 4),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.MEDX), 1, 3, 3),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.PSYCHO), 1, 3, 2),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.SUPER_STIMPAK), 1, 3, 1),
 					weighted(ModItems.pill_iodine, 0, 1, 2, 2),
 					weighted(ModItems.canister_full, Fluids.DIESEL.getID(), 1, 4, 5),
 					weighted(ModBlocks.machine_diesel, 0, 1, 1, 1),
