@@ -83,6 +83,10 @@ public class FluidContainerRegistry {
 		FluidContainerRegistry.registerContainer(new FluidContainer(new ItemStack(ModBlocks.dry_ice), null, Fluids.CARBONDIOXIDE, 1000)); //literal block of carbon dioxide
 		//will be useful to heat up atmospheres, trust me.
 
+		// @tam TODO:add "fine wine", made by filling a (ModItems.glass_empty) with 250mb of piss
+		FluidContainerRegistry.registerContainer(new FluidContainer(new ItemStack(ModItems.rag_piss), new ItemStack(ModItems.rag), Fluids.PISS, 100));
+		FluidContainerRegistry.registerContainer(new FluidContainer(new ItemStack(ModItems.rag_blood), new ItemStack(ModItems.rag), Fluids.BLOOD, 100));
+
 		FluidType[] fluids = Fluids.getAll();
 		for(int i = 1; i < fluids.length; i++) {
 
