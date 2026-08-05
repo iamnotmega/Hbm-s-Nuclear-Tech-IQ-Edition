@@ -269,6 +269,10 @@ public class Fluids {
 	public static FluidType HEAVY_SAND_SLOP;
 	public static FluidType MONAZITE_SLOP;
 
+	public static FluidType PISS;
+	public static FluidType PISS_HOT;
+	public static FluidType PISS_DEPLETED;
+
 	/* Lagacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
 
@@ -565,7 +569,10 @@ public class Fluids {
 		TAMSLOP =				new FluidType("TAMSLOP",			0x5B9E3F, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(1.0F, 0.1F).addEffect(Potion.regeneration.id, 2));
 		TICL4 =				new FluidType("TICL4",				0xFF69B4, 1, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
 		HEAVY_SAND_SLOP =		new FluidType("HEAVY_SAND_SLOP",	0x8B7D6B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
-		MONAZITE_SLOP =			new FluidType("MONAZITE_SLOP",		0xC4A84B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
+		MONAZITE_SLOP =			new FluidType("MONAZITE_SLOP",	0xC4A84B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
+		PISS = 					new FluidType("PISS", 			0xCAC07D, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(5), LIQUID);
+		PISS_HOT = 				new FluidType("PISS_HOT",			0x7a3506, 0, 1, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(45), LIQUID, VISCOUS).setTemp(135);
+		PISS_DEPLETED = 		new FluidType("PISS_DEPLETED",	0x962608, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(30), LIQUID, VISCOUS);
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
 
@@ -833,6 +840,10 @@ public class Fluids {
 		//bug meth
 		metaOrder.add(PHEROMONE);
 		metaOrder.add(PHEROMONE_M);
+		//bannable offense
+		metaOrder.add(PISS);
+		metaOrder.add(PISS_HOT);
+		metaOrder.add(PISS_DEPLETED);
 
 		//ANY INTERNAL RENAMING MUST BE REFLECTED HERE - DON'T FORGET TO CHANGE: LANG FILES + TYPE'S STRING ID + NAME OF TANK/GUI TEXTURE FILES!
 		// V
@@ -849,6 +860,10 @@ public class Fluids {
 		PHOSGENE.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 4F, 20, HazardClass.GAS_LUNG, false)));
 		MUSTARDGAS.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 4F, 10, HazardClass.GAS_BLISTERING, false))
 				.addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, true).add(new PotionEffect(Potion.wither.id, 100, 1), new PotionEffect(Potion.confusion.id, 100, 0))));
+		PISS.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.BACTERIA, false).add(new PotionEffect(Potion.poison.id, 300, 1), new PotionEffect(Potion.blindness.id, 100, 0))));
+		PISS.addTraits(new FT_Drug().setDuration(10).addEffect(Potion.wither.id, 0).addEffect(Potion.confusion.id,0).addEffect(Potion.hunger.id, 1));
+		PISS_HOT.addTraits(new FT_Drug().setDuration(10).addEffect(Potion.wither.id, 2).addEffect(Potion.confusion.id, 2).addEffect(Potion.hunger.id, 3));
+		PISS_DEPLETED.addTraits(new FT_Drug().setDuration(15).addEffect(Potion.wither.id, 3).addEffect(Potion.confusion.id, 2).addEffect(Potion.hunger.id, 3));
 		ESTRADIOL.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.PARTICLE_FINE, false).add(new PotionEffect(HbmPotion.death.id, 60 * 60 * 20, 0))));
 		REDMUD.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, false).add(new PotionEffect(Potion.wither.id, 30 * 20, 2))));
 
@@ -889,6 +904,9 @@ public class Fluids {
 
 		MUG.addTraits(new FT_Heatable().setEff(HeatingType.HEATEXCHANGER, 1.0D).setEff(HeatingType.PWR, 1.0D).setEff(HeatingType.ICF, 1.25D).addStep(400, 1, MUG_HOT, 1), new FT_PWRModerator(1.15D));
 		MUG_HOT.addTraits(new FT_Coolable(MUG, 1, 1, 400).setEff(CoolingType.HEATEXCHANGER, 1.0D));
+
+		PISS.addTraits(new FT_Heatable().setEff(HeatingType.PWR, 2.5D).setEff(HeatingType.HEATEXCHANGER, 1.00D).setEff(HeatingType.BOILER, 0.20D).addStep(50, 1, PISS_HOT, 1));
+		PISS_HOT.addTraits(new FT_Coolable(PISS_DEPLETED, 1, 1, 69).setEff(CoolingType.HEATEXCHANGER, 4.20D));
 
 		BLOOD.addTraits(new FT_Heatable().setEff(HeatingType.HEATEXCHANGER, 1.0D).setEff(HeatingType.ICF, 1.25D).addStep(500, 1, BLOOD_HOT, 1));
 		BLOOD_HOT.addTraits(new FT_Coolable(BLOOD, 1, 1, 500).setEff(CoolingType.HEATEXCHANGER, 1.0D));

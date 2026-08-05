@@ -659,13 +659,17 @@ chem.oilelectrodes=Instant Electrodes (Heating Oil)
 chem.lubeelectrodes=Instant Electrodes (Lubricant)
 
 chem.nitricacidalt=Nitric Acid from Ammonia
-chem.hydrapiss=Hydrazine via Urea
 chem.hydrazine=Hydrazine
 chem.bloodfuel=Blood Fuel
 chem.mentholfromminmus=Menthol Crystals from Minmus
 chem.synleather=Synthetic Leather
 chem.vinylrubber=Vinyl Chloride Rubber
 chem.deshcracked=Desh from Cracked Oil
+
+chem.hydrapiss=Hydrazine via Urea
+chem.nutrientslop=Nutrient Slop
+chem.uncleslop=Uncle Tam's Homemade Nutrient Slop
+chem.pissreprocessing=Decomposed Piss Separation
 
 commands.satellite.no_active_satellites=No active satellites found!
 commands.satellite.no_satellite=No satellite using this frequency found!
@@ -7295,6 +7299,9 @@ hbmfluid.ticl4=Titanium Tetrachloride
 hbmfluid.heavy_sand_slop=Heavy Sand Slop
 hbmfluid.monazite_slop=Monazite Slop
 hbmfluid.trait.drug=Drug
+hbmfluid.piss=Piss
+hbmfluid.piss_hot=Boiling Piss
+hbmfluid.piss_depleted=Decomposed Piss
 instant_damage=Instant Damage
 clear_effects=Clears Effects
 clear_bad_effects=Removes Negative Effects
