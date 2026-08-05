@@ -68,7 +68,12 @@ public class BlockEnums {
 	public static enum EnumStalagmiteType {
 		SULFUR,
 		ASBESTOS,
-		FLESH
+		FLESH,
+		ICE,
+		SNOW,
+		GLYPHID1,
+		GLYPHID2,
+		GLYPHID3
 	}
 
 	public static enum EnumCMMaterials {
@@ -123,4 +128,21 @@ public class BlockEnums {
 		HALOGEN
 	}
 
+	public static enum PlatemetalType {
+		BASE,
+		BLACK,
+		WHITE,
+		RED,
+		GREEN,
+		LIGHT_GRAY,
+		BLUE,
+		PURPLE,
+		CYAN,
+		PINK,
+		LIME,
+		YELLOW,
+		LIGHT_BLUE,
+		MAGENTA,
+		ORANGE
+	}
 }

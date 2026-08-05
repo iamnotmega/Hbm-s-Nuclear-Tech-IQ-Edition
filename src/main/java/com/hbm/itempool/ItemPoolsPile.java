@@ -238,5 +238,16 @@ public class ItemPoolsPile {
 				weighted(ModItems.taurun_boots, 0, 1, 1, 20)
 			};
 		}};
+		new ItemPool(POOL_PILE_SUPPLIES) {{
+			this.pool = new WeightedRandomChestContent[] {
+				weighted(ItemGrenadeUniversal.make(EnumGrenadeShell.FRAG, EnumGrenadeFilling.HE, EnumGrenadeFuze.S3, EnumGrenadeExtra.FRAG_SLEEVE), 3, 5, 10),
+				weighted(ItemGrenadeUniversal.make(EnumGrenadeShell.FRAG, EnumGrenadeFilling.HE, EnumGrenadeFuze.S3, EnumGrenadeExtra.FRAG_SLEEVE), 3, 5, 10),
+				weighted(ItemGrenadeUniversal.make(EnumGrenadeShell.FRAG, EnumGrenadeFilling.HE, EnumGrenadeFuze.S3, EnumGrenadeExtra.FRAG_SLEEVE), 3, 5, 10),
+				weighted(filledSyringe(ModItems.syringe, Fluids.STIMPAK), 3, 5, 30),
+				weighted(filledSyringe(ModItems.syringe, Fluids.PSYCHO), 3, 5, 30),
+				weighted(filledSyringe(ModItems.syringe, Fluids.ANTIDOTE), 1, 2, 30),
+				weighted(ModItems.ammo_container, 0, 2, 3, 40)
+			};
+		}};
 	}
 }

@@ -42,6 +42,7 @@
 	"block.debris": {"category": "block", "sounds": ["block/debris1", "block/debris2", "block/debris3"]},
 	"block.centrifugeOperate": {"category": "block", "sounds": [{"name": "block/centrifugeOperate", "stream": false}]},
 	"block.pipePlaced": {"category": "block", "sounds": [{"name": "block/pipePlaced", "stream": false}]},
+	"block.flesh": {"category": "block", "sounds": ["block/flesh1", "block/flesh2", "block/flesh4", "block/flesh5"]},
 	"block.missileAssembly": {"category": "block", "sounds": [{"name": "block/missileAssembly", "stream": false}]},
 	"block.missileAssembly2": {"category": "block", "sounds": [{"name": "block/missileAssembly2", "stream": false}]},
 	"block.openDoor": {"category": "block", "sounds": ["block/door_open_1", "block/door_open_2"]},
@@ -378,6 +379,8 @@
 	"step.crystalBlock": {"category": "block", "sounds": ["block/crystalBlockStep1", "block/crystalBlockStep2", "block/crystalBlockStep3", "block/crystalBlockStep4", "block/crystalBlockStep5", "block/crystalBlockStep6", "block/crystalBlockStep7", "block/crystalBlockStep8", "block/crystalBlockStep9", "block/crystalBlockStep10", "block/crystalBlockStep11", "block/crystalBlockStep12", "block/crystalBlockStep13", "block/crystalBlockStep14"]},
 	"block.crystalBlockResonate": {"category": "block", "sounds": ["block/crystalBlockResonate1", "block/crystalBlockResonate2", "block/crystalBlockResonate3", "block/crystalBlockResonate4"]},
 	"block.crystalBlockShimmer": {"category": "block", "sounds": [{"name": "block/crystalBlockShimmer", "stream": false}]},
+    "step.platemetal": {"category": "block", "sounds": ["block/platemetal_step"]},
+    "block.platemetalPlace": {"category": "block", "sounds": ["block/platemetal_bar1", "block/platemetal_bar2", "block/platemetal_bar3", "block/platemetal_bar4", "block/platemetal_bar5", "block/platemetal_bar6"]},
 	"step.powered": {"category": "player", "sounds": ["footsteps/powered1", "footsteps/powered2", "footsteps/powered3"]},
 	"step.morkite": {"category": "player", "sounds": ["mining/MorkiteMiningB_3", "mining/MorkiteMiningB_2", "mining/MorkiteMiningB_1"]},
 
