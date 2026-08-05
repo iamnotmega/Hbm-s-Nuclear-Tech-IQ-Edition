@@ -1914,8 +1914,8 @@ public class ModBlocks {
 		rubber_farmland = new BlockRubberFarm(Material.sand).setBlockName("rubber_farmland").setStepSound(Block.soundTypeGravel).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":rubber_silt");
 
 		plant_flower = new BlockNTMFlower().setBlockName("plant_flower").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
-		plant_flesh = new BlockFleshPlant().setBlockName("plant_flesh").setCreativeTab(MainRegistry.blockTab).setHardness(0.0F);
-		nether_glyphid = new BlockNetherGlyphid(Material.coral).setBlockName("nether_glyphid").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeCloth).setHardness(0.5F);
+		plant_flesh = new BlockFleshPlant().setBlockName("plant_flesh").setCreativeTab(MainRegistry.blockTab).setStepSound(ModSoundTypes.flesh).setHardness(0.0F);
+		nether_glyphid = new BlockNetherGlyphid(Material.coral).setBlockName("nether_glyphid").setCreativeTab(MainRegistry.blockTab).setStepSound(ModSoundTypes.flesh).setHardness(0.5F);
 		bloatfire = new BlockBloatfire().setBlockName("bloatfire").setHardness(0.0F).setLightLevel(1.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":bloatfire");
 		plant_tall = new BlockTallPlant().setBlockName("plant_tall").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);
 		plant_dead = new BlockDeadPlant().setBlockName("plant_dead").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.0F);

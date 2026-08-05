@@ -7274,7 +7274,7 @@ hbmfluid.trait.coolantPA=粒子加速器冷却剂
 hbmfluid.trait.coolantPWR=PWR冷却剂
 hbmfluid.trait.corrosive=腐蚀性
 hbmfluid.trait.corrosiveStrong=强腐蚀性
-hbmfluid.trait.delicious=美味
+
 hbmfluid.trait.efficiency=效率
 hbmfluid.trait.flammable=易燃
 hbmfluid.trait.fuel.aviation=航空级

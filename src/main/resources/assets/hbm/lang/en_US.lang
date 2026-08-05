@@ -6307,6 +6307,7 @@ tile.glass_trinitite.name=Trinity Glass
 tile.glass_uranium.name=Uranium Glass
 tile.glyphid_base.name=Glyphid Hive Block
 tile.glyphid_spawner.name=Glyphid Hive Spawner
+tile.glyphid_spawner_nether.name=Nether Glyphid Hive Spawner
 tile.cyst.name=Cyst
 tile.gneiss_brick.name=Schist Brick
 tile.gneiss_chiseled.name=Chiseled Schist
@@ -7293,7 +7294,7 @@ hbmfluid.trait.coolantPA=Particle Accelerator Coolant
 hbmfluid.trait.coolantPWR=PWR Coolant
 hbmfluid.trait.corrosive=Corrosive
 hbmfluid.trait.corrosiveStrong=Strongly Corrosive
-hbmfluid.trait.delicious=Delicious
+
 hbmfluid.trait.efficiency=Efficiency
 hbmfluid.trait.flammable=Flammable
 hbmfluid.trait.fuel.aviation=Aviation
