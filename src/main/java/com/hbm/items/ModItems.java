@@ -1803,6 +1803,7 @@ public class ModItems {
 	public static Item euphemium_legs;
 	public static Item euphemium_boots;
 	public static Item apple_euphemium;
+	public static Item euphemium_rod;
 	public static Item watch;
 
 	public static Item goggles;
@@ -4252,6 +4253,7 @@ public class ModItems {
 		nugget_euphemium = new ItemCustomLore().setRarity(EnumRarity.epic).setUnlocalizedName("nugget_euphemium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_euphemium");
 		watch = new ItemCustomLore().setRarity(EnumRarity.epic).setUnlocalizedName("watch").setMaxStackSize(1).setTextureName(RefStrings.MODID + ":watch");
 		apple_euphemium = new ItemAppleEuphemium(20, 100, false).setUnlocalizedName("apple_euphemium").setMaxStackSize(1).setTextureName(RefStrings.MODID + ":apple_euphemium");
+		euphemium_rod = new ItemCustomLore().setRarity(EnumRarity.epic).setCreativeTab(MainRegistry.partsTab).setUnlocalizedName("euphemium_rod").setMaxStackSize(1).setTextureName(RefStrings.MODID + ":euphemium_rod");
 
 		igniter = new ItemCustomLore().setUnlocalizedName("igniter").setMaxStackSize(1).setFull3D().setCreativeTab(MainRegistry.nukeTab).setTextureName(RefStrings.MODID + ":trigger");
 		detonator = new ItemDetonator().setUnlocalizedName("detonator").setMaxStackSize(1).setFull3D().setCreativeTab(MainRegistry.nukeTab).setTextureName(RefStrings.MODID + ":detonator");
@@ -7004,6 +7006,7 @@ public class ModItems {
 		GameRegistry.registerItem(euphemium_plate, euphemium_plate.getUnlocalizedName());
 		GameRegistry.registerItem(euphemium_legs, euphemium_legs.getUnlocalizedName());
 		GameRegistry.registerItem(euphemium_boots, euphemium_boots.getUnlocalizedName());
+		GameRegistry.registerItem(euphemium_rod, euphemium_rod.getUnlocalizedName());
 		GameRegistry.registerItem(robes_helmet, robes_helmet.getUnlocalizedName());
 		GameRegistry.registerItem(robes_plate, robes_plate.getUnlocalizedName());
 		GameRegistry.registerItem(robes_legs, robes_legs.getUnlocalizedName());
