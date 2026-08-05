@@ -3,6 +3,8 @@ package com.hbm.itempool;
 import static com.hbm.lib.HbmChestContents.filledSyringe;
 import static com.hbm.lib.HbmChestContents.weighted;
 
+import com.hbm.blocks.BlockEnums.EnumCrystalBlockType;
+import com.hbm.blocks.ModBlocks;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.material.Mats;
 import com.hbm.items.ItemEnums;
@@ -15,11 +17,13 @@ import com.hbm.items.weapon.grenade.ItemGrenadeUniversal;
 import com.hbm.items.weapon.sedna.factory.GunFactory.EnumAmmo;
 
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 
 public class ItemPoolsPile {
 
 	public static final String POOL_PILE_HIVE = "POOL_PILE_HIVE";
+	public static final String POOL_PILE_NETHER_HIVE = "POOL_PILE_NETHER_HIVE";
 	public static final String POOL_PILE_BONES = "POOL_PILE_BONES";
 	public static final String POOL_PILE_CAPS = "POOL_PILE_CAPS";
 	public static final String POOL_PILE_MED_SYRINGE = "POOL_PILE_MED_SYRINGE";
@@ -70,6 +74,51 @@ public class ItemPoolsPile {
 					weighted(filledSyringe(ModItems.combat_syringe, Fluids.SUPER_STIMPAK), 1, 1, 1),
 					weighted(ModItems.iv_blood, 0, 1, 1, 10),
 					weighted(Items.experience_bottle, 0, 1, 3, 5),
+			};
+		}};
+
+		//items found in nether glyphid nests
+		new ItemPool(POOL_PILE_NETHER_HIVE) {{
+			this.pool = new WeightedRandomChestContent[] {
+					//Materials
+					weighted(Items.gold_ingot, 0, 2, 6, 15),
+					weighted(Items.quartz, 0, 4, 12, 15),
+					weighted(Items.glowstone_dust, 0, 4, 10, 15),
+					weighted(Items.nether_wart, 0, 2, 8, 10),
+					weighted(Items.diamond, 0, 1, 2, 2),
+					weighted(ModItems.scrap, 0, 4, 10, 10),
+					//Nether mob drops
+					weighted(Items.blaze_powder, 0, 2, 6, 12),
+					weighted(Items.ghast_tear, 0, 1, 2, 4),
+					weighted(Items.skull, 1, 1, 1, 2),
+					//Balefire
+					weighted(ModItems.powder_balefire, 0, 1, 3, 5),
+					weighted(ModItems.cell_balefire, 0, 1, 1, 2),
+					weighted(ModItems.balefire_scrambled, 0, 1, 1, 2),
+					//Glyphid
+					weighted(ModItems.glyphid_meat, 0, 2, 5, 12),
+					weighted(new ItemStack(ModItems.glyphid_gland, 1, Fluids.BLOATMUSK.getID()), 1, 2, 5),
+					weighted(new ItemStack(ModItems.glyphid_gland, 1, Fluids.MUSKY_PHEROMONE.getID()), 1, 1, 3),
+					//Weapons
+					weighted(ModItems.gun_light_revolver, 0, 1, 1, 2),
+					weighted(ModItems.gun_carbine, 0, 1, 1, 3),
+					weighted(ModItems.gun_am180, 0, 1, 1, 2),
+					weighted(ModItems.gun_spas12, 0, 1, 1, 2),
+					weighted(ModItems.gun_minigun, 0, 1, 1, 1),
+					weighted(ModItems.gun_fatman, 0, 1, 1, 1),
+					weighted(ModItems.ammo_standard, EnumAmmo.G12.ordinal(), 4, 8, 10),
+					weighted(ModItems.ammo_standard, EnumAmmo.M357_SP.ordinal(), 6, 12, 10),
+					//Cobalt & Starmetal
+					weighted(new ItemStack(ModBlocks.block_crystal_2, 1, EnumCrystalBlockType.COBALT.ordinal() - 16), 1, 2, 3),
+					weighted(new ItemStack(ModBlocks.block_crystal_2, 1, EnumCrystalBlockType.STARMETAL.ordinal() - 16), 1, 2, 2),
+					weighted(ModItems.ingot_starmetal, 0, 1, 2, 3),
+					//Consumables
+					weighted(ModItems.bottle_nuka, 0, 1, 3, 20),
+					weighted(ModItems.definitelyfood, 0, 6, 16, 20),
+					weighted(Items.experience_bottle, 0, 2, 5, 8),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.STIMPAK), 1, 2, 4),
+					//Rare
+					weighted(ModItems.ammo_standard, EnumAmmo.NUKE_BALEFIRE.ordinal(), 1, 1, 3),
 			};
 		}};
 

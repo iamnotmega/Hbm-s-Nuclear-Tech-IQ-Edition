@@ -26,6 +26,7 @@ public class SmeltingRecipes {
 	public static void AddSmeltingRec()
 	{
 		GameRegistry.addSmelting(ModItems.glyphid_meat, new ItemStack(ModItems.glyphid_meat_grilled), 1.0F);
+	GameRegistry.addSmelting(ModItems.glyphid_meat_nether, new ItemStack(ModItems.glyphid_meat_nether_grilled), 1.0F);
 
 		GameRegistry.addSmelting(ModItems.flour, new ItemStack(Items.bread), 1.0F);
 

@@ -52,23 +52,31 @@ public class EntityGlyphidBrenda extends EntityGlyphid {
 	public void onDeath(DamageSource source) {
 		super.onDeath(source);
 		if(!this.worldObj.isRemote && this.getHealth() <= 0.0F) {
-			EntityMist mist = new EntityMist(worldObj);
-			mist.setType(Fluids.PHEROMONE);
-			mist.setPosition(posX, posY, posZ);
-			mist.setArea(14, 6);
-			mist.setDuration(80);
-			worldObj.spawnEntityInWorld(mist);
-			for(int i = 0; i < 12; ++i) {
-				EntityGlyphid glyphid = new EntityGlyphid(worldObj);
-				glyphid.setLocationAndAngles(this.posX, this.posY + 0.5D, this.posZ, rand.nextFloat() * 360.0F, 0.0F);
-				this.worldObj.spawnEntityInWorld(glyphid);
-				glyphid.moveEntity(rand.nextGaussian(), 0, rand.nextGaussian());
-			}
+			onDeathSpawn();
+		}
+	}
+
+	protected void onDeathSpawn() {
+		EntityMist mist = new EntityMist(worldObj);
+		mist.setType(Fluids.PHEROMONE);
+		mist.setPosition(posX, posY, posZ);
+		mist.setArea(14, 6);
+		mist.setDuration(80);
+		worldObj.spawnEntityInWorld(mist);
+		for(int i = 0; i < 12; ++i) {
+			EntityGlyphid glyphid = new EntityGlyphid(worldObj);
+			glyphid.setLocationAndAngles(this.posX, this.posY + 0.5D, this.posZ, rand.nextFloat() * 360.0F, 0.0F);
+			this.worldObj.spawnEntityInWorld(glyphid);
+			glyphid.moveEntity(rand.nextGaussian(), 0, rand.nextGaussian());
 		}
 	}
 	@Override
 	protected void dropFewItems(boolean byPlayer, int looting) {
 		super.dropFewItems(byPlayer, looting);
+		dropGland();
+	}
+
+	protected void dropGland() {
 		if(rand.nextInt(3) == 0) this.entityDropItem(new ItemStack(ModItems.glyphid_gland, 1, Fluids.PHEROMONE.getID()), 1);
 	}
 

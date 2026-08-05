@@ -203,8 +203,12 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	@Override
 	protected void dropFewItems(boolean byPlayer, int looting) {
 		super.dropFewItems(byPlayer, looting);
-		Item drop = isBurning() ? ModItems.glyphid_meat_grilled : ModItems.glyphid_meat;
+		Item drop = getMeatItem();
 		if(rand.nextInt(2) == 0) this.entityDropItem(new ItemStack(drop, ((int) getScale() * 2) + looting), 0F);
+	}
+
+	protected Item getMeatItem() {
+		return isBurning() ? ModItems.glyphid_meat_grilled : ModItems.glyphid_meat;
 	}
 
 	@Override

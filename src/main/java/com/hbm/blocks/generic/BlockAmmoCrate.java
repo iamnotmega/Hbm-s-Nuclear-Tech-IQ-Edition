@@ -1,5 +1,7 @@
 package com.hbm.blocks.generic;
 
+import static com.hbm.lib.HbmChestContents.randomFilledSyringe;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -68,7 +70,9 @@ public class BlockAmmoCrate extends Block {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 			
 		ret.add(new ItemStack(ModItems.cap_nuka, 12 + rand.nextInt(21)));
-		ret.add(new ItemStack(ModItems.combat_syringe, 1 + rand.nextInt(3)));
+		ItemStack syringe = randomFilledSyringe(ModItems.combat_syringe, rand);
+		syringe.stackSize = 1 + rand.nextInt(3);
+		ret.add(syringe);
 
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 16 + rand.nextInt(17), EnumAmmo.P9_SP.ordinal()));
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 16 + rand.nextInt(17), EnumAmmo.P9_FMJ.ordinal()));
@@ -85,7 +89,11 @@ public class BlockAmmoCrate extends Block {
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 2 + rand.nextInt(3), EnumAmmo.G40_HE.ordinal()));
 		if(rand.nextBoolean()) ret.add(new ItemStack(ModItems.ammo_standard, 2 + rand.nextInt(3), EnumAmmo.ROCKET_HE.ordinal()));
 		
-		if(rand.nextInt(10) == 0) ret.add(new ItemStack(ModItems.combat_syringe, 2));
+		if(rand.nextInt(10) == 0) {
+			ItemStack stash = randomFilledSyringe(ModItems.combat_syringe, rand);
+			stash.stackSize = 2;
+			ret.add(stash);
+		}
 		
 		return ret;
 	}

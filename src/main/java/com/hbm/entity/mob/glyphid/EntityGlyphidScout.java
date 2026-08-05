@@ -39,10 +39,14 @@ public class EntityGlyphidScout extends EntityGlyphid {
 	@Override
 	public boolean attackEntityAsMob(Entity victum) {
 		if(super.attackEntityAsMob(victum) && victum instanceof EntityLivingBase){
-			((EntityLivingBase)victum).addPotionEffect(new PotionEffect(Potion.poison.id, 10 * 20, 3));
+			applyOnHitEffect((EntityLivingBase) victum);
 			return true;
 		}
 		return false;
+	}
+
+	protected void applyOnHitEffect(EntityLivingBase victum) {
+		victum.addPotionEffect(new PotionEffect(Potion.poison.id, 10 * 20, 3));
 	}
 	
 	@Override
@@ -156,7 +160,7 @@ public class EntityGlyphidScout extends EntityGlyphid {
 					} else if(timer >= 5) {
 
 						worldObj.newExplosion(this, posX, posY, posZ, 5F, false, false);
-						GlyphidHive.generateSmall(worldObj, (int) Math.floor(posX), (int) Math.floor(posY), (int) Math.floor(posZ), rand, this.dataWatcher.getWatchableObjectByte(DW_SUBTYPE) != TYPE_NORMAL, false);
+						buildHive();
 						this.setDead();
 
 					} else {
@@ -165,6 +169,10 @@ public class EntityGlyphidScout extends EntityGlyphid {
 				}
 			}
 		}
+	}
+
+	protected void buildHive() {
+		GlyphidHive.generateSmall(worldObj, (int) Math.floor(posX), (int) Math.floor(posY), (int) Math.floor(posZ), rand, this.dataWatcher.getWatchableObjectByte(DW_SUBTYPE) != TYPE_NORMAL, false);
 	}
 
 	/** Returns true if the position is far enough away from other hives. Also resets the task if unsuccessful. */

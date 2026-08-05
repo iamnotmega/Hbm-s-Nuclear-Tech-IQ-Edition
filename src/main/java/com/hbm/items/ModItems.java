@@ -1676,7 +1676,10 @@ public class ModItems {
 	public static Item quesadilla;
 	public static Item glyphid_meat;
 	public static Item glyphid_meat_grilled;
+	public static Item glyphid_meat_nether;
+	public static Item glyphid_meat_nether_grilled;
 	public static Item egg_glyphid;
+	public static Item egg_glyphid_nether;
 	public static Item flour;
 
 	public static Item med_ipecac;
@@ -1952,6 +1955,7 @@ public class ModItems {
 	public static Item steel_pickaxe;
 	public static Item steel_axe;
 	public static Item steel_shovel;
+	public static Item steel_spade;
 	public static Item steel_hoe;
 	@Deprecated public static Item alloy_sword;
 	@Deprecated public static Item alloy_pickaxe;
@@ -4070,8 +4074,11 @@ public class ModItems {
 		mucho_mango = new ItemMuchoMango(10).setUnlocalizedName("mucho_mango").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":mucho_mango");
 		glyphid_meat = new ItemLemon(3, 0.5F, true).setUnlocalizedName("glyphid_meat").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":glyphid_meat");
 		glyphid_meat_grilled = new ItemLemon(8, 0.75F, true).setPotionEffect(Potion.damageBoost.id, 180, 1, 1F).setUnlocalizedName("glyphid_meat_grilled").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":glyphid_meat_grilled");
+		glyphid_meat_nether = new ItemLemon(6, 1.0F, true).setUnlocalizedName("glyphid_meat_nether").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":glyphid_meat_nether");
+		glyphid_meat_nether_grilled = new ItemLemon(16, 1.5F, true).setPotionEffect(Potion.damageBoost.id, 180, 2, 1F).setUnlocalizedName("glyphid_meat_nether_grilled").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":glyphid_meat_nether_grilled");
 		chocolate_mint_billet = new ItemLemon(5, 5F, true).setUnlocalizedName("chocolate_mint_billet").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":chocolate_mint_billet");
 		egg_glyphid = new Item().setUnlocalizedName("egg_glyphid").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":egg_glyphid");
+		egg_glyphid_nether = new Item().setUnlocalizedName("egg_glyphid_nether").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":egg_glyphid_nether");
 		flour = new Item().setUnlocalizedName("flour").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":flour");
 
 		defuser = new ItemDefuser(ToolType.DEFUSER, 100).setUnlocalizedName("defuser").setMaxStackSize(1).setFull3D().setCreativeTab(MainRegistry.nukeTab).setTextureName(RefStrings.MODID + ":defuser");
@@ -4404,6 +4411,11 @@ public class ModItems {
 				.addAbility(IWeaponAbility.BEHEADER, 0).setUnlocalizedName("steel_axe").setTextureName(RefStrings.MODID + ":steel_axe");
 		steel_shovel = new ItemToolAbility(3F, 0, MainRegistry.tMatSteel, EnumToolType.SHOVEL)
 				.addAbility(IToolAreaAbility.RECURSION, 0).setUnlocalizedName("steel_shovel").setTextureName(RefStrings.MODID + ":steel_shovel");
+		steel_spade = new ItemToolAbility(3F, 0, MainRegistry.tMatSteel, EnumToolType.SHOVEL)
+				.addAbility(IToolAreaAbility.HAMMER, 1)
+				.addAbility(IToolAreaAbility.HAMMER_FLAT, 1)
+				.addAbility(IToolHarvestAbility.SILK, 0)
+				.setMaxDamage(1500).setUnlocalizedName("steel_spade").setTextureName(RefStrings.MODID + ":steel_spade");
 		steel_hoe = new ModHoe(MainRegistry.tMatSteel).setUnlocalizedName("steel_hoe").setTextureName(RefStrings.MODID + ":steel_hoe");
 
 		alloy_sword = new ItemSwordAbility(8F, 0, MainRegistry.tMatAlloy)
@@ -6471,6 +6483,7 @@ public class ModItems {
 		GameRegistry.registerItem(steel_pickaxe, steel_pickaxe.getUnlocalizedName());
 		GameRegistry.registerItem(steel_axe, steel_axe.getUnlocalizedName());
 		GameRegistry.registerItem(steel_shovel, steel_shovel.getUnlocalizedName());
+		GameRegistry.registerItem(steel_spade, steel_spade.getUnlocalizedName());
 		GameRegistry.registerItem(steel_hoe, steel_hoe.getUnlocalizedName());
 		GameRegistry.registerItem(titanium_sword, titanium_sword.getUnlocalizedName());
 		GameRegistry.registerItem(titanium_pickaxe, titanium_pickaxe.getUnlocalizedName());
@@ -6613,7 +6626,10 @@ public class ModItems {
 		GameRegistry.registerItem(quesadilla, quesadilla.getUnlocalizedName());
 		GameRegistry.registerItem(glyphid_meat, glyphid_meat.getUnlocalizedName());
 		GameRegistry.registerItem(glyphid_meat_grilled, glyphid_meat_grilled.getUnlocalizedName());
+		GameRegistry.registerItem(glyphid_meat_nether, glyphid_meat_nether.getUnlocalizedName());
+		GameRegistry.registerItem(glyphid_meat_nether_grilled, glyphid_meat_nether_grilled.getUnlocalizedName());
 		GameRegistry.registerItem(egg_glyphid, egg_glyphid.getUnlocalizedName());
+		GameRegistry.registerItem(egg_glyphid_nether, egg_glyphid_nether.getUnlocalizedName());
 		GameRegistry.registerItem(med_ipecac, med_ipecac.getUnlocalizedName());
 		GameRegistry.registerItem(med_ptsd, med_ptsd.getUnlocalizedName());
 		GameRegistry.registerItem(canteen_vodka, canteen_vodka.getUnlocalizedName());

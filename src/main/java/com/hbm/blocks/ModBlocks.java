@@ -539,6 +539,7 @@ public class ModBlocks {
 
 	public static Block glyphid_base;
 	public static Block glyphid_spawner;
+	public static Block glyphid_spawner_nether;
 	public static Block cyst;
 
 	public static Block plant_flower;
@@ -1903,6 +1904,7 @@ public class ModBlocks {
 		mush_block_stem = new BlockMushHuge(Material.plants).setBlockName("mush_block_stem").setLightLevel(1.0F).setStepSound(Block.soundTypeGrass).setHardness(0.2F).setBlockTextureName(RefStrings.MODID + ":mush_block_stem");
 		glyphid_base = new BlockGlyphid(Material.coral).setBlockName("glyphid_base").setStepSound(Block.soundTypeCloth).setHardness(0.5F).setBlockTextureName(RefStrings.MODID + ":glyphid_base");
 		glyphid_spawner = new BlockGlyphidSpawner(Material.coral).setBlockName("glyphid_spawner").setStepSound(Block.soundTypeCloth).setHardness(0.5F).setBlockTextureName(RefStrings.MODID + ":glyphid_eggs_alt");
+		glyphid_spawner_nether = new BlockGlyphidSpawnerNether(Material.coral).setBlockName("glyphid_spawner_nether").setStepSound(Block.soundTypeCloth).setHardness(0.5F);
 
 		rubber_farmland = new BlockRubberFarm(Material.sand).setBlockName("rubber_farmland").setStepSound(Block.soundTypeGravel).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":rubber_silt");
 
@@ -3245,6 +3247,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(mush_block_stem, mush_block_stem.getUnlocalizedName());
 		register(glyphid_base);
 		register(glyphid_spawner);
+	register(glyphid_spawner_nether);
 		register(cyst);
 		GameRegistry.registerBlock(moon_turf, moon_turf.getUnlocalizedName());
 

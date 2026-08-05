@@ -951,6 +951,17 @@ public class ResourceManager {
 	public static final ResourceLocation bfangel_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/bfa_body.png");
 
 	public static final ResourceLocation glyphid_digger_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_digger.png");
+
+	//Nether glyphids
+	public static final ResourceLocation glyphid_nether_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether.png");
+	public static final ResourceLocation glyphid_nether_scout_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_scout.png");
+	public static final ResourceLocation glyphid_nether_bombardier_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_bombardier.png");
+	public static final ResourceLocation glyphid_nether_brawler_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_brawler.png");
+	public static final ResourceLocation glyphid_nether_digger_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_digger.png");
+	public static final ResourceLocation glyphid_nether_blaster_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_blaster.png");
+	public static final ResourceLocation glyphid_nether_behemoth_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_behemoth.png");
+	public static final ResourceLocation glyphid_nether_brenda_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_brenda.png");
+	public static final ResourceLocation glyphid_nether_nuclear_tex = new ResourceLocation(RefStrings.MODID, "textures/entity/glyphid_nether_nuclear.png");
 	
 	//PILE
 	public static final ResourceLocation pile_loader_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pile/pile_loader.png");

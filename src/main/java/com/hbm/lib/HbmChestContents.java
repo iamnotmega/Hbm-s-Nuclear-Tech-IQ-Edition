@@ -1,6 +1,7 @@
 package com.hbm.lib;
 
 import com.hbm.inventory.fluid.FluidType;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.special.ItemBookLore;
 import com.hbm.items.tool.ItemFluidSyringe;
 import net.minecraft.block.Block;
@@ -21,6 +22,12 @@ public class HbmChestContents {
 		ItemFluidSyringe syringe = (ItemFluidSyringe) item;
 		syringe.setFill(stack, type, syringe.getCapacity(stack));
 		return stack;
+	}
+
+	private static final FluidType[] DRUGS = { Fluids.STIMPAK, Fluids.MEDX, Fluids.PSYCHO, Fluids.SUPER_STIMPAK };
+
+	public static ItemStack randomFilledSyringe(Item item, Random rand) {
+		return filledSyringe(item, DRUGS[rand.nextInt(DRUGS.length)]);
 	}
 
 	/** ITEMBOOKLORE SHIT */

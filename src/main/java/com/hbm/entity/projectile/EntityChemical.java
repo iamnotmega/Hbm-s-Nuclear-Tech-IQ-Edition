@@ -140,8 +140,27 @@ public class EntityChemical extends EntityThrowableNT {
 
 			} else if(style == ChemicalStyle.BURNING) {
 
-				if(MainRegistry.proxy.me().getDistanceToEntity(this) < 100)
+				if(MainRegistry.proxy.me().getDistanceToEntity(this) < 100) {
 					FlameCreator.composeEffectClient(worldObj, posX, posY - 0.125, posZ, FlameCreator.META_FIRE);
+
+					if(type.hasTrait(FT_Drug.class)) {
+						Color color = new Color(type.getColor());
+
+						NBTTagCompound data = new NBTTagCompound();
+						data.setString("type", "vanillaExt");
+						data.setString("mode", "colordust");
+						data.setDouble("posX", posX);
+						data.setDouble("posY", posY - 0.125);
+						data.setDouble("posZ", posZ);
+						data.setDouble("mX", motionX + worldObj.rand.nextGaussian() * 0.05);
+						data.setDouble("mY", motionY - 0.2 + worldObj.rand.nextGaussian() * 0.05);
+						data.setDouble("mZ", motionZ + worldObj.rand.nextGaussian() * 0.05);
+						data.setFloat("r", color.getRed() / 255F);
+						data.setFloat("g", color.getGreen() / 255F);
+						data.setFloat("b", color.getBlue() / 255F);
+						MainRegistry.proxy.effectNT(data);
+					}
+				}
 			}
 		}
 		super.onUpdate();
@@ -192,9 +211,9 @@ public class EntityChemical extends EntityThrowableNT {
 			if(consumable != null) {
 				consumable.applyEffects(living);
 			}
-			if(type.hasTrait(FT_Drug.class)) {
-				Injectables.process(living, type, 0, 1.0F, false);
-			}
+		}
+		if(type.hasTrait(FT_Drug.class)) {
+			Injectables.process(living, type, 0, 1.0F, false);
 		}
 
 		if(style == ChemicalStyle.LIQUID) {
@@ -271,10 +290,11 @@ public class EntityChemical extends EntityThrowableNT {
 				living.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 5 * 60 * 20, 1));
 				living.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 2 * 60 * 20, 4));
 
-				if (living instanceof EntityGlyphid && pheromone.getType() == 1) {
-					living.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 5 * 60 * 20, 4));
-					living.addPotionEffect(new PotionEffect(Potion.fireResistance.id,  60 * 20, 0));
-					living.addPotionEffect(new PotionEffect(Potion.field_76444_x.id,  60 * 20, 19));
+				if (living instanceof EntityGlyphid && (pheromone.getType() == 1 || pheromone.getType() == 3)) {
+					int mult = pheromone.getType() == 3 ? 2 : 1;
+					living.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 5 * 60 * 20 * mult, 4));
+					living.addPotionEffect(new PotionEffect(Potion.fireResistance.id,  60 * 20 * mult, 0));
+					living.addPotionEffect(new PotionEffect(Potion.field_76444_x.id,  60 * 20 * mult, 19));
 
 				} else if (living instanceof EntityPlayer && pheromone.getType() == 2) {
 					living.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2 * 60 * 20, 2));

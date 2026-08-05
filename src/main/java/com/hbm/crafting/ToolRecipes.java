@@ -36,6 +36,7 @@ public class ToolRecipes {
 		addPickaxe(	STEEL.ingot(), ModItems.steel_pickaxe);
 		addAxe(		STEEL.ingot(), ModItems.steel_axe);
 		addShovel(	STEEL.ingot(), ModItems.steel_shovel);
+		addShovel(	STEEL.plate(), ModItems.steel_spade);
 		addHoe(		STEEL.ingot(), ModItems.steel_hoe);
 		addSword(	TI.ingot(), ModItems.titanium_sword);
 		addPickaxe(	TI.ingot(), ModItems.titanium_pickaxe);

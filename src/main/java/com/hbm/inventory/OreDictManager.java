@@ -622,8 +622,10 @@ public class OreDictManager {
 		/*
 		 * GLYPHID M E A T
 		 */
-		OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(glyphid_meat));
-		OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(glyphid_meat_grilled));
+	OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(glyphid_meat));
+	OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(glyphid_meat_grilled));
+	OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(glyphid_meat_nether));
+	OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(glyphid_meat_nether_grilled));
 
 		/*
 		 * foude

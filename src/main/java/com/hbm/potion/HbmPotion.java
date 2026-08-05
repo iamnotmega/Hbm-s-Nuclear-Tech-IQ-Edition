@@ -57,6 +57,7 @@ public class HbmPotion extends Potion {
 	public static HbmPotion stimulated;
 	public static HbmPotion medx;
 	public static HbmPotion roidRage;
+	public static HbmPotion wobble;
 
 	public HbmPotion(int id, boolean isBad, int color) {
 		super(id, isBad, color);
@@ -82,6 +83,7 @@ public class HbmPotion extends Potion {
 		stimulated = registerPotion(PotionConfig.stimulatedID, false, 0x44FF44, "potion.hbm_stimulated", 2, 2);
 		roidRage = registerPotion(PotionConfig.roidRageID, false, 0xFF4444, "potion.hbm_roid_rage", 0, 2);
 		medx = registerPotion(PotionConfig.medxID, false, 0x8888FF, "potion.hbm_medx", 1, 2);
+		wobble = registerPotion(PotionConfig.wobbleID, false, 0xFFD800, "potion.hbm_wobble", 3, 2);
 
 	}
 

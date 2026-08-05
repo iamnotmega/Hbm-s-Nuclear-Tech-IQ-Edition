@@ -195,6 +195,19 @@ public class LootGenerator {
 		}
 	}
 
+	public static void lootNetherHive(World world, int x, int y, int z) {
+
+		TileEntityLoot loot = (TileEntityLoot) world.getTileEntity(x, y, z);
+
+		if(loot != null && loot.items.isEmpty()) {
+
+			int limit = world.rand.nextInt(3) + 3;
+			for(int i = 0; i < limit; i++) {
+				addItemWithDeviation(loot, world.rand, ItemPool.getStack(ItemPool.getPool(ItemPoolsPile.POOL_PILE_NETHER_HIVE), world.rand), world.rand.nextDouble() - 0.5, i * 0.03125, world.rand.nextDouble() - 0.5);
+			}
+		}
+	}
+
 	public static void lootBookMeteor(World world, int x, int y, int z) {
 
 		TileEntityLoot loot = (TileEntityLoot) world.getTileEntity(x, y, z);

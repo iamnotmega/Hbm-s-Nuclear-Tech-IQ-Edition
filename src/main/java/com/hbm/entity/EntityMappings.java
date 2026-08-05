@@ -156,6 +156,7 @@ public class EntityMappings {
 		addEntity(EntityMist.class, "entity_mist", 250, false);
 		addEntity(EntityFireLingering.class, "entity_fire_lingering", 250, false);
 		addEntity(EntityAcidBomb.class, "entity_acid_bomb", 1000);
+		addEntity(EntityBloatBomb.class, "entity_bloat_bomb", 1000);
 		addEntity(EntityFallingBlockNT.class, "entity_falling_block_nt", 1000);
 		addEntity(EntityBoatRubber.class, "entity_rubber_boat", 250, false);
 		addEntity(EntityMissileStealth.class, "entity_missile_stealth", 1000);
@@ -213,6 +214,15 @@ public class EntityMappings {
 		addMob(EntityGlyphidScout.class, "entity_glyphid_scout", 0x273038, 0xB9E36B);
 		addMob(EntityGlyphidNuclear.class, "entity_glyphid_nuclear", 0x267F00, 0xA0A0A0);
 		addMob(EntityGlyphidDigger.class, "entity_glyphid_digger", 0x273038, 0x724A21);
+		addMob(EntityGlyphidNether.class, "entity_glyphid_nether", 0x724A21, 0xD2BB72);
+		addMob(EntityGlyphidNetherScout.class, "entity_glyphid_nether_scout", 0x273038, 0xB9E36B);
+		addMob(EntityGlyphidNetherBombardier.class, "entity_glyphid_nether_bombardier", 0xDDD919, 0xDBB79D);
+		addMob(EntityGlyphidNetherBrawler.class, "entity_glyphid_nether_brawler", 0x273038, 0xD2BB72);
+		addMob(EntityGlyphidNetherDigger.class, "entity_glyphid_nether_digger", 0x273038, 0x724A21);
+		addMob(EntityGlyphidNetherBlaster.class, "entity_glyphid_nether_blaster", 0xD83737, 0xDBB79D);
+		addMob(EntityGlyphidNetherBehemoth.class, "entity_glyphid_nether_behemoth", 0x267F00, 0xD2BB72);
+		addMob(EntityGlyphidNetherBrenda.class, "entity_glyphid_nether_brenda", 0x4FC0C0, 0xA0A0A0);
+		addMob(EntityGlyphidNetherNuclear.class, "entity_glyphid_nether_nuclear", 0x267F00, 0xA0A0A0);
 		addMob(EntityPlasticBag.class, "entity_plastic_bag", 0xd0d0d0, 0x808080);
 		addMob(EntityParasiteMaggot.class, "entity_parasite_maggot", 0xd0d0d0, 0x808080);
 		addMob(EntityDummy.class, "entity_ntm_test_dummy", 0xffffff, 0x000000);

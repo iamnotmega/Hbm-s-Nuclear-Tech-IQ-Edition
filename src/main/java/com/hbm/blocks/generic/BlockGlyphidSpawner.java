@@ -133,7 +133,7 @@ public class BlockGlyphidSpawner extends BlockContainer implements IBlockMulti {
 						}
 
 						if(!initialSpawn && worldObj.rand.nextInt(MobConfig.scoutSwarmSpawnChance + 1) == 0 && soot >= MobConfig.scoutThreshold && subtype != EntityGlyphid.TYPE_RADIOACTIVE) {
-							EntityGlyphidScout scout = new EntityGlyphidScout(worldObj);
+							EntityGlyphidScout scout = createScout();
 							if(this.getBlockMetadata() == 1) scout.getDataWatcher().updateObject(EntityGlyphid.DW_SUBTYPE, (byte) EntityGlyphid.TYPE_INFECTED);
 							trySpawnEntity(scout);
 						}
@@ -155,16 +155,25 @@ public class BlockGlyphidSpawner extends BlockContainer implements IBlockMulti {
 			}
 		}
 
+		public EntityGlyphidScout createScout() {
+			return new EntityGlyphidScout(worldObj);
+		}
+
+		protected ArrayList<Pair<Function<World, EntityGlyphid>, int[]>> getSpawnMap() {
+			return spawnMap;
+		}
+
 		public ArrayList<EntityGlyphid> createSwarm(float soot, int meta) {
 
 			Random rand = new Random();
 			ArrayList<EntityGlyphid> currentSpawns = new ArrayList<>();
 			int swarmAmount = (int) Math.min(MobConfig.baseSwarmSize * Math.max(MobConfig.swarmScalingMult * (soot / MobConfig.sootStep), 1), 10);
 			int cap = 100;
+			ArrayList<Pair<Function<World, EntityGlyphid>, int[]>> map = getSpawnMap();
 			
 			while(currentSpawns.size() <= swarmAmount && cap >= 0) {
 				// (dys)functional programing
-				for(Pair<Function<World, EntityGlyphid>, int[]> glyphid : spawnMap) {
+				for(Pair<Function<World, EntityGlyphid>, int[]> glyphid : map) {
 					int[] chance = glyphid.getValue();
 					int adjustedChance = (int) (chance[0] + (chance[1] - chance[1] / Math.max(((soot + 1) / 3), 1)));
 					if(soot >= chance[2] && rand.nextInt(100) <= adjustedChance) {

@@ -13,6 +13,7 @@ import com.hbm.blocks.generic.BlockDynamicSlag.TileEntitySlag;
 import com.hbm.blocks.generic.BlockEmitter.TileEntityEmitter;
 import com.hbm.blocks.generic.BlockFissure.TileEntityFissure;
 import com.hbm.blocks.generic.BlockGlyphidSpawner.TileEntityGlpyhidSpawner;
+import com.hbm.blocks.generic.BlockGlyphidSpawnerNether.TileEntityGlyphidSpawnerNether;
 import com.hbm.blocks.generic.BlockLoot.TileEntityLoot;
 import com.hbm.blocks.generic.BlockOrrery.TileEntityOrrery;
 import com.hbm.blocks.generic.BlockPedestal.TileEntityPedestal;
@@ -231,6 +232,7 @@ public class TileMappings {
 		put(TileEntityMachineBigAssTank.class, "tileentity_bigasstank");
 		put(TileEntityMachineOrbus.class, "tileentity_orbus");
 		put(TileEntityGlpyhidSpawner.class, "tileentity_glyphid_spawner");
+	put(TileEntityGlyphidSpawnerNether.class, "tileentity_glyphid_spawner_nether");
 		put(TileEntityCustomMachine.class, "tileentity_custom_machine");
 
 		put(TileEntityLoot.class, "tileentity_ntm_loot");

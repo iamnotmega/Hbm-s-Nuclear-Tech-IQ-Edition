@@ -1,10 +1,13 @@
 package com.hbm.blocks.generic;
 
+import static com.hbm.lib.HbmChestContents.filledSyringe;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.hbm.blocks.ModBlocks;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.interfaces.Spaghetti;
 import com.hbm.items.weapon.grenade.ItemGrenadeUniversal;
 import com.hbm.items.weapon.grenade.ItemGrenadeExtra.EnumGrenadeExtra;
@@ -58,8 +61,14 @@ public class BlockCrate extends BlockFalling {
 		redList = new ArrayList();
 
 		// Supply Crate
-	    BlockCrate.addToListWithWeight(crateList, ModItems.combat_syringe, 10);
-	    BlockCrate.addToListWithWeight(crateList, ModItems.syringe, 5);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.combat_syringe, Fluids.STIMPAK), 4);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.combat_syringe, Fluids.MEDX), 3);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.combat_syringe, Fluids.PSYCHO), 2);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.combat_syringe, Fluids.SUPER_STIMPAK), 1);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.syringe, Fluids.STIMPAK), 2);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.syringe, Fluids.MEDX), 1);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.syringe, Fluids.PSYCHO), 1);
+	    BlockCrate.addToListWithWeight(crateList, filledSyringe(ModItems.syringe, Fluids.SUPER_STIMPAK), 1);
 		BlockCrate.addToListWithWeight(crateList, ItemGrenadeUniversal.make(EnumGrenadeShell.FRAG, EnumGrenadeFilling.HE, EnumGrenadeFuze.S3, EnumGrenadeExtra.FRAG_SLEEVE), 8);
 		BlockCrate.addToListWithWeight(crateList, ItemGrenadeUniversal.make(EnumGrenadeShell.STICK, EnumGrenadeFilling.HE, EnumGrenadeFuze.IMPACT), 6);
 		BlockCrate.addToListWithWeight(crateList, ItemGrenadeUniversal.make(EnumGrenadeShell.FRAG, EnumGrenadeFilling.INC, EnumGrenadeFuze.S7), 4);

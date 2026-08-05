@@ -262,6 +262,10 @@ public class Fluids {
 	public static FluidType SUPER_STIMPAK;
 	public static FluidType MEDX;
 	public static FluidType PSYCHO;
+	public static FluidType BLOATMUSK;
+	public static FluidType MUSTY_BLOATMUSK;
+	public static FluidType BURNING_BLOATMUSK;
+	public static FluidType MUSKY_PHEROMONE;
 	public static FluidType AWESOME;
 	public static FluidType ANTIDOTE;
 	public static FluidType POISON;
@@ -567,9 +571,14 @@ public class Fluids {
 		TICL4 =				new FluidType("TICL4",				0xFF69B4, 1, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
 		HEAVY_SAND_SLOP =		new FluidType("HEAVY_SAND_SLOP",	0x8B7D6B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		MONAZITE_SLOP =			new FluidType("MONAZITE_SLOP",		0xC4A84B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
+		NETHERAIR =				new FluidType("NETHERAIR",			0xB34B4B, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x8C21FF, 0xFFFFFF)).addTraits(GASEOUS);
+		BLOATMUSK =			new FluidType("BLOATMUSK",			0xFFD800, 0, 0, 0, EnumSymbol.NONE).addTraits(GASEOUS, new FT_Drug().setDuration(30).addEffect(HbmPotion.wobble.id, 0).addEffect(Potion.confusion.id, 0));
+		MUSTY_BLOATMUSK =	new FluidType("MUSTY_BLOATMUSK",	0x9C8A1F, 0, 0, 0, EnumSymbol.NONE).addTraits(GASEOUS, new FT_Drug().setDuration(30).addEffect(HbmPotion.wobble.id, 0).addEffect(Potion.confusion.id, 0), new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)));
+		BURNING_BLOATMUSK =	new FluidType("BURNING_BLOATMUSK",	0xFFAA00, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, new FT_Combustible(FuelGrade.LOW, 50_000), new FT_Drug().setDuration(10).addEffect(Potion.wither.id, 1).addEffect(HbmPotion.wobble.id, 0));
+		MUSKY_PHEROMONE =	new FluidType("MUSKY_PHEROMONE",	0x7B5EA7, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, new FT_Pheromone(3));
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
-		NETHERAIR =				new FluidType("NETHERAIR",			0xB34B4B, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x8C21FF, 0xFFFFFF)).addTraits(GASEOUS);
+
 
 		File folder = MainRegistry.configHbmDir;
 		File customTypes = new File(folder.getAbsolutePath() + File.separatorChar + "hbmFluidTypes.json");
@@ -812,6 +821,10 @@ public class Fluids {
 		metaOrder.add(SUPER_STIMPAK);
 		metaOrder.add(MEDX);
 		metaOrder.add(PSYCHO);
+		metaOrder.add(BLOATMUSK);
+		metaOrder.add(MUSTY_BLOATMUSK);
+		metaOrder.add(BURNING_BLOATMUSK);
+		metaOrder.add(MUSKY_PHEROMONE);
 		metaOrder.add(AWESOME);
 		metaOrder.add(ANTIDOTE);
 		metaOrder.add(POISON);

@@ -49,7 +49,7 @@ public class ItemDisperser extends ItemFluidTank {
 			int id = type.getID();
 			if(type.isDispersable() && this == ModItems.disperser_canister) {
 				list.add(new ItemStack(item, 1, id));
-			} else if(type == Fluids.PHEROMONE || type == Fluids.SULFURIC_ACID && this == ModItems.glyphid_gland) {
+			} else if(type == Fluids.PHEROMONE || type == Fluids.MUSKY_PHEROMONE || (type == Fluids.SULFURIC_ACID || type == Fluids.BLOATMUSK || type == Fluids.MUSTY_BLOATMUSK || type == Fluids.BURNING_BLOATMUSK) && this == ModItems.glyphid_gland) {
 				list.add(new ItemStack(item, 1, id));
 			}
 

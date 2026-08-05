@@ -75,13 +75,17 @@ public class EntityGlyphidBehemoth extends EntityGlyphid {
 	public void onDeath(DamageSource source) {
 		super.onDeath(source);
 		if (!worldObj.isRemote) {
-			EntityMist mist = new EntityMist(worldObj);
-			mist.setType(Fluids.SULFURIC_ACID);
-			mist.setPosition(posX, posY, posZ);
-			mist.setArea(10, 4);
-			mist.setDuration(120);
-			worldObj.spawnEntityInWorld(mist);
+			onDeathSpawn();
 		}
+	}
+
+	protected void onDeathSpawn() {
+		EntityMist mist = new EntityMist(worldObj);
+		mist.setType(Fluids.SULFURIC_ACID);
+		mist.setPosition(posX, posY, posZ);
+		mist.setArea(10, 4);
+		mist.setDuration(120);
+		worldObj.spawnEntityInWorld(mist);
 	}
 
 
@@ -97,8 +101,12 @@ public class EntityGlyphidBehemoth extends EntityGlyphid {
 
 	@Override
 	protected void dropFewItems(boolean byPlayer, int looting) {
-		this.entityDropItem(new ItemStack(ModItems.glyphid_gland, 1, Fluids.SULFURIC_ACID.getID()), 1);
+		dropGland();
 		super.dropFewItems(byPlayer, looting);
+	}
+
+	protected void dropGland() {
+		this.entityDropItem(new ItemStack(ModItems.glyphid_gland, 1, Fluids.SULFURIC_ACID.getID()), 1);
 	}
 	@Override
 	public boolean isArmorBroken(float amount) {

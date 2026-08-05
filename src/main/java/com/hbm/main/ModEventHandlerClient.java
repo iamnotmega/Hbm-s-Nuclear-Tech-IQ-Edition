@@ -244,7 +244,7 @@ public class ModEventHandlerClient {
 					/*List<String> text = new ArrayList();
 					text.add("Meta: " + world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ));
 					ILookOverlay.printGeneric(event, "DEBUG", 0xffff00, 0x4040000, text);*/
-					
+
 					if(ClientConfig.SHOW_BLOCK_META_OVERLAY.get()) {
 						Block b = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 						int i = world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ);
@@ -989,6 +989,7 @@ public class ModEventHandlerClient {
 
 	static boolean isRenderingItems = false;
 	private static boolean roidRagePhosphorActive = false;
+	private static boolean wobbleShaderActive = false;
 
 	@SubscribeEvent
 	public void clientTick(ClientTickEvent event) {
@@ -1013,6 +1014,8 @@ public class ModEventHandlerClient {
 			return;
 
 		if(event.phase == Phase.START && event.side == Side.CLIENT) {
+ // super secret settings events
+			// for potions
 
 			boolean hasRoidRage = mc.thePlayer.isPotionActive(HbmPotion.roidRage);
 			if(hasRoidRage != roidRagePhosphorActive) {
@@ -1021,6 +1024,16 @@ public class ModEventHandlerClient {
 					SuperSecretShader.apply("shaders/post/phosphor.json");
 				} else {
 					SuperSecretShader.remove("shaders/post/phosphor.json");
+				}
+			}
+
+			boolean hasWobble = mc.thePlayer.isPotionActive(HbmPotion.wobble);
+			if(hasWobble != wobbleShaderActive) {
+				wobbleShaderActive = hasWobble;
+				if(hasWobble) {
+					SuperSecretShader.apply("shaders/post/wobble.json");
+				} else {
+					SuperSecretShader.remove("shaders/post/wobble.json");
 				}
 			}
 
@@ -1036,14 +1049,14 @@ public class ModEventHandlerClient {
 			if(ArmorUtil.isWearingEmptyMask(mc.thePlayer)) {
 				MainRegistry.proxy.displayTooltip(EnumChatFormatting.RED + "Your mask has no filter!", ServerProxy.ID_FILTER);
 			}
-			
+
 			//prune other entities' muzzle flashes
 			if(mc.theWorld.getTotalWorldTime() % 30 == 0) {
 				long millis = System.currentTimeMillis();
 				//dead entities may have later insertion order than actively firing ones, so we be safe
 				ItemRenderWeaponBase.flashMap.values().removeIf(entry -> millis - entry.longValue() >= 150);
 			}
-			
+
 			CelestialBody body = CelestialBody.getBody(mc.theWorld);
 			CBT_Invasion invasion = body.getTrait(CBT_Invasion.class);
 

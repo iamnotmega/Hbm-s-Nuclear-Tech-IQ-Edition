@@ -209,8 +209,8 @@ public class EntityMist extends Entity {
 			FT_Pheromone pheromone = type.getTrait(FT_Pheromone.class);
 
 			if(living != null) {
-				if ((living instanceof EntityGlyphid && pheromone.getType() == 1) || (living instanceof EntityPlayer && pheromone.getType() == 2)) {
-					int mult = pheromone.getType();
+				if ((living instanceof EntityGlyphid && (pheromone.getType() == 1 || pheromone.getType() == 3)) || (living instanceof EntityPlayer && pheromone.getType() == 2)) {
+					int mult = pheromone.getType() == 3 ? 2 : pheromone.getType();
 
 					living.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,  mult * 60 * 20, 1));
 					living.addPotionEffect(new PotionEffect(Potion.digSpeed.id, mult * 60 * 20, 1));
