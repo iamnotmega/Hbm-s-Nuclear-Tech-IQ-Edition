@@ -9,12 +9,16 @@ import static net.minecraftforge.common.util.ForgeDirection.WEST;
 
 import java.util.Random;
 
+import com.hbm.entity.mob.EntityBloatwisp;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -97,6 +101,17 @@ public class BlockBloatfire extends BlockFire {
 							}
 						}
 					}
+				}
+			}
+		}
+
+		if(!world.isRemote && rand.nextInt(100) == 0 && world.difficultySetting != EnumDifficulty.PEACEFUL && !EntityBloatwisp.isOverCap(world)) {
+			Block above = world.getBlock(x, y + 1, z);
+			if(world.isAirBlock(x, y + 1, z) || above == Blocks.fire || above == this) {
+				EntityBloatwisp wisp = new EntityBloatwisp(world);
+				wisp.setLocationAndAngles(x + 0.5, y + 1, z + 0.5, rand.nextFloat() * 360.0F, 0.0F);
+				if(wisp.getCanSpawnHere()) {
+					world.spawnEntityInWorld(wisp);
 				}
 			}
 		}

@@ -120,6 +120,11 @@ public class EntityChemical extends EntityThrowableNT {
 				if(MainRegistry.proxy.me().getDistanceToEntity(this) < 100)
 					FlameCreator.composeEffectClient(worldObj, posX, posY - 0.125, posZ, FlameCreator.META_BALEFIRE);
 
+			} else if(type == Fluids.MORNINGSTARS_FIRE) {
+
+				if(MainRegistry.proxy.me().getDistanceToEntity(this) < 100)
+					FlameCreator.composeEffectClient(worldObj, posX, posY - 0.125, posZ, FlameCreator.META_WHITE);
+
 			} else if(style == ChemicalStyle.LIQUID) {
 
 				Color color = new Color(type.getColor());
@@ -434,6 +439,9 @@ public class EntityChemical extends EntityThrowableNT {
 							worldObj.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, fire);
 						}
 					}
+
+					if(type == Fluids.MORNINGSTARS_FIRE && MainRegistry.proxy.me().getDistanceToEntity(this) < 100)
+						FlameCreator.composeEffectClient(worldObj, x + 0.5, y + 0.5, z + 0.5, FlameCreator.META_WHITE);
 				}
 
 				if(style == ChemicalStyle.BURNING || style == ChemicalStyle.GASFLAME) {

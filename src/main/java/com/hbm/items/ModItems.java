@@ -345,6 +345,7 @@ public class ModItems {
 	public static Item billet_plutonium_fuel;
 	public static Item billet_neptunium_fuel;
 	public static Item billet_mox_fuel;
+	public static Item billet_bloatate;
 	public static Item billet_americium_fuel;
 	public static Item billet_les;
 	public static Item billet_schrabidium_fuel;
@@ -474,6 +475,7 @@ public class ModItems {
 	public static Item crayon;
 	public static Item divine_shard;
 	public static Item symbol_guilt;
+	public static Item nostalgic_gears;
 
 	public static Item scuttertail;
 	public static Item saltleaf;
@@ -689,6 +691,7 @@ public class ModItems {
 	public static Item powder_yellowcake;
 	public static Item powder_magic;
 	public static Item powder_balefire;
+	public static Item bloodclot;
 	public static Item powder_sawdust;
 	public static Item powder_flux;
 	public static Item powder_fertilizer;
@@ -1200,6 +1203,8 @@ public class ModItems {
 	public static ItemRBMKRod rbmk_fuel_men;
 	public static ItemRBMKRod rbmk_fuel_hen;
 	public static ItemRBMKRod rbmk_fuel_mox;
+	public static ItemRBMKPellet rbmk_pellet_bloatate;
+	public static ItemRBMKRod rbmk_fuel_bloatate;
 	public static ItemRBMKRod rbmk_fuel_les;
 	public static ItemRBMKRod rbmk_fuel_mes;
 	public static ItemRBMKRod rbmk_fuel_hes;
@@ -2476,6 +2481,7 @@ public class ModItems {
 		crayon = new ItemCrayon().setUnlocalizedName("crayon").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":crayon");
 		divine_shard = new Item().setUnlocalizedName("divine_shard").setCreativeTab(null).setTextureName(RefStrings.MODID + ":divine_shard");
 		symbol_guilt = new ItemSymbol();
+		nostalgic_gears = new Item().setUnlocalizedName("nostalgic_gears").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ergographia");
 
 		undefined = new ItemCustomLore().setUnlocalizedName("undefined").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":undefined");
 
@@ -2528,6 +2534,7 @@ public class ModItems {
 		billet_plutonium_fuel = new Item().setUnlocalizedName("billet_plutonium_fuel").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_plutonium_fuel");
 		billet_neptunium_fuel = new Item().setUnlocalizedName("billet_neptunium_fuel").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_neptunium_fuel");
 		billet_mox_fuel = new Item().setUnlocalizedName("billet_mox_fuel").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_mox_fuel");
+		billet_bloatate = new Item().setUnlocalizedName("billet_bloatate").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_bloatate");
 		billet_americium_fuel = new Item().setUnlocalizedName("billet_americium_fuel").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_americium_fuel");
 		billet_les = new Item().setUnlocalizedName("billet_les").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_les");
 		billet_schrabidium_fuel = new Item().setUnlocalizedName("billet_schrabidium_fuel").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_schrabidium_fuel");
@@ -2889,6 +2896,7 @@ public class ModItems {
 		powder_yellowcake = new Item().setUnlocalizedName("powder_yellowcake").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_yellowcake");
 		powder_magic = new Item().setUnlocalizedName("powder_magic").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_magic");
 		powder_balefire = new Item().setUnlocalizedName("powder_balefire").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_balefire");
+		bloodclot = new Item().setUnlocalizedName("bloodclot").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":bloodclot");
 		powder_sawdust = new Item().setUnlocalizedName("powder_sawdust").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_sawdust");
 		powder_flux = new Item().setUnlocalizedName("powder_flux").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_flux");
 		powder_fertilizer = new ItemFertilizer().setUnlocalizedName("powder_fertilizer").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_fertilizer");
@@ -3442,6 +3450,7 @@ public class ModItems {
 		rbmk_pellet_men = (ItemRBMKPellet) new ItemRBMKPellet("Medium Enriched Neptunium-237").setUnlocalizedName("rbmk_pellet_men").setTextureName(RefStrings.MODID + ":rbmk_pellet_men");
 		rbmk_pellet_hen = (ItemRBMKPellet) new ItemRBMKPellet("Highly Enriched Neptunium-237").setUnlocalizedName("rbmk_pellet_hen").setTextureName(RefStrings.MODID + ":rbmk_pellet_hen");
 		rbmk_pellet_mox = (ItemRBMKPellet) new ItemRBMKPellet("Mixed MEU & LEP Oxide").setUnlocalizedName("rbmk_pellet_mox").setTextureName(RefStrings.MODID + ":rbmk_pellet_mox");
+		rbmk_pellet_bloatate = (ItemRBMKPellet) new ItemRBMKPellet("Bloatate").setUnlocalizedName("rbmk_pellet_bloatate").setTextureName(RefStrings.MODID + ":rbmk_pellet_bloatate");
 		rbmk_pellet_les = (ItemRBMKPellet) new ItemRBMKPellet("Low Enriched Schrabidium-326").setUnlocalizedName("rbmk_pellet_les").setTextureName(RefStrings.MODID + ":rbmk_pellet_les");
 		rbmk_pellet_mes = (ItemRBMKPellet) new ItemRBMKPellet("Medium Enriched Schrabidium-326").setUnlocalizedName("rbmk_pellet_mes").setTextureName(RefStrings.MODID + ":rbmk_pellet_mes");
 		rbmk_pellet_hes = (ItemRBMKPellet) new ItemRBMKPellet("Highly Enriched Schrabidium-326").setUnlocalizedName("rbmk_pellet_hes").setTextureName(RefStrings.MODID + ":rbmk_pellet_hes");
@@ -3615,6 +3624,14 @@ public class ModItems {
 				.setDepletionFunction(EnumDepleteFunc.RAISING_SLOPE)
 				.setMeltingPoint(2815)
 				.setTint(tintUranium).setUnlocalizedName("rbmk_fuel_mox").setTextureName(RefStrings.MODID + ":rbmk_fuel_mox");
+		int tintBloatate = 0xFFD800;
+		rbmk_fuel_bloatate = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_bloatate)
+				.setYield(150_000_000D)
+				.setStats(100D)
+				.setFunction(EnumBurnFunc.LOG_TEN)
+				.setHeat(3.0D)
+				.setMeltingPoint(3000)
+				.setTint(tintBloatate).setUnlocalizedName("rbmk_fuel_bloatate").setTextureName(RefStrings.MODID + ":rbmk_fuel_bloatate");
 		rbmk_fuel_les = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_les)
 				.setYield(100000000D)
 				.setStats(50)
@@ -5132,6 +5149,7 @@ public class ModItems {
 		GameRegistry.registerItem(billet_plutonium_fuel, billet_plutonium_fuel.getUnlocalizedName());
 		GameRegistry.registerItem(billet_neptunium_fuel, billet_neptunium_fuel.getUnlocalizedName());
 		GameRegistry.registerItem(billet_mox_fuel, billet_mox_fuel.getUnlocalizedName());
+		GameRegistry.registerItem(billet_bloatate, billet_bloatate.getUnlocalizedName());
 		GameRegistry.registerItem(billet_americium_fuel, billet_americium_fuel.getUnlocalizedName());
 		GameRegistry.registerItem(billet_les, billet_les.getUnlocalizedName());
 		GameRegistry.registerItem(billet_schrabidium_fuel, billet_schrabidium_fuel.getUnlocalizedName());
@@ -5266,6 +5284,7 @@ public class ModItems {
 		GameRegistry.registerItem(powder_flux, powder_flux.getUnlocalizedName());
 		GameRegistry.registerItem(powder_fertilizer, powder_fertilizer.getUnlocalizedName());
 		GameRegistry.registerItem(powder_balefire, powder_balefire.getUnlocalizedName());
+		GameRegistry.registerItem(bloodclot, bloodclot.getUnlocalizedName());
 		GameRegistry.registerItem(powder_semtex_mix, powder_semtex_mix.getUnlocalizedName());
 		GameRegistry.registerItem(powder_desh_mix, powder_desh_mix.getUnlocalizedName());
 		GameRegistry.registerItem(powder_desh_ready, powder_desh_ready.getUnlocalizedName());
@@ -5564,6 +5583,7 @@ public class ModItems {
 		GameRegistry.registerItem(full_drive, full_drive.getUnlocalizedName());
 		GameRegistry.registerItem(divine_shard, divine_shard.getUnlocalizedName());
 		GameRegistry.registerItem(symbol_guilt, symbol_guilt.getUnlocalizedName());
+		GameRegistry.registerItem(nostalgic_gears, nostalgic_gears.getUnlocalizedName());
 
 		//Plant Products
 		GameRegistry.registerItem(plant_item, plant_item.getUnlocalizedName());
@@ -6024,6 +6044,7 @@ public class ModItems {
 		GameRegistry.registerItem(rbmk_fuel_men, rbmk_fuel_men.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_fuel_hen, rbmk_fuel_hen.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_fuel_mox, rbmk_fuel_mox.getUnlocalizedName());
+		GameRegistry.registerItem(rbmk_fuel_bloatate, rbmk_fuel_bloatate.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_fuel_les, rbmk_fuel_les.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_fuel_mes, rbmk_fuel_mes.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_fuel_hes, rbmk_fuel_hes.getUnlocalizedName());
@@ -6062,6 +6083,7 @@ public class ModItems {
 		GameRegistry.registerItem(rbmk_pellet_men, rbmk_pellet_men.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_pellet_hen, rbmk_pellet_hen.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_pellet_mox, rbmk_pellet_mox.getUnlocalizedName());
+		GameRegistry.registerItem(rbmk_pellet_bloatate, rbmk_pellet_bloatate.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_pellet_les, rbmk_pellet_les.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_pellet_mes, rbmk_pellet_mes.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_pellet_hes, rbmk_pellet_hes.getUnlocalizedName());

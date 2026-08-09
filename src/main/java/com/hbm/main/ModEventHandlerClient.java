@@ -11,6 +11,7 @@ import com.hbm.config.SpaceConfig;
 import com.hbm.dim.CelestialBody;
 import com.hbm.dim.SolarSystemWorldSavedData;
 import com.hbm.dim.WorldProviderCelestial;
+import com.hbm.dim.hell.BiomeGenTheNest;
 import com.hbm.dim.trait.CBT_Invasion;
 import com.hbm.dim.trait.CBT_War;
 import com.hbm.dim.trait.CelestialBodyTrait;
@@ -693,6 +694,16 @@ public class ModEventHandlerClient {
 
 		// Replace the sound if we're not on Earth
 		WorldProvider provider = Minecraft.getMinecraft().theWorld.provider;
+		if(provider.dimensionId == -1 && Minecraft.getMinecraft().thePlayer != null) {
+			/// NETHER SPECIFIC MUSIC
+			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+			if(player.worldObj.getBiomeGenForCoords((int) Math.floor(player.posX), (int) Math.floor(player.posZ)) == BiomeGenTheNest.theNest) {
+				String track = ClientConfig.THE_NEST_MUSIC.value;
+				if(track != null && !track.isEmpty())
+					event.result = currentSong = PositionedSoundRecord.func_147673_a(new ResourceLocation("hbm:" + track));
+				return;
+			}
+		}
 		if((provider instanceof WorldProviderCelestial || provider instanceof WorldProviderOrbit) && provider.dimensionId != 0) {
 			event.result = currentSong = PositionedSoundRecord.func_147673_a(MUSIC_LOCATION);
 		}

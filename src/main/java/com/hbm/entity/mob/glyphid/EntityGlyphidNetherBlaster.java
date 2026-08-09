@@ -15,6 +15,7 @@ public class EntityGlyphidNetherBlaster extends EntityGlyphidBlaster {
 	public EntityGlyphidNetherBlaster(World world) {
 		super(world);
 		this.isImmuneToFire = true;
+		this.netherGlyphid = true;
 	}
 
 	@Override

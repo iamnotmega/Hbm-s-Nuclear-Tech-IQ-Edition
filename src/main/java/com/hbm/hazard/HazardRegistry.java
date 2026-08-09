@@ -434,6 +434,7 @@ public class HazardRegistry {
 		registerRBMKRod(rbmk_fuel_hes, saf * rod_rbmk, wst * rod_rbmk * 50F);
 		registerRBMKRod(rbmk_fuel_leaus, 0F, wst * rod_rbmk * 37.5F);
 		registerRBMKRod(rbmk_fuel_heaus, 0F, wst * rod_rbmk * 32.5F);
+		registerRBMKRod(rbmk_fuel_bloatate, 0F, wst * rod_rbmk * 37.5F);
 		registerRBMKRod(rbmk_fuel_po210be, pobe * rod_rbmk, pobe * rod_rbmk * 0.1F, true);
 		registerRBMKRod(rbmk_fuel_ra226be, rabe * rod_rbmk, rabe * rod_rbmk * 0.4F, true);
 		registerRBMKRod(rbmk_fuel_pu238be, pube * rod_rbmk, wst * rod_rbmk * 2.5F);

@@ -36,6 +36,7 @@ public class ClientConfig extends RunningConfig {
 	public static ConfigWrapper<Integer> RENDER_HELIOSTAT_BEAM_LIMIT =		new ConfigWrapper(250);
 	public static ConfigWrapper<Integer> RENDER_REBAR_LIMIT =				new ConfigWrapper(250);
 	public static ConfigWrapper<Float> AUDIO_SHIP_HUM_VOLUME =				new ConfigWrapper(0.1F);
+	public static ConfigWrapper<String> THE_NEST_MUSIC =					new ConfigWrapper("music.game.nest");
 	public static ConfigWrapper<Integer> TOOL_HUD_INDICATOR_X = 			new ConfigWrapper(0);
 	public static ConfigWrapper<Integer> TOOL_HUD_INDICATOR_Y = 			new ConfigWrapper(0);
 	public static ConfigWrapper<Boolean> SHOW_BLOCK_META_OVERLAY = 			new ConfigWrapper(false);
@@ -65,6 +66,7 @@ public class ClientConfig extends RunningConfig {
 		configMap.put("RENDER_HELIOSTAT_BEAM_LIMIT", RENDER_HELIOSTAT_BEAM_LIMIT);
 		configMap.put("RENDER_REBAR_LIMIT", RENDER_REBAR_LIMIT);
 		configMap.put("AUDIO_SHIP_HUM_VOLUME", AUDIO_SHIP_HUM_VOLUME);
+		configMap.put("THE_NEST_MUSIC", THE_NEST_MUSIC);
 		configMap.put("TOOL_HUD_INDICATOR_X", TOOL_HUD_INDICATOR_X);
 		configMap.put("TOOL_HUD_INDICATOR_Y", TOOL_HUD_INDICATOR_Y);
 		configMap.put("SHOW_BLOCK_META_OVERLAY", SHOW_BLOCK_META_OVERLAY);

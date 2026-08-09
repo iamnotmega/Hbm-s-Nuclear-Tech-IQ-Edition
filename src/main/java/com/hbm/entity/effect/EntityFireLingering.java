@@ -22,6 +22,7 @@ public class EntityFireLingering extends Entity {
 	public static int TYPE_PHOSPHORUS = 2;
 	public static int TYPE_OXY = 3;
 	public static int TYPE_BLACK = 4;
+	public static int TYPE_MORNINGSTAR = 5;
 	public int maxAge = 150;
 	
 	public EntityFireLingering(World world) {
@@ -76,6 +77,7 @@ public class EntityFireLingering extends Entity {
 					HbmLivingProps props = HbmLivingProps.getData(livng);
 					if(this.getType() == this.TYPE_DIESEL) if(props.fire < 60) props.fire = 60;
 					if(this.getType() == this.TYPE_PHOSPHORUS) if(props.fire < 300) props.fire = 300;
+					if(this.getType() == this.TYPE_MORNINGSTAR) if(props.morningstar < 400) props.morningstar = 400;
 					if(this.getType() == this.TYPE_BALEFIRE) if(props.balefire < 100) props.balefire = 100;
 					if(this.getType() == this.TYPE_BLACK) if(props.blackFire < 200) props.blackFire = 200; else props.blackFire += 5;
 				} else {
@@ -94,6 +96,7 @@ public class EntityFireLingering extends Entity {
 				if(mop != null && mop.typeOfHit == mop.typeOfHit.BLOCK) down = mop.hitVec;
 				if(this.getType() == this.TYPE_DIESEL) FlameCreator.composeEffectClient(worldObj, x, down.yCoord, z, FlameCreator.META_FIRE);
 				if(this.getType() == this.TYPE_PHOSPHORUS) FlameCreator.composeEffectClient(worldObj, x, down.yCoord, z, FlameCreator.META_FIRE);
+				if(this.getType() == this.TYPE_MORNINGSTAR) FlameCreator.composeEffectClient(worldObj, x, down.yCoord, z, FlameCreator.META_WHITE);
 				if(this.getType() == this.TYPE_BALEFIRE) FlameCreator.composeEffectClient(worldObj, x, down.yCoord, z, FlameCreator.META_BALEFIRE);
 				if(this.getType() == this.TYPE_BLACK) FlameCreator.composeEffectClient(worldObj, x, down.yCoord, z, FlameCreator.META_BLACK);
 			}

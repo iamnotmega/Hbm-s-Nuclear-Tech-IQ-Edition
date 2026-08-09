@@ -7,7 +7,9 @@ import java.util.Locale;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.MobConfig;
+import com.hbm.entity.effect.EntityMist;
 import com.hbm.entity.logic.EntityWaypoint;
+import com.hbm.entity.mob.EntityBloatwisp;
 import com.hbm.entity.mob.EntityParasiteMaggot;
 import com.hbm.entity.mob.glyphid.GlyphidStats.StatBundle;
 import com.hbm.entity.pathfinder.PathFinderUtils;
@@ -16,6 +18,7 @@ import com.hbm.explosion.vanillant.standard.*;
 import com.hbm.handler.pollution.PollutionHandler;
 import com.hbm.handler.pollution.PollutionHandler.PollutionType;
 import com.hbm.handler.threading.PacketThreading;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.ModItems;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.main.ResourceManager;
@@ -55,6 +58,7 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	public int homeY;
 	public int homeZ;
 	protected int currentTask = 0;
+	public boolean netherGlyphid = false;
 
 	//both of those below are used for digging, so the glyphid remembers what it was doing
 	protected int previousTask;
@@ -211,6 +215,25 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		return isBurning() ? ModItems.glyphid_meat_grilled : ModItems.glyphid_meat;
 	}
 
+	public void spawnDeathCloud() {
+
+		EntityMist mist = new EntityMist(worldObj);
+		mist.setType(Fluids.BLOATMUSK);
+		mist.setPosition(posX, posY, posZ);
+		mist.setArea(6, 3);
+		mist.setDuration(100);
+		worldObj.spawnEntityInWorld(mist);
+
+		int count = 2 + rand.nextInt(3);
+		if(EntityBloatwisp.isOverCap(worldObj)) return;
+		for(int i = 0; i < count; i++) {
+			EntityBloatwisp wisp = new EntityBloatwisp(worldObj);
+			float angle = (float) (Math.PI * 2D / count * i);
+			wisp.setLocationAndAngles(posX + Math.cos(angle) * 2, posY + 1, posZ + Math.sin(angle) * 2, rand.nextFloat() * 360.0F, 0.0F);
+			worldObj.spawnEntityInWorld(wisp);
+		}
+	}
+
 	@Override
 	protected Entity findPlayerToAttack() {
 		if(this.isPotionActive(Potion.blindness)) return null;
@@ -228,7 +251,7 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	@Override
 	protected void updateEntityActionState() {
 		super.updateEntityActionState();
-		
+
 		// re-scan for new targets every so often
 		// every third glyphid does not do this, so you cannot "juggle" hordes on purpose
 		if(this.getEntityId() % 3 > 0 && (this.getEntityId() + this.ticksExisted) % 100 == 0) {
@@ -334,6 +357,10 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	@Override
 	public void onDeath(DamageSource source) {
 		super.onDeath(source);
+
+		if(!worldObj.isRemote && netherGlyphid && rand.nextInt(100) < 15) {
+			spawnDeathCloud();
+		}
 
 		if(!worldObj.isRemote && doesInfectedSpawnMaggots() && this.dataWatcher.getWatchableObjectByte(DW_SUBTYPE) == TYPE_INFECTED) {
 

@@ -39,7 +39,7 @@ public class BlockBloatsproutLeaves extends BlockLeaves {
 		super.dropBlockAsItemWithChance(world, x, y, z, metadata, chance, fortune);
 
 		if(!world.isRemote) {
-			if(world.rand.nextFloat() < 0.5F) {
+			if(world.rand.nextFloat() < 0.05F) {
 				this.dropBlockAsItem(world, x, y, z, new ItemStack(ModBlocks.bloatsprout_sapling));
 			}
 		}

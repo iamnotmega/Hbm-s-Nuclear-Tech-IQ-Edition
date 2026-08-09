@@ -17,6 +17,7 @@ public class EntityGlyphidNetherScout extends EntityGlyphidScout {
 	public EntityGlyphidNetherScout(World world) {
 		super(world);
 		this.isImmuneToFire = true;
+		this.netherGlyphid = true;
 	}
 
 	@Override

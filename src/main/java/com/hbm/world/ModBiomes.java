@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hbm.dim.duna.biome.BiomeGenBaseDuna;
+import com.hbm.dim.hell.BiomeGenTheNest;
 import com.hbm.dim.minmus.biome.BiomeGenBaseMinmus;
 
 import net.minecraftforge.common.BiomeDictionary;
@@ -17,6 +18,8 @@ public class ModBiomes
 
     public static void init()
     {
+        BiomeGenTheNest.init();
+        netherBiomes.add(new BiomeEntry(BiomeGenTheNest.theNest, 8));
         BiomeDictionary.registerBiomeType(BiomeGenBaseDuna.dunaPlains, Type.COLD, Type.DRY, Type.DEAD);
         BiomeDictionary.registerBiomeType(BiomeGenBaseDuna.dunaLowlands, Type.COLD, Type.DRY, Type.DEAD);
         BiomeDictionary.registerBiomeType(BiomeGenBaseDuna.dunaPolar, Type.COLD, Type.DRY, Type.DEAD, Type.SNOWY);

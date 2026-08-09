@@ -13,6 +13,13 @@ import net.minecraft.world.World;
 
 public class EntityShrapnel extends EntityThrowable {
 
+	public float renderScale = 1.0F;
+
+	public EntityShrapnel setRenderScale(float scale) {
+		this.renderScale = scale;
+		return this;
+	}
+
 	public EntityShrapnel(World p_i1773_1_) {
 		super(p_i1773_1_);
 		this.isImmuneToFire = true;

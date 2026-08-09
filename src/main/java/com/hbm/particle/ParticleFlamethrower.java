@@ -37,6 +37,7 @@ public class ParticleFlamethrower extends EntityFXRotating {
 
 		if(type == FlameCreator.META_OXY) this.particleRed = this.particleGreen = this.particleBlue = 1F;
 		if(type == FlameCreator.META_BLACK) this.particleRed = this.particleGreen = this.particleBlue = 1F;
+		if(type == FlameCreator.META_WHITE) this.particleRed = this.particleGreen = this.particleBlue = 1F;
 	}
 
 	@Override

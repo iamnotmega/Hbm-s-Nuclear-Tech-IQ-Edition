@@ -28,6 +28,7 @@ public class EntityGlyphidNetherDigger extends EntityGlyphidDigger {
 	public EntityGlyphidNetherDigger(World world) {
 		super(world);
 		this.isImmuneToFire = true;
+		this.netherGlyphid = true;
 	}
 
 	@Override

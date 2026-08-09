@@ -53,6 +53,17 @@ public class MobConfig {
 	public static int[] brendaChance = {-50, 60, 20};
 	public static int[] johnsonChance = {-50, 60, 50};
 
+	public static boolean enableNetherHives = true;
+	public static int bloatwispCap = 50;
+	public static int[] netherGlyphidChance = {70, -30, 0};
+	public static int[] netherBombardierChance = {30, -10, 0};
+	public static int[] netherBrawlerChance = {25, 0, 0};
+	public static int[] netherDiggerChance = {20, 0, 0};
+	public static int[] netherBlasterChance = {20, 0, 0};
+	public static int[] netherBehemothChance = {10, 0, 0};
+	public static int[] netherBrendaChance = {5, 0, 0};
+	public static int[] netherNuclearChance = {2, 0, 0};
+
 	public static double spawnMax = 50;
 	public static boolean enableInfestation = true;
 	public static double baseInfestChance = 5;
@@ -145,6 +156,18 @@ public class MobConfig {
 		behemothChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC06_behemothChance", "Base Spawn chance and soot modifier for a glyphid behemoth", new int[]{-30, 45, 10});
 		brendaChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC07_brendaChance", "Base Spawn chance and soot modifier for a glyphid brenda", new int[]{-50, 60, 20});
 		johnsonChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC08_johnsonChance", "Base Spawn chance and soot modifier for Big Man Johnson", new int[]{-50, 60, 50});
+
+		// Nether glyphids — the nether has no soot, so minSoot stays 0 and rarity comes from the base chance
+		enableNetherHives = CommonConfig.createConfigBool(config, CATEGORY, "12.G14_enableNetherHives", "Whether the nether glyphid nest structures should spawn in The Nest biome", true);
+		bloatwispCap = CommonConfig.createConfigInt(config, CATEGORY, "12.G15_bloatwispCap", "Maximum amount of bloatwisps being able to exist at once (0 to disable)", 30);
+		netherGlyphidChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC09_netherGlyphidChance", "Base Spawn chance and soot modifier for a nether glyphid grunt", new int[]{70, -30, 0});
+		netherBombardierChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC10_netherBombardierChance", "Base Spawn chance and soot modifier for a nether glyphid bombardier", new int[]{30, -10, 0});
+		netherBrawlerChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC11_netherBrawlerChance", "Base Spawn chance and soot modifier for a nether glyphid brawler", new int[]{25, 0, 0});
+		netherDiggerChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC12_netherDiggerChance", "Base Spawn chance and soot modifier for a nether glyphid digger", new int[]{20, 0, 0});
+		netherBlasterChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC13_netherBlasterChance", "Base Spawn chance and soot modifier for a nether glyphid blaster", new int[]{20, 0, 0});
+		netherBehemothChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC14_netherBehemothChance", "Base Spawn chance and soot modifier for a nether glyphid behemoth", new int[]{10, 0, 0});
+		netherBrendaChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC15_netherBrendaChance", "Base Spawn chance and soot modifier for a nether glyphid brenda", new int[]{5, 0, 0});
+		netherNuclearChance = CommonConfig.createConfigIntList(config, CATEGORY, "12.GC16_netherNuclearChance", "Base Spawn chance and soot modifier for a nether glyphid nuclear", new int[]{2, 0, 0});
 
 		String rampantDesc = "Rampant Mode changes glyphid behavior and spawning to be more aggressive, changes include:\n"
 				+ "\n"

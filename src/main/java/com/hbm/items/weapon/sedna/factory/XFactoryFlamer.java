@@ -48,11 +48,13 @@ public class XFactoryFlamer {
 	public static BulletConfig flame_gas;
 	public static BulletConfig flame_napalm;
 	public static BulletConfig flame_balefire;
+	public static BulletConfig flame_morningstar;
 
 	public static BulletConfig flame_topaz_diesel;
 	public static BulletConfig flame_topaz_gas;
 	public static BulletConfig flame_topaz_napalm;
 	public static BulletConfig flame_topaz_balefire;
+	public static BulletConfig flame_topaz_morningstar;
 
 	public static BulletConfig flame_daybreaker_diesel;
 	public static BulletConfig flame_daybreaker_gas;
@@ -64,6 +66,9 @@ public class XFactoryFlamer {
 	};
 	public static Consumer<Entity> LAMBDA_BALEFIRE = (bullet) -> {
 		if(bullet.worldObj.isRemote && MainRegistry.proxy.me().getDistanceToEntity(bullet) < 100) FlameCreator.composeEffectClient(bullet.worldObj, bullet.posX, bullet.posY - 0.125, bullet.posZ, FlameCreator.META_BALEFIRE);
+	};
+	public static Consumer<Entity> LAMBDA_MORNINGSTAR = (bullet) -> {
+		if(bullet.worldObj.isRemote && MainRegistry.proxy.me().getDistanceToEntity(bullet) < 100) FlameCreator.composeEffectClient(bullet.worldObj, bullet.posX, bullet.posY - 0.125, bullet.posZ, FlameCreator.META_WHITE);
 	};
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_IGNITE_FIRE = (bullet, mop) -> {
 		if(mop.entityHit instanceof EntityLivingBase) {
@@ -77,10 +82,17 @@ public class XFactoryFlamer {
 			if(props.balefire < 200) props.balefire = 200;
 		}
 	};
+	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_IGNITE_MORNINGSTAR = (bullet, mop) -> {
+		if(mop.entityHit instanceof EntityLivingBase) {
+			HbmLivingProps props = HbmLivingProps.getData((EntityLivingBase) mop.entityHit);
+			if(props.morningstar < 400) props.morningstar = 400;
+		}
+	};
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_LINGER_DIESEL = (bullet, mop) -> { if(!igniteIfPossible(bullet, mop)) spawnFire(bullet, mop, 2F, 1F, 100, EntityFireLingering.TYPE_DIESEL); };
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_LINGER_GAS = (bullet, mop) -> { igniteIfPossible(bullet, mop); };
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_LINGER_NAPALM = (bullet, mop) -> { if(!igniteIfPossible(bullet, mop)) spawnFire(bullet, mop, 2.5F, 1F, 200, EntityFireLingering.TYPE_DIESEL); };
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_LINGER_BALEFIRE = (bullet, mop) -> { spawnFire(bullet, mop, 3F, 1F, 300, EntityFireLingering.TYPE_BALEFIRE); };
+	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_LINGER_MORNINGSTAR = (bullet, mop) -> { if(!igniteIfPossible(bullet, mop)) spawnFire(bullet, mop, 3F, 1F, 400, EntityFireLingering.TYPE_MORNINGSTAR); };
 
 	public static boolean igniteIfPossible(EntityBulletBaseMK4 bullet, MovingObjectPosition mop) {
 		if(mop.typeOfHit == mop.typeOfHit.BLOCK) {
@@ -120,6 +132,8 @@ public class XFactoryFlamer {
 				.setOnImpact(LAMBDA_IGNITE_FIRE).setOnUpdate(LAMBDA_FIRE).setOnRicochet(LAMBDA_LINGER_NAPALM);
 		flame_balefire = new BulletConfig().setItem(EnumAmmo.FLAME_BALEFIRE).setCasing(new ItemStack(ModItems.plate_steel, 2), 500).setupDamageClass(DamageClass.FIRE).setLife(200).setVel(1F).setGrav(0.02D).setReloadCount(500).setSelfDamageDelay(20).setKnockback(0F)
 				.setOnImpact(LAMBDA_IGNITE_BALEFIRE).setOnUpdate(LAMBDA_BALEFIRE).setOnRicochet(LAMBDA_LINGER_BALEFIRE);
+		flame_morningstar = new BulletConfig().setItem(EnumAmmo.FLAME_MORNINGSTAR).setCasing(new ItemStack(ModItems.plate_steel, 2), 500).setupDamageClass(DamageClass.FIRE).setLife(400).setVel(1F).setGrav(0.02D).setReloadCount(500).setSelfDamageDelay(20).setKnockback(0F).setArmorPiercing(0.35F).setThresholdNegation(8F).setDoesPenetrate(true)
+				.setOnImpact(LAMBDA_IGNITE_MORNINGSTAR).setOnUpdate(LAMBDA_MORNINGSTAR).setOnRicochet(LAMBDA_LINGER_MORNINGSTAR);
 
 		flame_nograv = flame_diesel.clone().setGrav(0);
 		flame_nograv_bf = flame_balefire.clone().setGrav(0).setLife(100);
@@ -128,6 +142,7 @@ public class XFactoryFlamer {
 		flame_topaz_gas = flame_gas				.clone().setProjectiles(2).setSpread(0.05F);
 		flame_topaz_napalm = flame_napalm		.clone().setProjectiles(2).setSpread(0.05F).setLife(60).setGrav(0.0D);
 		flame_topaz_balefire = flame_balefire	.clone().setProjectiles(2).setSpread(0.05F).setLife(60).setGrav(0.0D);
+		flame_topaz_morningstar = flame_morningstar.clone().setProjectiles(2).setSpread(0.05F).setLife(60).setGrav(0.0D);
 
 		flame_daybreaker_diesel = flame_diesel.clone().setLife(200).setVel(2F).setGrav(0.035D)
 				.setOnImpact((bullet, mop) -> { Lego.standardExplode(bullet, mop, 5F); spawnFire(bullet, mop, 6F, 2F, 200, EntityFireLingering.TYPE_DIESEL); bullet.setDead(); });
@@ -142,7 +157,7 @@ public class XFactoryFlamer {
 				.dura(20_000).draw(10).inspect(17).crosshair(Crosshair.L_CIRCLE)
 				.rec(new Receiver(0)
 						.dmg(1F).spreadHipfire(0F).delay(1).auto(true).reload(90).jam(17)
-						.mag(new MagazineFullReload(0, 300).addConfigs(flame_diesel, flame_gas, flame_napalm, flame_balefire))
+						.mag(new MagazineFullReload(0, 300).addConfigs(flame_diesel, flame_gas, flame_napalm, flame_balefire, flame_morningstar))
 						.offset(0.75, -0.0625, -0.25D)
 						.setupStandardFire())
 				.setupStandardConfiguration()

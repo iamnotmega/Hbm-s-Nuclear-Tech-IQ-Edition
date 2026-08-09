@@ -87,13 +87,12 @@ public class ItemPoolsPile {
 					weighted(Items.glowstone_dust, 0, 4, 10, 15),
 					weighted(Items.nether_wart, 0, 2, 8, 10),
 					weighted(Items.diamond, 0, 1, 2, 2),
+					weighted(ModItems.symbol_guilt, 0, 1, 1, 2),
 					weighted(ModItems.scrap, 0, 4, 10, 10),
-					//Nether mob drops
 					weighted(Items.blaze_powder, 0, 2, 6, 12),
 					weighted(Items.ghast_tear, 0, 1, 2, 4),
 					weighted(Items.skull, 1, 1, 1, 2),
 					//Balefire
-					weighted(ModItems.powder_balefire, 0, 1, 3, 5),
 					weighted(ModItems.cell_balefire, 0, 1, 1, 2),
 					weighted(ModItems.balefire_scrambled, 0, 1, 1, 2),
 					//Glyphid
@@ -109,6 +108,8 @@ public class ItemPoolsPile {
 					weighted(ModItems.gun_fatman, 0, 1, 1, 1),
 					weighted(ModItems.ammo_standard, EnumAmmo.G12.ordinal(), 4, 8, 10),
 					weighted(ModItems.ammo_standard, EnumAmmo.M357_SP.ordinal(), 6, 12, 10),
+					weighted(ModItems.ammo_standard, EnumAmmo.R762_FMJ.ordinal(), 4, 8, 10),
+					weighted(ModItems.ammo_standard, EnumAmmo.R762_DU.ordinal(), 2, 4, 4),
 					//Cobalt & Starmetal
 					weighted(new ItemStack(ModBlocks.block_crystal_2, 1, EnumCrystalBlockType.COBALT.ordinal() - 16), 1, 2, 3),
 					weighted(new ItemStack(ModBlocks.block_crystal_2, 1, EnumCrystalBlockType.STARMETAL.ordinal() - 16), 1, 2, 2),
@@ -116,8 +117,9 @@ public class ItemPoolsPile {
 					//Consumables
 					weighted(ModItems.bottle_nuka, 0, 1, 3, 20),
 					weighted(ModItems.definitelyfood, 0, 6, 16, 20),
-					weighted(Items.experience_bottle, 0, 2, 5, 8),
+					weighted(filledSyringe(ModItems.combat_syringe, Fluids.PSYCHO), 1, 2, 4),
 					weighted(filledSyringe(ModItems.combat_syringe, Fluids.STIMPAK), 1, 2, 4),
+
 					//Rare
 					weighted(ModItems.ammo_standard, EnumAmmo.NUKE_BALEFIRE.ordinal(), 1, 1, 3),
 			};

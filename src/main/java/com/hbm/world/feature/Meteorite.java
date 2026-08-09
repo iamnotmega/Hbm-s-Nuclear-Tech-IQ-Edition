@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import com.hbm.blocks.BlockEnums.EnumCrystalBlockType;
 import com.hbm.blocks.BlockEnums.EnumMeteorType;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.WorldConfig;
@@ -129,6 +130,20 @@ public class Meteorite {
 				stack.setStackDisplayName("§9Star Blaster§r");
 				EntityItem blaster = new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, stack);
 				world.spawnEntityInWorld(blaster);
+				return;
+			case 13:
+				// crystal meteorite
+				List<ItemStack> list13 = new ArrayList<ItemStack>();
+				list13.add(new ItemStack(ModBlocks.block_meteor_broken));
+				generateSphere11x11(world, rand, x, y, z, list13);
+				List<ItemStack> list14 = new ArrayList<ItemStack>();
+				for(int c = 0; c < 8; c++) list14.add(new ItemStack(ModBlocks.block_crystal, 1, EnumCrystalBlockType.IRON.ordinal()));
+				for(int c = 0; c < 8; c++) list14.add(new ItemStack(ModBlocks.block_crystal, 1, EnumCrystalBlockType.COPPER.ordinal()));
+				for(int c = 0; c < 6; c++) list14.add(new ItemStack(ModBlocks.block_crystal, 1, EnumCrystalBlockType.TUNGSTEN.ordinal()));
+				for(int c = 0; c < 6; c++) list14.add(new ItemStack(ModBlocks.block_crystal, 1, EnumCrystalBlockType.ALUMINIUM.ordinal()));
+				list14.add(new ItemStack(ModBlocks.block_crystal_2, 1, EnumCrystalBlockType.RARE.ordinal() - 16));
+				list14.add(new ItemStack(ModBlocks.block_crystal_2, 1, EnumCrystalBlockType.STARMETAL.ordinal() - 16));
+				generateSphere9x9(world, rand, x, y, z, list14);
 				return;
 			}
 
@@ -634,6 +649,63 @@ public class Meteorite {
 		for(int a = -2; a < 3; a++)
 			for(int b = -2; b < 3; b++)
 				for(int c = -3; c < 4; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+	}
+
+	public void generateSphere11x11(World world, Random rand, int x, int y, int z, List<ItemStack> set) {
+		for(int a = -5; a < 6; a++)
+			for(int b = -1; b < 2; b++)
+				for(int c = -1; c < 2; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -1; a < 2; a++)
+			for(int b = -5; b < 6; b++)
+				for(int c = -1; c < 2; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -1; a < 2; a++)
+			for(int b = -1; b < 2; b++)
+				for(int c = -5; c < 6; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -1; a < 2; a++)
+			for(int b = -4; b < 5; b++)
+				for(int c = -4; c < 5; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -4; a < 5; a++)
+			for(int b = -1; b < 2; b++)
+				for(int c = -4; c < 5; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -4; a < 5; a++)
+			for(int b = -4; b < 5; b++)
+				for(int c = -1; c < 2; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -4; a < 5; a++)
+			for(int b = -3; b < 4; b++)
+				for(int c = -3; c < 4; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -3; a < 4; a++)
+			for(int b = -4; b < 5; b++)
+				for(int c = -3; c < 4; c++) {
+					ItemStack stack = set.get(rand.nextInt(set.size()));
+					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
+				}
+		for(int a = -3; a < 4; a++)
+			for(int b = -3; b < 4; b++)
+				for(int c = -4; c < 5; c++) {
 					ItemStack stack = set.get(rand.nextInt(set.size()));
 					setBlock(world, x + a, y + b, z + c, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 2);
 				}

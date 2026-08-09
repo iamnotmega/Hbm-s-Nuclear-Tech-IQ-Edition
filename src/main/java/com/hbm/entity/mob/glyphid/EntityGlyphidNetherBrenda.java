@@ -15,6 +15,7 @@ public class EntityGlyphidNetherBrenda extends EntityGlyphidBrenda {
 
 	public EntityGlyphidNetherBrenda(World world) {
 		super(world);
+		this.netherGlyphid = true;
 	}
 
 	@Override

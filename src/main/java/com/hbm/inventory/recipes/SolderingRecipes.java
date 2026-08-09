@@ -69,6 +69,18 @@ public class SolderingRecipes extends SerializableRecipe {
 						new OreDictStack(PB.wireFine(), 8)}
 		));
 
+		recipes.add(new SolderingRecipe(new ItemStack(ModItems.circuit, 2, EnumCircuitType.ADVANCED.ordinal()), 300, 1_000,
+				new FluidStack(Fluids.DEW_OF_THE_GARDEN, 1_000),
+				new AStack[] {
+						new ComparableStack(ModItems.circuit, lbsm ? 4 : 16, EnumCircuitType.CHIP),
+						new ComparableStack(ModItems.circuit, 4, EnumCircuitType.CAPACITOR)},
+				new AStack[] {
+						new ComparableStack(ModItems.circuit, 8, EnumCircuitType.PCB),
+						new OreDictStack(RUBBER.ingot(), 2)},
+				new AStack[] {
+						new OreDictStack(PB.wireFine(), 8)}
+		));
+
 		recipes.add(new SolderingRecipe(new ItemStack(ModItems.circuit, 1, EnumCircuitType.CAPACITOR_BOARD.ordinal()), 200, 300,
 				new FluidStack(Fluids.PEROXIDE, 250),
 				new AStack[] {

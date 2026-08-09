@@ -20,6 +20,7 @@ public class EntityGlyphidNetherBrawler extends EntityGlyphidBrawler {
 	public EntityGlyphidNetherBrawler(World world) {
 		super(world);
 		this.isImmuneToFire = true;
+		this.netherGlyphid = true;
 	}
 
 	@Override

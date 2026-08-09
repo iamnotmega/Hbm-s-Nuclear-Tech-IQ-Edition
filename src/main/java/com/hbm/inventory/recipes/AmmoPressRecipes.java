@@ -361,6 +361,7 @@ public class AmmoPressRecipes extends SerializableRecipe {
 		ComparableStack napalm = new ComparableStack(ModItems.canister_napalm);
 		OreDictStack gas = new OreDictStack(Fluids.GAS.getDict(1000));
 		OreDictStack bf = new OreDictStack(Fluids.BALEFIRE.getDict(1000));
+		OreDictStack morningstar = new OreDictStack(Fluids.MORNINGSTARS_FIRE.getDict(1000));
 		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.FLAME_DIESEL, 1),
 				null,	sPlate,	null,
 				null,	diesel,	null,
@@ -376,6 +377,10 @@ public class AmmoPressRecipes extends SerializableRecipe {
 		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.FLAME_BALEFIRE, 1),
 				null,	sPlate,	null,
 				null,	bf,		null,
+				null,	sPlate,	null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.FLAME_MORNINGSTAR, 1),
+				null,	sPlate,	null,
+				null,	morningstar,	null,
 				null,	sPlate,	null));
 
 		OreDictStack silicon = new OreDictStack(SI.billet());

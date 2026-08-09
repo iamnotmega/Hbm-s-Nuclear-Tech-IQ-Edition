@@ -20,6 +20,7 @@ public class FlameCreator implements IParticleCreator {
 	public static int META_DIGAMMA = 2;
 	public static int META_OXY = 3;
 	public static int META_BLACK = 4;
+	public static int META_WHITE = 5;
 
 	public static void composeEffect(World world, double x, double y, double z, int meta) {
 		NBTTagCompound data = new NBTTagCompound();

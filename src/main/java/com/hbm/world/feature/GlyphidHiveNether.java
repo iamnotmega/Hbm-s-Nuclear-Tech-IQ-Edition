@@ -2,6 +2,7 @@ package com.hbm.world.feature;
 
 import java.util.Random;
 
+import com.hbm.blocks.BlockEnums;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.generic.BlockFleshPlant.EnumFleshPlantType;
 import com.hbm.blocks.generic.BlockNetherGlyphid.EnumNetherGlyphidType;
@@ -158,6 +159,27 @@ public class GlyphidHiveNether extends GlyphidHive {
 							world.setBlock(iX, iY + 1, iZ, ModBlocks.plant_flesh, rand.nextInt(EnumFleshPlantType.values().length), 2);
 						}
 					}
+				}
+			}
+		}
+
+		for(int i = 0; i < 12; i++) {
+			for(int k = 0; k < 12; k++) {
+				int iX = x + i - 6;
+				int iZ = z + k - 6;
+				int floorY = y + 4;
+				for(int j = 0; j < 6; j++) {
+					if(!world.isAirBlock(iX, y + j - 2, iZ)) { floorY = y + j - 2; break; }
+				}
+				if(floorY < y + 4 && world.isAirBlock(iX, floorY + 1, iZ) && ModBlocks.stalagmite.canPlaceBlockAt(world, iX, floorY + 1, iZ) && rand.nextInt(6) == 0) {
+					world.setBlock(iX, floorY + 1, iZ, ModBlocks.stalagmite, BlockEnums.EnumStalagmiteType.GLYPHID1.ordinal(), 2);
+				}
+				int ceilingY = y - 3;
+				for(int j = 5; j >= 0; j--) {
+					if(!world.isAirBlock(iX, y + j - 2, iZ)) { ceilingY = y + j - 2; break; }
+				}
+				if(ceilingY > y - 3 && world.isAirBlock(iX, ceilingY - 1, iZ) && ModBlocks.stalactite.canPlaceBlockAt(world, iX, ceilingY - 1, iZ) && rand.nextInt(6) == 0) {
+					world.setBlock(iX, ceilingY - 1, iZ, ModBlocks.stalactite, BlockEnums.EnumStalagmiteType.GLYPHID1.ordinal(), 2);
 				}
 			}
 		}

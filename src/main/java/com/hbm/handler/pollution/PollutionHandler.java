@@ -58,6 +58,9 @@ public class PollutionHandler {
 	public static void incrementPollution(World world, int x, int y, int z, PollutionType type, float amount) {
 		
 		if(!RadiationConfig.enablePollution) return;
+
+		//machines pollute twice as much in the nether
+		if(world.provider.dimensionId == -1 && amount > 0) amount *= 2F;
 		
 		PollutionPerWorld ppw = perWorld.get(world);
 		if(ppw == null) return;

@@ -20,6 +20,7 @@ public class EntityGlyphidNetherBehemoth extends EntityGlyphidBehemoth {
 	public EntityGlyphidNetherBehemoth(World world) {
 		super(world);
 		this.isImmuneToFire = true;
+		this.netherGlyphid = true;
 	}
 
 	@Override

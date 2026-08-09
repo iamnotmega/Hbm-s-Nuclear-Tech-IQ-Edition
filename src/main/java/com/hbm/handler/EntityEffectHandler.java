@@ -18,6 +18,7 @@ import com.hbm.dim.trait.CBT_Atmosphere;
 import com.hbm.dim.trait.CBT_Atmosphere.FluidEntry;
 import com.hbm.entity.missile.EntityRideableRocket;
 import com.hbm.entity.mob.EntityCyberCrab;
+import com.hbm.entity.mob.EntityBloatwisp;
 import com.hbm.entity.mob.glyphid.EntityGlyphid;
 import com.hbm.entity.mob.EntityCreeperNuclear;
 import com.hbm.entity.mob.EntityDuck;
@@ -454,6 +455,9 @@ public class EntityEffectHandler {
 
 	private static boolean isNetherNativeMob(EntityLivingBase entity) {
 		if(!(entity.worldObj.provider instanceof WorldProviderHbmHell)) return false;
+		// have to do these manually cause they extend the base glyphid class, if anyone wonders
+		if(entity instanceof EntityGlyphid && ((EntityGlyphid) entity).netherGlyphid) return true;
+		if(entity instanceof EntityBloatwisp) return true;
 
 		if(netherSpawnClasses == null) {
 			netherSpawnClasses = new HashSet<Class<?>>();
@@ -801,6 +805,13 @@ public class EntityEffectHandler {
 			ContaminationUtil.contaminate(living, HazardType.RADIATION, ContaminationType.CREATIVE, 5F);
 			if((living.ticksExisted + living.getEntityId()) % 10 == 0) living.attackEntityFrom(DamageSource.onFire, 10F);
 			FlameCreator.composeEffect(entity.worldObj, x - living.width / 2 + living.width * rand.nextDouble(), y + rand.nextDouble() * living.height, z - living.width / 2 + living.width * rand.nextDouble(), FlameCreator.META_BLACK);
+		}
+
+		if(props.morningstar > 0) {
+			props.morningstar--;
+			if((living.ticksExisted + living.getEntityId()) % 15 == 0) living.worldObj.playSoundEffect(living.posX, living.posY + living.height / 2, living.posZ, "random.fizz", 1F, 1.5F + rand.nextFloat() * 0.5F);
+			if((living.ticksExisted + living.getEntityId()) % 20 == 0) living.attackEntityFrom(DamageSource.onFire, 6F);
+			FlameCreator.composeEffect(entity.worldObj, x - living.width / 2 + living.width * rand.nextDouble(), y + rand.nextDouble() * living.height, z - living.width / 2 + living.width * rand.nextDouble(), FlameCreator.META_WHITE);
 		}
 
 		if(props.fire > 0 || props.phosphorus > 0 || props.balefire > 0 || props.blackFire > 0) if(!entity.isEntityAlive()) ConfettiUtil.decideConfetti(living, DamageSource.onFire);

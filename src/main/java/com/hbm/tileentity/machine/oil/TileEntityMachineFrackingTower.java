@@ -83,7 +83,7 @@ public class TileEntityMachineFrackingTower extends TileEntityOilDrillBase {
 
 	@Override
 	public boolean canSuckBlock(Block b) {
-		return super.canSuckBlock(b) || b == ModBlocks.ore_bedrock_oil;
+		return super.canSuckBlock(b) || b == ModBlocks.ore_bedrock_oil || b == ModBlocks.ore_bedrock_artery;
 	}
 
 	@Override
@@ -94,7 +94,9 @@ public class TileEntityMachineFrackingTower extends TileEntityOilDrillBase {
 
 		tanks[2].setFill(tanks[2].getFill() - solutionRequired);
 
-		if(meta == SolarSystem.Body.TEKTO.ordinal()) {
+		if(worldObj.provider.dimensionId == -1) {
+			OilSpot.generateNetherSpot(worldObj, xCoord, zCoord, destructionRange, 10);
+		} else if(meta == SolarSystem.Body.TEKTO.ordinal()) {
 			OilSpot.generateCrack(worldObj, xCoord, zCoord, destructionRange, 10);
 		} else {
 			OilSpot.generateOilSpot(worldObj, xCoord, zCoord, destructionRange, 10, false);

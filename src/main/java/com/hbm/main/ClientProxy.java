@@ -814,6 +814,7 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityGlyphidNetherBrenda.class, new RenderGlyphid());
 		RenderingRegistry.registerEntityRenderingHandler(EntityGlyphidNetherNuclear.class, new RenderGlyphidNuclear());
 		RenderingRegistry.registerEntityRenderingHandler(EntityParasiteMaggot.class, new RenderMaggot());
+		RenderingRegistry.registerEntityRenderingHandler(EntityBloatwisp.class, new RenderBloatwisp());
 		RenderingRegistry.registerEntityRenderingHandler(EntityFBIDrone.class, new RenderDrone());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPlasticBag.class, new RenderPlasticBag());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPigeon.class, new RenderPigeon(new ModelPigeon(), 0.3F));
@@ -2138,6 +2139,10 @@ public class ClientProxy extends ServerProxy {
 			double mZ = data.getDouble("mZ");
 			ParticleBlood blood = new ParticleBlood(world, x, y, z, mX, mY, mZ);
 			Minecraft.getMinecraft().effectRenderer.addEffect(blood);
+		}
+
+		if("wisp".equals(type)) {
+			Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleWisp(world, x, y, z));
 		}
 
 		if("marker".equals(type)) {

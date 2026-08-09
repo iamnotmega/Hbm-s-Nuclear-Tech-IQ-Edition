@@ -14,6 +14,7 @@ public class EntityGlyphidNetherNuclear extends EntityGlyphidNuclear {
 
 	public EntityGlyphidNetherNuclear(World world) {
 		super(world);
+		this.netherGlyphid = true;
 	}
 
 	@Override

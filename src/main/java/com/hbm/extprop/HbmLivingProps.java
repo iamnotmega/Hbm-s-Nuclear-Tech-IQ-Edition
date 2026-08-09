@@ -57,6 +57,7 @@ public class HbmLivingProps implements IExtendedEntityProperties {
 	public int phosphorus;
 	public int balefire;
 	public int blackFire;
+	public int morningstar;
 	private List<ContaminationEffect> contamination = new ArrayList();
 	private CBT_Atmosphere atmosphere;
 	private boolean gravity = false;
@@ -359,6 +360,7 @@ public class HbmLivingProps implements IExtendedEntityProperties {
 		buf.writeInt(fire);
 		buf.writeInt(phosphorus);
 		buf.writeInt(balefire);
+		buf.writeInt(morningstar);
 		buf.writeInt(this.contamination.size());
 		for (ContaminationEffect contaminationEffect : this.contamination) {
 			contaminationEffect.serialize(buf); // long ass buffers? uh, yes please!
@@ -380,6 +382,7 @@ public class HbmLivingProps implements IExtendedEntityProperties {
 			fire = buf.readInt();
 			phosphorus = buf.readInt();
 			balefire = buf.readInt();
+			morningstar = buf.readInt();
 			int size = buf.readInt();
 			for (int i = 0; i < size; i++) {
 				this.contamination.add(ContaminationEffect.deserialize(buf));
@@ -407,6 +410,7 @@ public class HbmLivingProps implements IExtendedEntityProperties {
 		props.setInteger("hfr_phosphorus", phosphorus);
 		props.setInteger("hfr_balefire", balefire);
 		props.setInteger("hfr_blackfire", blackFire);
+		props.setInteger("hfr_morningstar", morningstar);
 
 		props.setInteger("hfr_cont_count", this.contamination.size());
 
@@ -438,6 +442,7 @@ public class HbmLivingProps implements IExtendedEntityProperties {
 			phosphorus = props.getInteger("hfr_phosphorus");
 			balefire = props.getInteger("hfr_balefire");
 			blackFire = props.getInteger("hfr_blackfire");
+			morningstar = props.getInteger("hfr_morningstar");
 
 			int cont = props.getInteger("hfr_cont_count");
 

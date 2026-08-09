@@ -73,6 +73,13 @@ public class RefineryRecipes extends SerializableRecipe {
 				new FluidStack(Fluids.UNSATURATEDS,		crackds_frac_unsat),
 				DictFrame.fromOne(ModItems.oil_tar, EnumTarType.PARAFFIN)
 				));
+		recipes.put(Fluids.SATANS_BLOOD, new RefineryRecipe(
+				new FluidStack(Fluids.WORMWOOD, 40),
+				new FluidStack(Fluids.BLOOD_OF_THE_MARTYR, 30),
+				new FluidStack(Fluids.AMBROSIA, 15),
+				new FluidStack(Fluids.MORNINGSTARS_FIRE, 15),
+				new ItemStack(ModItems.bloodclot)
+				));
 	}
 
 	public static RefineryRecipe getRefinery(FluidType oil) {

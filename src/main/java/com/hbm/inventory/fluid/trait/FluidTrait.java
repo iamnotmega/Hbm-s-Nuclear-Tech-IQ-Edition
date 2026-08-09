@@ -49,6 +49,8 @@ public abstract class FluidTrait {
 		registerTrait("unsiphonable", FT_Unsiphonable.class);
 		registerTrait("uk", FT_ULTRAKILL.class);	// x
 		registerTrait("explosive", FT_EXPLOSIVE.class);	// x
+		registerTrait("hellish", FT_Hellish.class);
+		registerTrait("heavenly", FT_Heavenly.class);
 
 
 	}

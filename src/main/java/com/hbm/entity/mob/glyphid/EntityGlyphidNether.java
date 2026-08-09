@@ -13,6 +13,7 @@ public class EntityGlyphidNether extends EntityGlyphid {
 	public EntityGlyphidNether(World world) {
 		super(world);
 		this.isImmuneToFire = true;
+		this.netherGlyphid = true;
 	}
 
 	@Override

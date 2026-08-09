@@ -32,6 +32,7 @@ public class ItemSurveyScanner extends Item {
 			boolean hasDepth = false;
 			boolean hasSchist = false;
 			boolean hasAussie = false;
+			boolean hasBedrockArtery = false;
 			TileEntityBedrockOre tile = null;
 
 			for(int a = -5; a <= 5; a++) {
@@ -41,6 +42,7 @@ public class ItemSurveyScanner extends Item {
 						Block block = world.getBlock(x + a * 5, i, z + b * 5);
 
 						//wow, this sucks!
+						// i guess bro
 						if(block == ModBlocks.ore_oil) hasOil = true;
 						else if(block == ModBlocks.ore_gas) hasGas = true;
 						else if(block == ModBlocks.ore_brine) hasBrine = true;
@@ -50,6 +52,7 @@ public class ItemSurveyScanner extends Item {
 						else if(block == ModBlocks.stone_depth_nether) hasDepth = true;
 						else if(block == ModBlocks.stone_gneiss) hasSchist = true;
 						else if(block == ModBlocks.ore_australium) hasAussie = true;
+						else if(block == ModBlocks.ore_bedrock_artery) hasBedrockArtery = true;
 					}
 
 					Block block = world.getBlock(x + a * 2, 0, z + b * 2);
@@ -68,6 +71,7 @@ public class ItemSurveyScanner extends Item {
 			if(hasDepth) player.addChatComponentMessage(new ChatComponentText("Found DEPTH ROCK!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GRAY)));
 			if(hasSchist) player.addChatComponentMessage(new ChatComponentText("Found SCHIST!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_AQUA)));
 			if(hasAussie) player.addChatComponentMessage(new ChatComponentText("Found AUSTRALIUM!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
+			if(hasBedrockArtery) player.addChatComponentMessage(new ChatComponentText("Found.. Arteries?").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED)));
 			if(tile != null && tile.resource != null) player.addChatComponentMessage(new ChatComponentText("Found BEDROCK ORE for " + tile.resource.getDisplayName() + "!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
 		}
 

@@ -5,6 +5,7 @@ import java.util.Random;
 import com.hbm.blocks.BlockFallingNT;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.generic.BlockDeadPlant.EnumDeadPlantType;
+import com.hbm.blocks.generic.BlockNetherGlyphid.EnumNetherGlyphidType;
 import com.hbm.blocks.generic.BlockNTMFlower.EnumFlowerType;
 import com.hbm.blocks.generic.BlockTallPlant;
 import com.hbm.blocks.generic.BlockTallPlant.EnumTallFlower;
@@ -95,6 +96,26 @@ public class OilSpot {
 	}
 
 	public static NoiseGeneratorPerlin crackGeneratorPerlin = new NoiseGeneratorPerlin(new Random(73470), 4);
+
+
+	public static void generateNetherSpot(World world, int x, int z, int width, int count) {
+
+		for(int i = 0; i < count; i++) {
+			int rX = x + (int)(world.rand.nextGaussian() * width);
+			int rZ = z + (int)(world.rand.nextGaussian() * width);
+			int rY = world.getHeightValue(rX, rZ);
+
+			for(int y = rY; y > rY - 4; y--) {
+
+				Block ground = world.getBlock(rX, y, rZ);
+
+				if(ground == Blocks.netherrack) {
+					world.setBlock(rX, y, rZ, ModBlocks.nether_glyphid, EnumNetherGlyphidType.OVERTAKEN.ordinal(), 3);
+					break;
+				}
+			}
+		}
+	}
 
 	public static void generateCrack(World world, int x, int z, int width, int count) {
 		count *= 10; // only 10% of checks actually pass, so increase count

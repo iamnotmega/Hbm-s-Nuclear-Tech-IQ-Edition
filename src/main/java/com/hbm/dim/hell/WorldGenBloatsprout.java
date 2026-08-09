@@ -58,7 +58,7 @@ public class WorldGenBloatsprout extends WorldGenAbstractTree {
 					if (Math.pow(dx / (double)bulbRadiusXz, 2) + Math.pow(dy / (double)bulbRadiusY, 2) + Math.pow(dz / (double)bulbRadiusXz, 2) <= 1) {
 						Block block = world.getBlock(x + dx, bulbStartY + dy, z + dz);
 						if (block.isAir(world, x + dx, bulbStartY + dy, z + dz)) {
-							world.setBlock(x + dx, bulbStartY + dy, z + dz, leavBlock, 0, 2);
+							world.setBlock(x + dx, bulbStartY + dy, z + dz, leavBlock, 8, 2);
 						}
 					}
 				}

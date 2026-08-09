@@ -41,7 +41,8 @@ public class MixerRecipes extends SerializableRecipe {
 		register(Fluids.NITAN, new MixerRecipe(1_000, 50).setStack1(new FluidStack(Fluids.KEROSENE, 600)).setStack2(new FluidStack(Fluids.MERCURY, 200)).setSolid(new ComparableStack(ModItems.powder_nitan_mix)));
 		register(Fluids.FRACKSOL,
 				new MixerRecipe(1_000, 20).setStack1(new FluidStack(Fluids.SULFURIC_ACID, 900)).setStack2(new FluidStack(Fluids.PETROLEUM, 100)),
-				new MixerRecipe(1_000, 20).setStack1(new FluidStack(Fluids.WATER, 1000)).setStack2(new FluidStack(Fluids.PETROLEUM, 100)).setSolid(new OreDictStack(S.dust())));
+				new MixerRecipe(1_000, 20).setStack1(new FluidStack(Fluids.WATER, 1000)).setStack2(new FluidStack(Fluids.PETROLEUM, 100)).setSolid(new OreDictStack(S.dust())),
+				new MixerRecipe(1_000, 20).setStack1(new FluidStack(Fluids.DEW_OF_THE_GARDEN, 900)).setStack2(new FluidStack(Fluids.MORNINGSTARS_FIRE, 100)));
 		register(Fluids.ENDERJUICE, new MixerRecipe(100, 100).setStack1(new FluidStack(Fluids.XPJUICE, 500)).setSolid(new OreDictStack(DIAMOND.dust())));
 		register(Fluids.SALIENT, new MixerRecipe(1000, 20).setStack1(new FluidStack(Fluids.SEEDSLURRY, 500)).setStack2(new FluidStack(Fluids.BLOOD, 500)));
 		register(Fluids.TAMSLOP, new MixerRecipe(500, 100).setStack1(new FluidStack(Fluids.NUTRIENT_SLOP, 500)).setStack2(new FluidStack(Fluids.SALIENT, 200)).setSolid(new ComparableStack(ModItems.nugget_uranium)));
@@ -131,12 +132,19 @@ public class MixerRecipes extends SerializableRecipe {
 
 		register(Fluids.BITUMEN, new MixerRecipe(50, 20).setSolid(new OreDictStack(ANY_TAR.any())));
 
-		register(Fluids.STIMPAK, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(Items.nether_wart, 4)));
+		register(Fluids.STIMPAK, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(Items.nether_wart, 4)),
+				new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.AMBROSIA, 500)).setSolid(new ComparableStack(Items.nether_wart, 4)));
 		register(Fluids.SUPER_STIMPAK, new MixerRecipe(500, 40).setStack1(new FluidStack(Fluids.STIMPAK, 400)).setSolid(new ComparableStack(ModItems.bottle_nuka)),
-				new MixerRecipe(500, 40).setStack1(new FluidStack(Fluids.STIMPAK, 400)).setSolid(new ComparableStack(ModItems.bottle_cherry)));
-		register(Fluids.MEDX, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setStack2(new FluidStack(Fluids.UNSATURATEDS, 100)).setSolid(new OreDictStack(QUARTZ.dust(), 4)));
-		register(Fluids.PSYCHO, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setStack2(new FluidStack(Fluids.REFORMGAS, 200)).setSolid(new ComparableStack(ModItems.powder_fire, 4)));
-		register(Fluids.AWESOME, new MixerRecipe(1000, 100).setStack1(new FluidStack(Fluids.STIMPAK, 500)).setStack2(new FluidStack(Fluids.MEDX, 500)).setSolid(new ComparableStack(ModItems.pellet_charged)));
+				new MixerRecipe(500, 40).setStack1(new FluidStack(Fluids.STIMPAK, 400)).setSolid(new ComparableStack(ModItems.bottle_cherry)),
+				new MixerRecipe(500, 40).setStack1(new FluidStack(Fluids.AMBROSIA, 400)).setSolid(new ComparableStack(ModItems.bottle_nuka)),
+				new MixerRecipe(500, 40).setStack1(new FluidStack(Fluids.AMBROSIA, 400)).setSolid(new ComparableStack(ModItems.bottle_cherry)));
+		register(Fluids.MEDX, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setStack2(new FluidStack(Fluids.UNSATURATEDS, 100)).setSolid(new OreDictStack(QUARTZ.dust(), 4)),
+				new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.AMBROSIA, 500)).setSolid(new OreDictStack(QUARTZ.dust(), 4)));
+		register(Fluids.PSYCHO, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 500)).setStack2(new FluidStack(Fluids.REFORMGAS, 200)).setSolid(new ComparableStack(ModItems.powder_fire, 4)),
+				new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.AMBROSIA, 500)).setSolid(new ComparableStack(ModItems.powder_fire, 4)));
+		register(Fluids.AWESOME, new MixerRecipe(1000, 100).setStack1(new FluidStack(Fluids.AMBROSIA, 500)).setStack2(new FluidStack(Fluids.MEDX, 500)).setSolid(new ComparableStack(ModItems.pellet_charged)));
+		register(Fluids.DEW_OF_THE_GARDEN, new MixerRecipe(1000, 50).setStack1(new FluidStack(Fluids.AMBROSIA, 700)).setStack2(new FluidStack(Fluids.OXYGEN, 300)).setSolid(new ComparableStack(Items.glowstone_dust, 4)));
+		register(Fluids.MUSKY_PHEROMONE, new MixerRecipe(1000, 30).setStack1(new FluidStack(Fluids.BURNING_BLOATMUSK, 700)).setStack2(new FluidStack(Fluids.BRIMTUMEN, 300)));
 		register(Fluids.ANTIDOTE, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.MILK, 400)).setSolid(new ComparableStack(Items.nether_wart, 4)));
 		register(Fluids.POISON, new MixerRecipe(500, 30).setStack1(new FluidStack(Fluids.WATER, 400)).setSolid(new ComparableStack(Items.spider_eye, 4)));
 	}

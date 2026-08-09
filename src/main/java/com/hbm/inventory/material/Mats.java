@@ -108,6 +108,7 @@ public class Mats {
 	public static final NTMMaterial MAT_GHIORSIUM	= makeSmeltable(12836,		GH336,		0xF4EFE1, 0x2A3306, 0xC6C6A1).setAutogen(FRAGMENT, NUGGET, BILLET, BLOCK).m();
 	public static final NTMMaterial MAT_AUSTRALIUM	= makeSmeltable(13800,		AUSTRALIUM,	0xFFFF00, 0x935B00, 0xFFFF00).setAutogen(FRAGMENT).m();
 	public static final NTMMaterial MAT_TASMANITE	= makeSmeltable(13895,		TASMANITE,	0xFFFF00, 0x935B00, 0xFFFF00).setAutogen(FRAGMENT).m();
+	public static final NTMMaterial MAT_BLOATATE	= makeSmeltable(_AS + 21,	df("Bloatate"),		0xFFD800, 0x8A6B00, 0xFFD800).setAutogen(INGOT, NUGGET, BILLET, DUST).m();
 	public static final NTMMaterial MAT_AYERITE		= makeSmeltable(13851,		AYERITE,	0xFFFF00, 0x935B00, 0xFFFF00).setAutogen(FRAGMENT).m();
 
 	//Base metals

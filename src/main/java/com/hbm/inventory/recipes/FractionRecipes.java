@@ -45,6 +45,8 @@ public class FractionRecipes extends SerializableRecipe {
 		fractions.put(Fluids.CONGLOMERA,		new Pair(new FluidStack(Fluids.BRINE,					25),		new FluidStack(Fluids.AQUEOUS_NICKEL,		75)));
 		fractions.put(Fluids.HGAS,			new Pair(new FluidStack(Fluids.CHLOROMETHANE,				25),		new FluidStack(Fluids.CHLORINE,		85)));
 		fractions.put(Fluids.HALOLIGHT,		new Pair(new FluidStack(Fluids.PHOSGENE,				35),		new FluidStack(Fluids.CHLOROETHANE,		75)));
+		fractions.put(Fluids.WORMWOOD,			new Pair(new FluidStack(Fluids.BRIMSTONE,				55),		new FluidStack(Fluids.VERDIGRIS,			40)));
+		fractions.put(Fluids.ARGENT_BLOAT_PUS,	new Pair(new FluidStack(Fluids.SODIUM_ALUMINATE,		45),		new FluidStack(Fluids.BLOAT_PUS,			50)));
 
 	}
 

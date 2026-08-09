@@ -29,8 +29,12 @@ public class RenderShrapnel extends Render {
 		bindTexture(new ResourceLocation(RefStrings.MODID + ":textures/entity/shrapnel.png"));
 		
 		if(rocket instanceof EntityShrapnel) {
+			float scale = ((EntityShrapnel) rocket).renderScale;
 			if(rocket.getDataWatcher().getWatchableObjectByte(16) >= 2) { //scale up lava blobs
-				GL11.glScaled(3, 3, 3);
+				scale *= 3;
+			}
+			if(scale != 1.0F) {
+				GL11.glScaled(scale, scale, scale);
 			}
 		}
 		

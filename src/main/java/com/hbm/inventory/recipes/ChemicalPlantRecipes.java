@@ -14,13 +14,18 @@ import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.RecipesCommon.OreDictStack;
 import com.hbm.inventory.fluid.Fluids;
+import com.hbm.inventory.material.Mats;
+import com.hbm.inventory.material.MaterialShapes;
+import com.hbm.inventory.material.Mats.MaterialStack;
 import com.hbm.inventory.recipes.loader.GenericRecipe;
 import com.hbm.inventory.recipes.loader.GenericRecipes;
 import com.hbm.items.ItemEnums.EnumFuelAdditive;
 import com.hbm.items.ItemGenericPart.EnumPartType;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemFluidIcon;
+import com.hbm.items.machine.ItemScraps;
 import com.hbm.items.machine.ItemBatteryPack.EnumBatteryPack;
+import com.hbm.items.machine.ItemChemicalDye.EnumChemDye;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -167,6 +172,36 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputItems(new ComparableStack(Blocks.gravel, 2), new OreDictStack(KEY_SAND, 6))
 				.inputFluids(new FluidStack(Fluids.BITUMEN, 1_000))
 				.outputItems(new ItemStack(ModBlocks.asphalt, 16)));
+
+		this.register(new GenericRecipe("chem.brimtumen_asphalt").setup(100, 100)
+				.inputItems(new ComparableStack(Blocks.gravel, 2), new OreDictStack(KEY_SAND, 6))
+				.inputFluids(new FluidStack(Fluids.BRIMTUMEN, 1_000))
+				.outputItems(new ItemStack(ModBlocks.asphalt_brimtumen, 16)));
+
+		this.register(new GenericRecipe("chem.dye_red").setup(100, 100)
+				.inputItems(new ComparableStack(ModItems.bloodclot))
+				.inputFluids(new FluidStack(Fluids.GALL, 400), new FluidStack(Fluids.BLOOD_OF_THE_MARTYR, 500))
+				.outputItems(new ItemStack(ModItems.chemical_dye, 4, EnumChemDye.RED.ordinal())));
+		this.register(new GenericRecipe("chem.dye_green").setup(100, 100)
+				.inputItems(new ComparableStack(ModItems.bloodclot))
+				.inputFluids(new FluidStack(Fluids.GALL, 400), new FluidStack(Fluids.VERDIGRIS, 500))
+				.outputItems(new ItemStack(ModItems.chemical_dye, 4, EnumChemDye.GREEN.ordinal())));
+		this.register(new GenericRecipe("chem.dye_blue").setup(100, 100)
+				.inputItems(new ComparableStack(ModItems.bloodclot))
+				.inputFluids(new FluidStack(Fluids.GALL, 400), new FluidStack(Fluids.BLOATSPIRIT, 500))
+				.outputItems(new ItemStack(ModItems.chemical_dye, 4, EnumChemDye.BLUE.ordinal())));
+		this.register(new GenericRecipe("chem.dye_yellow").setup(100, 100)
+				.inputItems(new ComparableStack(ModItems.bloodclot))
+				.inputFluids(new FluidStack(Fluids.GALL, 400), new FluidStack(Fluids.BRIMSTONE, 500))
+				.outputItems(new ItemStack(ModItems.chemical_dye, 4, EnumChemDye.YELLOW.ordinal())));
+		this.register(new GenericRecipe("chem.dye_white").setup(100, 100)
+				.inputItems(new ComparableStack(ModItems.bloodclot))
+				.inputFluids(new FluidStack(Fluids.GALL, 400), new FluidStack(Fluids.MORNINGSTARS_FIRE, 500))
+				.outputItems(new ItemStack(ModItems.chemical_dye, 4, EnumChemDye.WHITE.ordinal())));
+		this.register(new GenericRecipe("chem.dye_black").setup(100, 100)
+				.inputItems(new ComparableStack(ModItems.bloodclot))
+				.inputFluids(new FluidStack(Fluids.GALL, 400), new FluidStack(Fluids.WORMWOOD, 500))
+				.outputItems(new ItemStack(ModItems.chemical_dye, 4, EnumChemDye.BLACK.ordinal())));
 
 		/// BATTERIES ///
 		this.register(new GenericRecipe("chem.batterylead").setup(100, 100)
@@ -402,10 +437,18 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputFluids(new FluidStack(Fluids.KEROSENE, 6_000))
 				.outputItems(new ItemStack(ModItems.powder_balefire))
 				.outputFluids(new FluidStack(Fluids.BALEFIRE, 8_000)));
+		this.register(new GenericRecipe("chem.bloatate_balefire").setup(100, 10_000).setIcon(ModItems.fluid_icon, Fluids.BALEFIRE.getID())
+				.inputItems(new ComparableStack(ItemScraps.create(new MaterialStack(Mats.MAT_BLOATATE, MaterialShapes.INGOT.q(1)))))
+				.inputFluids(new FluidStack(Fluids.KEROSENE, 6_000))
+				.outputItems(new ItemStack(ModItems.powder_balefire))
+				.outputFluids(new FluidStack(Fluids.BALEFIRE, 8_000)));
 
 		this.register(new GenericRecipe("chem.dhc").setup(400, 500).setIcon(ModItems.fluid_icon, Fluids.DHC.getID())
 				.inputFluids(new FluidStack(Fluids.DEUTERIUM, 500), new FluidStack(Fluids.REFORMGAS, 250), new FluidStack(Fluids.SYNGAS, 250))
 				.outputFluids(new FluidStack(Fluids.DHC, 500)));
+		this.register(new GenericRecipe("chem.haemoglobin_blood").setup(200, 500).setIcon(ModItems.fluid_icon, Fluids.BLOOD.getID())
+				.inputFluids(new FluidStack(Fluids.HAEMOGLOBIN, 400), new FluidStack(Fluids.WATER, 400), new FluidStack(Fluids.OXYGEN, 200))
+				.outputFluids(new FluidStack(Fluids.BLOOD, 1_000)));
 
 		/// OSMIRIDIUM ///
 		this.register(new GenericRecipe("chem.osmiridiumdeath").setup(240, 1_000)

@@ -37,14 +37,14 @@ public class BlockGlyphidSpawnerNether extends BlockGlyphidSpawner {
 	private static final ArrayList<Pair<Function<World, EntityGlyphid>, int[]>> netherSpawnMap = new ArrayList<>();
 
 	static {
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNether::new,			MobConfig.glyphidChance));
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBombardier::new,	MobConfig.bombardierChance));
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBrawler::new,	MobConfig.brawlerChance));
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherDigger::new,		MobConfig.diggerChance));
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBlaster::new,	MobConfig.blasterChance));
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBehemoth::new,	MobConfig.behemothChance));
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBrenda::new,		MobConfig.brendaChance));
-		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherNuclear::new,	MobConfig.johnsonChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNether::new,			MobConfig.netherGlyphidChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBombardier::new,	MobConfig.netherBombardierChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBrawler::new,	MobConfig.netherBrawlerChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherDigger::new,		MobConfig.netherDiggerChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBlaster::new,	MobConfig.netherBlasterChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBehemoth::new,	MobConfig.netherBehemothChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherBrenda::new,		MobConfig.netherBrendaChance));
+		netherSpawnMap.add(new Pair<>(EntityGlyphidNetherNuclear::new,	MobConfig.netherNuclearChance));
 	}
 
 	public BlockGlyphidSpawnerNether(Material mat) {

@@ -7,6 +7,7 @@ import com.hbm.blocks.gas.*;
 import com.hbm.blocks.generic.*;
 import com.hbm.blocks.generic.BlockHazard.ExtDisplayEffect;
 import com.hbm.blocks.generic.BlockOreFluid.ReserveType;
+import com.hbm.blocks.generic.BlockArteryOil;
 import com.hbm.blocks.machine.*;
 import com.hbm.blocks.machine.albion.*;
 import com.hbm.blocks.machine.fusion.*;
@@ -175,6 +176,7 @@ public class ModBlocks {
 	public static Block ore_oil;
 	public static Block ore_oil_empty;
 	public static Block ore_oil_sand;
+	public static Block ore_bedrock_artery;
 	public static Block ore_bedrock_oil;
 	public static Block ore_lignite;
 	public static Block ore_asbestos;
@@ -313,6 +315,7 @@ public class ModBlocks {
 	public static Block gravel_diamond;
 	public static Block asphalt;
 	public static Block asphalt_light;
+	public static Block asphalt_brimtumen;
 
 	public static Block sandbags;
 	public static Block wood_barrier;
@@ -1162,7 +1165,7 @@ public class ModBlocks {
 
 	public static Block machine_satlinker;
 	public static Block machine_satlink;
-	
+
 	public static Block machine_keyforge;
 
 	public static Block machine_armor_table;
@@ -1545,6 +1548,7 @@ public class ModBlocks {
 
 		ore_oil_empty = new BlockOre(Material.rock).setBlockName("ore_oil_empty").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_empty");
 		ore_oil = new BlockOreFluid(Material.rock, ore_oil_empty, ReserveType.OIL).setBlockName("ore_oil").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil");
+		ore_bedrock_artery = new BlockArteryOil(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_artery").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":satanartery");
 		ore_oil_sand = new BlockFalling(Material.sand).setBlockName("ore_oil_sand").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeSand).setHardness(0.5F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_sand_alt");
 		ore_bedrock_oil = new BlockOreFluid(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_oil").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":ore_bedrock_oil");
 		ore_gas_empty = new BlockOre(Material.rock).setBlockName("ore_gas_empty").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_empty");
@@ -1685,6 +1689,7 @@ public class ModBlocks {
 		gravel_diamond = new BlockFalling(Material.sand).setBlockName("gravel_diamond").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGravel).setHardness(0.6F).setBlockTextureName(RefStrings.MODID + ":gravel_diamond");
 		asphalt = new BlockSpeedy(Material.rock, 1.5).setBlockName("asphalt").setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(120.0F).setBlockTextureName(RefStrings.MODID + ":asphalt");
 		asphalt_light = new BlockSpeedy(Material.rock, 1.5).setBlockName("asphalt_light").setCreativeTab(MainRegistry.blockTab).setLightLevel(1F).setHardness(15.0F).setResistance(120.0F).setBlockTextureName(RefStrings.MODID + ":asphalt_light");
+	    asphalt_brimtumen = new BlockSpeedy(Material.rock, 4.5).setBlockName("asphalt_brimtumen").setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(120.0F).setBlockTextureName(RefStrings.MODID + ":asphalt_brimtumen");
 
 		sandbags = new BlockSandbags(Material.ground).setBlockName("sandbags").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(30.0F).setBlockTextureName(RefStrings.MODID + ":sandbags");
 		wood_barrier = new BlockBarrier(Material.wood).setStepSound(Block.soundTypeWood).setBlockName("wood_barrier").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":wood_barrier");
@@ -2271,7 +2276,7 @@ public class ModBlocks {
 		cm_heat = new BlockCMHeat(Material.iron, RefStrings.MODID +":cm_heat_top").setBlockName("cm_heat").setCreativeTab(MainRegistry.machineTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":cm_heat_side");
 		custom_machine = new BlockCustomMachine().setBlockName("custom_machine").setCreativeTab(MainRegistry.machineTab).setLightLevel(1F).setHardness(5.0F).setResistance(10.0F);
 		cm_anchor = new BlockCMAnchor().setBlockName("custom_machine_anchor").setCreativeTab(MainRegistry.machineTab).setHardness(5.0F).setResistance(10.0F);
-		
+
 		pile_brick = new BlockPileBrick().setBlockName("pile_brick").setStepSound(Block.soundTypeMetal).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":pile_brick");
 		pile_device = new BlockPileDevice().setBlockName("pile_device").setStepSound(Block.soundTypeMetal).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		pile_block = new BlockPile().setBlockName("pile_block").setStepSound(Block.soundTypeMetal).setHardness(15.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":pile_block");
@@ -2791,6 +2796,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(ore_lead, ItemBlockBase.class, ore_lead.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_oil, ItemBlockBase.class, ore_oil.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_oil_empty, ItemBlockBase.class, ore_oil_empty.getUnlocalizedName());
+		GameRegistry.registerBlock(ore_bedrock_artery, ItemBlockBase.class, ore_bedrock_artery.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_gas, ItemBlockBase.class, ore_gas.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_gas_empty, ItemBlockBase.class, ore_gas_empty.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_oil_sand, ItemBlockBase.class, ore_oil_sand.getUnlocalizedName());
@@ -3057,6 +3063,7 @@ public class ModBlocks {
 		register(wood_barrier);
 		register(wood_structure);
 		GameRegistry.registerBlock(asphalt, ItemBlockBlastInfo.class, asphalt.getUnlocalizedName());
+	GameRegistry.registerBlock(asphalt_brimtumen, ItemBlockBlastInfo.class, asphalt_brimtumen.getUnlocalizedName());
 		GameRegistry.registerBlock(asphalt_light, ItemBlockBlastInfo.class, asphalt_light.getUnlocalizedName());
 		GameRegistry.registerBlock(reinforced_brick, ItemBlockBlastInfo.class, reinforced_brick.getUnlocalizedName());
 		GameRegistry.registerBlock(reinforced_glass, ItemBlockBlastInfo.class, reinforced_glass.getUnlocalizedName());
@@ -3864,7 +3871,7 @@ public class ModBlocks {
 		register(cm_flux);
 		register(cm_heat);
 		register(cm_anchor);
-		
+
 		//Chicago Pile
 		register(pile_brick);
 		register(pile_device);
