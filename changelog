@@ -34,6 +34,10 @@ This is used in a new renderer for psycho/roid rage which uses the new phosphor 
 All new flesh plants, their sounds, and textures
 New base for future nether biomes (NetherBiomeBase) to be extended and filled out when making a new nether biome
 
+Entirely new nether glyphid biome
+Satan's Blood processing for infinite pre-bore iron, copper, alum
+Geode meteorites
+
 
 # Changed
 Removed cobalt ore (kept block)
