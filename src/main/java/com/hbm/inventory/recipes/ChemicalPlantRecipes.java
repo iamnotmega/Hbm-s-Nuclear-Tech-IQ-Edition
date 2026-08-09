@@ -556,26 +556,30 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputFluids(new FluidStack(Fluids.WATER, 500), new FluidStack(Fluids.AMMONIA, 1000, GeneralConfig.enable528PressurizedRecipes ? 1 : 0))
 				.outputFluids(new FluidStack(Fluids.NITRIC_ACID, 1_000)));
 
-		// WARNING: NILERED CHEMISTRY ZONE //
-		this.register(new GenericRecipe("chem.hydrapiss").setupNamed(250, 1_000).setIcon(ModItems.canister_full, Fluids.HYDRAZINE.getID())
-				.inputFluids(new FluidStack(Fluids.NITRIC_ACID, 2000))
-				.inputItems(new ComparableStack(ModItems.rag_piss)) // urea...
-				.outputFluids(new FluidStack(Fluids.HYDRAZINE, 800))); // this is an emergency recipe, so it should NOT have a required blueprint
-
 		this.register(new GenericRecipe("chem.synleather").setupNamed(200, 500)
 				.inputFluids(new FluidStack(Fluids.PEROXIDE, 250, GeneralConfig.enable528PressurizedRecipes ? 1 : 0))
 				.inputItems(new OreDictStack(ANY_PLASTIC.ingot()), new ComparableStack(Items.string, 4))
 				.outputItems(new ItemStack(Items.leather)));
 
-		this.register(new GenericRecipe("chem.nutrientslop").setupNamed(40, 100).setIcon(ModItems.canister_full, Fluids.NUTRIENT_SLOP.getID())
-				.inputItems(new ComparableStack(Items.bread, 1))
-				.inputFluids(new FluidStack(Fluids.WATER, 100))
-				.outputItems(new ItemStack(ModItems.biomass, 4))
-				.outputFluids(new FluidStack(Fluids.NUTRIENT_SLOP, 10)));
+		/// NTM IQ ///
+		this.register(new GenericRecipe("chem.hydrapiss").setupNamed(250, 1_000).setIcon(ModItems.canister_full, Fluids.HYDRAZINE.getID())
+			.inputFluids(new FluidStack(Fluids.NITRIC_ACID, 2000), new FluidStack(Fluids.PISS, 250))
+			.outputFluids(new FluidStack(Fluids.HYDRAZINE, 800)));
 
-		this.register(new GenericRecipe("chem.uncleslop").setupNamed(120, 200).setIcon(ModItems.canister_full, Fluids.TAMSLOP.getID())
-				.inputFluids(new FluidStack(Fluids.NUTRIENT_SLOP, 1_000), new FluidStack(Fluids.SALIENT, 500), new FluidStack(Fluids.BLOOD, 500))
-				.outputFluids(new FluidStack(Fluids.TAMSLOP, 1_000)));
+		this.register(new GenericRecipe("chem.nutrientslop").setupNamed(40, 100).setIcon(ModItems.fluid_barrel_full, Fluids.NUTRIENT_SLOP.getID())
+			.inputItems(new ComparableStack(Items.bread, 1))
+			.inputFluids(new FluidStack(Fluids.WATER, 100))
+			.outputItems(new ItemStack(ModItems.biomass, 4))
+			.outputFluids(new FluidStack(Fluids.NUTRIENT_SLOP, 10)));
+
+		this.register(new GenericRecipe("chem.uncleslop").setupNamed(120, 200).setIcon(ModItems.fluid_barrel_full, Fluids.TAMSLOP.getID())
+			.inputFluids(new FluidStack(Fluids.NUTRIENT_SLOP, 1_000), new FluidStack(Fluids.SALIENT, 500), new FluidStack(Fluids.BLOOD, 500))
+			.outputFluids(new FluidStack(Fluids.TAMSLOP, 1_000)));
+
+		this.register(new GenericRecipe("chem.pissreprocessing").setupNamed(300, 1000).setIcon(ModItems.fluid_icon, Fluids.PISS.getID())
+			.inputFluids(new FluidStack(Fluids.PISS_DEPLETED, 1000))
+			.outputFluids(new FluidStack(Fluids.WATER, 800), new FluidStack(Fluids.AMMONIA, 100), new FluidStack(Fluids.PISS, 100)));
+
 	}
 
 	public static HashMap getRecipes() {

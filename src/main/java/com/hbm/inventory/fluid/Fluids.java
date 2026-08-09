@@ -290,6 +290,10 @@ public class Fluids {
 	public static FluidType MONAZITE_SLOP;
 	public static FluidType NETHERAIR;
 
+	public static FluidType PISS;
+	public static FluidType PISS_HOT;
+	public static FluidType PISS_DEPLETED;
+
 	/* Legacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
 
@@ -589,25 +593,13 @@ public class Fluids {
 		MONAZITE_SLOP =			new FluidType("MONAZITE_SLOP",		0xC4A84B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		NETHERAIR =				new FluidType("NETHERAIR",			0xB34B4B, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x8C21FF, 0xFFFFFF)).addTraits(GASEOUS);
 		BURNING_BLOATMUSK =	new FluidType("BURNING_BLOATMUSK",	0xFFAA00, 2, 3, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xFFAA00)).addTraits(LIQUID, new FT_Combustible(FuelGrade.LOW, 250_000), new FT_Drug().setDuration(10).addEffect(Potion.wither.id, 1).addEffect(HbmPotion.wobble.id, 0));
-		MUSTY_BLOATMUSK =	new FluidType("MUSTY_BLOATMUSK",	0x9C8A1F, 3, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x9C8A1F, 0xFFFFFF)).addTraits(GASEOUS, new FT_Drug().setDuration(30).addEffect(HbmPotion.wobble.id, 0).addEffect(Potion.confusion.id, 0), new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)));
-		BLOATMUSK =			new FluidType("BLOATMUSK",			0xFFD800, 1, 2, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0xFFD800, 0xFFFFFF)).addTraits(GASEOUS, new FT_Drug().setDuration(30).addEffect(HbmPotion.wobble.id, 0).addEffect(Potion.confusion.id, 0), new FT_Heatable().setEff(HeatingType.BOILER, 1.0D).addStep(120, 1, BURNING_BLOATMUSK, 1));
-		MUSKY_PHEROMONE =	new FluidType("MUSKY_PHEROMONE",	0x7B5EA7, 1, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x7B5EA7)).addTraits(LIQUID, new FT_Pheromone(3));
-		CURDLING_BLOOD_HOT = new FluidType("CURDLING_BLOOD_HOT", 0x1A0000, 1, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x1A0000, 0xFFFFFF)).addTraits(GASEOUS);
-		CURDLING_BLOOD =	new FluidType("CURDLING_BLOOD",		0x3A0000, 1, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x3A0000)).addTraits(LIQUID, new FT_Heatable().setEff(HeatingType.PWR, 1.0D).addStep(400, 1, CURDLING_BLOOD_HOT, 1), new FT_PWRModerator(3.0D));
-		SATANS_BLOOD =		new FluidType("SATANS_BLOOD",		0x6B0000, 2, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x6B0000)).addTraits(LIQUID, new FT_Heatable().setEff(HeatingType.BOILER, 1.0D).addStep(120, 1, CURDLING_BLOOD, 1), new FT_Hellish());
-		WORMWOOD =			new FluidType("WORMWOOD",			0x223322, 3, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x223322)).addTraits(LIQUID, new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)), new FT_Hellish());
-		BRIMSTONE =			new FluidType("BRIMSTONE",			0xD4B000, 2, 3, 1, EnumSymbol.NONE).addContainers(new CD_Canister(0xD4B000)).addTraits(LIQUID, new FT_Combustible(FuelGrade.HIGH, 600_000), new FT_Hellish());
-		VERDIGRIS =			new FluidType("VERDIGRIS",			0x3A9E6E, 2, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x3A9E6E)).addTraits(LIQUID);
-		GALL =				new FluidType("GALL",				0x7A6B00, 3, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x7A6B00)).addTraits(LIQUID, new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)));
-		BRIMTUMEN =			new FluidType("BRIMTUMEN",			0x2E2E2E, 1, 2, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x2E2E2E)).addTraits(LIQUID, new FT_Hellish());
-		BLOOD_OF_THE_MARTYR = new FluidType("BLOOD_OF_THE_MARTYR", 0xC00000, 2, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xC00000)).addTraits(LIQUID, new FT_Hellish());
-		HAEMOGLOBIN =		new FluidType("HAEMOGLOBIN",		0x8A2B2B, 1, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x8A2B2B)).addTraits(LIQUID);
-		AMBROSIA =		new FluidType("AMBROSIA",		0xFFE8A0, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xFFE8A0)).addTraits(LIQUID, new FT_Heavenly());
-		MORNINGSTARS_FIRE = new FluidType("MORNINGSTARS_FIRE",	0xFFFFFF, 2, 4, 2, EnumSymbol.NONE).addContainers(new CD_Gastank(0xFFFFFF, 0xE0E0E0)).addTraits(GASEOUS, new FT_Flammable(1_000_000), new FT_Combustible(FuelGrade.AERO, 1_500_000), new FT_Rocket(321, 1_564_000), new FT_Hellish());
-		DEW_OF_THE_GARDEN = new FluidType("DEW_OF_THE_GARDEN",	0xF7F0C0, 4, 0, 4, EnumSymbol.NONE).addContainers(new CD_Canister(0xF7F0C0)).addTraits(LIQUID, new FT_Corrosive(30), new FT_Heavenly());
-		ARGENT_BLOAT_PUS =	new FluidType("ARGENT_BLOAT_PUS",	0xD8D8D8, 2, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xD8D8D8)).addTraits(LIQUID, new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)), new FT_Hellish());
-		BLOAT_PUS =			new FluidType("BLOAT_PUS",			0x8FA63F, 3, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x8FA63F)).addTraits(LIQUID, new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)));
-		BLOATSPIRIT =		new FluidType("BLOATSPIRIT",		0xE8E8FF, 1, 3, 1, EnumSymbol.NONE).addContainers(new CD_Gastank(0xE8E8FF, 0xFFFFFF)).addTraits(GASEOUS, new FT_Combustible(FuelGrade.AERO, 1_375_000), new FT_Hellish());
+		MUSTY_BLOATMUSK =	new FluidType("MUSTY_BLOATMUSK", 	0x9C8A1F, 3, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x9C8A1F, 0xFFFFFF)).addTraits(GASEOUS, new FT_Drug().setDuration(30).addEffect(HbmPotion.wobble.id, 0).addEffect(Potion.confusion.id, 0), new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)));
+		BLOATMUSK =		new FluidType("BLOATMUSK", 		0xFFD800, 1, 2, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0xFFD800, 0xFFFFFF)).addTraits(GASEOUS, new FT_Drug().setDuration(30).addEffect(HbmPotion.wobble.id, 0).addEffect(Potion.confusion.id, 0), new FT_Heatable().setEff(HeatingType.BOILER, 1.0D).addStep(120, 1, BURNING_BLOATMUSK, 1));
+		MUSKY_PHEROMONE =	new FluidType("MUSKY_PHEROMONE", 	0x7B5EA7, 1, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x7B5EA7)).addTraits(LIQUID, new FT_Pheromone(3));
+		PISS = 				new FluidType("PISS", 			0xCAC07D, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(5), LIQUID);
+		PISS_HOT = 			new FluidType("PISS_HOT", 		0x7a3506, 0, 1, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(45), LIQUID, VISCOUS).setTemp(135);
+		PISS_DEPLETED = 		new FluidType("PISS_DEPLETED", 	0x962608, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(30), LIQUID, VISCOUS);
+
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
 
@@ -897,6 +889,10 @@ public class Fluids {
 		//bug meth
 		metaOrder.add(PHEROMONE);
 		metaOrder.add(PHEROMONE_M);
+		//bannable offense
+		metaOrder.add(PISS);
+		metaOrder.add(PISS_HOT);
+		metaOrder.add(PISS_DEPLETED);
 
 		//ANY INTERNAL RENAMING MUST BE REFLECTED HERE - DON'T FORGET TO CHANGE: LANG FILES + TYPE'S STRING ID + NAME OF TANK/GUI TEXTURE FILES!
 		// V
@@ -913,6 +909,10 @@ public class Fluids {
 		PHOSGENE.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 4F, 20, HazardClass.GAS_LUNG, false)));
 		MUSTARDGAS.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 4F, 10, HazardClass.GAS_BLISTERING, false))
 				.addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, true).add(new PotionEffect(Potion.wither.id, 100, 1), new PotionEffect(Potion.confusion.id, 100, 0))));
+		PISS.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.BACTERIA, false).add(new PotionEffect(Potion.poison.id, 300, 1), new PotionEffect(Potion.blindness.id, 100, 0))));
+		PISS.addTraits(new FT_Drug().setDuration(10).addEffect(Potion.wither.id, 0).addEffect(Potion.confusion.id,0).addEffect(Potion.hunger.id, 1));
+		PISS_HOT.addTraits(new FT_Drug().setDuration(10).addEffect(Potion.wither.id, 2).addEffect(Potion.confusion.id, 2).addEffect(Potion.hunger.id, 3));
+		PISS_DEPLETED.addTraits(new FT_Drug().setDuration(15).addEffect(Potion.wither.id, 3).addEffect(Potion.confusion.id, 2).addEffect(Potion.hunger.id, 3));
 		ESTRADIOL.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.PARTICLE_FINE, false).add(new PotionEffect(HbmPotion.death.id, 60 * 60 * 20, 0))));
 		REDMUD.addTraits(new FT_Toxin().addEntry(new ToxinEffects(HazardClass.GAS_BLISTERING, false).add(new PotionEffect(Potion.wither.id, 30 * 20, 2))));
 		NETHERAIR.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 1.5F, 20, HazardClass.GAS_MONOXIDE, false)).addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 1.5F, 20, HazardClass.GAS_LUNG, false)));
@@ -954,6 +954,9 @@ public class Fluids {
 
 		MUG.addTraits(new FT_Heatable().setEff(HeatingType.HEATEXCHANGER, 1.0D).setEff(HeatingType.PWR, 1.0D).setEff(HeatingType.ICF, 1.25D).addStep(400, 1, MUG_HOT, 1), new FT_PWRModerator(1.15D));
 		MUG_HOT.addTraits(new FT_Coolable(MUG, 1, 1, 400).setEff(CoolingType.HEATEXCHANGER, 1.0D));
+
+		PISS.addTraits(new FT_Heatable().setEff(HeatingType.PWR, 2.5D).setEff(HeatingType.HEATEXCHANGER, 1.00D).setEff(HeatingType.BOILER, 0.20D).addStep(50, 1, PISS_HOT, 1));
+		PISS_HOT.addTraits(new FT_Coolable(PISS_DEPLETED, 1, 1, 69).setEff(CoolingType.HEATEXCHANGER, 4.20D));
 
 		BLOOD.addTraits(new FT_Heatable().setEff(HeatingType.HEATEXCHANGER, 1.0D).setEff(HeatingType.ICF, 1.25D).addStep(500, 1, BLOOD_HOT, 1));
 		BLOOD_HOT.addTraits(new FT_Coolable(BLOOD, 1, 1, 500).setEff(CoolingType.HEATEXCHANGER, 1.0D));
