@@ -21,6 +21,8 @@ public class TileEntityTurretFriendly extends TileEntityTurretChekhov {
 		configs.add(XFactory556mm.r556_fmj.id);
 		configs.add(XFactory556mm.r556_jhp.id);
 		configs.add(XFactory556mm.r556_ap.id);
+		configs.add(XFactory556mm.r556_desh.id);
+		configs.add(XFactory556mm.r556_laced.id);
 	}
 	
 	@Override

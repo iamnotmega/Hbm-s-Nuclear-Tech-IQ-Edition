@@ -45,6 +45,7 @@ public class AmmoPressRecipes extends SerializableRecipe {
 		OreDictStack he = new OreDictStack(ANY_HIGHEXPLOSIVE.ingot());
 		OreDictStack wp = new OreDictStack(P_WHITE.ingot());
 		OreDictStack rp = new OreDictStack(P_RED.dust());
+		OreDictStack desh = new OreDictStack(DESH.ingot());
 		OreDictStack pipe = new OreDictStack(STEEL.pipe());
 		ComparableStack smokeful = new ComparableStack(Items.gunpowder);
 		ComparableStack rocket = new ComparableStack(ModItems.rocket_fuel);
@@ -55,6 +56,7 @@ public class AmmoPressRecipes extends SerializableRecipe {
 		ComparableStack bpShell = new ComparableStack(ModItems.casing, 1, EnumCasingType.SHOTSHELL);
 		ComparableStack pShell = new ComparableStack(ModItems.casing, 1, EnumCasingType.BUCKSHOT);
 		ComparableStack sShell = new ComparableStack(ModItems.casing, 1, EnumCasingType.BUCKSHOT_ADVANCED);
+		ComparableStack cobalt = new ComparableStack(ModItems.ingot_cobalt);
 
 		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.M357_BP, 16),
 				null,	lead.copy(2),	null,
@@ -227,6 +229,88 @@ public class AmmoPressRecipes extends SerializableRecipe {
 				he,		ferro,				null,
 				null,	smokeless.copy(6),	null,
 				null,	sBig,				null));
+
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.M357_DESH, 8),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.M44_DESH, 6),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.P22_DESH, 24),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.P9_DESH, 12),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.P45_DESH, 8),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.R556_DESH, 8),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.R762_DESH, 6),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.BMG50_DESH, 12),
+				null,	desh,			null,
+				null,	smokeless.copy(6),	null,
+				null,	sBig,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.B75_DESH, 8),
+				null,	desh,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.G12_DESH, 6),
+				null,	desh,			null,
+				null,	smokeful,		null,
+				null,	pShell,			null));
+
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.M357_LACED, 8),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.M44_LACED, 6),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.P22_LACED, 24),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.P9_LACED, 12),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.P45_LACED, 8),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.R556_LACED, 8),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.R762_LACED, 6),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.BMG50_LACED, 12),
+				null,	cobalt,			null,
+				null,	smokeless.copy(6),	null,
+				null,	sBig,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.B75_LACED, 8),
+				null,	cobalt,			null,
+				null,	smokeless,		null,
+				null,	sSmall,			null));
+		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.G12_LACED, 6),
+				null,	cobalt,			null,
+				null,	smokeful,		null,
+				null,	pShell,			null));
 
 		recipes.add(new AmmoPressRecipe(DictFrame.fromOne(ModItems.ammo_standard, EnumAmmo.G12_BP, 6),
 				null,	nugget.copy(6), null,

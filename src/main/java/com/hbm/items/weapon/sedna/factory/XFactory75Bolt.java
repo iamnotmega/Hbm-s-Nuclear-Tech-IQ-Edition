@@ -5,6 +5,7 @@ import java.util.function.BiFunction;
 
 import com.hbm.entity.projectile.EntityBulletBaseMK4;
 import com.hbm.extprop.HbmLivingProps;
+import com.hbm.items.ItemEnums.EnumCasingType;
 import com.hbm.items.ModItems;
 import com.hbm.items.weapon.sedna.BulletConfig;
 import com.hbm.items.weapon.sedna.Crosshair;
@@ -31,6 +32,8 @@ public class XFactory75Bolt {
 	public static BulletConfig b75;
 	public static BulletConfig b75_inc;
 	public static BulletConfig b75_exp;
+	public static BulletConfig b75_desh;
+	public static BulletConfig b75_laced;
 
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_TINY_EXPLODE = (bullet, mop) -> {
 		if(mop.typeOfHit == mop.typeOfHit.ENTITY && bullet.ticksExisted < 3 && mop.entityHit == bullet.getThrower()) return;
@@ -55,12 +58,15 @@ public class XFactory75Bolt {
 				.setCasing(casing75.clone().register("b75inc")).setOnImpact(LAMBDA_INC);
 		b75_exp = new BulletConfig().setItem(EnumAmmo.B75_EXP).setDamage(1.5F).setArmorPiercing(-0.25F)
 				.setCasing(casing75.clone().register("b75exp")).setOnImpact(LAMBDA_STANDARD_EXPLODE);
+		b75_desh = new BulletConfig().setItem(EnumAmmo.B75_DESH).setDoesPenetrate(true).setDamageFalloffByPen(false).setDamage(1.5F).setThresholdNegation(15F).setArmorPiercing(0.5F).setRicochetAngle(90F).setRicochetCount(100).setLife(800)
+				.setCasing(casing75.clone().register("b75desh"));
+			b75_laced = new BulletConfig().setItem(EnumAmmo.B75_LACED).setCasing(EnumCasingType.SMALL, 8).setDamage(1F).setLaced().setOnEntityHit(BulletConfig.LAMBDA_LACED_ENTITY_HIT);
 
 		ModItems.gun_bolter = new ItemGunBaseNT(WeaponQuality.SPECIAL, new GunConfig()
 				.dura(3_000).draw(20).inspect(31).crosshair(Crosshair.L_CIRCLE).smoke(LAMBDA_SMOKE)
 				.rec(new Receiver(0)
 						.dmg(15F).delay(2).auto(true).spread(0.005F).reload(40).jam(55).sound(NTMSounds.GUN_POWDER_FIRE, 1.0F, 1.0F)
-						.mag(new MagazineFullReload(0, 30).addConfigs(b75, b75_inc, b75_exp))
+						.mag(new MagazineFullReload(0, 30).addConfigs(b75, b75_inc, b75_exp, b75_desh, b75_laced))
 						.offset(1, -0.0625 * 2.5, -0.25D)
 						.setupStandardFire().recoil(LAMBDA_RECOIL_BOLT))
 				.setupStandardConfiguration()

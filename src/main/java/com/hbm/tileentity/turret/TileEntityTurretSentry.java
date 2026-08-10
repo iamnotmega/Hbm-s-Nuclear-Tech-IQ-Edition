@@ -42,6 +42,8 @@ public class TileEntityTurretSentry extends TileEntityTurretBaseNT implements IG
 		configs.add(XFactory9mm.p9_fmj.id);
 		configs.add(XFactory9mm.p9_jhp.id);
 		configs.add(XFactory9mm.p9_ap.id);
+		configs.add(XFactory9mm.p9_desh.id);
+		configs.add(XFactory9mm.p9_laced.id);
 	}
 
 	@Override

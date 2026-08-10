@@ -15,6 +15,9 @@ import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.items.ItemEnums.EnumCasingType;
 import com.hbm.items.ModItems;
 import com.hbm.items.weapon.sedna.factory.ConfettiUtil;
+import com.hbm.inventory.fluid.trait.Injectables;
+import com.hbm.inventory.fluid.FluidType;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.weapon.sedna.factory.GunFactory.EnumAmmo;
 import com.hbm.items.weapon.sedna.factory.GunFactory.EnumAmmoSecret;
 import com.hbm.particle.SpentCasing;
@@ -38,11 +41,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 @NotableComments
 public class BulletConfig implements Cloneable {
-	
+
 	public static List<BulletConfig> configs = new ArrayList();
-	
+
 	public int id;
-	
+
 	public ComparableStack ammo;
 	public ItemStack casingItem;
 	public int casingAmount;
@@ -60,9 +63,9 @@ public class BulletConfig implements Cloneable {
 	public float armorPiercingPercent = 0.0F;
 	public float knockbackMult = 0.1F;
 	public float headshotMult = 1.25F;
-	
+
 	public DamageClass dmgClass = DamageClass.PHYSICAL;
-	
+
 	public float ricochetAngle = 5F;
 	public int maxRicochetCount = 2;
 	/** Whether damage dealt to an entity is subtracted from the projectile's damage on penetration */
@@ -73,7 +76,7 @@ public class BulletConfig implements Cloneable {
 	public BiConsumer<EntityBulletBeamBase, MovingObjectPosition> onImpactBeam; //fuck fuck fuck fuck i should have used a better base class here god dammit
 	public BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> onRicochet = LAMBDA_STANDARD_RICOCHET;
 	public BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> onEntityHit = LAMBDA_STANDARD_ENTITY_HIT;
-	
+
 	public double gravity = 0;
 	public int expires = 30;
 	public boolean impactsEntities = true;
@@ -81,18 +84,21 @@ public class BulletConfig implements Cloneable {
 	/** Whether projectiles ignore blocks entirely */
 	public boolean isSpectral = false;
 	public int selfDamageDelay = 2;
-	
+
 	public boolean blackPowder = false;
 	public boolean renderRotations = true;
 	public SpentCasing casing;
 	public BiConsumer<EntityBulletBaseMK4, Float> renderer;
 	public BiConsumer<EntityBulletBeamBase, Float> rendererBeam;
-	
+	/** Laced rounds carry fluid, for that*/
+	public boolean laced = false;
+	public FluidType lacedFluid;
+
 	public BulletConfig() {
 		this.id = configs.size();
 		configs.add(this);
 	}
-	
+
 	/** Required for the clone() operation to reset the ID, otherwise the ID and config entry will be the same as the original */
 	public BulletConfig forceReRegister() {
 		this.id = configs.size();
@@ -132,8 +138,9 @@ public class BulletConfig implements Cloneable {
 	public BulletConfig setSelfDamageDelay(int delay) {									this.selfDamageDelay = delay; return this; }
 	public BulletConfig setBlackPowder(boolean bp) {									this.blackPowder = bp; return this; }
 	public BulletConfig setRenderRotations(boolean rot) {								this.renderRotations = rot; return this; }
+	public BulletConfig setLaced() {													this.laced = true; return this; }
 	public BulletConfig setCasing(SpentCasing casing) {									this.casing = casing; return this; }
-	
+
 	public BulletConfig setRenderer(BiConsumer<EntityBulletBaseMK4, Float> renderer) {		this.renderer = renderer; return this; }
 	public BulletConfig setRendererBeam(BiConsumer<EntityBulletBeamBase, Float> renderer) {	this.rendererBeam = renderer; return this; }
 
@@ -142,21 +149,21 @@ public class BulletConfig implements Cloneable {
 	public BulletConfig setOnImpact(BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> lambda) {			this.onImpact = lambda; return this; }
 	public BulletConfig setOnBeamImpact(BiConsumer<EntityBulletBeamBase, MovingObjectPosition> lambda) {	this.onImpactBeam = lambda; return this; }
 	public BulletConfig setOnEntityHit(BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> lambda) {		this.onEntityHit = lambda; return this; }
-	
+
 	public static enum ProjectileType {
 		BULLET,
 		BULLET_CHUNKLOADING,
 		BEAM
 	}
-	
+
 	@SuppressWarnings("incomplete-switch") //shut up
 	public static DamageSource getDamage(Entity projectile, EntityLivingBase shooter, DamageClass dmgClass) {
-		
+
 		DamageSource dmg;
-		
+
 		if(shooter != null) dmg = new DamageSourceSednaWithAttacker(dmgClass.name(), projectile, shooter);
 		else dmg = new DamageSourceSednaNoAttacker(dmgClass.name());
-		
+
 		switch(dmgClass) {
 		case PHYSICAL: dmg.setProjectile(); break;
 		case FIRE: dmg.setFireDamage(); break;
@@ -165,14 +172,14 @@ public class BulletConfig implements Cloneable {
 		case LASER: break;
 		case SUBATOMIC: break;
 		}
-		
+
 		return dmg;
 	}
-	
+
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_STANDARD_RICOCHET = (bullet, mop) -> {
-		
+
 		if(mop.typeOfHit == mop.typeOfHit.BLOCK) {
-			
+
 			Block b = bullet.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 			if(b.getMaterial() == Material.glass) {
 				bullet.worldObj.func_147480_a(mop.blockX, mop.blockY, mop.blockZ, false);
@@ -194,13 +201,13 @@ public class BulletConfig implements Cloneable {
 			double angle = Math.abs(BobMathUtil.getCrossAngle(vel, face) - 90);
 
 			if(angle <= bullet.config.ricochetAngle) {
-				
+
 				bullet.ricochets++;
 				if(bullet.ricochets > bullet.config.maxRicochetCount) {
 					bullet.setPosition(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
 					bullet.setDead();
 				}
-				
+
 				switch(mop.sideHit) {
 				case 0: case 1: bullet.motionY *= -1; break;
 				case 2: case 3: bullet.motionZ *= -1; break;
@@ -218,87 +225,94 @@ public class BulletConfig implements Cloneable {
 			}
 		}
 	};
-	
+
+	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_LACED_ENTITY_HIT = (bullet, mop) -> {
+		BulletConfig.LAMBDA_STANDARD_ENTITY_HIT.accept(bullet, mop);
+		if(mop.typeOfHit == mop.typeOfHit.ENTITY && mop.entityHit instanceof EntityLivingBase && bullet.config.lacedFluid != null && bullet.config.lacedFluid != Fluids.NONE) {
+			Injectables.process((EntityLivingBase) mop.entityHit, bullet.config.lacedFluid, 0, 1F, false);
+		}
+	};
+
 	public static BiConsumer<EntityBulletBaseMK4, MovingObjectPosition> LAMBDA_STANDARD_ENTITY_HIT = (bullet, mop) -> {
-		
+
 		if(mop.typeOfHit == mop.typeOfHit.ENTITY) {
 			Entity entity = mop.entityHit;
-			
+
 			if(entity == bullet.getThrower() && bullet.ticksExisted < bullet.selfDamageDelay()) return;
 			if(entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHealth() <= 0) return;
-			
+
 			DamageSource source = bullet.config.getDamage(bullet, bullet.getThrower(), bullet.config.dmgClass);
 			float intendedDamage = bullet.damage;
-			
+
 			if(!(entity instanceof EntityLivingBase)) {
 				EntityDamageUtil.attackEntityFromIgnoreIFrame(entity, source, bullet.damage);
 				return;
 			} else if(bullet.config.headshotMult > 1F) {
-				
+
 				EntityLivingBase living = (EntityLivingBase) entity;
 				double head = living.height - living.getEyeHeight();
-				
+
 				if(!!living.isEntityAlive() && mop.hitVec != null && mop.hitVec.yCoord > (living.posY + living.height - head * 2)) {
 					intendedDamage *= bullet.config.headshotMult;
 				}
 			}
-			
+
 			EntityLivingBase living = (EntityLivingBase) entity;
 			float prevHealth = living.getHealth();
-			
+
 			EntityDamageUtil.attackEntityFromNT(living, source, intendedDamage, true, true, bullet.config.knockbackMult, bullet.config.armorThresholdNegation, bullet.config.armorPiercingPercent);
-			
+
 			float newHealth = living.getHealth();
-			
+
 			if(bullet.config.damageFalloffByPen) bullet.damage -= Math.max(prevHealth - newHealth, 0) * 0.5;
 			if(!bullet.doesPenetrate() || bullet.damage < 0) {
 				bullet.setPosition(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
 				bullet.setDead();
 			}
-			
+
 			if(!living.isEntityAlive()) ConfettiUtil.decideConfetti(living, source);
 		}
 	};
-	
+
 	public static BiConsumer<EntityBulletBeamBase, MovingObjectPosition> LAMBDA_STANDARD_BEAM_HIT = (bullet, mop) -> {
-		
+
 		if(mop.typeOfHit == mop.typeOfHit.ENTITY) {
 			Entity entity = mop.entityHit;
-			
+
 			if(entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHealth() <= 0) return;
 
 			DamageSource source = bullet.config.getDamage(bullet, bullet.getThrower(), bullet.config.dmgClass);
-			
+
 			if(!(entity instanceof EntityLivingBase)) {
 				EntityDamageUtil.attackEntityFromIgnoreIFrame(entity, source, bullet.damage);
 				return;
 			}
-			
+
 			EntityLivingBase living = (EntityLivingBase) entity;
 			EntityDamageUtil.attackEntityFromNT(living, source, bullet.damage, true, true, bullet.config.knockbackMult, bullet.config.armorThresholdNegation, bullet.config.armorPiercingPercent);
 			if(!living.isEntityAlive()) ConfettiUtil.decideConfetti(living, source);
 		}
 	};
-	
+
 	public static BiConsumer<EntityBulletBeamBase, MovingObjectPosition> LAMBDA_BEAM_HIT = (beam, mop) -> {
-		
+
 		if(mop.typeOfHit == mop.typeOfHit.ENTITY) {
 			Entity entity = mop.entityHit;
-			
+
 			if(entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHealth() <= 0) return;
-			
+
 			DamageSource source = beam.config.getDamage(beam, beam.thrower, beam.config.dmgClass);
-			
+
 			if(!(entity instanceof EntityLivingBase)) {
 				EntityDamageUtil.attackEntityFromIgnoreIFrame(entity, source, beam.damage);
 				return;
 			}
-			
+
 			EntityLivingBase living = (EntityLivingBase) entity;
 			EntityDamageUtil.attackEntityFromNT(living, source, beam.damage, true, false, beam.config.knockbackMult, beam.config.armorThresholdNegation, beam.config.armorPiercingPercent);
 		}
 	};
-	
+
 	@Override
 	public BulletConfig clone() {
 		try {

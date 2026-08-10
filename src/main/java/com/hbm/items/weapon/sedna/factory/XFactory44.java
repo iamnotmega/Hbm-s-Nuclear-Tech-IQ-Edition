@@ -45,6 +45,8 @@ public class XFactory44 {
 	public static BulletConfig m44_jhp;
 	public static BulletConfig m44_ap;
 	public static BulletConfig m44_express;
+	public static BulletConfig m44_desh;
+	public static BulletConfig m44_laced;
 	public static BulletConfig m44_equestrian_pip;
 	public static BulletConfig m44_equestrian_mn7;
 
@@ -81,6 +83,9 @@ public class XFactory44 {
 				.setCasing(casing44.clone().setColor(SpentCasing.COLOR_CASE_44).register("m44ap"));
 		m44_express = new BulletConfig().setItem(EnumAmmo.M44_EXPRESS).setCasing(EnumCasingType.SMALL, 6).setDoesPenetrate(true).setDamage(1.5F).setThresholdNegation(3F).setArmorPiercing(0.1F).setWear(1.5F)
 				.setCasing(casing44.clone().register("m44express"));
+		m44_desh = new BulletConfig().setItem(EnumAmmo.M44_DESH).setCasing(EnumCasingType.SMALL_STEEL, 6).setDoesPenetrate(true).setDamageFalloffByPen(false).setDamage(1.5F).setThresholdNegation(15F).setArmorPiercing(0.5F).setRicochetAngle(90F).setRicochetCount(100).setLife(800)
+				.setCasing(casing44.clone().setColor(SpentCasing.COLOR_CASE_44).register("m44desh"));
+			m44_laced = new BulletConfig().setItem(EnumAmmo.M44_LACED).setCasing(EnumCasingType.SMALL, 6).setDamage(1F).setLaced().setOnEntityHit(BulletConfig.LAMBDA_LACED_ENTITY_HIT);
 		m44_equestrian_pip = new BulletConfig().setItem(EnumAmmoSecret.M44_EQUESTRIAN).setDamage(0F).setOnImpact(LAMBDA_BOXCAR)
 				.setCasing(casing44.clone().setColor(SpentCasing.COLOR_CASE_EQUESTRIAN).register("m44equestrianPip"));
 		m44_equestrian_mn7 = new BulletConfig().setItem(EnumAmmoSecret.M44_EQUESTRIAN).setDamage(0F).setOnImpact(LAMBDA_TORPEDO)
@@ -90,7 +95,7 @@ public class XFactory44 {
 				.dura(300).draw(15).inspect(23).reloadSequential(true).crosshair(Crosshair.CIRCLE).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
 						.dmg(10F).delay(20).reload(25, 11, 14, 8).jam(45).sound(NTMSounds.GUN_RIFLE_FIRE, 1.0F, 1.0F)
-						.mag(new MagazineSingleReload(0, 14).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
+						.mag(new MagazineSingleReload(0, 14).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express, m44_desh, m44_laced))
 						.offset(0.75, -0.0625, -0.1875D)
 						.setupStandardFire().recoil(LAMBDA_RECOIL_HENRY))
 				.setupStandardConfiguration()
@@ -100,7 +105,7 @@ public class XFactory44 {
 				.dura(300).draw(15).inspect(23).reloadSequential(true).crosshair(Crosshair.CIRCLE).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
 						.dmg(20F).spreadHipfire(0F).delay(20).reload(25, 11, 14, 8).jam(45).sound(NTMSounds.GUN_RIFLE_FIRE, 1.0F, 1.25F)
-						.mag(new MagazineSingleReload(0, 14).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
+						.mag(new MagazineSingleReload(0, 14).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express, m44_desh, m44_laced))
 						.offset(0.75, -0.0625, -0.1875D)
 						.setupStandardFire().recoil(LAMBDA_RECOIL_HENRY))
 				.setupStandardConfiguration()
@@ -111,7 +116,7 @@ public class XFactory44 {
 				.dura(600).draw(10).inspect(23).crosshair(Crosshair.L_CLASSIC).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
 						.dmg(15F).delay(14).reload(46).jam(23).sound(NTMSounds.GUN_HEAVY_REVOLVER_FIRE, 1.0F, 1.0F)
-						.mag(new MagazineFullReload(0, 6).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
+						.mag(new MagazineFullReload(0, 6).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express, m44_desh, m44_laced))
 						.offset(0.75, -0.0625, -0.3125D)
 						.setupStandardFire().recoil(LAMBDA_RECOIL_NOPIP))
 				.setupStandardConfiguration()
@@ -122,7 +127,7 @@ public class XFactory44 {
 				.dura(31_000).draw(10).inspect(23).crosshair(Crosshair.L_CLASSIC).scopeTexture(scope_lilmac).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
 						.dmg(30F).delay(14).reload(46).jam(23).sound(NTMSounds.GUN_HEAVY_REVOLVER_FIRE, 1.0F, 1.0F)
-						.mag(new MagazineFullReload(0, 6).addConfigs(m44_equestrian_pip, m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
+						.mag(new MagazineFullReload(0, 6).addConfigs(m44_equestrian_pip, m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express, m44_desh, m44_laced))
 						.offset(0.75, -0.0625, -0.3125D)
 						.setupStandardFire().recoil(LAMBDA_RECOIL_NOPIP))
 				.setupStandardConfiguration()
@@ -132,7 +137,7 @@ public class XFactory44 {
 				.dura(31_000).draw(10).inspect(23).crosshair(Crosshair.L_CLASSIC).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
 						.dmg(30F).delay(14).reload(46).jam(23).sound(NTMSounds.GUN_HEAVY_REVOLVER_FIRE, 1.0F, 0.8F)
-						.mag(new MagazineFullReload(0, 6).addConfigs(m44_equestrian_mn7, m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
+						.mag(new MagazineFullReload(0, 6).addConfigs(m44_equestrian_mn7, m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express, m44_desh, m44_laced))
 						.offset(0.75, -0.0625, -0.3125D)
 						.setupStandardFire().recoil(LAMBDA_RECOIL_NOPIP))
 				.setupStandardConfiguration()
@@ -143,7 +148,7 @@ public class XFactory44 {
 				.dura(600).draw(10).inspect(31).inspectCancel(false).crosshair(Crosshair.CIRCLE).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
 						.dmg(25F).delay(10).reload(46).jam(23).sound(NTMSounds.GUN_HEAVY_REVOLVER_FIRE, 1.0F, 1.0F)
-						.mag(new MagazineFullReload(0, 8).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
+						.mag(new MagazineFullReload(0, 8).addConfigs(m44_bp, m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express, m44_desh, m44_laced))
 						.offset(1, -0.0625 * 2.5, -0.25D)
 						.setupStandardFire().recoil(LAMBDA_RECOIL_HANGMAN))
 				.setupStandardConfiguration().ps(SMACK_A_FUCKER)

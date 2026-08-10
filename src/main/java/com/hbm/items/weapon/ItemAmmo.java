@@ -8,10 +8,13 @@ import java.util.Set;
 
 import com.hbm.items.ItemAmmoEnums.IAmmoItemEnum;
 import com.hbm.items.ItemEnumMulti;
+import com.hbm.inventory.fluid.FluidType;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.lib.RefStrings;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.i18n.I18nUtil;
 
+import api.hbm.fluidmk2.IFillableItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,8 +23,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 
-public class ItemAmmo extends ItemEnumMulti {
-	
+public class ItemAmmo extends ItemEnumMulti implements IFillableItem {
+
 	public enum AmmoItemTrait {
 		CON_ACCURACY2,
 		CON_DAMAGE,
@@ -105,20 +108,97 @@ public class ItemAmmo extends ItemEnumMulti {
 		PRO_WEAR,
 		PRO_WITHERING,
 		PRO_BUTTER;
-		
+
 		public String key = "desc.item.ammo.";
-		
+
 		private AmmoItemTrait() {
 			key += this.toString().toLowerCase(Locale.US);
 		}
 	}
-	
+
 	private final String altName;
-	
+
+	@SideOnly(Side.CLIENT) protected IIcon[] overlayIcons;
+
+	private static final short LACED_DOSE = 100;
+
+	public boolean isLaced(ItemStack stack) {
+		return EnumUtil.grabEnumSafely(theEnum, stack.getItemDamage()).name().endsWith("_LACED");
+	}
+
+	@Override
+	public boolean acceptsFluid(FluidType type, ItemStack stack) { return isLaced(stack); }
+	@Override
+	public int tryFill(FluidType type, int amount, ItemStack stack) {
+		if(!isLaced(stack)) return amount;
+		int fill = IFillableItem.getFluidFill(stack);
+		if(fill > 0 && IFillableItem.getFluidType(stack) != type) return amount;
+		int add = Math.min(amount, LACED_DOSE - fill);
+		if(add <= 0) return amount;
+		IFillableItem.setFluidFill(stack, type, (short) (fill + add));
+		return amount - add;
+	}
+	@Override
+	public boolean providesFluid(FluidType type, ItemStack stack) {
+		return isLaced(stack) && IFillableItem.getFluidType(stack) == type && IFillableItem.getFluidFill(stack) > 0;
+	}
+	@Override
+	public int tryEmpty(FluidType type, int amount, ItemStack stack) {
+		if(!providesFluid(type, stack)) return 0;
+		int take = Math.min(amount, IFillableItem.getFluidFill(stack));
+		int left = IFillableItem.getFluidFill(stack) - take;
+		if(left <= 0) {
+			stack.stackTagCompound = null;
+		} else {
+			IFillableItem.setFluidFill(stack, type, (short) left);
+		}
+		return take;
+	}
+	@Override
+	public FluidType getFirstFluidType(ItemStack stack) { return isLaced(stack) ? IFillableItem.getFluidType(stack) : Fluids.NONE; }
+	@Override
+	public int getFill(ItemStack stack) { return isLaced(stack) ? IFillableItem.getFluidFill(stack) : 0; }
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister reg) {
+		Enum[] enums = theEnum.getEnumConstants();
+		this.icons = new IIcon[enums.length];
+		this.overlayIcons = new IIcon[enums.length];
+
+		for(int i = 0; i < icons.length; i++) {
+			IAmmoItemEnum num = (IAmmoItemEnum) enums[i];
+			this.icons[i] = reg.registerIcon(RefStrings.MODID + ":" + num.getInternalName());
+			if(((Enum) num).name().endsWith("_LACED"))
+				this.overlayIcons[i] = reg.registerIcon(RefStrings.MODID + ":" + num.getInternalName() + "_overlay");
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean requiresMultipleRenderPasses() { return true; }
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(ItemStack stack, int pass) {
+		if(pass == 1 && isLaced(stack) && getFill(stack) > 0 && overlayIcons[stack.getItemDamage()] != null)
+			return overlayIcons[stack.getItemDamage()];
+		return getIconFromDamageForRenderPass(stack.getItemDamage(), pass);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getColorFromItemStack(ItemStack stack, int pass) {
+		if(pass == 1 && isLaced(stack) && getFill(stack) > 0) {
+			int color = IFillableItem.getFluidType(stack).getColor();
+			return color < 0 ? 0xffffff : color;
+		}
+		return 0xffffff;
+	}
+
 	public ItemAmmo(Class<? extends Enum<?>> clazz) {
 		this(clazz, "");
 	}
-	
+
 	public ItemAmmo(Class<? extends Enum<?>> clazz, String altName) {
 		super(clazz, true, true);
 		this.setCreativeTab(null);
@@ -128,14 +208,18 @@ public class ItemAmmo extends ItemEnumMulti {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean ext) {
 		super.addInformation(stack, player, list, ext);
-		
+
 		if(!altName.isEmpty()) list.add(EnumChatFormatting.ITALIC + I18nUtil.resolveKey(altName));
+
+		if(isLaced(stack)) {
+			list.add(IFillableItem.getFluidType(stack).getLocalizedName() + ": " + getFill(stack) + "mB");
+		}
 
 		IAmmoItemEnum item = (IAmmoItemEnum) EnumUtil.grabEnumSafely(theEnum, stack.getItemDamage());
 		Set<AmmoItemTrait> ammoTraits = item.getTraits();
 
 		if(ammoTraits.size() > 0) {
-			
+
 			ArrayList<AmmoItemTrait> sortedTraits = new ArrayList<AmmoItemTrait>(ammoTraits);
 			sortedTraits.sort(Comparator.reverseOrder());
 			for(AmmoItemTrait trait : sortedTraits) {
@@ -148,26 +232,15 @@ public class ItemAmmo extends ItemEnumMulti {
 				}
 				list.add(color + I18nUtil.resolveKey(trait.key));
 			}
-		}		
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg) {
-		Enum[] enums = theEnum.getEnumConstants();
-		this.icons = new IIcon[enums.length];
-		
-		for(int i = 0; i < icons.length; i++) {
-			IAmmoItemEnum num = (IAmmoItemEnum) enums[i];
-			this.icons[i] = reg.registerIcon(RefStrings.MODID + ":" + num.getInternalName());
 		}
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		IAmmoItemEnum num = EnumUtil.grabEnumSafely(theEnum, stack.getItemDamage());
 		return "item." + num.getInternalName();
 	}
-	
+
 	@Override
 	public ItemEnumMulti setUnlocalizedName(String uloc) {
 		setTextureName(RefStrings.MODID + ':' + uloc);

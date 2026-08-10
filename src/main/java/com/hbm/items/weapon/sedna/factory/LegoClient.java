@@ -6,6 +6,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.hbm.entity.projectile.EntityBulletBaseMK4;
 import com.hbm.entity.projectile.EntityBulletBeamBase;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.ModItems;
 import com.hbm.items.weapon.sedna.hud.HUDComponentAmmoCounter;
 import com.hbm.items.weapon.sedna.hud.HUDComponentDurabilityBar;
@@ -72,6 +73,18 @@ public class LegoClient {
 		double length = bullet.prevVelocity + (bullet.velocity - bullet.prevVelocity) * interp;
 		if(length <= 0) return;
 		renderBulletStandard(Tessellator.instance, 0x5CCD41, 0xE9FF8D, length, false);
+	};
+	public static BiConsumer<EntityBulletBaseMK4, Float> RENDER_DESH_BULLET = (bullet, interp) -> {
+		double length = bullet.prevVelocity + (bullet.velocity - bullet.prevVelocity) * interp;
+		if(length <= 0) return;
+		renderBulletStandard(Tessellator.instance, 0xC60404, 0xFF6D6D, length, true);
+	};
+	public static BiConsumer<EntityBulletBaseMK4, Float> RENDER_LACED_BULLET = (bullet, interp) -> {
+		double length = bullet.prevVelocity + (bullet.velocity - bullet.prevVelocity) * interp;
+		if(length <= 0) return;
+		int color = bullet.config.lacedFluid != null && bullet.config.lacedFluid != Fluids.NONE ? bullet.config.lacedFluid.getColor() : 0xBFBFBF;
+		if(color < 0) color = 0xFFFFFF;
+		renderBulletStandard(Tessellator.instance, color, 0xFFFFFF, length, false);
 	};
 	
 	public static BiConsumer<EntityBulletBaseMK4, Float> RENDER_HE_BULLET = (bullet, interp) -> {

@@ -17,6 +17,7 @@ import com.hbm.handler.threading.PacketThreading;
 import com.hbm.interfaces.IControlReceiver;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.container.ContainerTurretBase;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemTurretBiometry;
 import com.hbm.items.weapon.sedna.BulletConfig;
@@ -27,9 +28,9 @@ import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.BufferUtil;
 import com.hbm.util.CompatExternal;
-
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.entity.IRadarDetectableNT;
+import api.hbm.fluidmk2.IFillableItem;
 import api.hbm.redstoneoverradio.IRORInteractive;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
@@ -343,6 +344,17 @@ public abstract class TileEntityTurretBaseNT extends TileEntityMachineBase imple
 	}
 
 	public void spawnBullet(BulletConfig bullet, float baseDamage) {
+
+		if(bullet.laced) {
+			bullet = bullet.clone();
+			bullet.lacedFluid = Fluids.NONE;
+			for(int i = 1; i < 10; i++) {
+				if(slots[i] != null && bullet.ammo.matchesRecipe(slots[i], true) && IFillableItem.getFluidFill(slots[i]) > 0) {
+					bullet.lacedFluid = IFillableItem.getFluidType(slots[i]);
+					break;
+				}
+			}
+		}
 
 		Vec3 pos = this.getTurretPos();
 		Vec3 vec = Vec3.createVectorHelper(this.getBarrelLength(), 0, 0);

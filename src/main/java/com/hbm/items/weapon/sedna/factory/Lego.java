@@ -14,6 +14,9 @@ import com.hbm.explosion.vanillant.standard.ExplosionEffectTiny;
 import com.hbm.explosion.vanillant.standard.ExplosionEffectWeapon;
 import com.hbm.explosion.vanillant.standard.PlayerProcessorStandard;
 import com.hbm.interfaces.NotableComments;
+import com.hbm.inventory.fluid.FluidType;
+import com.hbm.inventory.fluid.Fluids;
+import com.hbm.items.ModItems;
 import com.hbm.items.weapon.sedna.BulletConfig;
 import com.hbm.items.weapon.sedna.BulletConfig.ProjectileType;
 import com.hbm.items.weapon.sedna.GunConfig;
@@ -23,11 +26,14 @@ import com.hbm.items.weapon.sedna.ItemGunBaseNT.LambdaContext;
 import com.hbm.items.weapon.sedna.ItemGunBaseNT.SmokeNode;
 import com.hbm.items.weapon.sedna.Receiver;
 import com.hbm.items.weapon.sedna.mags.IMagazine;
+import com.hbm.items.weapon.sedna.mags.MagazineBelt;
+import com.hbm.items.weapon.sedna.mags.MagazineSingleTypeBase;
 import com.hbm.main.MainRegistry;
 import com.hbm.particle.helper.BlackPowderCreator;
 import com.hbm.render.anim.AnimationEnums.GunAnimation;
 import com.hbm.render.anim.BusAnimation;
 import com.hbm.render.anim.BusAnimationSequence;
+import api.hbm.fluidmk2.IFillableItem;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -213,6 +219,18 @@ public class Lego {
 		Receiver primary = ctx.config.getReceivers(stack)[receiver];
 		IMagazine mag = primary.getMagazine(stack);
 		BulletConfig config = (BulletConfig) mag.getType(stack, ctx.inventory);
+		
+		if(config.laced) {
+			FluidType fluid = Fluids.NONE;
+			if(mag instanceof MagazineSingleTypeBase) {
+				fluid = MagazineSingleTypeBase.getMagFluid(stack, ((MagazineSingleTypeBase) mag).index);
+			} else if(mag instanceof MagazineBelt) {
+				ItemStack round = MagazineBelt.getFilledRound(ctx.inventory, config);
+				if(round != null) fluid = IFillableItem.getFluidType(round);
+			}
+			config = config.clone();
+			config.lacedFluid = fluid;
+		}
 
 		Vec3 offset = ItemGunBaseNT.getIsAiming(stack) ? primary.getProjectileOffsetScoped(stack) : primary.getProjectileOffset(stack);
 		double forwardOffset = offset.xCoord;

@@ -144,6 +144,6 @@ public class ItemAmmoBag extends Item implements IGUIProvider {
 		@Override public boolean isUseableByPlayer(EntityPlayer player) { return true; }
 		@Override public void openInventory() { }
 		@Override public void closeInventory() { }
-		@Override public boolean isItemValidForSlot(int slot, ItemStack stack) { return !stack.hasTagCompound(); }
+		@Override public boolean isItemValidForSlot(int slot, ItemStack stack) { return stack.getItem() == ModItems.ammo_standard || !stack.hasTagCompound(); }
 	}
 }

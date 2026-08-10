@@ -1,10 +1,16 @@
 package com.hbm.items.weapon.sedna.factory;
 
+import java.util.Collections;
+import java.util.Locale;
+import java.util.Set;
 import java.util.function.BiConsumer;
 
 import com.hbm.interfaces.IOrderedEnum;
+import com.hbm.items.ItemAmmoEnums.IAmmoItemEnum;
 import com.hbm.items.ItemEnumMulti;
 import com.hbm.items.ModItems;
+import com.hbm.items.weapon.ItemAmmo;
+import com.hbm.items.weapon.ItemAmmo.AmmoItemTrait;
 import com.hbm.items.weapon.sedna.BulletConfig;
 import com.hbm.items.weapon.sedna.Crosshair;
 import com.hbm.items.weapon.sedna.GunConfig;
@@ -33,7 +39,7 @@ public class GunFactory {
 		
 		/// AMMO ITEMS ///
 		ModItems.ammo_debug = new Item().setUnlocalizedName("ammo_debug").setTextureName(RefStrings.MODID + ":ammo_45");
-		ModItems.ammo_standard = new ItemEnumMulti(EnumAmmo.class, true, true).setUnlocalizedName("ammo_standard").setCreativeTab(MainRegistry.weaponTab).setTextureName(RefStrings.MODID + ":ammo_standard");
+		ModItems.ammo_standard = new ItemAmmo(EnumAmmo.class).setUnlocalizedName("ammo_standard").setCreativeTab(MainRegistry.weaponTab);
 		ModItems.ammo_secret = new ItemEnumMulti(EnumAmmoSecret.class, true, true).setUnlocalizedName("ammo_secret").setCreativeTab(null).setTextureName(RefStrings.MODID + ":ammo_secret");
 
 		/// BULLLET CFGS ///
@@ -104,7 +110,7 @@ public class GunFactory {
 		GunStateDecider.deciderAutoRefire(stack, ctx, lastState, 1, index, () -> { return ItemGunBaseNT.getSecondary(stack, index) && ItemGunBaseNT.getMode(stack, ctx.configIndex) == 0; });
 	};
 	
-	public static enum EnumAmmo implements IOrderedEnum {
+	public static enum EnumAmmo implements IOrderedEnum, IAmmoItemEnum {
 		STONE, STONE_AP, STONE_IRON, STONE_SHOT,
 		M357_BP, M357_SP, M357_FMJ, M357_JHP, M357_AP, M357_EXPRESS,
 		M44_BP, M44_SP, M44_FMJ, M44_JHP, M44_AP, M44_EXPRESS,
@@ -129,6 +135,8 @@ public class GunFactory {
 		CT_HOOK, CT_MORTAR, CT_MORTAR_CHARGE,
 		NUKE_BALEFIRE, BMG50_SM,
 		FLAME_MORNINGSTAR,
+		M357_DESH, M44_DESH, P22_DESH, P9_DESH, P45_DESH, R556_DESH, R762_DESH, BMG50_DESH, B75_DESH, G12_DESH,
+		M357_LACED, M44_LACED, P22_LACED, P9_LACED, P45_LACED, R556_LACED, R762_LACED, BMG50_LACED, B75_LACED, G12_LACED,
 		
 		//ONLY ADD NEW ENTRIES AT THE BOTTOM TO AVOID SHIFTING!
 		;
@@ -157,10 +165,22 @@ public class GunFactory {
 			NUKE_STANDARD, NUKE_DEMO, NUKE_HIGH, NUKE_TOTS, NUKE_HIVE, NUKE_BALEFIRE,
 			CT_HOOK, CT_MORTAR, CT_MORTAR_CHARGE,
 			FLAME_MORNINGSTAR,
+			M357_DESH, M44_DESH, P22_DESH, P9_DESH, P45_DESH, R556_DESH, R762_DESH, BMG50_DESH, B75_DESH, G12_DESH,
+			M357_LACED, M44_LACED, P22_LACED, P9_LACED, P45_LACED, R556_LACED, R762_LACED, BMG50_LACED, B75_LACED, G12_LACED,
 		};
 		
 		public Enum[] getOrder() {
 			return order;
+		}
+
+		@Override
+		public Set<AmmoItemTrait> getTraits() {
+			return Collections.emptySet();
+		}
+
+		@Override
+		public String getInternalName() {
+			return "ammo_standard." + name().toLowerCase(Locale.US);
 		}
 	}
 	

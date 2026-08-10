@@ -9,6 +9,7 @@ import com.hbm.items.weapon.sedna.BulletConfig;
 import com.hbm.items.weapon.sedna.ItemGunBaseNT;
 import com.hbm.particle.SpentCasing;
 
+import api.hbm.fluidmk2.IFillableItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -112,6 +113,10 @@ public class MagazineBelt implements IMagazine<BulletConfig> {
 	@Override
 	public ItemStack getIconForHUD(ItemStack stack, EntityPlayer player) {
 		BulletConfig first = this.getFirstConfig(stack, player.inventory);
+		if(first.laced) {
+			ItemStack filled = getFilledRound(player.inventory, first);
+			if(filled != null) return filled;
+		}
 		return first.ammo.toStack();
 	}
 
@@ -159,4 +164,21 @@ public class MagazineBelt implements IMagazine<BulletConfig> {
 	public static final String KEY_MAG_TYPE = "magtype";
 	public static int getMagType(ItemStack stack) { return ItemGunBaseNT.getValueInt(stack, KEY_MAG_TYPE); }
 	public static void setMagType(ItemStack stack, int value) { ItemGunBaseNT.setValueInt(stack, KEY_MAG_TYPE, value); }
+
+	public static ItemStack getFilledRound(IInventory inventory, BulletConfig config) {
+		if(inventory == null) return null;
+		for(int i = 0; i < inventory.getSizeInventory(); i++) {
+			ItemStack slot = inventory.getStackInSlot(i);
+			if(slot == null) continue;
+			if(config.ammo.matchesRecipe(slot, true) && IFillableItem.getFluidFill(slot) > 0) return slot;
+			if(slot.getItem() == ModItems.ammo_bag || slot.getItem() == ModItems.ammo_bag_infinite) {
+				InventoryAmmoBag bag = new InventoryAmmoBag(slot);
+				for(int j = 0; j < bag.getSizeInventory(); j++) {
+					ItemStack bagslot = bag.getStackInSlot(j);
+					if(bagslot != null && config.ammo.matchesRecipe(bagslot, true) && IFillableItem.getFluidFill(bagslot) > 0) return bagslot;
+				}
+			}
+		}
+		return null;
+	}
 }

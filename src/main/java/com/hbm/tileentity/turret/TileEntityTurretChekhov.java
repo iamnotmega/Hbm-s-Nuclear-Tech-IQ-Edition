@@ -31,6 +31,8 @@ public class TileEntityTurretChekhov extends TileEntityTurretBaseNT {
 		configs.add(XFactory50.bmg50_jhp.id);
 		configs.add(XFactory50.bmg50_ap.id);
 		configs.add(XFactory50.bmg50_du.id);
+		configs.add(XFactory50.bmg50_desh.id);
+		configs.add(XFactory50.bmg50_laced.id);
 	}
 
 	@Override

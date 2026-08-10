@@ -3,6 +3,8 @@ package com.hbm.items.weapon.sedna.mags;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hbm.inventory.fluid.FluidType;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.ModItems;
 import com.hbm.items.tool.ItemAmmoBag.InventoryAmmoBag;
 import com.hbm.items.weapon.sedna.BulletConfig;
@@ -10,6 +12,7 @@ import com.hbm.items.weapon.sedna.ItemGunBaseNT;
 import com.hbm.particle.SpentCasing;
 import com.hbm.util.BobMathUtil;
 
+import api.hbm.fluidmk2.IFillableItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -21,6 +24,7 @@ public abstract class MagazineSingleTypeBase implements IMagazine<BulletConfig> 
 	public static final String KEY_MAG_TYPE = "magtype";
 	public static final String KEY_MAG_PREV = "magprev";
 	public static final String KEY_MAG_AFTER = "magafter";
+	public static final String KEY_MAG_FLUID = "magfluid";
 
 	public List<BulletConfig> acceptedBullets = new ArrayList();
 	
@@ -56,7 +60,14 @@ public abstract class MagazineSingleTypeBase implements IMagazine<BulletConfig> 
 	@Override
 	public ItemStack getIconForHUD(ItemStack stack, EntityPlayer player) {
 		BulletConfig config = this.getType(stack, player.inventory);
-		if(config != null) return config.ammo.toStack();
+		if(config != null) {
+			ItemStack round = config.ammo.toStack();
+			if(config.laced) {
+				FluidType fluid = getMagFluid(stack, index);
+				if(fluid != Fluids.NONE) IFillableItem.setFluidFill(round, fluid, (short) 100);
+			}
+			return round;
+		}
 		return null;
 	}
 
@@ -108,6 +119,7 @@ public abstract class MagazineSingleTypeBase implements IMagazine<BulletConfig> 
 					for(BulletConfig config : this.acceptedBullets) {
 						if(config.ammo.matchesRecipe(slot, true)) {
 							this.setType(stack, config);
+							if(config.laced) setMagFluid(stack, index, IFillableItem.getFluidType(slot));
 							int wantsToLoad = (int) Math.ceil((double) this.getCapacity(stack) / (double) config.ammoReloadCount);
 							int toLoad = BobMathUtil.min(wantsToLoad, slot.stackSize, loadLimit);
 							this.setAmount(stack, Math.min(toLoad * config.ammoReloadCount, this.capacity));
@@ -122,6 +134,7 @@ public abstract class MagazineSingleTypeBase implements IMagazine<BulletConfig> 
 					if(config == null) { config = this.acceptedBullets.get(0); this.setType(stack, config); } //fixing broken NBT
 
 					if(config.ammo.matchesRecipe(slot, true)) {
+						if(config.laced) setMagFluid(stack, index, IFillableItem.getFluidType(slot));
 						int alreadyLoaded = this.getAmount(stack, null);
 						int wantsToLoad = (int) Math.ceil((double) (this.getCapacity(stack) - alreadyLoaded) / (double) config.ammoReloadCount);
 						int toLoad = BobMathUtil.min(wantsToLoad, slot.stackSize, loadLimit);
@@ -146,6 +159,7 @@ public abstract class MagazineSingleTypeBase implements IMagazine<BulletConfig> 
 								for(BulletConfig config : this.acceptedBullets) {
 									if(config.ammo.matchesRecipe(bagslot, true)) {
 										this.setType(stack, config);
+										if(config.laced) setMagFluid(stack, index, IFillableItem.getFluidType(bagslot));
 										int wantsToLoad = (int) Math.ceil((double) this.getCapacity(stack) / (double) config.ammoReloadCount);
 										int toLoad = BobMathUtil.min(wantsToLoad, infBag ? 9_999 : bagslot.stackSize, loadLimit);
 										this.setAmount(stack, Math.min(toLoad * config.ammoReloadCount, this.capacity));
@@ -160,6 +174,7 @@ public abstract class MagazineSingleTypeBase implements IMagazine<BulletConfig> 
 								if(config == null) { config = this.acceptedBullets.get(0); this.setType(stack, config); } //fixing broken NBT
 
 								if(config.ammo.matchesRecipe(bagslot, true)) {
+									if(config.laced) setMagFluid(stack, index, IFillableItem.getFluidType(bagslot));
 									int alreadyLoaded = this.getAmount(stack, bag);
 									int wantsToLoad = (int) Math.ceil((double) (this.getCapacity(stack) - alreadyLoaded) / (double) config.ammoReloadCount);
 									int toLoad = BobMathUtil.min(wantsToLoad, infBag ? 9_999 : bagslot.stackSize, loadLimit);
@@ -243,4 +258,8 @@ public abstract class MagazineSingleTypeBase implements IMagazine<BulletConfig> 
 	// MAG COUNT //
 	public static int getMagCount(ItemStack stack, int index) { return ItemGunBaseNT.getValueInt(stack, KEY_MAG_COUNT + index); }
 	public static void setMagCount(ItemStack stack, int index, int value) { ItemGunBaseNT.setValueInt(stack, KEY_MAG_COUNT + index, value); }
+
+	// MAG FLUID //
+	public static FluidType getMagFluid(ItemStack stack, int index) { return Fluids.fromID(ItemGunBaseNT.getValueInt(stack, KEY_MAG_FLUID + index)); }
+	public static void setMagFluid(ItemStack stack, int index, FluidType type) { ItemGunBaseNT.setValueInt(stack, KEY_MAG_FLUID + index, type.getID()); }
 }
