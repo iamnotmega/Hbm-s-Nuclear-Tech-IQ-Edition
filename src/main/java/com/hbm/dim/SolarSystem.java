@@ -106,14 +106,14 @@ public class SolarSystem {
 					),
 
 				new CelestialBody("czechoslowakia", SpaceConfig.czechoslowakiaDimension, Body.CZECHOSLOWAKIA)
-					.withMassRadius(5.292e22F, 600)
-					.withOrbitalParameters(13_599_840, 0.1F, 0.0F, 2.1F, 3.7F)
+					.withMassRadius(5.292e22F, 500)
+					.withOrbitalParameters(13_599_840, 0.1F, 6.9F, 21F, 37F)
 					.withRotationalPeriod(21_549)
 					.withColor(0.6745098F, 0.6745098F, 0.6745098F)
-					.withTraits(new CBT_Atmosphere(Fluids.EARTHAIR, 1D), new CBT_Water())
-					.withBlockTextures("textures/blocks/stone.png", "hbm:textures/blocks/concrete.png")
-					.withCityMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/buurman_mask.png"))
-					.withBiomeMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/buurman_biomes.png")),
+					.withTraits(new CBT_Atmosphere(Fluids.EARTHAIR, 1D), new CBT_Water(Fluids.NATCRETE))
+					.withBlockTextures("textures/blocks/concrete.png", "hbm:textures/blocks/concrete.png")
+					.withCityMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/default_mask.png"))
+					.withBiomeMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/czechoslowakia.png")),
 
 				new CelestialBody("duna", SpaceConfig.dunaDimension, Body.DUNA)
 					.withMassRadius(4.515e21F, 320)

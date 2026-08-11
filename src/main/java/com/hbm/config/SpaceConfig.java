@@ -84,6 +84,8 @@ public class SpaceConfig {
 	public static int thatmoBiome = 87;
 	public static int theNestBiome = 86;
 
+	public static int pragueBiome = 85;
+
 
 
 	public static boolean allowNetherPortals = false;
@@ -159,7 +161,8 @@ public class SpaceConfig {
 		tektoForestBiome = createConfigBiome(config, CATEGORY_BIOME, "16.30_tektoForestBiome", "Tekto Forest Biome ID", tektoForestBiome + defaultBiomeOffset);
 		tektoVinylIslandBiome = createConfigBiome(config, CATEGORY_BIOME, "16.31_tektoVinylSandsBiome", "Tekto Vinyl Sands Biome ID", tektoVinylIslandBiome + defaultBiomeOffset);
 		thatmoBiome = createConfigBiome(config, CATEGORY_BIOME, "16.32_thatmoBiome", "Thatmo Biome ID", thatmoBiome + defaultBiomeOffset);
-	theNestBiome = createConfigBiome(config, CATEGORY_BIOME, "16.33_theNestBiome", "The Nest Biome ID", theNestBiome + defaultBiomeOffset);
+		theNestBiome = createConfigBiome(config, CATEGORY_BIOME, "16.33_theNestBiome", "The Nest Biome ID", theNestBiome + defaultBiomeOffset);
+		pragueBiome = createConfigBiome(config, CATEGORY_BIOME, "16.33_pragueBiome", "Prague Biome ID", pragueBiome + defaultBiomeOffset);
 	}
 
 	private static HashMap<Integer, String> registeredIds = new HashMap<>();

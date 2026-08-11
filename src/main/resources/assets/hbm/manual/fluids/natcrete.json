@@ -1,0 +1,11 @@
+{
+    "name": "Natural Concrete",
+    "icon": ["hbm:item.fluid_icon", 1, 252],
+    "trigger": [["hbm:item.fluid_icon", 1, 252]],
+    "title": {
+        "en_US": "Natural Concrete"
+    },
+    "content": {
+        "en_US": "Obtained by pumping groundwater on Czechoslowakia. May contain various useful materials, which can be seperated out with the [[mass centrifuge||Mass Centrifuge]]."
+    }
+}
