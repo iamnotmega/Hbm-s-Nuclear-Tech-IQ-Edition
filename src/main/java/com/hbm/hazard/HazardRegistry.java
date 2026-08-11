@@ -368,6 +368,10 @@ public class HazardRegistry {
 		HazardSystem.register(billet_ra226be, makeData().addEntry(RADIATION, rabe * billet).addEntry(NEUTRON, rabe/10 * billet));
 		HazardSystem.register(billet_pu238be, makeData().addEntry(RADIATION, pube * billet).addEntry(NEUTRON, pube/10 * billet));
 
+		HazardSystem.register(powder_diffused_buurmium, makeData(RADIATION, 2.137F));
+		HazardSystem.register(powder_pure_buurmium, makeData(RADIATION, 213.7F));
+		HazardSystem.register(powder_metastable_buurmium, makeData(RADIATION, 2137.0F));
+
 		registerRTGPellet(pellet_rtg, pu238 * rtg, 0, 3F);
 		registerRTGPellet(pellet_rtg_radium, ra226 * rtg, 0);
 		registerRTGPellet(pellet_rtg_weak, (pu238 + (u238 * 2)) * billet, 0);
@@ -387,7 +391,7 @@ public class HazardRegistry {
 		HazardSystem.register(new ItemStack(ModItems.pile_rod, 1, EnumPileRod.PU239.ordinal()), makeData(RADIATION, pu239 * billet * 3));
 		HazardSystem.register(new ItemStack(ModItems.pile_rod, 1, EnumPileRod.RGP.ordinal()), makeData(RADIATION, purg * billet * 3));
 		HazardSystem.register(new ItemStack(ModItems.pile_rod, 1, EnumPileRod.WASTE.ordinal()), makeData(RADIATION, wst * billet * 3));
-		
+
 		HazardSystem.register(new ItemStack(pellet_rtg_depleted, 1, DepletedRTGMaterial.AMERICIUM.ordinal()), makeData(RADIATION, amrg * rtg));
 
 		HazardSystem.register(pile_rod_uranium, makeData(RADIATION, u * billet * 3));

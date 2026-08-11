@@ -119,14 +119,23 @@ public class FusionRecipes extends GenericRecipes<FusionRecipe> {
 				.setPower(solenoid).setDuration(100)
 				.inputFluids(new FluidStack(Fluids.STELLAR_FLUX, 10))
 				.outputItems(new ItemStack(ModItems.powder_gold))); // eough
+
+		// Lategame Buurmium fuel for metastable Buurmium-2137 production
+		// 200MHE/s to 500MHE/s
+		this.register((FusionRecipe) new FusionRecipe("fus.buurmium").setInputEnergy(10_000_000).setOutputEnergy(25_000_000).setOutputFlux(0.0)
+			.setRGB(1.0F, 1.0F, 0.0F)
+			.setNamed().setIcon(new ItemStack(ModItems.powder_metastable_buurmium))
+			.setPower(solenoid).setDuration(100)
+			.inputFluids(new FluidStack(Fluids.BUURCRETE, 20))
+			.outputItems(new ItemStack(ModItems.powder_metastable_buurmium)));
 	}
 
 	@Override
 	public void registerPost() {
 		super.registerPost();
-		
+
 		this.maxInput = 0;
-		
+
 		// set max value for creative klystron
 		for(FusionRecipe recipe : this.recipeOrderedList) {
 			if(recipe.ignitionTemp > this.maxInput) this.maxInput = recipe.ignitionTemp;

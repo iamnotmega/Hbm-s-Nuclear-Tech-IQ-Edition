@@ -1,0 +1,11 @@
+{
+	"name": "Mass Centrifuge",
+	"icon": ["hbm:tile.sludge_processor", 1, 0],
+	"trigger": [["hbm:tile.sludge_processor"]],
+	"title": {
+		"en_US": "Mass Centrifuge"
+	},
+	"content": {
+		"en_US": "Separates items or fluids. While mainly used for seperating large quantities of material at once, it is an integral part of the [[buurman integration|Natural Concrete]]."
+	}
+}

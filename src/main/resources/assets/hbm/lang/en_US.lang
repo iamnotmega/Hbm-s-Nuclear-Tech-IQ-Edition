@@ -7578,3 +7578,10 @@ item.auto_drip.desc=Auto-drips various fluids into your bloodstream
 item.auto_drip.empty=Empty
 item.auto_drip.fill=%s: %s mB / %s mB
 death.attack.boiled=%1$s was boiled from the inside.
+
+fus.buurmium=Metastable Buurmium-2137 Fusion Plasma
+sludge.concrete=Concrete Processing
+
+item.powder_diffused_buurmium.name=Diffused Buurmium
+item.powder_pure_buurmium.name=Pure Buurmium
+item.powder_metastable_buurmium.name=Metastable Buurmium-2137

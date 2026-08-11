@@ -111,7 +111,7 @@ public class SolarSystem {
 					.withRotationalPeriod(21_549)
 					.withColor(0.6745098F, 0.6745098F, 0.6745098F)
 					.withTraits(new CBT_Atmosphere(Fluids.EARTHAIR, 1D), new CBT_Water(Fluids.NATCRETE))
-					.withBlockTextures("textures/blocks/concrete.png", "hbm:textures/blocks/concrete.png")
+					.withBlockTextures("hbm:textures/blocks/concrete.png", "hbm:textures/blocks/concrete.png")
 					.withCityMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/default_mask.png"))
 					.withBiomeMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/czechoslowakia.png")),
 

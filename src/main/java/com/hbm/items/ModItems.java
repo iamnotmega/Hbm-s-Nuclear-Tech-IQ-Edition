@@ -512,6 +512,10 @@ public class ModItems {
 	public static Item nugget_lanthanium;
 	public static Item ingot_actinium;
 
+	public static Item powder_diffused_buurmium;
+	public static Item powder_pure_buurmium;
+	public static Item powder_metastable_buurmium;
+
 	public static Item ingot_meteorite;
 	public static Item ingot_meteorite_forged;
 	public static Item blade_meteorite;
@@ -2623,6 +2627,10 @@ public class ModItems {
 		nugget_lanthanium = new Item().setUnlocalizedName("nugget_lanthanium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_lanthanium");
 		ingot_actinium = new ItemCustomLore().setUnlocalizedName("ingot_actinium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_actinium");
 
+		powder_diffused_buurmium = new Item().setUnlocalizedName("powder_diffused_buurmium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_diffused_buurmium");
+		powder_pure_buurmium = new Item().setUnlocalizedName("powder_pure_buurmium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_pure_buurmium");
+		powder_metastable_buurmium = new Item().setUnlocalizedName("powder_metastable_buurmium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_metastable_buurmium");
+
 		ingot_meteorite = new ItemHot(200).setUnlocalizedName("ingot_meteorite").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_meteorite");
 		ingot_meteorite_forged = new ItemHot(200).setUnlocalizedName("ingot_meteorite_forged").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_meteorite_forged");
 		blade_meteorite = new ItemHot(200).setUnlocalizedName("blade_meteorite").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":blade_meteorite");
@@ -3413,7 +3421,7 @@ public class ModItems {
 		pile_rod_boron = new ItemPileRod().setUnlocalizedName("pile_rod_boron").setCreativeTab(null).setTextureName(RefStrings.MODID + ":pile_rod_boron");
 		pile_rod_lithium = new ItemPileRod().setUnlocalizedName("pile_rod_lithium").setCreativeTab(null).setTextureName(RefStrings.MODID + ":pile_rod_lithium");
 		pile_rod_detector = new ItemPileRod().setUnlocalizedName("pile_rod_detector").setCreativeTab(null).setTextureName(RefStrings.MODID + ":pile_rod_detector");
-		
+
 		pile_rod = new ItemPileRodMK2().setUnlocalizedName("pile_rod").setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":pile_rod");
 
 		plate_fuel_u233 = new ItemPlateFuel(2200000).setFunction(FunctionEnum.SQUARE_ROOT, 50).setUnlocalizedName("plate_fuel_u233").setMaxStackSize(1).setCreativeTab(null).setTextureName(RefStrings.MODID + ":plate_fuel_u233");
@@ -5058,6 +5066,9 @@ public class ModItems {
 		GameRegistry.registerItem(ingot_australium_greater, ingot_australium_greater.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_lanthanium, ingot_lanthanium.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_actinium, ingot_actinium.getUnlocalizedName());
+		GameRegistry.registerItem(powder_diffused_buurmium, powder_diffused_buurmium.getUnlocalizedName());
+		GameRegistry.registerItem(powder_pure_buurmium, powder_pure_buurmium.getUnlocalizedName());
+		GameRegistry.registerItem(powder_metastable_buurmium, powder_metastable_buurmium.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_desh, ingot_desh.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_ferrouranium, ingot_ferrouranium.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_starmetal, ingot_starmetal.getUnlocalizedName());
@@ -6004,7 +6015,7 @@ public class ModItems {
 		GameRegistry.registerItem(pile_rod_boron, pile_rod_boron.getUnlocalizedName());
 		GameRegistry.registerItem(pile_rod_lithium, pile_rod_lithium.getUnlocalizedName());
 		GameRegistry.registerItem(pile_rod_detector, pile_rod_detector.getUnlocalizedName());
-		
+
 		GameRegistry.registerItem(pile_rod, pile_rod.getUnlocalizedName());
 
 		//Plate Fuels

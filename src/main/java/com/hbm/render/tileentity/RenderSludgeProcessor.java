@@ -20,6 +20,7 @@ public class RenderSludgeProcessor extends TileEntitySpecialRenderer implements 
 		GL11.glTranslated(x + 0.5, y, z + 0.5);
 		GL11.glRotated(90, 0, 1, 0);
 		GL11.glShadeModel(GL11.GL_SMOOTH);
+		GL11.glDisable(GL11.GL_CULL_FACE);
 
 		switch(te.getBlockMetadata() - BlockDummyable.offset) {
 			case 2: GL11.glRotatef(0, 0F, 1F, 0F); break;
@@ -41,6 +42,7 @@ public class RenderSludgeProcessor extends TileEntitySpecialRenderer implements 
 		ResourceManager.sludge_processor.renderPart("Fan");
 		GL11.glPopMatrix();
 
+		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glShadeModel(GL11.GL_FLAT);
 		GL11.glPopMatrix();
 	}
