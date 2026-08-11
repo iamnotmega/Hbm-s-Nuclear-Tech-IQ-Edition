@@ -30,6 +30,16 @@ public class ChunkProviderCzechoslowakia extends ChunkProviderCelestial {
 			}
 		}
 
+		for (int bx = 0; bx < 16; bx++) {
+			for (int bz = 0; bz < 16; bz++) {
+				if (bx < 3 || bz < 3) {
+					blocks[(bx * 16 + bz) * 256 + 63] = ModBlocks.asphalt;
+				} else if (bx == 15 || bz == 15 || bx == 3 || bz == 3) {
+					blocks[(bx * 16 + bz) * 256 + 63] = ModBlocks.brick_concrete;
+				}
+			}
+		}
+
 		//TODO: procedurally generate commieblocks
 	}
 }
