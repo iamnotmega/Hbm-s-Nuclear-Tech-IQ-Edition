@@ -58,6 +58,18 @@ public class MachineSludgeProcessor extends BlockDummyable implements ITooltipPr
 				this.makeExtra(world, x+4, y, z-2);
 				this.makeExtra(world, x+4, y, z+1);
 				break;
+			case SOUTH:
+				this.makeExtra(world, x-2, y, z);
+				this.makeExtra(world, x+1, y, z);
+				this.makeExtra(world, x-2, y, z-4);
+				this.makeExtra(world, x+1, y, z-4);
+				break;
+			case NORTH:
+				this.makeExtra(world, x-1, y, z);
+				this.makeExtra(world, x+2, y, z);
+				this.makeExtra(world, x-1, y, z+4);
+				this.makeExtra(world, x+2, y, z+4);
+				break;
 		}
 	}
 

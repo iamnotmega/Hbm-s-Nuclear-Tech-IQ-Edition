@@ -3,6 +3,7 @@ package com.hbm.tileentity.machine;
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluidmk2.IFluidStandardTransceiverMK2;
 import api.hbm.redstoneoverradio.IRORValueProvider;
+import com.hbm.blocks.BlockDummyable;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.interfaces.IControlReceiver;
 import com.hbm.inventory.UpgradeManagerNT;
@@ -31,6 +32,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.HashMap;
 import java.util.List;
@@ -116,16 +118,56 @@ public class TileEntityMachineSludgeProcessor extends TileEntityMachineBase impl
 	}
 
 	public DirPos[] getConPos() {
-		return new DirPos[]{
-			new DirPos(this.xCoord + 3, this.yCoord, this.zCoord - 1, Library.POS_X),
-			new DirPos(this.xCoord + 3, this.yCoord, this.zCoord + 1, Library.POS_X),
-			new DirPos(this.xCoord - 3, this.yCoord, this.zCoord - 1, Library.NEG_X),
-			new DirPos(this.xCoord - 3, this.yCoord, this.zCoord + 1, Library.NEG_X),
-			new DirPos(this.xCoord - 1, this.yCoord, this.zCoord + 3, Library.POS_Z),
-			new DirPos(this.xCoord + 1, this.yCoord, this.zCoord + 3, Library.POS_Z),
-			new DirPos(this.xCoord - 1, this.yCoord, this.zCoord - 3, Library.NEG_Z),
-			new DirPos(this.xCoord + 1, this.yCoord, this.zCoord - 3, Library.NEG_Z),
-		};
+		ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
+
+		switch (dir) {
+			case EAST:
+				return new DirPos[] {
+					new DirPos(this.xCoord, this.yCoord, this.zCoord - 2, Library.NEG_Z),
+					new DirPos(this.xCoord + 1, this.yCoord, this.zCoord - 1, Library.POS_X),
+					new DirPos(this.xCoord, this.yCoord, this.zCoord + 2, Library.POS_Z),
+					new DirPos(this.xCoord + 1, this.yCoord, this.zCoord + 2, Library.POS_X),
+					new DirPos(this.xCoord - 4, this.yCoord, this.zCoord - 2, Library.NEG_Z),
+					new DirPos(this.xCoord - 5, this.yCoord, this.zCoord - 1, Library.NEG_X),
+					new DirPos(this.xCoord - 4, this.yCoord, this.zCoord + 3, Library.POS_Z),
+					new DirPos(this.xCoord - 5, this.yCoord, this.zCoord + 2, Library.NEG_X),
+				};
+			case WEST:
+				return new DirPos[] {
+					new DirPos(this.xCoord, this.yCoord, this.zCoord - 2, Library.NEG_Z),
+					new DirPos(this.xCoord - 1, this.yCoord, this.zCoord - 1, Library.NEG_X),
+					new DirPos(this.xCoord, this.yCoord, this.zCoord + 2, Library.POS_Z),
+					new DirPos(this.xCoord - 1, this.yCoord, this.zCoord + 2, Library.NEG_X),
+					new DirPos(this.xCoord + 4, this.yCoord, this.zCoord - 2, Library.NEG_Z),
+					new DirPos(this.xCoord + 5, this.yCoord, this.zCoord - 1, Library.POS_X),
+					new DirPos(this.xCoord + 4, this.yCoord, this.zCoord + 3, Library.POS_Z),
+					new DirPos(this.xCoord + 5, this.yCoord, this.zCoord + 2, Library.POS_X),
+				};
+			case SOUTH:
+				return new DirPos[] {
+					new DirPos(this.xCoord - 3, this.yCoord, this.zCoord, Library.NEG_X),
+					new DirPos(this.xCoord - 2, this.yCoord, this.zCoord + 1, Library.POS_Z),
+					new DirPos(this.xCoord + 2, this.yCoord, this.zCoord, Library.POS_X),
+					new DirPos(this.xCoord + 1, this.yCoord, this.zCoord + 1, Library.POS_Z),
+					new DirPos(this.xCoord - 3, this.yCoord, this.zCoord - 4, Library.NEG_X),
+					new DirPos(this.xCoord - 2, this.yCoord, this.zCoord - 5, Library.NEG_Z),
+					new DirPos(this.xCoord + 2, this.yCoord, this.zCoord - 4, Library.POS_X),
+					new DirPos(this.xCoord + 1, this.yCoord, this.zCoord - 5, Library.NEG_Z),
+				};
+			case NORTH:
+				return new DirPos[] {
+					new DirPos(this.xCoord - 2, this.yCoord, this.zCoord, Library.NEG_X),
+					new DirPos(this.xCoord - 1, this.yCoord, this.zCoord - 1, Library.NEG_Z),
+					new DirPos(this.xCoord + 3, this.yCoord, this.zCoord, Library.POS_X),
+					new DirPos(this.xCoord + 2, this.yCoord, this.zCoord - 1, Library.NEG_Z),
+					new DirPos(this.xCoord - 2, this.yCoord, this.zCoord + 4, Library.NEG_X),
+					new DirPos(this.xCoord - 1, this.yCoord, this.zCoord + 5, Library.POS_Z),
+					new DirPos(this.xCoord + 2, this.yCoord, this.zCoord + 4, Library.POS_X),
+					new DirPos(this.xCoord + 1, this.yCoord, this.zCoord + 5, Library.POS_Z),
+				};
+		}
+
+		return new DirPos[0];
 	}
 
 	@Override
