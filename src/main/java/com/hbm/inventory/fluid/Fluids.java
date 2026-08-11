@@ -294,6 +294,11 @@ public class Fluids {
 	public static FluidType PISS_HOT;
 	public static FluidType PISS_DEPLETED;
 
+	// Intégration Buurman :wine:
+	public static FluidType NATCRETE;
+	public static FluidType BUURCRETE;
+	public static FluidType SCRAPCRETE;
+
 	/* Legacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
 
@@ -606,15 +611,20 @@ public class Fluids {
 		BRIMTUMEN =			new FluidType("BRIMTUMEN",			0x2E2E2E, 1, 2, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x2E2E2E)).addTraits(LIQUID, new FT_Hellish());
 		BLOOD_OF_THE_MARTYR = new FluidType("BLOOD_OF_THE_MARTYR", 0xC00000, 2, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xC00000)).addTraits(LIQUID, new FT_Hellish());
 		HAEMOGLOBIN =		new FluidType("HAEMOGLOBIN",		0x8A2B2B, 1, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x8A2B2B)).addTraits(LIQUID);
-		AMBROSIA =		new FluidType("AMBROSIA",		0xFFE8A0, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xFFE8A0)).addTraits(LIQUID, new FT_Heavenly());
+		AMBROSIA =			new FluidType("AMBROSIA",		0xFFE8A0, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xFFE8A0)).addTraits(LIQUID, new FT_Heavenly());
 		MORNINGSTARS_FIRE = new FluidType("MORNINGSTARS_FIRE",	0xFFFFFF, 2, 4, 2, EnumSymbol.NONE).addContainers(new CD_Gastank(0xFFFFFF, 0xE0E0E0)).addTraits(GASEOUS, new FT_Flammable(1_000_000), new FT_Combustible(FuelGrade.AERO, 1_500_000), new FT_Rocket(321, 1_564_000), new FT_Hellish());
 		DEW_OF_THE_GARDEN = new FluidType("DEW_OF_THE_GARDEN",	0xF7F0C0, 4, 0, 4, EnumSymbol.NONE).addContainers(new CD_Canister(0xF7F0C0)).addTraits(LIQUID, new FT_Corrosive(30), new FT_Heavenly());
 		ARGENT_BLOAT_PUS =	new FluidType("ARGENT_BLOAT_PUS",	0xD8D8D8, 2, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0xD8D8D8)).addTraits(LIQUID, new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)), new FT_Hellish());
 		BLOAT_PUS =			new FluidType("BLOAT_PUS",			0x8FA63F, 3, 0, 0, EnumSymbol.NONE).addContainers(new CD_Canister(0x8FA63F)).addTraits(LIQUID, new FT_Toxin().addEntry(new FT_Toxin.ToxinDirectDamage(ModDamageSource.acid, 1F, 20, HazardClass.GAS_LUNG, false)));
 		BLOATSPIRIT =		new FluidType("BLOATSPIRIT",		0xE8E8FF, 1, 3, 1, EnumSymbol.NONE).addContainers(new CD_Gastank(0xE8E8FF, 0xFFFFFF)).addTraits(GASEOUS, new FT_Combustible(FuelGrade.AERO, 1_375_000), new FT_Hellish());
+
 		PISS = 				new FluidType("PISS", 			0xCAC07D, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(5), LIQUID);
 		PISS_HOT = 			new FluidType("PISS_HOT", 		0x7a3506, 0, 1, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(45), LIQUID, VISCOUS).setTemp(135);
-		PISS_DEPLETED = 		new FluidType("PISS_DEPLETED", 	0x962608, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(30), LIQUID, VISCOUS);
+		PISS_DEPLETED = 	new FluidType("PISS_DEPLETED", 	0x962608, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(30), LIQUID, VISCOUS);
+
+		NATCRETE =			new FluidType("NATCRETE", 0xA09696, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID).setTemp(1500);
+		BUURCRETE =			new FluidType("BUURCRETE", 0xA4A08D, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
+		SCRAPCRETE =		new FluidType("SCRAPCRETE", 0xACACAC, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
 
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
@@ -909,6 +919,10 @@ public class Fluids {
 		metaOrder.add(PISS);
 		metaOrder.add(PISS_HOT);
 		metaOrder.add(PISS_DEPLETED);
+		//buurman integration
+		metaOrder.add(NATCRETE);
+		metaOrder.add(BUURCRETE);
+		metaOrder.add(SCRAPCRETE);
 
 		//ANY INTERNAL RENAMING MUST BE REFLECTED HERE - DON'T FORGET TO CHANGE: LANG FILES + TYPE'S STRING ID + NAME OF TANK/GUI TEXTURE FILES!
 		// V

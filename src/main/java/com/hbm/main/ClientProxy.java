@@ -99,6 +99,7 @@ import com.hbm.tileentity.network.*;
 import com.hbm.tileentity.turret.*;
 import com.hbm.util.BobMathUtil;
 import com.hbm.util.ColorUtil;
+import com.hbm.util.Flag1984;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.util.i18n.I18nClient;
 import com.hbm.util.i18n.ITranslate;
@@ -159,6 +160,8 @@ public class ClientProxy extends ServerProxy {
 		AdvancedModelLoader.registerModelHandler(new HmfModelLoader());
 
 		QMAWLoader.registerModFileURL(FMLCommonHandler.instance().findContainerFor(RefStrings.MODID).getSource());
+
+		Flag1984.detectFreedom();
 	}
 
 	/** Runs right after item and block init */
@@ -401,6 +404,9 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineAlkylation.class, new RenderAlkylation());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineMagma.class, new RenderMagma());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHydroponic.class, new RenderHydroponic());
+
+		// tam69 iq
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineSludgeProcessor.class, new RenderSludgeProcessor());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPistonInserter.class, new RenderPistonInserter());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityConveyorPress.class, new RenderConveyorPress());

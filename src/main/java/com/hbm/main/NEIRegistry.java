@@ -60,6 +60,9 @@ public class NEIRegistry {
 		handlers.add(new WaterTableHandler());
 		handlers.add(new OilExtractionHandler());
 
+		// tam69 iq
+		handlers.add(new SludgeProcessorRecipeHandler());
+
 		//universal boyes
 		handlers.add(new ZirnoxRecipeHandler());
 		handlers.add(new PWRRecipeHandler());
