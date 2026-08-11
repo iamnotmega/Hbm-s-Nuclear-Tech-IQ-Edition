@@ -45,7 +45,7 @@ public class GUIMachineSludgeProcessor extends GuiInfoContainer {
 		this.drawElectricityInfo(this, mouseX, mouseY, guiLeft + 152, guiTop + 18, 16, 61, this.te.power, this.te.maxPower);
 
 		if(this.guiLeft + 7 <= mouseX && this.guiLeft + 7 + 18 > mouseX && this.guiTop + 125 < mouseY && this.guiTop + 125 + 18 >= mouseY) {
-			if(this.te.sludgeProcessorModule.getRecipe() != null && SludgeProcessorRecipes.INSTANCE.recipeNameMap.containsKey(this.te.sludgeProcessorModule.getRecipe())) {
+			if(this.te.sludgeProcessorModule.getRecipe() != null && SludgeProcessorRecipes.INSTANCE.recipeNameMap.containsKey(this.te.sludgeProcessorModule.getRecipeName())) {
 				GenericRecipe recipe = this.te.sludgeProcessorModule.getRecipe();
 				GUIElements.drawHoveringTextRecipe(recipe.print(), mouseX, mouseY, this.fontRendererObj, itemRender, this.width, this.height);
 			} else {

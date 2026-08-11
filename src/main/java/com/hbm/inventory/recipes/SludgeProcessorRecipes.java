@@ -41,7 +41,7 @@ public class SludgeProcessorRecipes extends GenericRecipes<SludgeProcessorRecipe
 	@Override
 	public void registerDefaults() {
 		this.register((SludgeProcessorRecipe) new SludgeProcessorRecipe("sludge.natcrete")
-			.setup(100, 10_000).setNameWrapper("sludge.concrete")
+			.setup(100, 10_000).setNameWrapper("sludge.natcrete")
 			.inputFluids(new FluidStack(Fluids.NATCRETE, 2000))
 			.outputFluids(
 				new FluidStack(Fluids.CONCRETE, 1000),
@@ -51,5 +51,26 @@ public class SludgeProcessorRecipes extends GenericRecipes<SludgeProcessorRecipe
 			)
 			.setIconToFirstIngredient()
 		);
+
+		this.register((SludgeProcessorRecipe) new SludgeProcessorRecipe("sludge.buurmium")
+			.setup(100, 20_000)
+			.inputFluids(new FluidStack(Fluids.BUURCRETE, 1000))
+			.outputItems(
+				new ItemStack(ModItems.powder_diffused_buurmium, 1)
+			)
+			.outputFluids(
+				new FluidStack(Fluids.CONCRETE, 1000)
+			)
+		);
+
+		this.register((SludgeProcessorRecipe) new SludgeProcessorRecipe("sludge.concrete_recycling")
+			.setup(40, 5_000).setNameWrapper("sludge.concrete_recycling")
+			.inputFluids(new FluidStack(Fluids.CONCRETE, 16000))
+			.outputItems(
+				new ItemStack(ModItems.powder_cement)
+			)
+			.outputFluids(
+				new FluidStack(Fluids.WATER, 2000)
+			));
 	}
 }
