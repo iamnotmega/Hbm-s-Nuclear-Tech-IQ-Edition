@@ -162,6 +162,7 @@ public class ClientProxy extends ServerProxy {
 		QMAWLoader.registerModFileURL(FMLCommonHandler.instance().findContainerFor(RefStrings.MODID).getSource());
 
 		Flag1984.detectFreedom();
+		MainRegistry.logger.info("1984 mode: {}", Flag1984.is1984());
 	}
 
 	/** Runs right after item and block init */
