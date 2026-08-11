@@ -36,9 +36,11 @@ public class RenderSludgeProcessor extends TileEntitySpecialRenderer implements 
 		ResourceManager.sludge_processor.renderPart("Base");
 
 		GL11.glPushMatrix();
-		GL11.glTranslated(1.5, 1.25, 0);
-		GL11.glRotated(anim * 45, 0, 0, 1);
-		GL11.glTranslated(-1.5, -1.25, 0);
+		GL11.glTranslated(1.0, 1.0+0.0266875, 0);
+		GL11.glRotated(21.556, 1.0, 0.0, 0.0);
+		GL11.glRotated(anim * 45, 0.0, 0.0, 1.0);
+		GL11.glRotated(-21.556, 1.0, 0.0, 0.0);
+		GL11.glTranslated(-1.0, -1.0-0.0266875, 0);
 		ResourceManager.sludge_processor.renderPart("Fan");
 		GL11.glPopMatrix();
 

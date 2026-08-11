@@ -157,9 +157,9 @@ public class TileEntityMachineSludgeProcessor extends TileEntityMachineBase impl
 			case NORTH:
 				return new DirPos[] {
 					new DirPos(this.xCoord - 2, this.yCoord, this.zCoord - 0 - 2, Library.NEG_X),
-					new DirPos(this.xCoord - 1, this.yCoord, this.zCoord + 1 - 2, Library.POS_Z),
+					new DirPos(this.xCoord - 1, this.yCoord, this.zCoord - 1 - 2, Library.POS_Z),
 					new DirPos(this.xCoord + 3, this.yCoord, this.zCoord - 0 - 2, Library.POS_X),
-					new DirPos(this.xCoord + 2, this.yCoord, this.zCoord + 1 - 2, Library.POS_Z),
+					new DirPos(this.xCoord + 2, this.yCoord, this.zCoord - 1 - 2, Library.POS_Z),
 					new DirPos(this.xCoord - 2, this.yCoord, this.zCoord + 4 - 2, Library.NEG_X),
 					new DirPos(this.xCoord - 1, this.yCoord, this.zCoord + 5 - 2, Library.POS_Z),
 					new DirPos(this.xCoord + 3, this.yCoord, this.zCoord + 4 - 2, Library.POS_X),
