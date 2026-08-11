@@ -130,6 +130,9 @@ public class RodRecipes {
 		addRBMKRod(CM245, ModItems.rbmk_fuel_hecm);
 		addRBMKRod(ModItems.billet_bloatate, ModItems.rbmk_fuel_bloatate);
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.billet_bloatate, 1), new Object[] { ItemScraps.create(new MaterialStack(Mats.MAT_BLOATATE, MaterialShapes.INGOT.q(1))) });
+		addRBMKRod(ModItems.powder_diffused_buurmium, ModItems.rbmk_fuel_dbm);
+		addRBMKRod(ModItems.powder_pure_buurmium, ModItems.rbmk_fuel_pbm);
+		addRBMKRod(ModItems.powder_metastable_buurmium, ModItems.rbmk_fuel_mbm);
 
 		addPellet(SA326,							EnumWatzType.SCHRABIDIUM);
 		addPellet(ModItems.ingot_hes,				EnumWatzType.HES);

@@ -298,6 +298,9 @@ public class Fluids {
 	public static FluidType NATCRETE;
 	public static FluidType BUURCRETE;
 	public static FluidType SCRAPCRETE;
+	public static FluidType BUURMIC_ACID;
+	public static FluidType DILUTED_BUURMIC_ACID;
+	public static FluidType LIGHT_BUURMIUM_SOLUTION;
 
 	/* Legacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
@@ -622,9 +625,12 @@ public class Fluids {
 		PISS_HOT = 			new FluidType("PISS_HOT", 		0x7a3506, 0, 1, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(45), LIQUID, VISCOUS).setTemp(135);
 		PISS_DEPLETED = 	new FluidType("PISS_DEPLETED", 	0x962608, 0, 0, 0, EnumSymbol.NONE).addTraits(new FT_Corrosive(30), LIQUID, VISCOUS);
 
-		NATCRETE =			new FluidType("NATCRETE", 0xA09696, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID).setTemp(1500);
-		BUURCRETE =			new FluidType("BUURCRETE", 0xA4A08D, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
+		NATCRETE =			new FluidType("NATCRETE", 0xA09696, 0, 1, 0, EnumSymbol.NONE).addTraits(LIQUID).setTemp(1500);
+		BUURCRETE =			new FluidType("BUURCRETE", 0xA4A08D, 0, 0, 0, EnumSymbol.RADIATION).addTraits(LIQUID);
 		SCRAPCRETE =		new FluidType("SCRAPCRETE", 0xACACAC, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
+		BUURMIC_ACID = 		new FluidType("BUURMIC_ACID", 0xD0D411, 0, 0, 2, EnumSymbol.ACID).addTraits(LIQUID, new FT_Corrosive(2137));
+		DILUTED_BUURMIC_ACID =new FluidType("DILUTED_BUURMIC_ACID", 0xE0E448, 0, 0, 1, EnumSymbol.ACID).addTraits(LIQUID, new FT_Corrosive(10));
+		LIGHT_BUURMIUM_SOLUTION =new FluidType("LIGHT_BUURMIUM_SOLUTION", 0xFFFF00, 0, 0, 0, EnumSymbol.RADIATION).addTraits(LIQUID, VISCOUS);
 
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
@@ -923,6 +929,9 @@ public class Fluids {
 		metaOrder.add(NATCRETE);
 		metaOrder.add(BUURCRETE);
 		metaOrder.add(SCRAPCRETE);
+		metaOrder.add(BUURMIC_ACID);
+		metaOrder.add(DILUTED_BUURMIC_ACID);
+		metaOrder.add(LIGHT_BUURMIUM_SOLUTION);
 
 		//ANY INTERNAL RENAMING MUST BE REFLECTED HERE - DON'T FORGET TO CHANGE: LANG FILES + TYPE'S STRING ID + NAME OF TANK/GUI TEXTURE FILES!
 		// V
