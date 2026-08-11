@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.hbm.entity.item.EntityItemSymbol;
+import com.hbm.items.armor.ItemSymbol;
 import com.hbm.util.Tuple.Quartet;
 
 import net.minecraft.block.Block;
@@ -56,11 +58,13 @@ public class BlockLoot extends BlockContainer {
 			if(entity != null) {
 				
 				for(Quartet<ItemStack, Double, Double, Double> quartet : entity.items) {
-					EntityItem item = new EntityItem(world, x + 0.5, y, z + 0.5, quartet.getW());
+					ItemStack stack = quartet.getW();
+					EntityItem item = stack != null && stack.getItem() instanceof ItemSymbol
+							? new EntityItemSymbol(world, x + 0.5, y, z + 0.5, stack)
+							: new EntityItem(world, x + 0.5, y, z + 0.5, stack);
 					world.spawnEntityInWorld(item);
 				}
-			}
-		}
+			}		}
 		
 		super.breakBlock(world, x, y, z, block, meta);
 	}

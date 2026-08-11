@@ -8,11 +8,13 @@ import org.lwjgl.opengl.GL12;
 
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.lib.RefStrings;
+import com.hbm.render.util.DiamondPronter;
 import com.hbm.util.ColorUtil;
 import com.hbm.util.Vec3NT;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
@@ -247,6 +249,40 @@ public class GUIElements {
 		color0 |= 0xff000000;
 		color1 |= 0xff000000;
 		drawHoveringText(lines, x, y, font, itemRender, guiWidth, guiHeight, 6, STANDARD_LINE_DIST, STANDARD_COLOR_BACKGROUND, STANDARD_COLOR_BACKGROUND, color0, color1);
+
+		if(GuiScreen.isShiftKeyDown() && type != null && !lines.isEmpty()) {
+			drawDangerDiamond(lines, x, y, font, guiWidth, guiHeight, type);
+		}
+	}
+
+	private static void drawDangerDiamond(List lines, int x, int y, FontRenderer font, int guiWidth, int guiHeight, FluidType type) {
+		int width = 0;
+		for(Object line : lines) width = Math.max(width, font.getStringWidth((String) line));
+
+		int boundX = x + 12;
+		int boundY = y - 12;
+		int height = 6 + 6;
+		if(lines.size() > 1) height += 2 + (lines.size() - 1) * STANDARD_LINE_DIST;
+		if(boundX + width + 4 > guiWidth) boundX -= 28 + width;
+		if(boundY + height + 6 > guiHeight) boundY = guiHeight - height - 6;
+		if(boundX < 4) boundX = 4;
+		if(boundY < 4) boundY = 4;
+
+		float size = 26F;
+		GL11.glPushMatrix();
+		GL11.glTranslatef(boundX + width + 3, boundY - 4, 300F);
+		GL11.glRotatef(180F, 0F, 0F, 1F);
+		GL11.glRotatef(90F, 0F, 1F, 0F);
+		GL11.glScalef(size, size, size);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		GL11.glDisable(GL11.GL_CULL_FACE);
+		DiamondPronter.pront(type.poison, type.flammability, type.reactivity, type.symbol);
+		GL11.glEnable(GL11.GL_CULL_FACE);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GL11.glEnable(GL11.GL_LIGHTING);
+		GL11.glPopMatrix();
 	}
 
 	public static void drawHoveringText(List lines, int x, int y, FontRenderer font, RenderItem itemRender, int guiWidth, int guiHeight, int headerOffset, int lineDist, int colBG0, int colBG1, int colLine0, int colLine1) {

@@ -165,6 +165,7 @@ public class EntityMappings {
 
 		addEntity(EntityItemWaste.class, "entity_item_waste", 100);
 		addEntity(EntityItemBuoyant.class, "entity_item_buoyant", 100);
+		addEntity(EntityItemSymbol.class, "entity_item_symbol", 100);
 
 		addEntity(SeatDummyEntity.class, "entity_ntm_seat_dummy", 250, false);
 		addEntity(BoundingBoxDummyEntity.class, "entity_ntm_bounding_dummy", 250, false);

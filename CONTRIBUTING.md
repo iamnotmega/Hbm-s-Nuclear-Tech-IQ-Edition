@@ -4,8 +4,8 @@ So in light of the sudden desire me (irislgtm) has had to fork ntm, and the poss
 to change up the contribtuion guidelines a little because i thought the old ones didnt fit this zroject
 
 - First, please make a fork then commit
-- Second, make sure your idea isn't absolute slop. I mean we have leeway for joke items much larger than ntm but lwk most of ntmmain is actually slop
-and i can see why bob hates them but like "peepee item dropped from pissing on the floor with 69 tam69 bombs while gooning to freddy iq that gives you 1 trillion geralds" is a bit much, even for me
+  - Second, make sure your idea isn't absolute slop. I mean we have leeway for joke items much larger than ntm but lwk most of ntmmain is actually slop
+  and i can see why bob hates them but like "peepee item dropped from pissing on the floor with 69 tam69 bombs while gooning to freddy iq that gives you 1 trillion geralds" is a bit much, even for me
 - Third, you should have fun when developing this mod, if you are having issues or need advice you can ask but if you have an earnest feature you can discuss about it in the discord. Most likely your idea will never be turned down.
 - Fourth, dont commit gradle changes, i already updated them so you can use them in intelliJ out of the box
 

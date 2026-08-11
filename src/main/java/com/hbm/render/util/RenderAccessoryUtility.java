@@ -49,6 +49,9 @@ public class RenderAccessoryUtility {
 
 	private static ResourceLocation alcater = new ResourceLocation(RefStrings.MODID + ":textures/models/capes/CapeAlcater.png");
 	private static ResourceLocation jame = new ResourceLocation(RefStrings.MODID + ":textures/models/capes/CapeJame.png");
+	private static ResourceLocation iris = new ResourceLocation(RefStrings.MODID + ":textures/models/capes/CapeIris.png");
+
+
 
 	public static ResourceLocation getCloakFromPlayer(EntityPlayer player) {
 
@@ -143,6 +146,11 @@ public class RenderAccessoryUtility {
 		if(uuid.equals(ShadyUtil.MellowRPG8)) {
 			return mlow;
 		}
+		// iq edition contributors
+		if(uuid.equals(ShadyUtil.Iristhepianist)) {
+			return iris;
+		}
+
 
 		return null;
 	}

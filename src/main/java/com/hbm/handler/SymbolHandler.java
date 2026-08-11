@@ -5,6 +5,7 @@ import com.hbm.items.armor.ItemSymbol;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 
 public class SymbolHandler {
 
@@ -34,5 +35,15 @@ public class SymbolHandler {
 	public static boolean hasSymbol(EntityLivingBase entity, ItemSymbol.SymbolType type) {
 		if(!(entity instanceof EntityPlayer)) return false;
 		return ItemSymbol.fromMeta(HbmPlayerProps.getData((EntityPlayer) entity).symbol) == type;
+	}
+
+	public static boolean hasSymbolInInventory(EntityPlayer player, ItemSymbol.SymbolType type) {
+		for(ItemStack stack : player.inventory.mainInventory) {
+			if(stack != null && stack.getItem() instanceof ItemSymbol && ItemSymbol.fromMeta(stack.getItemDamage()) == type) return true;
+		}
+		for(ItemStack stack : player.inventory.armorInventory) {
+			if(stack != null && stack.getItem() instanceof ItemSymbol && ItemSymbol.fromMeta(stack.getItemDamage()) == type) return true;
+		}
+		return false;
 	}
 }

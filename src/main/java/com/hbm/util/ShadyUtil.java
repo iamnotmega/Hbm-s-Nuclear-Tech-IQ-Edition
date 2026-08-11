@@ -50,6 +50,7 @@ public class ShadyUtil {
 	public static String DUODEC_ = "85d54b8c-1862-4c86-b351-5ef1b998aa32";
 	public static String LePeeperSauvage = "433c2bb7-018c-4d51-acfe-27f907432b5e";
 	public static String MellowRPG8 = "99b9efa5-8c38-4b22-86c2-baf97789d2fb";
+	public static String Iristhepianist = "bd9ccae3-bdb4-4b32-9647-b521b1837933";
 
 	public static final Set<String> hashes = new HashSet();
 	static {
