@@ -2,6 +2,7 @@ package com.hbm.blocks.machine;
 
 import com.hbm.blocks.BlockDummyable;
 import com.hbm.blocks.ITooltipProvider;
+import com.hbm.lib.Library;
 import com.hbm.tileentity.TileEntityProxyCombo;
 import com.hbm.tileentity.machine.TileEntityMachineSludgeProcessor;
 import net.minecraft.block.material.Material;
@@ -32,7 +33,7 @@ public class MachineSludgeProcessor extends BlockDummyable implements ITooltipPr
 
 	@Override
 	public int[] getDimensions() {
-		return new int[]{4, 0, 2, 2, 2, 2};
+		return new int[]{4, 0, 2, 2, 2, 1};
 	}
 
 	@Override
@@ -44,18 +45,20 @@ public class MachineSludgeProcessor extends BlockDummyable implements ITooltipPr
 	protected void fillSpace(World world, int x, int y, int z, ForgeDirection dir, int o) {
 		super.fillSpace(world, x, y, z, dir, o);
 
-		x += dir.offsetX * o;
-		z += dir.offsetZ * o;
-
-		this.makeExtra(world, x-1, y, z-2);
-		this.makeExtra(world, x+1, y, z-2);
-		this.makeExtra(world, x-1, y, z+2);
-		this.makeExtra(world, x+1, y, z+2);
-
-		this.makeExtra(world, x-2, y, z-1);
-		this.makeExtra(world, x-2, y, z+1);
-		this.makeExtra(world, x+2, y, z-1);
-		this.makeExtra(world, x+2, y, z+1);
+		switch (dir) {
+			case EAST:
+				this.makeExtra(world, x, y, z-1);
+				this.makeExtra(world, x, y, z+2);
+				this.makeExtra(world, x-4, y, z-1);
+				this.makeExtra(world, x-4, y, z+2);
+				break;
+			case WEST:
+				this.makeExtra(world, x, y, z-2);
+				this.makeExtra(world, x, y, z+1);
+				this.makeExtra(world, x+4, y, z-2);
+				this.makeExtra(world, x+4, y, z+1);
+				break;
+		}
 	}
 
 	@Override

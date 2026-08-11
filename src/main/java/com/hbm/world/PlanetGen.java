@@ -3,6 +3,7 @@ package com.hbm.world;
 import java.util.ArrayList;
 
 import com.hbm.config.SpaceConfig;
+import com.hbm.dim.czechoslowakia.WorldProviderCzechoslowakia;
 import com.hbm.dim.dres.WorldGeneratorDres;
 import com.hbm.dim.WorldGeneratorCelestial;
 import com.hbm.dim.WorldProviderEarth;
@@ -46,6 +47,7 @@ public class PlanetGen {
 		registerDimension(SpaceConfig.orbitDimension, WorldProviderOrbit.class);
 		registerDimension(SpaceConfig.tektoDimension, WorldProviderTekto.class);
 		registerDimension(SpaceConfig.thatmoDimension, WorldProviderThatmo.class);
+		registerDimension(SpaceConfig.czechoslowakiaDimension, WorldProviderCzechoslowakia.class);
 
 		// Register our ore providers
 		GameRegistry.registerWorldGenerator(new WorldGeneratorCelestial(), 2);

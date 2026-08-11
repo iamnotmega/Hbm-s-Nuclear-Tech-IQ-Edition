@@ -105,6 +105,16 @@ public class SolarSystem {
 
 					),
 
+				new CelestialBody("czechoslowakia", SpaceConfig.czechoslowakiaDimension, Body.CZECHOSLOWAKIA)
+					.withMassRadius(5.292e22F, 600)
+					.withOrbitalParameters(13_599_840, 0.1F, 0.0F, 2.1F, 3.7F)
+					.withRotationalPeriod(21_549)
+					.withColor(0.6745098F, 0.6745098F, 0.6745098F)
+					.withTraits(new CBT_Atmosphere(Fluids.EARTHAIR, 1D), new CBT_Water())
+					.withBlockTextures("textures/blocks/stone.png", "hbm:textures/blocks/concrete.png")
+					.withCityMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/buurman_mask.png"))
+					.withBiomeMask(new ResourceLocation(RefStrings.MODID, "textures/misc/space/buurman_biomes.png")),
+
 				new CelestialBody("duna", SpaceConfig.dunaDimension, Body.DUNA)
 					.withMassRadius(4.515e21F, 320)
 					.withOrbitalParameters(20_726_155, 0.05F, 0.0F, 0.06F, 135.5F)
@@ -317,8 +327,10 @@ public class SolarSystem {
 		EVE("eve"),
 		IKE("ike"),
 		LAYTHE("laythe"),
-		TEKTO("tekto");
-		//THATMO("thatmo"); sit this one out buddy :)
+		TEKTO("tekto"),
+		//THATMO("thatmo"), sit this one out buddy :)
+		CZECHOSLOWAKIA("czechoslowakia"),
+		;
 
 		public String name;
 

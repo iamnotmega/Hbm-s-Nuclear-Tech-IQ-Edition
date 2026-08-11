@@ -33,9 +33,6 @@ public class RenderSludgeProcessor extends TileEntitySpecialRenderer implements 
 
 		this.bindTexture(ResourceManager.sludge_processor_tex);
 		ResourceManager.sludge_processor.renderPart("Base");
-		ResourceManager.sludge_processor.renderPart("Base1");
-		ResourceManager.sludge_processor.renderPart("Base2");
-		ResourceManager.sludge_processor.renderPart("Base3");
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(1.5, 1.25, 0);
@@ -68,9 +65,6 @@ public class RenderSludgeProcessor extends TileEntitySpecialRenderer implements 
 				GL11.glShadeModel(GL11.GL_SMOOTH);
 				bindTexture(ResourceManager.sludge_processor_tex);
 				ResourceManager.sludge_processor.renderPart("Base");
-				ResourceManager.sludge_processor.renderPart("Base1");
-				ResourceManager.sludge_processor.renderPart("Base2");
-				ResourceManager.sludge_processor.renderPart("Base3");
 				ResourceManager.sludge_processor.renderPart("Fan");
 				GL11.glShadeModel(GL11.GL_FLAT);
 			}

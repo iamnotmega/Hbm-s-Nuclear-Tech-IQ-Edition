@@ -22,6 +22,7 @@ public class SpaceConfig {
 	public static int orbitDimension = 413_023;
 	public static int tektoDimension = 413_024;
 	public static int thatmoDimension = 413_025;
+	public static int czechoslowakiaDimension = 413_026;
 
 	// Biome ID limit is 255
 
@@ -95,7 +96,7 @@ public class SpaceConfig {
 
 	public static int maxProbeDistance = 32_000;
 	public static int maxStationDistance = 32_000;
-	
+
 	public static boolean combatPodDespawn = false;
 
 	public static void loadFromConfig(Configuration config) {
@@ -114,6 +115,7 @@ public class SpaceConfig {
 		orbitDimension = CommonConfig.createConfigInt(config, CATEGORY_DIM, "17.09_orbitDimension", "Orbital dimension ID", orbitDimension);
 		tektoDimension = CommonConfig.createConfigInt(config, CATEGORY_DIM, "17.10_tektoDimension", "Tekto dimension ID", tektoDimension);
 		thatmoDimension = CommonConfig.createConfigInt(config, CATEGORY_DIM, "17.10_thatmoDimension", "Thatmo dimension ID", thatmoDimension);
+		czechoslowakiaDimension = CommonConfig.createConfigInt(config, CATEGORY_DIM, "17.10.czechoslowakiaDimension", "Czechoslowakia dimension ID", czechoslowakiaDimension);
 
 		final String CATEGORY_GENERAL = CommonConfig.CATEGORY_GENERAL;
 		maxProbeDistance = CommonConfig.createConfigInt(config, CATEGORY_GENERAL, "1.90_maxProbeDistance", "How far from the center of the dimension can probes generate landing coordinates", maxProbeDistance);
