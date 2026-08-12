@@ -83,7 +83,7 @@ public class TileEntityMachineFrackingTower extends TileEntityOilDrillBase {
 
 	@Override
 	public boolean canSuckBlock(Block b) {
-		return super.canSuckBlock(b) || b == ModBlocks.ore_bedrock_oil || b == ModBlocks.ore_bedrock_artery;
+		return super.canSuckBlock(b) || b == ModBlocks.ore_bedrock_oil || b == ModBlocks.ore_bedrock_artery || b == ModBlocks.ore_bedrock_concrete;
 	}
 
 	@Override

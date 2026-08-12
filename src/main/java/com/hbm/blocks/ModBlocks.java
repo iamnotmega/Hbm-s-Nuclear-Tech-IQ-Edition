@@ -177,6 +177,7 @@ public class ModBlocks {
 	public static Block ore_oil_empty;
 	public static Block ore_oil_sand;
 	public static Block ore_bedrock_artery;
+	public static Block ore_bedrock_concrete;
 	public static Block ore_bedrock_oil;
 	public static Block ore_lignite;
 	public static Block ore_asbestos;
@@ -1551,6 +1552,7 @@ public class ModBlocks {
 		ore_oil_empty = new BlockOre(Material.rock).setBlockName("ore_oil_empty").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_empty");
 		ore_oil = new BlockOreFluid(Material.rock, ore_oil_empty, ReserveType.OIL).setBlockName("ore_oil").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil");
 		ore_bedrock_artery = new BlockArteryOil(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_artery").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":satanartery");
+		ore_bedrock_concrete = new BlockConcreteOil(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_concrete").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":buurman_deposit");
 		ore_oil_sand = new BlockFalling(Material.sand).setBlockName("ore_oil_sand").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeSand).setHardness(0.5F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_sand_alt");
 		ore_bedrock_oil = new BlockOreFluid(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_oil").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":ore_bedrock_oil");
 		ore_gas_empty = new BlockOre(Material.rock).setBlockName("ore_gas_empty").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_empty");
@@ -2800,6 +2802,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(ore_oil, ItemBlockBase.class, ore_oil.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_oil_empty, ItemBlockBase.class, ore_oil_empty.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_bedrock_artery, ItemBlockBase.class, ore_bedrock_artery.getUnlocalizedName());
+		GameRegistry.registerBlock(ore_bedrock_concrete, ItemBlockBase.class, ore_bedrock_concrete.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_gas, ItemBlockBase.class, ore_gas.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_gas_empty, ItemBlockBase.class, ore_gas_empty.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_oil_sand, ItemBlockBase.class, ore_oil_sand.getUnlocalizedName());

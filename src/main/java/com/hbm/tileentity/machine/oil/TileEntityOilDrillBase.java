@@ -232,7 +232,7 @@ public abstract class TileEntityOilDrillBase extends TileEntityMachineBase imple
 	}
 
 	public boolean canSuckBlock(Block b) {
-		return (b instanceof BlockOreFluid && b != ModBlocks.ore_bedrock_oil && b != ModBlocks.ore_bedrock_artery) || BlockOreFluid.getFullBlock(b) != null;
+		return (b instanceof BlockOreFluid && b != ModBlocks.ore_bedrock_oil && b != ModBlocks.ore_bedrock_artery && b != ModBlocks.ore_bedrock_concrete) || BlockOreFluid.getFullBlock(b) != null;
 	}
 
 	protected HashSet<Tuple.Triplet<Integer, Integer, Integer>> trace = new HashSet<>();
