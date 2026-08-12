@@ -122,11 +122,11 @@ public class FusionRecipes extends GenericRecipes<FusionRecipe> {
 
 		// Lategame Buurmium fuel for metastable Buurmium-2137 production
 		// 200MHE/s to 0HE/s
-		this.register((FusionRecipe) new FusionRecipe("fus.buurmium").setInputEnergy(10_000_000).setOutputEnergy(0).setOutputFlux(0.0)
+		this.register((FusionRecipe) new FusionRecipe("fus.buurmium").setInputEnergy(10_000_000).setOutputEnergy(21_370_000).setOutputFlux(0.0)
 			.setRGB(1.0F, 1.0F, 0.0F)
 			.setNamed().setIcon(new ItemStack(ModItems.powder_metastable_buurmium))
-			.setPower(solenoid).setDuration(1000)
-			.inputFluids(new FluidStack(Fluids.LIGHT_BUURMIUM_SOLUTION, 20))
+			.setPower(solenoid).setDuration(400)
+			.inputFluids(new FluidStack(Fluids.LIGHT_BUURMIUM_SOLUTION, 10))
 			.outputItems(new ItemStack(ModItems.powder_metastable_buurmium)));
 	}
 

@@ -7582,7 +7582,7 @@ item.auto_drip.empty=Empty
 item.auto_drip.fill=%s: %s mB / %s mB
 death.attack.boiled=%1$s was boiled from the inside.
 
-fus.buurmium=Metastable Buurmium-2137 Fusion Plasma
+fus.buurmium=Metastable Buurmium-2137 Plasma
 sludge.natcrete=Concrete Processing
 sludge.concrete_recycling=Recycling of Liquid Concrete
 autoswitch.buurmium=Efficient Buurmium extraction

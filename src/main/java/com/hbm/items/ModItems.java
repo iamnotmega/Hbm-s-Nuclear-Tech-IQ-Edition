@@ -3827,7 +3827,7 @@ public class ModItems {
 			.setUnlocalizedName("rbmk_fuel_pbm").setTextureName(RefStrings.MODID + ":rbmk_fuel_pbm");
 		rbmk_fuel_mbm = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_mbm)
 			.setYield(100000000D)
-			.setStats(100)
+			.setStats(100, 10)
 			.setFunction(EnumBurnFunc.SQUARE_ROOT)
 			.setHeat(21.37D)
 			.setMeltingPoint(69000)
