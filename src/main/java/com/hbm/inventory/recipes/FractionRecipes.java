@@ -47,7 +47,7 @@ public class FractionRecipes extends SerializableRecipe {
 		fractions.put(Fluids.HALOLIGHT,		new Pair(new FluidStack(Fluids.PHOSGENE,				35),		new FluidStack(Fluids.CHLOROETHANE,		75)));
 		fractions.put(Fluids.WORMWOOD,			new Pair(new FluidStack(Fluids.BRIMSTONE,				55),		new FluidStack(Fluids.VERDIGRIS,			40)));
 		fractions.put(Fluids.ARGENT_BLOAT_PUS,	new Pair(new FluidStack(Fluids.SODIUM_ALUMINATE,		45),		new FluidStack(Fluids.BLOAT_PUS,			50)));
-
+		fractions.put(Fluids.DILUTED_BUURMIC_ACID, new Pair<>(new FluidStack(Fluids.LIGHT_BUURMIUM_SOLUTION, 100), new FluidStack(Fluids.NITRIC_ACID, 50)));
 	}
 
 	public static Pair<FluidStack, FluidStack> getFractions(FluidType oil) {

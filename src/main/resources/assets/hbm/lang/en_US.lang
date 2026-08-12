@@ -7585,6 +7585,7 @@ death.attack.boiled=%1$s was boiled from the inside.
 fus.buurmium=Metastable Buurmium-2137 Fusion Plasma
 sludge.natcrete=Concrete Processing
 sludge.concrete_recycling=Recycling of Liquid Concrete
+autoswitch.buurmium=Efficient Buurmium extraction
 
 item.powder_diffused_buurmium.name=Diffused Buurmium
 item.powder_pure_buurmium.name=Pure Buurmium

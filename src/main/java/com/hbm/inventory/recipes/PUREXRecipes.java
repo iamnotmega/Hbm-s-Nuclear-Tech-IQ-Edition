@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class PUREXRecipes extends GenericRecipes<PUREXRecipe> {
-	
+
 	public static final PUREXRecipes INSTANCE = new PUREXRecipes();
 
 	@Override public int inputItemLimit() { return 3; }
@@ -40,25 +40,25 @@ public class PUREXRecipes extends GenericRecipes<PUREXRecipe> {
 		long pwrPower = 2_500;
 		long watzPower = 10_000;
 		long vitrification = 1_000;
-		
+
 		this.register((PUREXRecipe) new PUREXRecipe("purex.uzh").setup(600, 1_000)
 				.inputItems(new ComparableStack(ModItems.billet_uranium_fuel),
 						new OreDictStack(ZR.billet(), 3))
 				.inputFluids(new FluidStack(Fluids.NITRIC_ACID, 1_000), new FluidStack(Fluids.HYDROGEN, 4000))
 				.outputItems(new ItemStack(ModItems.billet_uzh, 4)));
-		
+
 		this.register((PUREXRecipe) new PUREXRecipe("purex.flashgold").setup(600, 1_000)
 				.inputItems(new OreDictStack(AU198.billet()),
 						new ComparableStack(ModItems.pellet_charged))
 				.inputFluids(new FluidStack(Fluids.AMAT, 1_000))
 				.outputItems(new ItemStack(ModItems.billet_balefire_gold, 2)));
-		
+
 		this.register((PUREXRecipe) new PUREXRecipe("purex.flashlead").setup(600, 1_000)
 				.inputItems(new OreDictStack(PB209.billet()),
 						new ComparableStack(ModItems.billet_balefire_gold))
 				.inputFluids(new FluidStack(Fluids.AMAT, 1_000))
 				.outputItems(new ItemStack(ModItems.billet_flashlead, 1)));
-		
+
 		//CP-1
 		String autoPile = "autoswitch.pile";
 		this.register((PUREXRecipe) new PUREXRecipe("purex.pilepu239").setup(40, pilePower).setNameWrapper("purex.recycle").setGroup(autoPile, this)
@@ -79,7 +79,7 @@ public class PUREXRecipes extends GenericRecipes<PUREXRecipe> {
 				.outputItems(new ItemStack(ModItems.billet_nuclear_waste, 2),
 						new ItemStack(ModItems.billet_polonium, 1))
 				.setIconToFirstIngredient());
-		
+
 		// ZIRNOX
 		String autoZirnox = "autoswitch.zirnox";
 		this.register((PUREXRecipe) new PUREXRecipe("purex.zirnoxnu").setup(100, zirnoxPower).setNameWrapper("purex.recycle").setGroup(autoZirnox, this)
@@ -512,12 +512,12 @@ public class PUREXRecipes extends GenericRecipes<PUREXRecipe> {
 				.inputItems(new ComparableStack(ModBlocks.sand_mix, 1, EnumSandType.LEAD))
 				.inputFluids(new FluidStack(Fluids.WASTEFLUID, 1_000))
 				.outputItems(new ItemStack(ModItems.nuclear_waste_vitrified)));
-		
+
 		this.register((PUREXRecipe) new PUREXRecipe("purex.vitgaseous").setup(100, vitrification)
 				.inputItems(new ComparableStack(ModBlocks.sand_mix, 1, EnumSandType.LEAD))
 				.inputFluids(new FluidStack(Fluids.WASTEGAS, 1_000))
 				.outputItems(new ItemStack(ModItems.nuclear_waste_vitrified)));
-		
+
 		this.register((PUREXRecipe) new PUREXRecipe("purex.vitsolid").setup(300, vitrification)
 				.inputItems(new ComparableStack(ModBlocks.sand_mix, 1, EnumSandType.LEAD), new ComparableStack(ModItems.nuclear_waste, 4))
 				.outputItems(new ItemStack(ModItems.nuclear_waste_vitrified, 4)));
@@ -629,5 +629,26 @@ public class PUREXRecipes extends GenericRecipes<PUREXRecipe> {
 						new ItemStack(ModItems.nuclear_waste, 24))
 				.outputFluids(new FluidStack(Fluids.WATZ, 1_000))
 				.setIconToFirstIngredient());
+
+		// Efficient buurmium extraction
+		String autoBuurmium = "autoswitch.buurmium";
+
+		this.register((PUREXRecipe) new PUREXRecipe("purex.dbm").setup(200, zirnoxPower).setNameWrapper("purex.recycle")
+			.setGroup(autoBuurmium, this)
+			.inputItems(new ComparableStack(ModItems.rbmk_pellet_dbm, 1, 4))
+			.inputFluids(new FluidStack(Fluids.BUURMIC_ACID, 250), new FluidStack(Fluids.SOLVENT, 2000))
+			.outputItems(new ItemStack(ModItems.powder_pure_buurmium, 1),
+				new ItemStack(ModItems.powder_cement, 2),
+				new ItemStack(ModItems.nuclear_waste_tiny, 2))
+			.setIconToFirstIngredient());
+		this.register((PUREXRecipe) new PUREXRecipe("purex.dbm_xenon").setup(200, zirnoxPower).setNameWrapper("purex.recycle")
+			.setGroup(autoBuurmium, this)
+			.inputItems(new ComparableStack(ModItems.rbmk_pellet_dbm, 1, 9))
+			.inputFluids(new FluidStack(Fluids.BUURMIC_ACID, 250), new FluidStack(Fluids.SOLVENT, 2000))
+			.outputItems(new ItemStack(ModItems.powder_pure_buurmium, 1),
+				new ItemStack(ModItems.powder_cement, 2),
+				new ItemStack(ModItems.nuclear_waste_tiny, 2),
+				new ItemStack(ModItems.powder_xe135_tiny, 1))
+			.setIconToFirstIngredient());
 	}
 }
