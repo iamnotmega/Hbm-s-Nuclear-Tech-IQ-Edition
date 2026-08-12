@@ -38,6 +38,7 @@ public class WorldConfig {
 	public static int oilSpawn = 100;
 	public static int bedrockOilSpawn = 200;
 	public static int arterySpawn = 10;
+	public static int betonSpawn = 10;
 	public static int meteoriteSpawn = 500;
 
 	// Space oils and ores
@@ -213,6 +214,7 @@ public class WorldConfig {
 		oilSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.21_oilSpawnRate", "Spawns an oil bubble every nTH chunk", 100);
 		bedrockOilSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.22_bedrockOilSpawnRate", "Spawns a bedrock oil node every nTH chunk", 200);
 		arterySpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.23_arterySpawnRate", "Spawns a satan's blood artery node every nTH nest chunk (0 to disable)", 10);
+		betonSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.23_betonSpawnRate", "Spawns a concrete mantle hotspot every nTH czechoslowakia chunk", 10);
 		meteoriteSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.23_meteoriteSpawnRate", "Spawns a fallen meteorite every nTH chunk", 200);
 		nickelSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.24_nickelSpawnrate", "Amount of nickel ore veins per chunk", 12);
 		zincSpawn = CommonConfig.createConfigInt(config, CATEGORY_OREGEN, "2.25_zincSpawnrate", "Amount of zinc ore veins per chunk", 8);

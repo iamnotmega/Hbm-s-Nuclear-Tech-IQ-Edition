@@ -46,16 +46,16 @@ public class BlockConcreteOil extends BlockOreFluid {
 	}
 	@Override
 	public FluidType getSecondaryFluid(int meta) {
-		return Fluids.CONCRETE;
+		return Fluids.NONE;
 	}
 
 	@Override
 	public int getPrimaryFluidAmount(int meta) {
-		return 10_000;
+		return 100;
 	}
 	@Override
 	public int getSecondaryFluidAmount(int meta) {
-		return 5_000;
+		return 0;
 	}
 
 	@Override

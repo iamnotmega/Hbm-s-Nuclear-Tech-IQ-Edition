@@ -54,12 +54,12 @@ public class SludgeProcessorRecipes extends GenericRecipes<SludgeProcessorRecipe
 
 		this.register((SludgeProcessorRecipe) new SludgeProcessorRecipe("sludge.buurmium")
 			.setup(100, 20_000)
-			.inputFluids(new FluidStack(Fluids.BUURCRETE, 1000))
+			.inputFluids(new FluidStack(Fluids.BUURCRETE, 4000))
 			.outputItems(
 				new ItemStack(ModItems.powder_diffused_buurmium, 1)
 			)
 			.outputFluids(
-				new FluidStack(Fluids.CONCRETE, 1000)
+				new FluidStack(Fluids.CONCRETE, 4000)
 			)
 		);
 
