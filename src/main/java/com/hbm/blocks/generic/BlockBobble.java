@@ -219,10 +219,12 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTBlo
 		MELLOW(			"MELLOWARPEGGIATION",				"Mellow",			"Celestial mechanics, rocketry,$atmospheric chemistry, orbital stations,$Dyson swarms",						"Make something cool now, ask for permission later.",												true,	ScrapType.CARD_PROCESSOR),
 		MRKIMKIMORA(	"MrKimkimora",						"MrKimkimora",		"Part of NTM:Space models,$textures and russian localization",						"I know your IP. Your IP is 127.0.0.1.",												false,	ScrapType.BOARD_BLANK),
 		ABEL(			"Abel1502", 						"Abel1502", 		"Abilities GUI, optimizations and many QoL improvements", 	"NANTO SUBARASHII",																				true,	ScrapType.CPU_REGISTER),
-		IRIS(			"iris-lgtm",						"iris-lgtm",		"Main developer of IQ Edition",								"Tam69 iq",																						true,	ScrapType.CPU_SOCKET),
-		TAM69(			"tam69420",							"tam69420",			"Piss",														"Major Big Fixes Improvement",																	true,	ScrapType.BOARD_BLANK),
-		IAMNOTMEGA(		"iamnotmega",						"iamnotmega",		"NTM IQ Edition contributor",								"KURWA",																						true,	ScrapType.BOARD_BLANK),
-		BAVOLISK(		"bavolisk",							"bavolisk",			"Texture artist",											"Listen closely. Do you hear it?$You will hear the laughter of thousands as the sky opens up.$You will hear the trumpets play their happy sounds.$The scalding blood of life will pour down onto us all.$Together, we will be still. Together, a feast fit for a king.$Together, welded by love and purest connection.$Be still and feast.",	true,	ScrapType.BOARD_BLANK);
+		IRIS(			"iris-lgtm",						"iris-lgtm",		"Main developer of IQ Edition",	"Tam69 iq",						true,	ScrapType.CPU_SOCKET),
+		TAM69(			"tam69420",							"tam69420",			"Piss",					"Major Big Fixes Improvement",	true,	ScrapType.CARD_BOARD),
+		IAMNOTMEGA(		"iamnotmega",						"iamnotmega",		"NTM IQ Edition contributor",	"KURWA",						true,	ScrapType.BOARD_BLANK),
+		BAVOLISK(		"bavolisk",							"bavolisk",			"Texture artist",			"Listen closely. Do you hear it?$You will hear the laughter of thousands as the sky opens up.$You will hear the trumpets play their happy sounds.$The scalding blood of life will pour down onto us all.$Together, we will be still. Together, a feast fit for a king.$Together, welded by love and purest connection.$Be still and feast.",	true,	ScrapType.BOARD_BLANK),
+		SIEPERT(		"Siepert",						"Siepert",		"Buurman integration",				"Patrz jak koszę beton",		true, ScrapType.CARD_PROCESSOR),
+		;
 
 		public String name;			//the title of the tooltip
 		public String label;		//the name engraved in the socket
