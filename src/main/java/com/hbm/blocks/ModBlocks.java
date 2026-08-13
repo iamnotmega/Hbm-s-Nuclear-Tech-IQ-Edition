@@ -177,6 +177,7 @@ public class ModBlocks {
 	public static Block ore_oil_empty;
 	public static Block ore_oil_sand;
 	public static Block ore_bedrock_artery;
+	public static Block ore_bedrock_concrete;
 	public static Block ore_bedrock_oil;
 	public static Block ore_lignite;
 	public static Block ore_asbestos;
@@ -1166,6 +1167,8 @@ public class ModBlocks {
 	public static Block machine_satlinker;
 	public static Block machine_satlink;
 
+	public static Block machine_sludge_processor;
+
 	public static Block machine_keyforge;
 
 	public static Block machine_armor_table;
@@ -1549,6 +1552,7 @@ public class ModBlocks {
 		ore_oil_empty = new BlockOre(Material.rock).setBlockName("ore_oil_empty").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_empty");
 		ore_oil = new BlockOreFluid(Material.rock, ore_oil_empty, ReserveType.OIL).setBlockName("ore_oil").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil");
 		ore_bedrock_artery = new BlockArteryOil(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_artery").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":satanartery");
+		ore_bedrock_concrete = new BlockConcreteOil(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_concrete").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":buurman_deposit");
 		ore_oil_sand = new BlockFalling(Material.sand).setBlockName("ore_oil_sand").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeSand).setHardness(0.5F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_sand_alt");
 		ore_bedrock_oil = new BlockOreFluid(Material.rock, null, ReserveType.OIL).setBlockName("ore_bedrock_oil").setCreativeTab(MainRegistry.blockTab).setBlockUnbreakable().setResistance(1_000_000).setBlockTextureName(RefStrings.MODID + ":ore_bedrock_oil");
 		ore_gas_empty = new BlockOre(Material.rock).setBlockName("ore_gas_empty").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":ore_oil_empty");
@@ -2250,6 +2254,7 @@ public class ModBlocks {
 
 		machine_satlinker = new MachineSatLinker(Material.iron).setBlockName("machine_satlinker").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.missileTab).setBlockTextureName(RefStrings.MODID + ":machine_satlinker_side");
 		machine_satlink = new MachineSatLink().setBlockName("machine_satlink").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.missileTab).setBlockTextureName(RefStrings.MODID + ":block_steel");
+		machine_sludge_processor = new MachineSludgeProcessor(Material.iron).setBlockName("sludge_processor").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		machine_keyforge = new MachineKeyForge(Material.iron).setBlockName("machine_keyforge").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.consumableTab).setBlockTextureName(RefStrings.MODID + ":machine_keyforge_side");
 		machine_armor_table = new BlockArmorTable(Material.iron).setBlockName("machine_armor_table").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.consumableTab);
 		machine_weapon_table = new BlockWeaponTable().setBlockName("machine_weapon_table").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.consumableTab);
@@ -2797,6 +2802,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(ore_oil, ItemBlockBase.class, ore_oil.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_oil_empty, ItemBlockBase.class, ore_oil_empty.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_bedrock_artery, ItemBlockBase.class, ore_bedrock_artery.getUnlocalizedName());
+		GameRegistry.registerBlock(ore_bedrock_concrete, ItemBlockBase.class, ore_bedrock_concrete.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_gas, ItemBlockBase.class, ore_gas.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_gas_empty, ItemBlockBase.class, ore_gas_empty.getUnlocalizedName());
 		GameRegistry.registerBlock(ore_oil_sand, ItemBlockBase.class, ore_oil_sand.getUnlocalizedName());
@@ -3835,6 +3841,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(troll_disturber, troll_disturber.getUnlocalizedName());
 		GameRegistry.registerBlock(machine_satlinker, machine_satlinker.getUnlocalizedName());
 		register(machine_satlink);
+		register(machine_sludge_processor);
 		GameRegistry.registerBlock(machine_keyforge, machine_keyforge.getUnlocalizedName());
 		GameRegistry.registerBlock(machine_armor_table, machine_armor_table.getUnlocalizedName());
 		GameRegistry.registerBlock(machine_weapon_table, machine_weapon_table.getUnlocalizedName());

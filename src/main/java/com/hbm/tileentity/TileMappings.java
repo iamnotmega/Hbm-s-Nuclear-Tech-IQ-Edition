@@ -251,7 +251,7 @@ public class TileMappings {
 
 		put(TileEntityCargoElevator.class, "tileentity_cargo_elevator");
 		put(TileEntityDoorGeneric.class, "tileentity_ntm_door");
-		
+
 		put(TileEntityCharger.class, "tileentity_ntm_charger");
 		put(TileEntityRefueler.class, "tileentity_ntm_refueler");
 
@@ -439,6 +439,8 @@ public class TileMappings {
 		put(TileEntityDysonConverterAnatmogenesis.class, "tileentity_dyson_converter_anatmogenesis");
 
 		put(TileEntityOrrery.class, "tileentity_orrery");
+
+		put(TileEntityMachineSludgeProcessor.class, "tileentity_sludge_processor");
 	}
 
 	private static void putPile() {
@@ -446,7 +448,7 @@ public class TileMappings {
 		put(TileEntityPileSource.class, "tileentity_pile_source");
 		put(TileEntityPileBreedingFuel.class, "tileentity_pile_breedingfuel");
 		put(TileEntityPileNeutronDetector.class, "tileentity_pile_neutrondetector");
-		
+
 		put(TileEntityPileCore.class, "tileentity_pile_core");
 		put(TileEntityPileBaseMK2.class, "tileentity_pile_block");
 		put(TileEntityPileLoader.class, "tileentity_pile_loader");

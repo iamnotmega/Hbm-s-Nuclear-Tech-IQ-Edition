@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.generic.BlockOreFluid;
+import com.hbm.config.SpaceConfig;
 import com.hbm.dim.SolarSystem;
 import com.hbm.inventory.container.ContainerMachineOilWell;
 import com.hbm.inventory.fluid.Fluids;
@@ -83,7 +84,7 @@ public class TileEntityMachineFrackingTower extends TileEntityOilDrillBase {
 
 	@Override
 	public boolean canSuckBlock(Block b) {
-		return super.canSuckBlock(b) || b == ModBlocks.ore_bedrock_oil || b == ModBlocks.ore_bedrock_artery;
+		return super.canSuckBlock(b) || b == ModBlocks.ore_bedrock_oil || b == ModBlocks.ore_bedrock_artery || b == ModBlocks.ore_bedrock_concrete;
 	}
 
 	@Override
@@ -96,7 +97,7 @@ public class TileEntityMachineFrackingTower extends TileEntityOilDrillBase {
 
 		if(worldObj.provider.dimensionId == -1) {
 			OilSpot.generateNetherSpot(worldObj, xCoord, zCoord, destructionRange, 10);
-		} else if(meta == SolarSystem.Body.TEKTO.ordinal()) {
+		} else if(meta == SolarSystem.Body.TEKTO.ordinal() || worldObj.provider.dimensionId == SpaceConfig.czechoslowakiaDimension) {
 			OilSpot.generateCrack(worldObj, xCoord, zCoord, destructionRange, 10);
 		} else {
 			OilSpot.generateOilSpot(worldObj, xCoord, zCoord, destructionRange, 10, false);

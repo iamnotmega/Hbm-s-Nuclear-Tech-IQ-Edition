@@ -155,7 +155,7 @@ public class TileEntityMachineMagma extends TileEntityMachineBase implements IEn
 	private boolean canOperate() {
 		// Currently only functions on Moho, so the simplest solution is acceptable
 		CelestialBody body = CelestialBody.getBody(worldObj);
-		if(body.name != "moho") return false;
+		if(!"moho".equals(body.name)) return false;
 
 		validPosition = isValidPosition();
 		if(!validPosition) return false;

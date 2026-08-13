@@ -1,8 +1,8 @@
 [
 {
   "modid": "hbm",
-  "name": "NTM: Space",
-  "description": "A mod that adds weapons, nuclear themed stuff and space travel",
+  "name": "NTM: IQ Edition",
+  "description": "Ntm fork with tam69 iq and buurman integration. :rocket:",
   "version":"${version}",
   "mcversion": "1.7.10",
   "url": "",

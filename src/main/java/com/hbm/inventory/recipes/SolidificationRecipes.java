@@ -89,6 +89,8 @@ public class SolidificationRecipes extends SerializableRecipe {
 
 		registerRecipe(BALEFIRE,		250,			ModItems.solid_fuel_bf);
 
+		registerRecipe(SCRAPCRETE, 1000, ModBlocks.concrete_rebar);
+
 		registerSFAuto(SMEAR);
 		registerSFAuto(HEATINGOIL);
 		registerSFAuto(HEATINGOIL_VACUUM);

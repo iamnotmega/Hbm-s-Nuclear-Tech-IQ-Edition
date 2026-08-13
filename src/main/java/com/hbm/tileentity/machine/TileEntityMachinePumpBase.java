@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.dim.CelestialBody;
+import com.hbm.dim.SolarSystem;
 import com.hbm.dim.orbit.WorldProviderOrbit;
 import com.hbm.dim.trait.CBT_Water;
 import com.hbm.inventory.fluid.tank.FluidTank;
@@ -135,6 +136,7 @@ public abstract class TileEntityMachinePumpBase extends TileEntityLoadedBase imp
 		int validBlocks = 0;
 		int invalidBlocks = 0;
 
+		boolean allowBeton = CelestialBody.getBody(this.worldObj).getEnum() == SolarSystem.Body.CZECHOSLOWAKIA;
 		for(int x = -1; x <= 1; x++) {
 			for(int y = -1; y >= -groundDepth; y--) {
 				for(int z = -1; z <= 1; z++) {
@@ -144,6 +146,7 @@ public abstract class TileEntityMachinePumpBase extends TileEntityLoadedBase imp
 					if(y == -1 && !b.isNormalCube()) return false; // first layer has to be full solid
 
 					if(TileEntityMachinePumpBase.validBlocks.contains(b)) validBlocks++;
+					else if (allowBeton && b == ModBlocks.concrete_smooth) validBlocks++;
 					else invalidBlocks ++;
 				}
 			}

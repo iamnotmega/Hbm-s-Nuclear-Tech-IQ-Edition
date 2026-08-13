@@ -580,6 +580,19 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputFluids(new FluidStack(Fluids.PISS_DEPLETED, 1000))
 			.outputFluids(new FluidStack(Fluids.WATER, 800), new FluidStack(Fluids.AMMONIA, 100), new FluidStack(Fluids.PISS, 100)));
 
+		this.register(new GenericRecipe("chem.buurmic_acid").setup(200, 1000).setIcon(ModItems.fluid_icon, Fluids.BUURMIC_ACID.getID())
+			.inputItems(new ComparableStack(ModItems.powder_pure_buurmium))
+			.inputFluids(new FluidStack(Fluids.NITRIC_ACID, 1000, 1), new FluidStack(Fluids.AIR, 1000))
+			.outputFluids(new FluidStack(Fluids.BUURMIC_ACID, 500))
+		);
+		this.register(new GenericRecipe("chem.diluted_buurmic_acid").setup(100, 500).setIcon(ModItems.fluid_icon, Fluids.DILUTED_BUURMIC_ACID.getID())
+			.inputFluids(new FluidStack(Fluids.BUURMIC_ACID, 250), new FluidStack(Fluids.WATER, 2000))
+			.outputFluids(new FluidStack(Fluids.DILUTED_BUURMIC_ACID, 1000))
+		);
+		this.register(new GenericRecipe("chem.buurmium_piss_duplication").setup(100, 2_500).setIcon(ModItems.fluid_icon, Fluids.PISS.getID())
+			.inputFluids(new FluidStack(Fluids.PISS, 100, 1), new FluidStack(Fluids.WATER, 2000, 1), new FluidStack(Fluids.DILUTED_BUURMIC_ACID, 10, 1))
+			.outputFluids(new FluidStack(Fluids.PISS, 2000))
+		);
 	}
 
 	public static HashMap getRecipes() {

@@ -33,6 +33,8 @@ public class ItemSurveyScanner extends Item {
 			boolean hasSchist = false;
 			boolean hasAussie = false;
 			boolean hasBedrockArtery = false;
+			boolean hasBedrockConcrete = false;
+			boolean hasBedrockConcreteKindOf = false;
 			TileEntityBedrockOre tile = null;
 
 			for(int a = -5; a <= 5; a++) {
@@ -60,6 +62,10 @@ public class ItemSurveyScanner extends Item {
 					if(block == ModBlocks.ore_bedrock) {
 						tile = (TileEntityBedrockOre) world.getTileEntity(x + a * 2, 0, z + b * 2);
 					}
+					else if(block == ModBlocks.ore_bedrock_concrete) {
+						if (a == 0 && b == 0) hasBedrockConcrete = true;
+						else hasBedrockConcreteKindOf = true;
+					}
 				}
 			}
 
@@ -72,6 +78,8 @@ public class ItemSurveyScanner extends Item {
 			if(hasSchist) player.addChatComponentMessage(new ChatComponentText("Found SCHIST!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_AQUA)));
 			if(hasAussie) player.addChatComponentMessage(new ChatComponentText("Found AUSTRALIUM!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
 			if(hasBedrockArtery) player.addChatComponentMessage(new ChatComponentText("Found.. Arteries?").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED)));
+			if(hasBedrockConcrete) player.addChatComponentMessage(new ChatComponentText("Found BETON!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
+			else if (hasBedrockConcreteKindOf) player.addChatComponentMessage(new ChatComponentText("Found BETON nearby").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
 			if(tile != null && tile.resource != null) player.addChatComponentMessage(new ChatComponentText("Found BEDROCK ORE for " + tile.resource.getDisplayName() + "!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
 		}
 

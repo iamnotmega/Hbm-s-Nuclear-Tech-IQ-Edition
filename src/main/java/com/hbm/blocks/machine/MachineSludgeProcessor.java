@@ -1,0 +1,80 @@
+package com.hbm.blocks.machine;
+
+import com.hbm.blocks.BlockDummyable;
+import com.hbm.blocks.ITooltipProvider;
+import com.hbm.lib.Library;
+import com.hbm.tileentity.TileEntityProxyCombo;
+import com.hbm.tileentity.machine.TileEntityMachineSludgeProcessor;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+
+import java.util.List;
+
+public class MachineSludgeProcessor extends BlockDummyable implements ITooltipProvider {
+	public MachineSludgeProcessor(Material mat) {
+		super(mat);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		if (meta >= 12) return new TileEntityMachineSludgeProcessor();
+		if (meta >= extra) return new TileEntityProxyCombo(true, true, true);
+		return null;
+	}
+
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		return this.standardOpenBehavior(world, x, y, z, player, 0);
+	}
+
+	@Override
+	public int[] getDimensions() {
+		return new int[]{4, 0, 2, 2, 2, 1};
+	}
+
+	@Override
+	public int getOffset() {
+		return 2;
+	}
+
+	@Override
+	protected void fillSpace(World world, int x, int y, int z, ForgeDirection dir, int o) {
+		super.fillSpace(world, x, y, z, dir, o);
+
+		switch (dir) {
+			case EAST:
+				this.makeExtra(world, x, y, z-1);
+				this.makeExtra(world, x, y, z+2);
+				this.makeExtra(world, x-4, y, z-1);
+				this.makeExtra(world, x-4, y, z+2);
+				break;
+			case WEST:
+				this.makeExtra(world, x, y, z-2);
+				this.makeExtra(world, x, y, z+1);
+				this.makeExtra(world, x+4, y, z-2);
+				this.makeExtra(world, x+4, y, z+1);
+				break;
+			case SOUTH:
+				this.makeExtra(world, x-2, y, z);
+				this.makeExtra(world, x+1, y, z);
+				this.makeExtra(world, x-2, y, z-4);
+				this.makeExtra(world, x+1, y, z-4);
+				break;
+			case NORTH:
+				this.makeExtra(world, x-1, y, z);
+				this.makeExtra(world, x+2, y, z);
+				this.makeExtra(world, x-1, y, z+4);
+				this.makeExtra(world, x+2, y, z+4);
+				break;
+		}
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean ext) {
+		this.addStandardInfo(stack, player, list, ext);
+	}
+}
