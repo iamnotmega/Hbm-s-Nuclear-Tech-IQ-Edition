@@ -33,9 +33,6 @@ public class BiomeGenPrague extends BiomeGenBaseCelestial {
 			for(int bx = 2; bx < 14; bx++)
 				for(int bz = 2; bz <= 14; bz++)
 					world.setBlock(x + bx, 0, z + bz, ModBlocks.ore_bedrock_concrete, 0, 2);
-			int gx = x + 2 + random.nextInt(12);
-			int gz = z + 2 + random.nextInt(12);
-			world.setBlock(gx, world.getHeightValue(gx, gz), gz, ModBlocks.geysir_concrete, 0, 2);
 		} else if (WorldConfig.bedrockOilSpawn > 0 && random.nextInt(WorldConfig.bedrockOilSpawn) == 0) {
 			int x = chunkX * 16;
 			int z = chunkZ * 16;

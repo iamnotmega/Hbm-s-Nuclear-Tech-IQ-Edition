@@ -3368,6 +3368,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(geysir_volcanic, geysir_volcanic.getUnlocalizedName());
 		GameRegistry.registerBlock(geysir_electric, geysir_electric.getUnlocalizedName());
 		GameRegistry.registerBlock(geysir_chloric, geysir_chloric.getUnlocalizedName());
+		GameRegistry.registerBlock(geysir_concrete, geysir_concrete.getUnlocalizedName());
 
 		//Nukes
 		GameRegistry.registerBlock(nuke_gadget, nuke_gadget.getUnlocalizedName());
