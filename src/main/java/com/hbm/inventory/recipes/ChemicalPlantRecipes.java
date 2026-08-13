@@ -589,6 +589,10 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputFluids(new FluidStack(Fluids.BUURMIC_ACID, 250), new FluidStack(Fluids.WATER, 2000))
 			.outputFluids(new FluidStack(Fluids.DILUTED_BUURMIC_ACID, 1000))
 		);
+		this.register(new GenericRecipe("chem.buurmium_piss_duplication").setup(100, 2_500).setIcon(ModItems.fluid_icon, Fluids.PISS.getID())
+			.inputFluids(new FluidStack(Fluids.PISS, 100, 1), new FluidStack(Fluids.WATER, 2000, 1), new FluidStack(Fluids.DILUTED_BUURMIC_ACID, 10, 1))
+			.outputFluids(new FluidStack(Fluids.PISS, 2000))
+		);
 	}
 
 	public static HashMap getRecipes() {
