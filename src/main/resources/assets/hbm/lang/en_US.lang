@@ -7587,6 +7587,8 @@ sludge.natcrete=Concrete Processing
 sludge.concrete_recycling=Recycling of Liquid Concrete
 autoswitch.buurmium=Efficient Buurmium extraction
 
+tile.ore_bedrock_concrete.name=Bedrock Concrete Deposit
+
 item.powder_diffused_buurmium.name=Diffused Buurmium
 item.powder_pure_buurmium.name=Pure Buurmium
 item.powder_metastable_buurmium.name=Metastable Buurmium-2137

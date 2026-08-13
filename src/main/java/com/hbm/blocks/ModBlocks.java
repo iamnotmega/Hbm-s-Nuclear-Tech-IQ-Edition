@@ -633,6 +633,7 @@ public class ModBlocks {
 	public static Block geysir_electric;
 	public static Block geysir_volcanic;
 	public static Block geysir_chloric;
+	public static Block geysir_concrete;
 
 	public static Block flame_war;
 	public static Block float_bomb;
@@ -1986,6 +1987,7 @@ public class ModBlocks {
 		geysir_volcanic = new BlockGeysir(Material.rock).setBlockName("geysir_volcanic").setLightLevel(1.0F).setStepSound(Block.soundTypeStone).setHardness(2.0F);
 		geysir_electric = new BlockVolcanoV2(Material.rock).setBlockName("geysir_electric").setLightLevel(1.0F).setStepSound(Block.soundTypeStone).setHardness(2.0F).setBlockTextureName(RefStrings.MODID + ":basalt");
 		geysir_chloric = new BlockGeysierDCM(Material.rock).setBlockName("geysir_chloric").setLightLevel(1.0F).setStepSound(Block.soundTypeStone).setHardness(2.0F).setBlockTextureName(RefStrings.MODID + ":basalt");;
+		geysir_concrete = new BlockGeysir(Material.rock).setBlockName("geysir_concrete").setStepSound(Block.soundTypeStone).setHardness(5.0F);
 
 		cyst = new BlockCyst(Material.coral).setBlockName("cyst").setStepSound(Block.soundTypeCloth).setHardness(0.5F);
 
