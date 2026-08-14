@@ -1,6 +1,7 @@
 package com.hbm.dim.czechoslowakia;
 
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.generic.BlockOre;
 import com.hbm.dim.ChunkProviderCelestial;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
