@@ -515,6 +515,9 @@ public class ModItems {
 	public static Item powder_diffused_buurmium;
 	public static Item powder_pure_buurmium;
 	public static Item powder_metastable_buurmium;
+	public static Item powder_diffused_buurmium_tiny;
+	public static Item powder_pure_buurmium_tiny;
+	public static Item powder_metastable_buurmium_tiny;
 
 	public static Item ingot_meteorite;
 	public static Item ingot_meteorite_forged;
@@ -2636,6 +2639,9 @@ public class ModItems {
 		powder_diffused_buurmium = new Item().setUnlocalizedName("powder_diffused_buurmium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_diffused_buurmium");
 		powder_pure_buurmium = new Item().setUnlocalizedName("powder_pure_buurmium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_pure_buurmium");
 		powder_metastable_buurmium = new Item().setUnlocalizedName("powder_metastable_buurmium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_metastable_buurmium");
+		powder_diffused_buurmium_tiny = new Item().setUnlocalizedName("powder_diffused_buurmium_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_diffused_buurmium_tiny");
+		powder_pure_buurmium_tiny = new Item().setUnlocalizedName("powder_pure_buurmium_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_pure_buurmium_tiny");
+		powder_metastable_buurmium_tiny = new Item().setUnlocalizedName("powder_metastable_buurmium_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_metastable_buurmium_tiny");
 
 		ingot_meteorite = new ItemHot(200).setUnlocalizedName("ingot_meteorite").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_meteorite");
 		ingot_meteorite_forged = new ItemHot(200).setUnlocalizedName("ingot_meteorite_forged").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_meteorite_forged");
@@ -5109,6 +5115,9 @@ public class ModItems {
 		GameRegistry.registerItem(powder_diffused_buurmium, powder_diffused_buurmium.getUnlocalizedName());
 		GameRegistry.registerItem(powder_pure_buurmium, powder_pure_buurmium.getUnlocalizedName());
 		GameRegistry.registerItem(powder_metastable_buurmium, powder_metastable_buurmium.getUnlocalizedName());
+		GameRegistry.registerItem(powder_diffused_buurmium_tiny, powder_diffused_buurmium_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_pure_buurmium_tiny, powder_pure_buurmium_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_metastable_buurmium_tiny, powder_metastable_buurmium_tiny.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_desh, ingot_desh.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_ferrouranium, ingot_ferrouranium.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_starmetal, ingot_starmetal.getUnlocalizedName());
