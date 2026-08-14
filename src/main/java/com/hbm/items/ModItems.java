@@ -512,6 +512,7 @@ public class ModItems {
 	public static Item nugget_lanthanium;
 	public static Item ingot_actinium;
 
+	// Called a buurman, behaves like 125mB of liquid concrete. Fine.
 	public static Item powder_diffused_buurmium;
 	public static Item powder_pure_buurmium;
 	public static Item powder_metastable_buurmium;
