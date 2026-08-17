@@ -341,6 +341,7 @@ public class TileMappings {
 		put(TileEntityStirling.class, "tileentity_stirling");
 		put(TileEntitySawmill.class, "tileentity_sawmill");
 		put(TileEntityCrucible.class, "tileentity_crucible");
+		put(TileEntityDriveRack.class, "tileentity_drive_rack");
 		put(TileEntityHeatBoiler.class, "tileentity_heat_boiler");
 		put(TileEntityHeatBoilerIndustrial.class, "tileentity_heat_boiler_industrial");
 

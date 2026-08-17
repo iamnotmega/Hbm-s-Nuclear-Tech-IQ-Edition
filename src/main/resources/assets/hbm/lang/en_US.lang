@@ -6298,6 +6298,7 @@ tile.frozen_log.name=Frozen Log
 tile.frozen_planks.name=Frozen Planks
 tile.machine_furnace_brick_off.name=Bricked Furnace
 tile.machine_furnace_brick_on.name=Bricked Furnace
+tile.machine_drive_rack.name=Drive Rack
 tile.moon_rock.name=Mun Rock
 tile.moho_regolith.name=Moho Regolith
 tile.moho_stone.name=Moho Stone
