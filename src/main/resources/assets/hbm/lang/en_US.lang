@@ -7575,6 +7575,7 @@ hbmfluid.scrapcrete=Liquid Concrete with Scrap
 hbmfluid.buurmic_acid=Buurmic Acid
 hbmfluid.diluted_buurmic_acid=Diluted Buurmic Acid
 hbmfluid.light_buurmium_solution=Light Buurmium Solution
+hbmfluid.staleair=Stale Air
 instant_damage=Instant Damage
 clear_effects=Clears Effects
 clear_bad_effects=Removes Negative Effects

@@ -7,6 +7,7 @@ import java.util.Random;
 import com.hbm.blocks.BlockEnums.EnumStoneType;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.generic.BlockOre;
+import com.hbm.config.SpaceConfig;
 import com.hbm.config.WorldConfig;
 import com.hbm.inventory.FluidStack;
 import com.hbm.main.StructureManager;
@@ -119,7 +120,7 @@ public class WorldGeneratorCelestial implements IWorldGenerator {
 					add(new JigsawPiece("meteor_loot_fallback", StructureManager.meteor_dragon_fallback) {{ blockTable = crates; }}, 1);
 				}});
 			}};
-		}}, PlanetGen.getSpaceDimensions());
+		}}, PlanetGen.getSpaceDimensionsExcept(SpaceConfig.czechoslowakiaDimension));
 
 		// Specify which ores spawn where
 		BlockOre.addAllBodies(ModBlocks.ore_iron);

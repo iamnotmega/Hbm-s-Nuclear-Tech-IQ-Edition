@@ -27,6 +27,7 @@ public class BiomeGenPrague extends BiomeGenBaseCelestial {
 
 	@Override
 	public void decorate(World world, Random random, int chunkX, int chunkZ) {
+		/*
 		if (WorldConfig.betonSpawn > 0 && random.nextInt(WorldConfig.betonSpawn) == 0) {
 			int x = chunkX * 16;
 			int z = chunkZ * 16;
@@ -40,5 +41,6 @@ public class BiomeGenPrague extends BiomeGenBaseCelestial {
 				for(int bz = 2; bz < 14; bz++)
 					world.setBlock(x + bx, 0, z + bz, ModBlocks.ore_bedrock_oil, 0, 2);
 		}
+		*/
 	}
 }
