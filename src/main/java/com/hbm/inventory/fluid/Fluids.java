@@ -301,6 +301,7 @@ public class Fluids {
 	public static FluidType BUURMIC_ACID;
 	public static FluidType DILUTED_BUURMIC_ACID;
 	public static FluidType LIGHT_BUURMIUM_SOLUTION;
+	public static FluidType STALEAIR;
 
 	/* Legacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
@@ -631,7 +632,7 @@ public class Fluids {
 		BUURMIC_ACID = 		new FluidType("BUURMIC_ACID", 0xD0D411, 0, 0, 2, EnumSymbol.ACID).addTraits(LIQUID, new FT_Corrosive(2137));
 		DILUTED_BUURMIC_ACID =new FluidType("DILUTED_BUURMIC_ACID", 0xE0E448, 0, 0, 1, EnumSymbol.ACID).addTraits(LIQUID, new FT_Corrosive(10));
 		LIGHT_BUURMIUM_SOLUTION =new FluidType("LIGHT_BUURMIUM_SOLUTION", 0xFFFF00, 0, 0, 0, EnumSymbol.RADIATION).addTraits(LIQUID, VISCOUS);
-
+		STALEAIR = new FluidType("STALEAIR", 0xCCCCCC, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0xCCCCCC, 0xFFFF00)).addTraits(GASEOUS);
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
 
@@ -932,6 +933,7 @@ public class Fluids {
 		metaOrder.add(BUURMIC_ACID);
 		metaOrder.add(DILUTED_BUURMIC_ACID);
 		metaOrder.add(LIGHT_BUURMIUM_SOLUTION);
+		metaOrder.add(STALEAIR);
 
 		//ANY INTERNAL RENAMING MUST BE REFLECTED HERE - DON'T FORGET TO CHANGE: LANG FILES + TYPE'S STRING ID + NAME OF TANK/GUI TEXTURE FILES!
 		// V

@@ -71,6 +71,12 @@ public class PlanetGen {
 		return BobMathUtil.intCollectionToArray(spaceDimensions);
 	}
 
+	public static int[] getSpaceDimensionsExcept(int... exclude) {
+		ArrayList<Integer> list = new ArrayList<>(spaceDimensions);
+		for (int i : exclude) list.remove(Integer.valueOf(i));
+		return BobMathUtil.intCollectionToArray(list);
+	}
+
 	private static void registerDimension(int dimensionId, Class<? extends WorldProvider> clazz) {
 		DimensionManager.registerProviderType(dimensionId, clazz, false);
 		DimensionManager.registerDimension(dimensionId, dimensionId);

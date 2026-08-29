@@ -193,6 +193,8 @@ public class Mats {
 	public static final NTMMaterial MAT_HARDPLASTIC	= makeNonSmeltable(_ES + 04, 		PC,				0xEDE7C4, 0x908A67, 0xE1DBB8).setAutogen(STOCK, GRIP).n();
 	public static final NTMMaterial MAT_PVC			= makeNonSmeltable(_ES + 05, 		PVC,			0xFCFCFC, 0x9F9F9F, 0xF0F0F0).setAutogen(FRAGMENT, DUST, STOCK, GRIP).n();
 
+	//Beton
+	public static final NTMMaterial MAT_CONCRETE = makeNonSmeltable(_ES + 6, ANY_CONCRETE, 0xCCCCCC, 0x888888, 0x888888).n();
 	public static NTMMaterial makeSmeltable(int id, DictFrame dict, int color) { return makeSmeltable(id, dict, color, color, color); }
 
 
