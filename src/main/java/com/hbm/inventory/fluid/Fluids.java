@@ -597,7 +597,7 @@ public class Fluids {
 		POISON =			new FluidType("POISON",				0x9B2F2F, 1, 0, 0, EnumSymbol.NONE).addTraits(new FT_Drug().setDuration(5).addEffect(Potion.harm.id, 0), LIQUID, new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 3F, 20, HazardClass.PARTICLE_FINE, false)));
 		NUTRIENT_SLOP =			new FluidType("NUTRIENT_SLOP",		0x7CC35E, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(0.1F, 0.02F));
 		TAMSLOP =				new FluidType("TAMSLOP",			0x5B9E3F, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS, new FT_Consumable().setFood(1.0F, 0.1F).addEffect(Potion.regeneration.id, 2));
-		TICL4 =				new FluidType("TICL4",				0xFF69B4, 1, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
+		TICL4 =				new FluidType("TICL4",				0xF2F2A4, 1, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
 		HEAVY_SAND_SLOP =		new FluidType("HEAVY_SAND_SLOP",	0x8B7D6B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		MONAZITE_SLOP =			new FluidType("MONAZITE_SLOP",		0xC4A84B, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID, VISCOUS);
 		NETHERAIR =				new FluidType("NETHERAIR",			0xB34B4B, 0, 0, 0, EnumSymbol.NONE).addContainers(new CD_Gastank(0x8C21FF, 0xFFFFFF)).addTraits(GASEOUS);
