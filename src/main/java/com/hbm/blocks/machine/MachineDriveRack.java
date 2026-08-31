@@ -12,7 +12,10 @@ public class MachineDriveRack extends BlockDummyable {
 	public MachineDriveRack(Material mat) { super(mat); }
 
 	public TileEntityDriveRack createNewTileEntity(World world, int meta) {
-		return new TileEntityDriveRack();
+		if (meta >= 6) {
+			return new TileEntityDriveRack();
+		}
+		return null;
 	}
 
 	@Override
