@@ -2,16 +2,12 @@ package com.hbm.render.tileentity;
 
 import com.hbm.main.ResourceManager;
 import com.hbm.render.item.ItemRenderBase;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.tileentity.machine.TileEntityDriveRack;
-import com.hbm.render.tileentity.IItemRendererProvider;
 
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
