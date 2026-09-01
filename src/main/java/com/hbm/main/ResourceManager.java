@@ -597,7 +597,7 @@ public class ResourceManager {
 	public static final ResourceLocation orbital_computer_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/spaceship_computer.png");
 	public static final ResourceLocation transporter_pad_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/transporter_pad.png");
 	public static final ResourceLocation hydroponic_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/hydroponic.png");
-	public static final ResourceLocation drive_rack_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/drive_rack_on.png");
+	public static final ResourceLocation drive_rack_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/drive_rack.png");
 
 	//Flare Stack
 	public static final ResourceLocation oilflare_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/flare_stack.png");
