@@ -5,7 +5,6 @@ import com.hbm.blocks.BlockDummyable;
 import com.hbm.tileentity.machine.TileEntityDriveRack;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
-import net.minecraft.tileentity.TileEntity;
 
 public class MachineDriveRack extends BlockDummyable {
 
@@ -19,7 +18,7 @@ public class MachineDriveRack extends BlockDummyable {
 	}
 
 	@Override
-	public int[] getDimensions() { return new int[] {1, 0, 0, 0, 0, 1}; }
+	public int[] getDimensions() { return new int[] {1, 0, 0, 0, 0, 0}; }
 
 	@Override
 	public int getOffset() { return 0; }
