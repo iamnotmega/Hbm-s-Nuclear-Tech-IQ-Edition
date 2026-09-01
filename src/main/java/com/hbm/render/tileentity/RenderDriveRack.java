@@ -7,7 +7,6 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import com.hbm.blocks.ModBlocks;
-import com.hbm.tileentity.machine.TileEntityDriveRack;
 
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -29,11 +28,9 @@ public class RenderDriveRack extends TileEntitySpecialRenderer implements IItemR
 			case 5: GL11.glRotatef(0, 0F, 1F, 0F); break;
 		}
 
-		TileEntityDriveRack rack = (TileEntityDriveRack) te;
-
 		GL11.glShadeModel(GL11.GL_FLAT);
 		bindTexture(ResourceManager.drive_rack_tex);
-		ResourceManager.drive_rack.renderAll();
+		ResourceManager.drive_rack.renderPart("rack");
 
 		GL11.glPopMatrix();
 	}
@@ -55,7 +52,7 @@ public class RenderDriveRack extends TileEntitySpecialRenderer implements IItemR
 				GL11.glShadeModel(GL11.GL_SMOOTH);
 				GL11.glScaled(3, 3, 3);
 				bindTexture(ResourceManager.drive_rack_tex);
-				ResourceManager.drive_rack.renderAll();
+				ResourceManager.drive_rack.renderPart("rack");
 				GL11.glShadeModel(GL11.GL_FLAT);
 			}
 		};
